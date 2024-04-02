@@ -1,0 +1,10 @@
+$testing-color: #261377;
+
+.swiperMain {
+  width: 90vw;
+  margin-top: 15px;
+  .slide {
+    background-color: $testing-color;
+    text-align: center;
+  }
+}

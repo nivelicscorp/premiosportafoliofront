@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import styles from '../../../styles/Test.module.scss';
 import 'swiper/css';
 
 const BasicSwiper = () => {
@@ -8,11 +9,12 @@ const BasicSwiper = () => {
       slidesPerView={3}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper: any) => console.log(swiper)}
+      className={styles.swiperMain}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
+      <SwiperSlide className={styles.slide}>Slide 1</SwiperSlide>
+      <SwiperSlide className={styles.slide}>Slide 2</SwiperSlide>
+      <SwiperSlide className={styles.slide}>Slide 3</SwiperSlide>
+      <SwiperSlide className={styles.slide}>Slide 4</SwiperSlide>
     </Swiper>
   );
 };
