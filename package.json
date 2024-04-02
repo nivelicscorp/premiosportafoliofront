@@ -8,8 +8,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "test": "jest",
-    "coverage": "jest run --coverage --passWithNoTests",
-    "prepare": "husky"
+    "coverage": "jest run --coverage --passWithNoTests"
   },
   "dependencies": {
     "next": "12.3.4",
