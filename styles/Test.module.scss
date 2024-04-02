@@ -1,10 +1,25 @@
 $testing-color: #261377;
 
-.swiperMain {
+.swiper {
   width: 90vw;
   margin-top: 15px;
   .slide {
     background-color: $testing-color;
     text-align: center;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-top: 15px;
+  .input {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+  .button {
+    width: 90%;
   }
 }
