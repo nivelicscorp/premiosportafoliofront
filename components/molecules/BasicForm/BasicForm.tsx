@@ -1,12 +1,12 @@
-import { useForm } from 'react-hook-form';
-import styles from '@styles/Test.module.scss';
+import { useForm } from 'react-hook-form'
+import styles from '@styles/Test.module.scss'
 
 const BasicForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm()
   return (
     <form
       className={styles.form}
@@ -19,7 +19,7 @@ const BasicForm = () => {
       {errors.age && <p>Please enter number for age.</p>}
       <input type='submit' />
     </form>
-  );
-};
+  )
+}
 
-export default BasicForm;
+export default BasicForm

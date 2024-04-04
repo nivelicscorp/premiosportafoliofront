@@ -1,6 +1,6 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import styles from '@styles/Test.module.scss';
-import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import styles from '@styles/Test.module.scss'
+import 'swiper/css'
 
 const BasicSwiper = () => {
   return (
@@ -16,7 +16,7 @@ const BasicSwiper = () => {
       <SwiperSlide className={styles.slide}>Slide 3</SwiperSlide>
       <SwiperSlide className={styles.slide}>Slide 4</SwiperSlide>
     </Swiper>
-  );
-};
+  )
+}
 
-export default BasicSwiper;
+export default BasicSwiper
