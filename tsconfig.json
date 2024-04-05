@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     "jest.config.js",
-    "__tests__/index.spec.jsx"
+    "__tests__/index.spec.jsx",
+    "routes.js"
   ],
   "exclude": ["node_modules"]
 }

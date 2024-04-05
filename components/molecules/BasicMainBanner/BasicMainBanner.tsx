@@ -9,7 +9,7 @@ const BasicMainBanner = () => {
         textAlign: 'center',
       }}
     >
-      <h1>BasicMainBanner works</h1>
+      <h2>BasicMainBanner works</h2>
     </div>
   )
 }
