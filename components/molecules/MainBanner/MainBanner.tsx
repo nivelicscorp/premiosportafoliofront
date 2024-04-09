@@ -11,7 +11,7 @@ const MainBanner = () => {
     <div className={styles?.banner}>
       <a href='#' className={styles?.banner__link}>
         Postular ahora
-        <img
+        <Image
           src='/img/main-banner/hand-click.svg'
           alt=''
           width={20}
@@ -20,17 +20,13 @@ const MainBanner = () => {
       </a>
       <div className={styles?.banner__content}>
         <div className={styles?.banner__logo}>
-          <img
-            src='https://www.eltiempo.com/maquetacion/especiales/portafolio/2023/06/premios-portafolio-2023/img/premiosPrincipal.svg'
-            alt=''
-          />
-          {/* <Image
+          <Image
             src={
               'https://www.eltiempo.com/maquetacion/especiales/portafolio/2023/06/premios-portafolio-2023/img/premiosPrincipal.svg'
             }
             width={290}
             height={170}
-          /> */}
+          />
         </div>
         <p className={styles?.banner__text}>
           Es el recomocimiento más importante del país a las empresas y personas

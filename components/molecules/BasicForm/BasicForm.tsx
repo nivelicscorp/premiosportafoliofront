@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form'
-import styles from '@styles/Test.module.scss'
 
 const BasicForm = () => {
   const {
@@ -8,10 +7,7 @@ const BasicForm = () => {
     formState: { errors },
   } = useForm()
   return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit((data) => console.log(data))}
-    >
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
       <input {...register('firstName')} />
       <input {...register('lastName', { required: true })} />
       {errors.lastName && <p>Last name is required.</p>}
