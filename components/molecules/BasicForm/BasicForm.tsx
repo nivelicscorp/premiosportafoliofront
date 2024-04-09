@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form'
-import styles from '@styles/Test.module.scss'
 import Input from '@atoms/Input/Input'
 import React from 'react'
 
@@ -11,10 +10,7 @@ const BasicForm = () => {
   } = useForm()
 
   return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit((data) => console.log(data))}
-    >
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
       <Input
         type='text'
         placeholder='First Name'
