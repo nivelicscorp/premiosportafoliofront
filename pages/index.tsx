@@ -1,3 +1,4 @@
+import { BtnFloat } from '@atoms/BtnFloat/BtnFloat'
 import MainBanner from '@molecules/MainBanner/MainBanner'
 import type { NextPage } from 'next'
 import Image from 'next/image'
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
     <div>
       <main>
         <MainBanner />
+        <BtnFloat />
       </main>
     </div>
   )

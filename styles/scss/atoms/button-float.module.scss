@@ -1,0 +1,74 @@
+@import "../config/variables";
+
+.btnFloat {
+    overflow: hidden;
+    padding: 1.5rem 0 1.5rem 1rem;
+    position: fixed;
+    top: 38.7rem;
+    right: 0;
+    z-index: 6;
+
+    &__content {
+        align-items: center;
+        display: flex;
+        position: relative;
+        &::before {
+            background: url(../../../public/img/btn-float/prize.png) top left no-repeat;
+            background-size: contain;
+            content: "";
+            position: absolute;
+            height: 7.1rem;
+            left: -1rem;
+            top: -1rem;
+            width: 3.5rem;
+            z-index: 3;
+        }
+    }
+
+    &.open {
+        .btnFloat__link {        
+            height: 4.7rem; 
+            max-width: 50rem;
+            overflow: visible;
+            padding: .6rem 2.8rem .6rem 2.5rem;
+            transform: translateX(0);            
+        }
+        .btnFloat__close {
+            background-image: url(../../../public/img/btn-float/close-green.svg);
+            transition: all .3s ease-out;
+        }
+    }
+    &__link, 
+    &__close {
+        cursor: pointer;
+        display: block;
+    }
+
+    &__link {
+        background: map-get($primary, base);
+        border: 2px solid map-get($secondary, base);
+        color: map-get($grayscale, White);
+        font: 700 2.4rem / 1.2 $font-primary;
+        height: 4.7rem;
+        overflow: hidden;
+        max-width: 0; 
+        text-decoration: none;
+        transition: all .3s ease-in-out;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    &__close {
+        background: url(../../../public/img/btn-float/arrow-back-green.svg) center no-repeat map-get($primary, base);
+        background-size: 2.9rem;
+        border: none;
+        border: 2px solid map-get($secondary, base);
+        border-left-width: 0;
+        color: map-get($primary, base);
+        font-size: 0;
+        height: 4.7rem;
+        min-width: 6rem;
+        padding: 1rem;
+        width: 6rem;
+    }
+}

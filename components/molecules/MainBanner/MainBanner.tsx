@@ -5,19 +5,22 @@ import React from 'react'
 import Image from 'next/image'
 import styles from '@styles/scss/molecules/banner.module.scss'
 import SocialMedia from '@molecules/SocialMedia/SocialMedia'
+import Link from 'next/link'
 
 const MainBanner = () => {
   return (
     <div className={styles?.banner}>
-      <a href='#' className={styles?.banner__link}>
-        Postular ahora
-        <img
-          src='/img/main-banner/hand-click.svg'
-          alt=''
-          width={20}
-          height={20}
-        />
-      </a>
+      <Link href={''} passHref>
+        <a className={styles?.banner__link}>
+          Postular ahora
+          <img
+            src='/img/main-banner/hand-click.svg'
+            alt=''
+            width={20}
+            height={20}
+          />
+        </a>
+      </Link>
       <div className={styles?.banner__content}>
         <div className={styles?.banner__logo}>
           <img

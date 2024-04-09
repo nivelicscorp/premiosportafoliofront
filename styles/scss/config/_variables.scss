@@ -4,8 +4,6 @@
 
 $font-size         : 1.6rem;
 $font-primary      : 'Open Sans', sans-serif;
-$font-secondary    : Helvetica, sans-serif;
-
 
 // ==========================================================================
 // Colors
@@ -43,10 +41,3 @@ $breakpoints: (
    xl  : 1140px,
    x   : 1280px
 );
-
-// ==========================================================================
-// Alignment
-// ==========================================================================
-
-$alignment: left, center, right, justify;
-
