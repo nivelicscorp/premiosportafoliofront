@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form'
 import styles from '@styles/Test.module.scss'
+import Input from '@atoms/Input/Input'
+import React from 'react'
 
 const BasicForm = () => {
   const {
@@ -7,19 +9,49 @@ const BasicForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm()
+
   return (
     <form
       className={styles.form}
       onSubmit={handleSubmit((data) => console.log(data))}
     >
-      <input {...register('firstName')} />
-      <input {...register('lastName', { required: true })} />
-      {errors.lastName && <p>Last name is required.</p>}
-      <input {...register('age', { pattern: /\d+/ })} />
-      {errors.age && <p>Please enter number for age.</p>}
+      <Input
+        type='text'
+        placeholder='First Name'
+        label='First Name'
+        {...register('firstName')}
+      />
+      <Input
+        type='textarea'
+        placeholder='Text area'
+        label='Text area'
+        {...register('textarea')}
+      />
+      <Input
+        type='select'
+        placeholder='Document type'
+        label='Document type'
+        options={['CC', 'CE', 'TI', 'PP']}
+        {...register('documentType')}
+      />
+      <Input
+        type='text'
+        errorMessage={errors.lastName ? 'Last name is required.' : false}
+        placeholder='Last Name'
+        label='Last Name'
+        required
+        {...register('lastName', { required: true })}
+      />
+      <Input
+        type='text'
+        placeholder='Age'
+        label='Age'
+        errorMessage={errors.age ? 'Please enter number for age.' : false}
+        {...register('age', { pattern: /\d+/ })}
+      />
       <input type='submit' />
     </form>
   )
 }
 
-export default BasicForm
+export default React.memo(BasicForm)
