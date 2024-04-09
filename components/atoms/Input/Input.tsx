@@ -12,7 +12,7 @@ interface InputProps {
 
 const Input = forwardRef<any, InputProps>(function render(
   this: any,
-  { type, name, label, required, placeholder, options, ...props },
+  { type, name, label, required, placeholder, options, errorMessage, ...props },
   ref
 ) {
   return (
@@ -38,7 +38,7 @@ const Input = forwardRef<any, InputProps>(function render(
       ) : (
         <input ref={ref} name={name} placeholder={placeholder} {...props} />
       )}
-      {props.errorMessage && <p>{props.errorMessage}</p>}
+      {errorMessage && <p>{errorMessage}</p>}
     </div>
   )
 })
