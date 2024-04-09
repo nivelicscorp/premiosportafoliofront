@@ -10,7 +10,7 @@ export const BtnFloat = () => {
   return (
     <div className={styles?.btnFloat + ' ' + (openBtn ? styles?.open : '')}>
       <div className={styles?.btnFloat__content}>
-        <Link href={''} passHref>
+        <Link href={'/registro'} passHref>
           <a className={styles?.btnFloat__link}>Postular ahora</a>
         </Link>
         <button className={styles?.btnFloat__close} onClick={toggleBtn}>
