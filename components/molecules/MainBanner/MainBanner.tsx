@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
-
 import React from 'react'
 import Image from 'next/image'
 import styles from '@styles/scss/molecules/banner.module.scss'
@@ -13,7 +10,7 @@ const MainBanner = () => {
       <Link href={''} passHref>
         <a className={styles?.banner__link}>
           Postular ahora
-          <img
+          <Image
             src='/img/main-banner/hand-click.svg'
             alt=''
             width={20}
@@ -23,17 +20,14 @@ const MainBanner = () => {
       </Link>
       <div className={styles?.banner__content}>
         <div className={styles?.banner__logo}>
-          <img
-            src='https://www.eltiempo.com/maquetacion/especiales/portafolio/2023/06/premios-portafolio-2023/img/premiosPrincipal.svg'
-            alt=''
-          />
-          {/* <Image
+          <Image
             src={
               'https://www.eltiempo.com/maquetacion/especiales/portafolio/2023/06/premios-portafolio-2023/img/premiosPrincipal.svg'
             }
+            alt=''
             width={290}
             height={170}
-          /> */}
+          />
         </div>
         <p className={styles?.banner__text}>
           Es el recomocimiento más importante del país a las empresas y personas
