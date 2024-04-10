@@ -1,9 +1,11 @@
 import { BtnFloat } from '@atoms/BtnFloat/BtnFloat'
+import CategoriesSection from '@organisms/CategoriesSection/CategoriesSection'
 import type { GetServerSideProps, NextPage } from 'next'
 const Home: NextPage = () => {
   return (
     <>
       <BtnFloat />
+      <CategoriesSection />
     </>
   )
 }
