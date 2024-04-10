@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="381" height="165" viewBox="0 0 381 165">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_65079" data-name="Rectángulo 65079" width="381" height="133" transform="translate(142 0.005)" fill="#2f323c"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.521" y1="0.149" x2="0.5" y2="0.932" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#80cabf" stop-opacity="0"/>
+      <stop offset="1" stop-color="#80cabf" stop-opacity="0.502"/>
+    </linearGradient>
+  </defs>
+  <g id="Grupo_108081" data-name="Grupo 108081" transform="translate(-715 -1621)">
+    <path id="Rectángulo_65027" data-name="Rectángulo 65027" d="M29,0H352a29,29,0,0,1,29,29V165a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V29A29,29,0,0,1,29,0Z" transform="translate(715 1621)" fill="#2f323c"/>
+    <g id="Enmascarar_grupo_62185" data-name="Enmascarar grupo 62185" transform="translate(573 1652.995)" opacity="0.67" clip-path="url(#clip-path)">
+      <path id="Unión_50" data-name="Unión 50" d="M610.793,0V121.575h11.7V0ZM589.731,0V114.56h11.7V0ZM568.669,0V105.209h11.7V0ZM547.607,0V91.18h11.7V0ZM526.546,0V79.491h11.7V0ZM505.484,0V72.476h11.7V0ZM484.422,0V67.8h11.7V0ZM463.36,0V72.476h11.7V0ZM442.3,0V79.491H454V0ZM421.236,0V95.856h11.7V0ZM400.175,0V105.209h11.7V0ZM379.113,0V114.56h11.7V0ZM358.051,0V121.575h11.7V0ZM336.989,0V128.588h11.7V0ZM315.927,0V142.617h11.7V0ZM294.866,0V158.981h11.7V0ZM273.8,0V173.009h11.7V0ZM252.742,0V180.022h11.7V0ZM231.68,0V187.038h11.7V0ZM210.618,0V191.713h11.7V0ZM189.556,0V191.713h11.7V0ZM168.495,0V187.038h11.7V0ZM147.433,0V180.022h11.7V0ZM126.371,0V173.009h11.7V0ZM105.309,0V166h11.7V0ZM84.247,0V158.981h11.7V0ZM63.185,0V151.967h11.7V0ZM42.124,0V142.617h11.7V0ZM21.062,0V133.263h11.7V0ZM0,0V123.913H11.7V0Z" transform="translate(624.249 191.223) rotate(180)" opacity="0.4" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

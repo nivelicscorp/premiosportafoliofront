@@ -1,0 +1,69 @@
+@import "../config/variables";
+
+.categories {
+    gap: 2rem 0;
+    margin: -2.2rem auto 0;
+    max-width: 128rem;
+    overflow: hidden;
+    position: relative;
+    width: calc(100% - 4.4rem);
+    z-index: 5;
+    &__title {
+        background: map-get($primary, base);
+        border-radius: .8rem .8rem 0 0;
+        color: map-get($grayscale, white);
+        font: 400 3rem / 4.4rem $font-secondary;
+        text-align: center;
+    }
+
+    &__intro {
+        color: map-get($grayscale, gray-50);
+        font: 400 1.8rem / 2.2rem $font-primary;
+        margin: auto;
+        padding: 2rem 2rem 0;
+        width: 90%;
+
+        &::after {
+            background: map-get($secondary, base);
+            content: '';
+            display: block;
+            height: .2rem;
+            margin: .8rem auto 2rem;
+            width: 80%;
+        }
+    }
+
+    &__link { 
+        background: url(../../../public/img/main-banner/hand-click.svg) center right 12px no-repeat map-get($grayscale, gray-40);
+        background-size: 2.2rem;
+        border-radius: .8rem;
+        color: map-get($secondary, base);
+        cursor: pointer;
+        display: block;
+        font: bold 1.8rem / 2.2rem $font-primary;
+        margin: 3.6rem auto;
+        min-height: 3rem;
+        padding: 1.3rem 4.6rem 1.3rem 1.3rem;
+        position: relative;
+        text-decoration: none;
+        text-align: center;
+        width: fit-content;
+        &::before,
+        &::after {
+            background: map-get($secondary, base);
+            content: "";
+            position: absolute;
+            height: 4px;
+            top: 50%;
+            transform: translateY(-50%);         
+            width: 6.4rem;   
+            z-index: -1;
+        }
+        &::before {
+            right: -8.4rem;
+        }
+        &::after {
+            left: -8.4rem;
+        }
+    }
+}

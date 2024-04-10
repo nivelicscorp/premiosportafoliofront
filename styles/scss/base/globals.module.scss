@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -12,6 +14,65 @@ body {
 }
 
 
-a, button {
-	cursor: pointer;
+a,
+button {
+  cursor: pointer;
+}
+
+/////// swiper categories styles ///////
+.swiper.categories__swiper {
+  max-width: 35.5rem;
+  padding-bottom: 10rem;
+  @include mq-min(md) {
+    max-width: initial;
+  }
+  .swiper {
+    &-pagination {
+      align-items: center;
+      bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      padding: 0 3.2rem;
+      
+      &-bullet {
+        background: map-get($grayscale, gray-30);
+        height: 1.2rem;
+        width: 1.2rem;
+
+        &-active {
+          background: map-get($primary, base);
+          height: 1.6rem;
+          width: 1.6rem;
+        }
+      }
+    }
+
+    &-button-next,
+    &-button-prev {
+      background: map-get($primary, base);
+      border-radius: 50%;
+      bottom: 1.5rem;
+      top: initial;
+      height: 3.2rem;
+      width: 3.2rem;
+      z-index: 11;
+
+      &::after {
+        font-size: 1rem;
+        font-weight: bolder;
+        color: white;
+      }
+    }
+
+    &-button-next {      
+      @include mq-min(md) {
+        right: 30%;
+      }
+    }
+    &-button-prev {
+      @include mq-min(md) {
+        left: 30%;
+      }
+    }
+  }
 }
