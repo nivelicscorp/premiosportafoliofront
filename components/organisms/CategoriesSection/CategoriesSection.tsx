@@ -15,7 +15,7 @@ import Link from 'next/dist/client/link'
 const CategoriesSection = () => {
   return (
     <section className={styles?.categories}>
-      <h2 className={styles?.categories__title}> Categorias </h2>
+      <h2 className={styles?.categories__title}> Categorías </h2>
       <p className={styles?.categories__intro}>
         Presentamos nuestra 30° edición de
         <strong> Premios Portafolio, </strong> mostrando nuestras 11 categorías.
@@ -28,31 +28,44 @@ const CategoriesSection = () => {
         freeMode={true}
         pagination={true}
         navigation={true}
+        loop={true}
         breakpoints={{
-          720: {
+          768: {
             slidesPerView: 2,
           },
-          960: {
+          1024: {
+            centeredSlides: true,
+            spaceBetween: 50,
             slidesPerView: 3,
+          },
+          1280: {
+            centeredSlides: true,
+            slidesPerView: 3.4,
           },
         }}
       >
-        <SwiperSlide className={'styles.slide'}>
+        <SwiperSlide>
           <CardsCategories />
         </SwiperSlide>
-        <SwiperSlide className={'styles.slide'}>
+        <SwiperSlide>
           <CardsCategories />
         </SwiperSlide>
-        <SwiperSlide className={'styles.slide'}>
+        <SwiperSlide>
           <CardsCategories />
         </SwiperSlide>
-        <SwiperSlide className={'styles.slide'}>
+        <SwiperSlide>
+          <CardsCategories />
+        </SwiperSlide>
+        <SwiperSlide>
+          <CardsCategories />
+        </SwiperSlide>
+        <SwiperSlide>
           <CardsCategories />
         </SwiperSlide>
       </Swiper>
       <Link href='' passHref>
         <a className={styles?.categories__link}>
-          Postular en algunas categorias
+          Postular en algunas categorías
         </a>
       </Link>
     </section>

@@ -31,7 +31,7 @@
     }
 
     &__detail {
-        background: transparent linear-gradient(180deg, #FFFFFF00 80%, #0295814D 100%) 0% 0% no-repeat padding-box;
+        background: map-get($grayscale, white) linear-gradient(180deg, #FFFFFF00 80%, #0295814D 100%) 0% 0% no-repeat padding-box;
         border-radius: 0 0 3rem 3rem;
         font: 400 1.6rem / 2rem $font-primary;
         padding: 2.8rem 2.8rem 4rem;

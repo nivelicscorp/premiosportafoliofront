@@ -1,18 +1,34 @@
+@import "../config/mixins";
 @import "../config/variables";
 
 .categories {
     gap: 2rem 0;
-    margin: -2.2rem auto 0;
-    max-width: 128rem;
-    overflow: hidden;
+    margin: -3rem auto 0;
+    padding-bottom: 2rem;
     position: relative;
     width: calc(100% - 4.4rem);
     z-index: 5;
+
+    &::before {
+        background: url(../../../public/img/bg/fondoCategorias.png) center no-repeat map-get($grayscale, white);
+        background-size: cover;
+        content: '';
+        position: absolute;
+        height: 100%;
+        left: -2.2rem;
+        top: 3rem;
+        width: calc(100% + 4.4rem);
+        z-index: -2;
+    }
+
     &__title {
         background: map-get($primary, base);
         border-radius: .8rem .8rem 0 0;
         color: map-get($grayscale, white);
-        font: 400 3rem / 4.4rem $font-secondary;
+        font: normal 3rem / 4.4rem $font-secondary;
+        min-height: 6rem;
+        display: grid;
+        place-content: center;
         text-align: center;
     }
 
@@ -33,7 +49,7 @@
         }
     }
 
-    &__link { 
+    &__link {
         background: url(../../../public/img/main-banner/hand-click.svg) center right 12px no-repeat map-get($grayscale, gray-40);
         background-size: 2.2rem;
         border-radius: .8rem;
@@ -48,22 +64,78 @@
         text-decoration: none;
         text-align: center;
         width: fit-content;
+
         &::before,
         &::after {
             background: map-get($secondary, base);
             content: "";
             position: absolute;
-            height: 4px;
+            height: 3px;
             top: 50%;
-            transform: translateY(-50%);         
-            width: 6.4rem;   
+            transform: translateY(-50%);
+            width: 6.4rem;
             z-index: -1;
         }
+
         &::before {
             right: -8.4rem;
         }
+
         &::after {
             left: -8.4rem;
+        }
+    }
+}
+
+@include mq-min(sm) {
+    .categories {
+        &__intro {
+            text-align: center;
+
+            &::after {
+                margin-top: 2rem;
+            }
+        }
+        &__title, 
+        &__intro {
+            margin: auto;
+            max-width: 46.2rem;
+            width: 100%;
+        }
+    }
+}
+
+@include mq-min(lg) {
+    .categories {
+        &__title, 
+        &__intro {
+            max-width: 85.2rem;
+        }
+        &__intro {
+            font-size: 2.7rem;
+            line-height: 1.2;
+        }
+        &__link {
+            &::before,
+            &::after {
+                width: 10rem;
+            }
+            &::before {
+                right: -12.4rem;
+            }
+    
+            &::after {
+                left: -12.4rem;
+            }
+        }
+    }
+}
+
+@include mq-min(xl) {
+    .categories {
+        &__title, 
+        &__intro {
+            max-width: 120rem;
         }
     }
 }
