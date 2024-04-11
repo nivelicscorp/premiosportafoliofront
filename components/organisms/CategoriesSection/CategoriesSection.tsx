@@ -11,8 +11,13 @@ import { FreeMode, Pagination, Navigation } from 'swiper/modules'
 
 import styles from '@styles/scss/organisms/categories.module.scss'
 import Link from 'next/dist/client/link'
+import { CategoryCard } from '@interfaces/categories'
 
-const CategoriesSection = () => {
+type Props = {
+  categories: CategoryCard[]
+}
+
+const CategoriesSection = ({ categories }: Props) => {
   return (
     <section className={styles?.categories}>
       <h2 className={styles?.categories__title}> Categorías </h2>
@@ -28,7 +33,7 @@ const CategoriesSection = () => {
         freeMode={true}
         pagination={true}
         navigation={true}
-        loop={true}
+        loop={categories.length > 4}
         breakpoints={{
           768: {
             slidesPerView: 2,
@@ -44,26 +49,13 @@ const CategoriesSection = () => {
           },
         }}
       >
-        <SwiperSlide>
-          <CardsCategories />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardsCategories />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardsCategories />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardsCategories />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardsCategories />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardsCategories />
-        </SwiperSlide>
+        {categories.map((category, index) => (
+          <SwiperSlide key={index}>
+            <CardsCategories {...category} />
+          </SwiperSlide>
+        ))}
       </Swiper>
-      <Link href='' passHref>
+      <Link href='/registro' passHref>
         <a className={styles?.categories__link}>
           Postular en algunas categorías
         </a>

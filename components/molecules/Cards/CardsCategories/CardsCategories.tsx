@@ -1,37 +1,34 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from 'next/link'
+import Image from 'next/image'
 import React from 'react'
 
 import styles from '@styles/scss/molecules/cards/cards-categories.module.scss'
+import { CategoryCard } from '@interfaces/categories'
 
-const CardsCategories = () => {
+const CardsCategories = ({
+  title,
+  description,
+  types,
+  image,
+  icon,
+}: CategoryCard) => {
   return (
     <div className={styles?.cardCategories}>
       <div className={styles?.cardCategories__top}>
-        <img
-          src='https://www.eltiempo.com/maquetacion/especiales/portafolio/2023/06/premios-portafolio-2023/img/iconosCategorias/graduated.svg'
-          alt=''
+        <Image
+          src={icon}
+          alt={`Icono de ${title}`}
           height={70}
           width={65}
           className={styles?.cardCategories__top__image}
         />
-        <h3 className={styles?.cardCategories__top__title}>
-          Gestión del Recurso Humano
-        </h3>
+        <h3 className={styles?.cardCategories__top__title}>{title}</h3>
       </div>
 
       <div className={styles?.cardCategories__detail}>
-        <p>
-          Recompensa la labor de los profesores que a lo largo de su carrera han
-          dado muestra de excelencia en la enseñanza en las áreas de
-          administración de empresas, Economía o Ingeniería en todo el país.
-        </p>
+        <p>{description}</p>
       </div>
 
       <button className={styles?.cardCategories__seeMore}> SABER MÁS </button>
-      {/* <Link href='' passHref>
-        <a> SABER MÁS </a>
-      </Link> */}
     </div>
   )
 }
