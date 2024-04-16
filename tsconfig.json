@@ -18,7 +18,8 @@
       "@atoms/*": ["./components/atoms/*"],
       "@molecules/*": ["./components/molecules/*"],
       "@organisms/*": ["./components/organisms/*"],
-      "@styles/*": ["./styles/*"]
+      "@styles/*": ["./styles/*"],
+      "@actions/*": ["./actions/*"]
     }
   },
   "include": [
