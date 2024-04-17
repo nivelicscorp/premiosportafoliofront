@@ -1,5 +1,6 @@
 import getLandingPage from '@actions/getLandingPage'
 import { BtnFloat } from '@atoms/BtnFloat/BtnFloat'
+import CategoriesSection from '@organisms/CategoriesSection/CategoriesSection'
 import LandingPageDTO from '@utils/DTO/LandingPageDTO'
 import type { GetServerSideProps, NextPage } from 'next'
 const Home: NextPage<{ pageData: any[] }> = (props) => {
@@ -8,6 +9,7 @@ const Home: NextPage<{ pageData: any[] }> = (props) => {
   return (
     <>
       <BtnFloat />
+      {/* <CategoriesSection categories={categories} /> */}
     </>
   )
 }

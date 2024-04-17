@@ -1,0 +1,57 @@
+@import '../../config/variables';
+
+.cardCategories {
+  border-radius: 29px;
+  padding-bottom: 2rem;
+  position: relative;
+
+  &__top {
+    align-items: center;
+    background: url(../../../../public/img/categories/fondoCardCategorias.svg)
+      center no-repeat;
+    background-size: cover;
+    border-radius: 3rem 3rem 0 0;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.7rem 4rem;
+    text-align: center;
+    &__image {
+      height: 7rem;
+      width: 6.5rem;
+      img {
+        height: auto;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+    &__title {
+      color: map-get($grayscale, white);
+      font: bold 2.4rem / 2.6rem $font-secondary;
+    }
+  }
+
+  &__detail {
+    background: map-get($grayscale, white)
+      linear-gradient(180deg, #ffffff00 80%, #0295814d 100%) 0% 0% no-repeat
+      padding-box;
+    border-radius: 0 0 3rem 3rem;
+    min-height: 250px;
+    font: 400 1.6rem / 2rem $font-primary;
+    padding: 2.8rem 2.8rem 4rem;
+  }
+
+  &__seeMore {
+    border: none;
+    background: map-get($primary, dark);
+    border-radius: 0.8rem;
+    color: map-get($grayscale, white);
+    padding: 0.7rem 3rem;
+    position: absolute;
+    bottom: 1rem;
+    font: bold 1.3rem / 1.8rem $font-primary;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
