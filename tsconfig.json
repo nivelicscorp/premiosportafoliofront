@@ -20,6 +20,7 @@
       "@organisms/*": ["./components/organisms/*"],
       "@styles/*": ["./styles/*"],
       "@utils/*": ["./utils/*"],
+      "@models/*": ["./models/*"],
       "@actions/*": ["./actions/*"]
     }
   },

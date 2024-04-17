@@ -1,6 +1,6 @@
 import axios from 'axios'
 import getComponentByUuid from './getComponentByUuid'
-import { PageData } from '../models/landingPage.model'
+import { PageData } from '@models/landingPage.model'
 
 const ELASTIC_DATA = JSON.parse(process.env.ELASTIC_DATA || '')
 const URL = `${ELASTIC_DATA.DOMAIN}${process.env.ELASTIC_API}`

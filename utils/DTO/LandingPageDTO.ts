@@ -1,3 +1,4 @@
+import { PageData } from '@models/landingPage.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
 
 /**
