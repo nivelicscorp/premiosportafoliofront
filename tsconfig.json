@@ -19,6 +19,7 @@
       "@molecules/*": ["./components/molecules/*"],
       "@organisms/*": ["./components/organisms/*"],
       "@styles/*": ["./styles/*"],
+      "@utils/*": ["./utils/*"],
       "@actions/*": ["./actions/*"]
     }
   },
