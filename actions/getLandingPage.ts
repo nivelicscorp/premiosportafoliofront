@@ -1,5 +1,6 @@
 import axios from 'axios'
 import getComponentByUuid from './getComponentByUuid'
+import { PageData } from '../models/landingPage.model'
 
 const ELASTIC_DATA = JSON.parse(process.env.ELASTIC_DATA || '')
 const URL = `${ELASTIC_DATA.DOMAIN}${process.env.ELASTIC_API}`
@@ -40,20 +41,22 @@ const getLandingPage = async () => {
   const pageData: PageData[] = []
 
   // Transforms all uuid into promises to get the data from components
-  const componentsData: Promise<any>[] = landingPage.components_uuid.map(
+  const componentsData: Promise<any>[] = landingPage?.components_uuid?.map(
     (component: string) => {
       return getComponentByUuid(component)
     }
   )
   // Make all requests and assign the data to the final object
-  await Promise.all(componentsData).then((values) => {
-    values.forEach((value, index) => {
-      pageData.push({
-        type: landingPage.components_type[index],
-        data: value,
+  if (componentsData) {
+    await Promise.all(componentsData).then((values) => {
+      values?.forEach((value, index) => {
+        pageData.push({
+          type: landingPage?.components_type[index],
+          data: value,
+        })
       })
     })
-  })
+  }
   return pageData
 }
 
