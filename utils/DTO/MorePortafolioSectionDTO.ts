@@ -1,5 +1,6 @@
 import { MorePortafolioSectionModel } from '@models/morePortafolioSection.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
+import getImage from '@utils/getImage'
 
 const MorePortafolioSectionDTO = (
   sectionData: any
@@ -10,7 +11,7 @@ const MorePortafolioSectionDTO = (
       category: arrayDestructuring(item.field_categoria, ''),
       title: arrayDestructuring(item.field_titulo, ''),
       image: {
-        source: arrayDestructuring(item.imagen_url, ''),
+        source: getImage(arrayDestructuring(item.imagen_url, '')),
         alt: arrayDestructuring(item.imagen_alt, ''),
         title: arrayDestructuring(item.imagen_title, ''),
       },

@@ -52,43 +52,41 @@
       }
     }
   }
-}
-
-.swiper.primary__swiper {
-  .swiper {
-    &-pagination {
-      &-bullet {
-        background: map-get($grayscale, gray-30);
-        &-active {
-          background: map-get($primary, base);
+  &__primary__swiper {
+    .swiper {
+      &-pagination {
+        &-bullet {
+          background: map-get($grayscale, gray-30);
+          &-active {
+            background: map-get($primary, base);
+          }
         }
       }
-    }
 
-    &-button-next,
-    &-button-prev {
-      background: map-get($primary, base);
-      &::after {
-        color: map-get($grayscale, white);
+      &-button-next,
+      &-button-prev {
+        background: map-get($primary, base);
+        &::after {
+          color: map-get($grayscale, white);
+        }
       }
     }
   }
-}
-
-.swiper.grayscale__swiper {
-  max-width: 35.5rem;
-  padding: 0 2.5rem 10rem;
-  .swiper {
-    &-pagination {
-      &-bullet {
-        &-active {
-          background: map-get($primary, base);
+  &__grayscale__swiper {
+    max-width: 35.5rem;
+    padding: 0 2.5rem 10rem;
+    .swiper {
+      &-pagination {
+        &-bullet {
+          &-active {
+            background: map-get($primary, base);
+          }
         }
       }
-    }
-    &-button-next,
-    &-button-prev {
-      background: map-get($grayscale, gray-90);
+      &-button-next,
+      &-button-prev {
+        background: map-get($grayscale, gray-90);
+      }
     }
   }
 }

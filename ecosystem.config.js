@@ -30,6 +30,9 @@ module.exports = {
           ELASTIC_PASSWORD: 'Mult1S1t3_Cl0ud_01',
         }),
         ELASTIC_API: '/api/elastic/portafolio',
+        IMAGES: JSON.stringify({
+          FOLDER_OF_IMAGES: 'https://stg-premiospo.eltiempo.com.co',
+        }),
       },
       env_production: {
         PORT: 3040,
@@ -43,6 +46,9 @@ module.exports = {
           ELASTIC_PASSWORD: 'Mult1S1t3_Cl0ud_01',
         }),
         ELASTIC_API: '/api/elastic/portafolio',
+        IMAGES: JSON.stringify({
+          FOLDER_OF_IMAGES: 'https://stg-premiospo.eltiempo.com.co/',
+        }),
       },
     },
   ],
