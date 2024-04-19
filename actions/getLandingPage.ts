@@ -1,6 +1,6 @@
-import axios from 'axios'
 import getComponentByUuid from './getComponentByUuid'
-import { PageData } from '@models/landingPage.model'
+import arrayDestructuring from '@utils/arrayDestructuring'
+import getPageByUrl from './getPageByUrl'
 
 const ELASTIC_DATA = JSON.parse(process.env.ELASTIC_DATA || '')
 const URL = `${ELASTIC_DATA.DOMAIN}${process.env.ELASTIC_API}`
@@ -15,49 +15,31 @@ type LandingPage = {
  * @returns the landing page data
  */
 const getLandingPage = async () => {
-  const landingPage: LandingPage = await axios
-    .get(URL, {
-      params: {
-        index: ELASTIC_DATA.INDEX,
-        body: {
-          query: {
-            bool: {
-              must: [
-                { match: { url: '/premios-2024' } },
-                { match: { content_type: 'landing_page' } },
-              ],
-            },
-          },
-        },
-      },
-    })
-    .then(({ data }) => {
-      return data?.hits?.hits[0]._source ?? {}
-    })
-    .catch((error) => {
-      return []
-    })
-  // Declare the final object to be rewritten
-  const pageData: PageData[] = []
-
-  // Transforms all uuid into promises to get the data from components
-  const componentsData: Promise<any>[] = landingPage?.components_uuid?.map(
-    (component: string) => {
-      return getComponentByUuid(component)
-    }
+  /**
+   * Get the landing page data
+   */
+  const landingPage: LandingPage = await getPageByUrl(
+    '/premios-2024',
+    'landing_page'
   )
-  // Make all requests and assign the data to the final object
-  if (componentsData) {
-    await Promise.all(componentsData).then((values) => {
-      values?.forEach((value, index) => {
-        pageData.push({
-          type: landingPage?.components_type[index],
-          data: value,
-        })
-      })
-    })
+  /**
+   * Get the sections data
+   */
+  const componentsData = await getComponentByUuid(landingPage?.components_uuid)
+  /**
+   * Search in blocks if needs more data to be fetched
+   */
+  for (const data of componentsData) {
+    if (
+      arrayDestructuring(data?.component_type, '') ===
+      'bloque_mas_de_portafolio'
+    ) {
+      const articles = await getComponentByUuid(data?.items_contenido_uuid)
+      data.items_contenido_uuid = articles
+    }
   }
-  return pageData
+
+  return componentsData
 }
 
 export default getLandingPage

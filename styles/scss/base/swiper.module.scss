@@ -54,7 +54,7 @@
   }
 }
 
-.swiper.categories__swiper {
+.swiper.primary__swiper {
   .swiper {
     &-pagination {
       &-bullet {
@@ -75,7 +75,7 @@
   }
 }
 
-.swiper.portafolio__swiper {
+.swiper.grayscale__swiper {
   max-width: 35.5rem;
   padding: 0 2.5rem 10rem;
   .swiper {
@@ -94,13 +94,13 @@
 }
 
 @include mq-min(md) {
-  .swiper.categories__swiper {
+  .swiper.swiper {
     max-width: 70rem;
   }
 }
 
 @include mq-min(lg) {
-  .swiper.categories__swiper {
+  .swiper.swiper {
     max-width: 120rem;
     padding-top: 5rem;
     &::before,

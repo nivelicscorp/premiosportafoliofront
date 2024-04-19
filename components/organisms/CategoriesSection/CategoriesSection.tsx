@@ -29,7 +29,7 @@ const CategoriesSection = ({ categories }: Props) => {
         modules={[FreeMode, Pagination, Navigation]}
         spaceBetween={30}
         slidesPerView={1}
-        className={'categories__swiper'}
+        className={'swiper primary__swiper'}
         freeMode={true}
         pagination={true}
         navigation={true}

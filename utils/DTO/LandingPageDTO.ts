@@ -47,7 +47,10 @@ const LandingPageDTO = (pageData: PageData[]): LandingPageDTO => {
  * @returns - The main banner data.
  */
 const getMainBanner = (pageData: PageData[]): any => {
-  return pageData.find((item: any) => item.type === 'banner_compuesto')?.data
+  return pageData.find(
+    (item: any) =>
+      arrayDestructuring(item.component_type, '') === 'banner_compuesto'
+  )
 }
 
 /**
@@ -56,7 +59,10 @@ const getMainBanner = (pageData: PageData[]): any => {
  * @returns - The categories section data.
  */
 const getCategoriesSection = (pageData: PageData[]): any => {
-  return pageData.find((item: any) => item.type === 'carrusel_de_cards')?.data
+  return pageData.find(
+    (item: any) =>
+      arrayDestructuring(item.component_type, '') === 'carrusel_de_cards'
+  )
 }
 
 /**
@@ -67,10 +73,10 @@ const getCategoriesSection = (pageData: PageData[]): any => {
 const getJuriesSection = (pageData: PageData[]): any => {
   return pageData.find(
     (item: any) =>
-      item.type === 'carrusel_de_personajes' &&
-      arrayDestructuring(item.data?.field_tipo_de_visualizacion, '') ===
-        'square'
-  )?.data
+      arrayDestructuring(item.component_type, '') ===
+        'carrusel_de_personajes' &&
+      arrayDestructuring(item.field_tipo_de_visualizacion, '') === 'square'
+  )
 }
 
 /**
@@ -81,9 +87,9 @@ const getJuriesSection = (pageData: PageData[]): any => {
 const getCeremoniesBanner = (pageData: PageData[]): any => {
   return pageData.find(
     (item: any) =>
-      item.type === 'banner_intermedio' &&
-      arrayDestructuring(item.data?.texto_botones, false) !== false
-  )?.data
+      arrayDestructuring(item.component_type, '') === 'banner_intermedio' &&
+      arrayDestructuring(item?.texto_botones, false) !== false
+  )
 }
 
 /**
@@ -94,10 +100,10 @@ const getCeremoniesBanner = (pageData: PageData[]): any => {
 const getWinnersSection = (pageData: PageData[]): any => {
   return pageData.find(
     (item: any) =>
-      item.type === 'carrusel_de_personajes' &&
-      arrayDestructuring(item.data?.field_tipo_de_visualizacion, '') ===
-        'circle'
-  )?.data
+      arrayDestructuring(item.component_type, '') ===
+        'carrusel_de_personajes' &&
+      arrayDestructuring(item.field_tipo_de_visualizacion, '') === 'circle'
+  )
 }
 
 /**
@@ -106,7 +112,10 @@ const getWinnersSection = (pageData: PageData[]): any => {
  * @returns - The gallery section data.
  */
 const getGallerySection = (pageData: PageData[]): any => {
-  return pageData.find((item: any) => item.type === 'carrusel_multimedia')?.data
+  return pageData.find(
+    (item: any) =>
+      arrayDestructuring(item.component_type, '') === 'carrusel_multimedia'
+  )
 }
 
 /**
@@ -117,9 +126,9 @@ const getGallerySection = (pageData: PageData[]): any => {
 const getContactBanner = (pageData: PageData[]): any => {
   return pageData.find(
     (item: any) =>
-      item.type === 'banner_intermedio' &&
-      arrayDestructuring(item.data?.texto_botones, false) === false
-  )?.data
+      arrayDestructuring(item.component_type, '') === 'banner_intermedio' &&
+      arrayDestructuring(item.texto_botones, false) === false
+  )
 }
 
 /**
@@ -128,8 +137,10 @@ const getContactBanner = (pageData: PageData[]): any => {
  * @returns - The "See More Portafolio" data.
  */
 const getSeeMorePortafolio = (pageData: PageData[]): any => {
-  return pageData.find((item: any) => item.type === 'bloque_mas_de_portafolio')
-    ?.data
+  return pageData.find(
+    (item: any) =>
+      arrayDestructuring(item.component_type, '') === 'bloque_mas_de_portafolio'
+  )
 }
 
 export default LandingPageDTO

@@ -8,20 +8,20 @@ const URL = `${ELASTIC_DATA.DOMAIN}${process.env.ELASTIC_API}`
  * @param uuid - uuid of the component
  * @returns the component data
  */
-const getComponentByUuid = async (uuid: string) => {
+const getComponentByUuid = async (uuid: string[]) => {
   return await axios
     .get(URL, {
       params: {
         index: ELASTIC_DATA.INDEX,
         body: {
           query: {
-            match: { component_uuid: uuid },
+            terms: { component_uuid: uuid },
           },
         },
       },
     })
     .then(({ data }) => {
-      return data?.hits?.hits[0]._source ?? {}
+      return data?.hits?.hits.map((hit: any) => hit._source) ?? []
     })
     .catch((error) => {
       return {}

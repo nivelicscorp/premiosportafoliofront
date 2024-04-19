@@ -8,15 +8,13 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css'
 import { MorePortafolioSectionModel } from '@models/morePortafolioSection.model'
-import getSubComponentByUuid from '@actions/getSubComponentByUuid'
-import { useEffect } from 'react'
+import { Fragment } from 'react'
 
 type Props = {
   data: MorePortafolioSectionModel
 }
 
 const MorePortafolioSection = ({ data }: Props) => {
-  console.log('🚀 ~ MorePortafolioSection ~ data:', data)
   return (
     <section className={styles.morePortafolio}>
       <div className={styles.morePortafolio__title}>
@@ -28,7 +26,7 @@ const MorePortafolioSection = ({ data }: Props) => {
           modules={[FreeMode, Pagination, Navigation]}
           spaceBetween={30}
           slidesPerView={1.1}
-          className={'swiper portafolio__swiper'}
+          className={'swiper grayscale__swiper'}
           freeMode={true}
           pagination={true}
           navigation={true}
@@ -48,23 +46,20 @@ const MorePortafolioSection = ({ data }: Props) => {
             },
           }}
         >
-          <SwiperSlide>
-            <CardsPortafolio />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardsPortafolio />
-          </SwiperSlide>
-          <SwiperSlide>
-            <CardsPortafolio />
-          </SwiperSlide>
+          {data.cards.map((card, index) => (
+            <SwiperSlide key={index}>
+              <CardsPortafolio {...card} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 
       <div className={styles.morePortafolio__block}>
-        <CardsPortafolio />
-        <CardsPortafolio />
-        <CardsPortafolio />
-        <CardsPortafolio />
+        {data.cards.map((card, index) => (
+          <Fragment key={index}>
+            <CardsPortafolio {...card} />
+          </Fragment>
+        ))}
       </div>
     </section>
   )
