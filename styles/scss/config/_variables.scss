@@ -2,32 +2,33 @@
 // FontStack
 // ==========================================================================
 
-$font-size         : 1.6rem;
-$font-primary      : 'Open Sans', sans-serif;
-$font-secondary    : 'Tiempos Headline', sans-serif;
+$font-size: 1.6rem;
+$font-primary: 'Open Sans', sans-serif;
+$font-secondary: 'Tiempos Headline', sans-serif;
 
 // ==========================================================================
 // Colors
 // ==========================================================================
 
 $primary: (
-   light: #80CABF,  
-   base : #029581,  
-   dark : #006857,  
+  light: #80cabf,
+  base: #31abaa,
+  dark: #0c95ae,
 );
 
 $secondary: (
-   base: #D79C26,
+  base: #111110,
 );
 
 $grayscale: (
-   white:   #fff,
-   gray-10: #FDFDFD,
-   gray-20: #BFBFBF,
-   gray-30: #636363,
-   gray-40: #2F323C,
-   gray-50: #333,   
-   black:   #000,
+  white: #fff,
+  gray-10: #fdfdfd,
+  gray-20: #bfbfbf,
+  gray-30: #636363,
+  gray-40: #2f323c,
+  gray-50: #333,
+  gray-90: #111110,
+  black: #000,
 );
 
 // ==========================================================================
@@ -35,10 +36,10 @@ $grayscale: (
 // ==========================================================================
 
 $breakpoints: (
-    m  : 321px,
-   sm  : 540px,
-   md  : 768px,
-   lg  : 1024px,
-   xl  : 1414px,
-   x   : 1920px
+  m: 321px,
+  sm: 540px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1414px,
+  x: 1920px,
 );

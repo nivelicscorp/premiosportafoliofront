@@ -1,0 +1,33 @@
+@import '../../config/variables';
+
+.card {
+  border: 1px solid map-get($grayscale, black);
+  width: 282px;
+  height: 157px;
+  display: flex;
+  flex-direction: row;
+  padding: 35px 12px;
+  gap: 14px;
+  text-decoration: none;
+  &__image {
+    width: 115px;
+    height: 86px;
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    h3 {
+      font: normal normal bold 12px/17px Open Sans;
+      letter-spacing: 0px;
+      color: map-get($primary, base);
+      text-transform: uppercase;
+    }
+    p {
+      margin-top: 5px;
+      font: normal normal bold 14px/17px Tiempos Headline;
+      letter-spacing: 0px;
+      color: map-get($grayscale, black);
+    }
+  }
+}
