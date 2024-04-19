@@ -21,9 +21,11 @@ const Home: NextPage<{
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const pageData = LandingPageDTO(await getLandingPage())
-  const morePortafolioData = MorePortafolioSectionDTO(
-    pageData.seeMorePortafolio
-  )
+  let morePortafolioData = null
+  if (pageData?.seeMorePortafolio) {
+    morePortafolioData = MorePortafolioSectionDTO(pageData?.seeMorePortafolio)
+  }
+
   return {
     props: {
       pageData,

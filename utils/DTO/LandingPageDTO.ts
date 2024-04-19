@@ -21,14 +21,15 @@ interface LandingPageDTO {
  * @returns - The DTO for the LandingPage.
  */
 const LandingPageDTO = (pageData: PageData[]): LandingPageDTO => {
-  const mainBanner = getMainBanner(pageData)
-  const categoriesSection = getCategoriesSection(pageData)
-  const juriesSection = getJuriesSection(pageData)
-  const ceremoniesBanner = getCeremoniesBanner(pageData)
-  const winnersSection = getWinnersSection(pageData)
-  const gallerySection = getGallerySection(pageData)
-  const contactBanner = getContactBanner(pageData)
-  const seeMorePortafolio = getSeeMorePortafolio(pageData)
+  const mainBanner = getMainBanner(pageData) ?? null
+  const categoriesSection = getCategoriesSection(pageData) ?? null
+  const juriesSection = getJuriesSection(pageData) ?? null
+  const ceremoniesBanner = getCeremoniesBanner(pageData) ?? null
+  const winnersSection = getWinnersSection(pageData) ?? null
+  const gallerySection = getGallerySection(pageData) ?? null
+  const contactBanner = getContactBanner(pageData) ?? null
+  const seeMorePortafolio = getSeeMorePortafolio(pageData) ?? null
+
   return {
     mainBanner,
     categoriesSection,

@@ -24,7 +24,7 @@ const getComponentByUuid = async (uuid: string[]) => {
       return data?.hits?.hits.map((hit: any) => hit._source) ?? []
     })
     .catch((error) => {
-      return {}
+      return []
     })
 }
 

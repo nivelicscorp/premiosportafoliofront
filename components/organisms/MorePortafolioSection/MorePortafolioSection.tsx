@@ -18,7 +18,7 @@ const MorePortafolioSection = ({ data }: Props) => {
   return (
     <section className={styles.morePortafolio}>
       <div className={styles.morePortafolio__title}>
-        <h2>{data.title}</h2>
+        <h2>{data?.title}</h2>
         <hr />
       </div>
       <div className={styles.morePortafolio__carrousel}>
@@ -46,7 +46,7 @@ const MorePortafolioSection = ({ data }: Props) => {
             },
           }}
         >
-          {data.cards.map((card, index) => (
+          {data?.cards.map((card, index) => (
             <SwiperSlide key={index}>
               <CardsPortafolio {...card} />
             </SwiperSlide>
@@ -55,7 +55,7 @@ const MorePortafolioSection = ({ data }: Props) => {
       </div>
 
       <div className={styles.morePortafolio__block}>
-        {data.cards.map((card, index) => (
+        {data?.cards.map((card, index) => (
           <Fragment key={index}>
             <CardsPortafolio {...card} />
           </Fragment>
