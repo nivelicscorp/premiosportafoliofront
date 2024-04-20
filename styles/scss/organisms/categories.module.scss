@@ -22,30 +22,36 @@
     }
 
     &__title {
-        background: map-get($primary, base);
+        background: map-get($grayscale, white);
+        box-shadow: 0px 1px 8px #00000052;
         border-radius: .8rem .8rem 0 0;
-        color: map-get($grayscale, white);
-        font: normal 3rem / 4.4rem $font-secondary;
+        color: map-get($grayscale, black);
+        font: bold 3.2rem / 4rem $font-secondary;
         min-height: 6rem;
         display: grid;
         place-content: center;
+        position: relative;
         text-align: center;
+        &::after {
+            background: map-get($grayscale, black);
+            border-radius: 0 0 2rem 2rem;
+            bottom: -1rem;
+            content: '';
+            height: 1rem;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+            width: 16.8rem;
+        }
     }
 
     &__intro {
         color: map-get($grayscale, gray-50);
         font: 400 1.8rem / 2.2rem $font-primary;
-        margin: auto;
-        padding: 2rem 2rem 0;
-        width: 90%;
-
-        &::after {
-            background: map-get($secondary, base);
-            content: '';
-            display: block;
-            height: .2rem;
-            margin: .8rem auto 2rem;
-            width: 80%;
+        margin: 2rem auto 3.2rem;
+        span {
+            color: #31ABAA;
+            font-weight: bold;
         }
     }
 
@@ -53,7 +59,7 @@
         background: url(../../../public/img/main-banner/hand-click.svg) center right 12px no-repeat map-get($grayscale, gray-40);
         background-size: 2.2rem;
         border-radius: .8rem;
-        color: map-get($secondary, base);
+        color: map-get($grayscale, white);
         cursor: pointer;
         display: block;
         font: bold 1.8rem / 2.2rem $font-primary;
@@ -67,7 +73,7 @@
 
         &::before,
         &::after {
-            background: map-get($secondary, base);
+            background: map-get($primary, general);
             content: "";
             position: absolute;
             height: 3px;
@@ -89,16 +95,18 @@
 
 @include mq-min(sm) {
     .categories {
+        &__title {
+            margin: auto;
+        }
         &__intro {
+            margin: 2rem auto 3.2rem;
             text-align: center;
-
             &::after {
                 margin-top: 2rem;
             }
         }
         &__title, 
         &__intro {
-            margin: auto;
             max-width: 46.2rem;
             width: 100%;
         }
@@ -107,6 +115,11 @@
 
 @include mq-min(lg) {
     .categories {
+        &__title {
+            padding: 1.2rem 5rem;
+            font-size: 3.7rem;
+            line-height: 5.1rem;
+        }
         &__title, 
         &__intro {
             max-width: 85.2rem;
@@ -114,6 +127,7 @@
         &__intro {
             font-size: 2.7rem;
             line-height: 1.2;
+            margin: 4.7rem auto 6.1rem;
         }
         &__link {
             &::before,

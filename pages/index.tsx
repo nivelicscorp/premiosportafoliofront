@@ -10,8 +10,8 @@ const Home: NextPage = () => {
   return (
     <div>
       <main>
-        <MainBanner />
-        <BtnFloat />
+         <MainBanner /> 
+        {/* <BtnFloat />  */}
         <CategoriesSection />
       </main>
     </div>

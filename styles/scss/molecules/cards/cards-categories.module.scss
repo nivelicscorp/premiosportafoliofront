@@ -7,14 +7,49 @@
 
     &__top {
         align-items: center;
-        background: url(../../../../public/img/categories/fondoCardCategorias.svg) center no-repeat;
-        background-size: cover;
-        border-radius: 3rem 3rem 0 0 ;
+        background: map-get($grayscale, black);
+        border-bottom: 8px solid transparent;
+        border-radius: 3rem 3rem 0 0;
         display: flex;
         flex-direction: column;
         gap: .6rem;
-        padding: .7rem 4rem;
+        padding: 1.4rem 4rem .7rem;
         text-align: center;
+        &.export {
+            border-color: map-get($categories, export);
+        }
+        &.environment {
+            border-color: map-get($categories, environment);
+            
+        }
+        &.client {
+            border-color: map-get($categories, client);
+        }
+
+        &.digital {
+            border-color: map-get($categories, digital);
+        }
+        &.master {
+            border-color: map-get($categories, master);
+        }
+        &.student {
+            border-color: map-get($categories, student);
+        }
+        &.social {
+            border-color: map-get($categories, social);
+        }
+        &.leader {
+            border-color: map-get($categories, leader);
+        }
+        &.humanResourses {
+            border-color: map-get($categories, humanResourses);
+        }
+        &.innovation {
+            border-color: map-get($categories, innovation);
+        }
+        &.community {
+            border-color: map-get($categories, community);
+        }
         &__image {
             height: 7rem;
             width: 6.5rem;
@@ -31,18 +66,25 @@
     }
 
     &__detail {
-        background: map-get($grayscale, white) linear-gradient(180deg, #FFFFFF00 80%, #0295814D 100%) 0% 0% no-repeat padding-box;
+        background: map-get($grayscale, white);
+        color: map-get($grayscale, gray-25);
         border-radius: 0 0 3rem 3rem;
         font: 400 1.6rem / 2rem $font-primary;
-        padding: 2.8rem 2.8rem 4rem;
+        padding: 2.8rem 3rem 4.5rem;
+        p {
+            display: -webkit-box;
+            -webkit-line-clamp: 8;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     }
 
     &__seeMore {
         border: none;
-        background: map-get($primary, dark);
+        background: map-get($grayscale, black);
         border-radius: .8rem;
         color: map-get($grayscale, white);
-        padding: .7rem 3rem;
+        padding: .7rem 3.1rem;
         position: absolute;
         bottom: 1rem;
         font: bold 1.3rem / 1.8rem $font-primary;

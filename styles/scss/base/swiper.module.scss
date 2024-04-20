@@ -12,13 +12,13 @@
       padding: 0 3.2rem;
       
       &-bullet {
-        background: map-get($grayscale, gray-30);
+        background: map-get($grayscale, black);
         height: 1.2rem;
         opacity: 1;
         width: 1.2rem;
 
         &-active {
-          background: map-get($primary, base);
+          background: map-get($primary, general);
           height: 1.6rem;
           width: 1.6rem;
         }
@@ -27,7 +27,7 @@
 
     &-button-next,
     &-button-prev {
-      background: map-get($primary, base);
+      background: map-get($primary, general);
       border-radius: 50%;
       bottom: 1.5rem;
       top: initial;
@@ -66,8 +66,8 @@
     max-width: 120rem;
     padding-top: 5rem;
     &::before, 
-    &::after  {      
-      background: transparent linear-gradient(271deg, #FFFFFF00 0%, #E9E9E9 100%) no-repeat padding-box; 
+    &::after  {       
+      background: transparent linear-gradient(271deg, #FFFFFF00 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
       position: absolute;
       content: "";
       height: 100%;
@@ -76,11 +76,11 @@
       z-index: 3;
     }
     &::before {    
-      left: 0;
+      left: -.2rem;
     }
     &:after {
       transform: rotate(180deg);
-      right: 0;
+      right: -.2rem;
     }
     .swiper {
       &-slide-active {

@@ -17,8 +17,8 @@ const CategoriesSection = () => {
     <section className={styles?.categories}>
       <h2 className={styles?.categories__title}> Categorías </h2>
       <p className={styles?.categories__intro}>
-        Presentamos nuestra 30° edición de
-        <strong> Premios Portafolio, </strong> mostrando nuestras 11 categorías.
+        Presentamos nuestra <span> 30° edición </span> de <strong>Premios Portafolio</strong>, 
+        mostrando nuestras 11 categorías.
       </p>
       <Swiper
         modules={[FreeMode, Pagination, Navigation]}
@@ -45,22 +45,22 @@ const CategoriesSection = () => {
         }}
       >
         <SwiperSlide>
-          <CardsCategories />
+          <CardsCategories category={'environment'}/>
         </SwiperSlide>
         <SwiperSlide>
-          <CardsCategories />
+          <CardsCategories category={'humanResourses'}/>
         </SwiperSlide>
         <SwiperSlide>
-          <CardsCategories />
+          <CardsCategories category={'export'}/>
         </SwiperSlide>
         <SwiperSlide>
-          <CardsCategories />
+          <CardsCategories category={'digital'}/>
         </SwiperSlide>
         <SwiperSlide>
-          <CardsCategories />
+          <CardsCategories category={'environment'}/>
         </SwiperSlide>
         <SwiperSlide>
-          <CardsCategories />
+          <CardsCategories category={'community'}/>
         </SwiperSlide>
       </Swiper>
       <Link href='' passHref>

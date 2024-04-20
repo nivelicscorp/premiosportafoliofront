@@ -4,16 +4,39 @@ import React from 'react'
 
 import styles from '@styles/scss/molecules/cards/cards-categories.module.scss'
 
-const CardsCategories = () => {
+interface props {
+  category?: 
+    'export' | 'environment' | 'client' | 'digital' | 'master' |
+    'student' | 'social' | 'leader' | 'humanResourses' | 'innovation' | 'community',
+}
+
+const CardsCategories = ({category}:props) => {
   return (
     <div className={styles?.cardCategories}>
-      <div className={styles?.cardCategories__top}>
+      <div className={
+        styles?.cardCategories__top + ' ' + 
+        (
+          category === 'export' ? styles?.export : 
+          category === 'environment' ? styles?.environment : 
+          category === 'client' ? styles?.client : 
+          category === 'digital' ? styles?.digital : 
+          category === 'master' ? styles?.master : 
+          category === 'student' ? styles?.student : 
+          category === 'social' ? styles?.social : 
+          category === 'leader' ? styles?.leader : 
+          category === 'humanResourses' ? styles?.humanResourses : 
+          category === 'innovation' ? styles?.innovation : 
+          category === 'community' ? styles?.community : ' '
+        )    
+
+      }>
         <img
           src='https://www.eltiempo.com/maquetacion/especiales/portafolio/2023/06/premios-portafolio-2023/img/iconosCategorias/graduated.svg'
           alt=''
           height={70}
           width={65}
-          className={styles?.cardCategories__top__image}
+          className={
+            styles?.cardCategories__top__image }
         />
         <h3 className={styles?.cardCategories__top__title}>
           Gestión del Recurso Humano
@@ -22,9 +45,7 @@ const CardsCategories = () => {
 
       <div className={styles?.cardCategories__detail}>
         <p>
-          Recompensa la labor de los profesores que a lo largo de su carrera han
-          dado muestra de excelencia en la enseñanza en las áreas de
-          administración de empresas, Economía o Ingeniería en todo el país.
+         Se destacarán las empresas que adoptaron las tecnologías 4.0 con el objetivo de ser sostenibles, estables, incrementar su productividad y competitividad, mediante la mejora continua de sus productos y/o servicios, los cuales responden de manera ágil, efectiva y personalizada a las necesidades del mercado.
         </p>
       </div>
 
