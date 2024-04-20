@@ -7,6 +7,7 @@
     max-width: 33.6rem;
     margin: 0 auto;
     width: 100%;
+    z-index: 2;
     &__icon {
         cursor: pointer;
         display: block;
@@ -14,8 +15,9 @@
         line-height: 1;
         transition: all .2s ease;
         &:hover {
-            fill: map-get($secondary, base);
+            fill: map-get($primary, base);
             transition: all .2s ease;
         }
     }
 }
+

@@ -2,7 +2,7 @@
 // FontStack
 // ==========================================================================
 
-$font-size         : 1.6rem;
+$font-size         : 1rem;
 $font-primary      : 'Open Sans', sans-serif;
 $font-secondary    : Helvetica, sans-serif;
 
@@ -41,7 +41,9 @@ $breakpoints: (
    md  : 720px,
    lg  : 960px,
    xl  : 1140px,
-   x   : 1280px
+   x   : 1280px,
+   xxl : 1440px,
+   super-xl : 1920px
 );
 
 // ==========================================================================

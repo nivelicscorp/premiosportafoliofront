@@ -1,15 +1,37 @@
 @import "../config/variables";
+@import "../config/mixins";
 
 .banner {
-    background: #2F313B;
+    background: map-get($grayscale, black);
     color: map-get($grayscale, white);
     font-size: 1.6rem;
     overflow: hidden;
+    position: relative;
     text-align: center;
     width: 100%;
+
+    min-height: 297px;
+
+    span {
+        position: static !important;
+    }
+
+    &__bgMain {
+        position: absolute;
+        height: 100%;
+        left: 0;
+        top: 0;
+        width: 100%;
+
+        img {
+            height: 100%;
+            object-position: top center;
+            width: 100%;
+        }
+    }
+
     &__link {
         align-items: center;
-        background: map-get($primary, base);
         color: map-get($grayscale, white);
         display: flex;
         font: bold 2rem / 2.7rem $font-primary;
@@ -23,13 +45,15 @@
     &__logo,
     &__text {
         margin: 0 auto;
-        max-width: 33rem;
         width: 100%;
         z-index: 2;
     }
 
     &__logo {
-        height: 17rem;
+        height: 19.4rem;
+        position: relative;
+        width: 20.8rem;
+
         img {
             object-fit: contain;
             height: 100%;
@@ -38,115 +62,161 @@
     }
 
     &__content {
-        background: #2F313B;
         display: flex;
         flex-direction: column;
         gap: 3rem;
-        padding: 7.7rem 2rem 8rem;
+        padding: 7.7rem 3rem 0;
         position: relative;
-        &::after {
-            background: url(../../../public/img/main-banner/bg-mobile.jpg) center no-repeat;
-            background-size: cover;
-            content: "";
-            display: block;
-            height: 100%;
-            position: absolute;
-            top: 2.5rem;
-            left: -4rem;
-            width: calc(100% + 4rem);
-        }
     }
 
     &__text {
         font: normal 1.8rem / 2.4rem $font-primary;
-        min-height: 20.6rem;
+        max-width: 29.7rem;
         z-index: 2;
     }
 
     &__hashtag {
-        background: rgba(map-get($grayscale, white), 0.2);
+        background: map-get($grayscale, white);
+        color: map-get($grayscale, black);
         border-radius: .4rem;
-        font: bold 2rem / 3.1rem $font-primary;
-        padding: 1rem 2rem;
-        margin: 15rem auto 0;
+        font: bold 1.8rem / 2.8rem $font-primary;
+        padding: .6rem 1.4rem;
+        margin: 0 auto;
         width: fit-content;
         z-index: 2;
     }
-}
 
-@media (min-width: 500px) {
-    .banner__content {
-        background-size: cover;
+    &__prize {
+        position: relative;
+        height: 27rem;
+        margin: auto;
+        max-width: 36rem;
+        width: 100%;
+        img { object-fit: contain; }
+
+        &__phrase {
+            margin-top: 5rem;
+            position: relative;
+            width: 18rem;
+        }
+        &__award {
+            bottom: -.3rem;            
+            position: absolute;
+            right: -1rem;
+        }
     }
 }
 
-@media (min-width: 720px) {
+@media (min-width: 400px) {
     .banner {
-        &__logo {
-            height: auto;
-            max-width: initial;
-            width: 27.8rem;
-        }
-        &__content {
-            min-height: 63rem;
-            background: url(../../../public/img/main-banner/bg-desktop.png) center no-repeat;
-            background-size: cover;
-            padding-top: 4.2rem;
-            &::after {
-                display: none;
-                background-image: url(../../../public/img/main-banner/bg-desktop.png);
-                background-size: 100%;
-                left: 0;
-                top: 0;
-                width: 100%;
+        &__prize {
+            &__phrase {
+                width: 21.8rem;
             }
         }
+    }
+}
+
+@include mq-min(xl) { 
+    .banner {
+        &__logo {
+            height: 32.6rem;
+            width: 34rem;
+        }
+        &__content {
+            gap: 3.6rem;
+            max-width: 560px;
+            margin: auto;
+            position: relative;
+        }
         &__text {
-            min-height: initial;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            max-width: 56rem;
+            line-height: 1.5;
         }
         &__hashtag {
-            margin-top: 0;
-        }
-        &__socialMedia {
-            ul {
-                max-width: initial;
-                justify-content: center;
-                gap: 0 4rem;
-                svg {
-                    height: 2.4rem;
-                    width: 2.4rem;
-                }
-            }
+            font-size: 2rem;
+            line-height: 1.5;
         }
     }
-  }
+}
 
-  @media (min-width: 1330px) {
+@include mq-min(xl) {
     .banner {
-        &__logo {
-            width: 488px;
-            margin-top: 42px;
-        }
         &__content {
-            background-position: top;
-            min-height: 880px;
-        }
-        &__text {
-            font-size: 3rem;
-            line-height: 1.5;
-            max-width: 64.5rem;
+            padding: 4.2rem 0 9rem;
         }
         &__hashtag {
             font-size: 2.5rem;
-            padding: 0.65rem 1.4rem;
+            line-height: 4rem;
         }
-        &__socialMedia {
-            ul {
-                svg {
-                    height: 5.2rem;
-                    width: 5.2rem;
-                }
+        &__prize {
+            bottom: 0;
+            height: 65rem;
+            position: absolute;    
+            right: -30rem;
+            top: initial;
+            img {
+                object-position: top right;
+            }
+            &__phrase {
+                height: 10.8rem;
+                margin: 0;
+                width: 32.4rem;
+            }
+            &__award {
+                height: 55rem;
+                right: 0;
+                width: 44.2rem;
             }
         }
     }
-  }
+}
+
+@include mq-min(xxl) {
+    .banner {
+        &__logo {
+            height: 38.6rem;
+            width: 41.8rem;
+        }
+        &__text {
+            font-size: 2.6rem;
+            margin-bottom: 3rem;
+            max-width: 56rem;
+            line-height: 3.2rem;
+        }
+        &__socialMedia {            
+            ul {
+                justify-content: center;
+                gap: 0 5.6rem;
+                margin-top: 1.8rem;
+                max-width: inherit;
+                svg {
+                    height: 4.7rem;
+                    width: 4.7rem;
+                }
+            }
+        }
+        &__prize {
+            bottom: 0;
+            height: 74.5rem;
+            position: absolute;    
+            right: -30rem;
+            top: initial;
+            img {
+                object-position: top right;
+            }
+            &__phrase {
+                height: 10.8rem;
+                margin: 0;
+                width: 35.4rem;
+            }
+            &__award {
+                height: 63.3rem;
+                right: -4rem;
+                width: 44.2rem;
+            }
+        }
+    }
+}
