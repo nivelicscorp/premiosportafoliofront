@@ -2,7 +2,7 @@
 // FontStack
 // ==========================================================================
 
-$font-size         : 1.6rem;
+$font-size         : 1rem;
 $font-primary      : 'Open Sans', sans-serif;
 $font-secondary    : 'Tiempos Headline', sans-serif;
 
@@ -37,8 +37,17 @@ $grayscale: (
 $breakpoints: (
     m  : 321px,
    sm  : 540px,
-   md  : 768px,
-   lg  : 1024px,
-   xl  : 1414px,
-   x   : 1920px
+   md  : 720px,
+   lg  : 960px,
+   xl  : 1140px,
+   x   : 1280px,
+   xxl : 1440px,
+   super-xl : 1920px
 );
+
+// ==========================================================================
+// Alignment
+// ==========================================================================
+
+$alignment: left, center, right, justify;
+

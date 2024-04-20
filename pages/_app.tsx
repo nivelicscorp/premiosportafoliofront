@@ -1,7 +1,7 @@
-// import BasicMainBanner from '@molecules/BasicMainBanner/BasicMainBanner'
 import 'styles.scss'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
+import MainBanner from '@molecules/MainBanner/MainBanner'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,8 +14,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      {/* <BasicMainBanner /> */}
-      <Component {...pageProps} />
+      <main>
+        <MainBanner />
+        <Component {...pageProps} />
+      </main>
     </div>
   )
 }

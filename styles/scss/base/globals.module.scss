@@ -4,16 +4,21 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   font-size: 62.5%;
-  padding: 0;
-  margin: 0;
-  font-family: $font-primary;
-  background: map-get($primary, ligth);
-  overflow-x: hidden;
 }
 
+body {
+  font-size: 1.6rem;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $font-primary;  
+  background: map-get($primary, ligth);
+}
 
 a,
 button {
