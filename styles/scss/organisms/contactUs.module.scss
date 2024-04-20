@@ -1,0 +1,78 @@
+@import '../config/mixins';
+@import '../config/variables';
+
+.contactUs {
+  min-height: 60rem;
+  height: 100%;
+  width: 100vw;
+  padding: 2.9rem 2.6rem 19rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  &__title {
+    color: map-get($primary, 'base');
+    font: normal normal bold 3.9rem/5.5rem Tiempos Headline;
+    text-align: center;
+  }
+  &__description {
+    color: map-get($grayscale, white);
+    font: normal normal normal 2.5rem/3rem Open Sans;
+    margin: 2.8rem 0;
+    text-align: center;
+    a {
+      color: map-get($grayscale, white);
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
+  &__button {
+    background-color: map-get($primary, base);
+    border-radius: 0.8rem;
+    width: fit-content;
+    color: map-get($grayscale, black);
+    text-decoration: none;
+    font: normal normal bold 2.4rem/3.3rem Open Sans;
+    padding: 1rem 2.6rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: map-get($primary, dark);
+    }
+  }
+  &__auxiliaryImage {
+    position: absolute;
+    bottom: -7.5rem;
+    right: 0;
+    width: 25rem;
+    height: 25rem;
+    transform: rotate(-90deg);
+  }
+}
+
+@include mq-min(xl) {
+  .contactUs {
+    min-height: 3.4rem;
+    padding: 4.9rem 0 3.3rem;
+    &__title {
+      max-width: 84rem;
+      font: normal normal bold 4.7rem/5.3rem Tiempos Headline;
+    }
+    &__description {
+      max-width: 84rem;
+      font: normal normal normal 2.5rem/3.6rem Open Sans;
+    }
+    &__button {
+      max-width: 84rem;
+    }
+    &__auxiliaryImage {
+      bottom: 0;
+      right: -8rem;
+      width: 45rem;
+      height: 45rem;
+      transform: rotate(0deg);
+    }
+  }
+}

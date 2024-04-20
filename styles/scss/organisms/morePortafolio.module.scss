@@ -5,11 +5,11 @@
   display: flex;
   flex-direction: column;
   gap: 2.6rem;
-  padding: 8.5rem 0;
+  padding: 12.5rem 0 8.5rem;
   width: 100vw;
   margin: auto;
-  background: transparent url(../../../public/img/bg-white/bg-mobile.png) 0% 0%
-    no-repeat padding-box;
+  background: url(../../../public/img/bg-white/bg-mobile.png) 0% 0% no-repeat
+    padding-box;
   background-size: cover;
   &__title {
     display: flex;
@@ -38,6 +38,9 @@
 
 @include mq-min(xl) {
   .morePortafolio {
+    padding: 8.5rem 0;
+    background: url(../../../public/img/bg-white/bg-desktop.png) 0% 0% no-repeat
+      padding-box;
     &__title {
       max-width: 120rem;
       width: 100%;
