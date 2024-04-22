@@ -22,8 +22,8 @@ const CategoriesSection = ({ categories }: Props) => {
     <section className={styles?.categories}>
       <h2 className={styles?.categories__title}> Categorías </h2>
       <p className={styles?.categories__intro}>
-        Presentamos nuestra 30° edición de
-        <strong> Premios Portafolio, </strong> mostrando nuestras 11 categorías.
+        Presentamos nuestra <span> 30° edición </span> de{' '}
+        <strong>Premios Portafolio</strong>, mostrando nuestras 11 categorías.
       </p>
       <Swiper
         modules={[FreeMode, Pagination, Navigation]}

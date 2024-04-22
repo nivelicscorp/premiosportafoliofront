@@ -4,4 +4,5 @@ export type CategoryCard = {
   types: string[]
   image: string
   icon: string
+  category: string
 }

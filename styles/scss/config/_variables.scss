@@ -11,9 +11,9 @@ $font-secondary: 'Tiempos Headline', sans-serif;
 // ==========================================================================
 
 $primary: (
-  light: #80cabf,
-  base: #31abaa,
-  dark: #0c95ae,
+  general: #31abaa,
+  base: #029581,
+  dark: #006857,
 );
 
 $secondary: (
@@ -24,11 +24,25 @@ $grayscale: (
   white: #fff,
   gray-10: #fdfdfd,
   gray-20: #bfbfbf,
+  gray-25: #a0a0a0,
   gray-30: #636363,
   gray-40: #2f323c,
   gray-50: #333,
-  gray-90: #111110,
   black: #000,
+);
+
+$categories: (
+  export: #be023d,
+  environment: #9ac700,
+  client: #5e3685,
+  digital: #0c95ae,
+  master: #58c0cb,
+  student: #2b66c0,
+  social: #eb672c,
+  leader: #a45386,
+  humanResourses: #4b9b31,
+  innovation: #e24c5e,
+  community: #d42e89,
 );
 
 // ==========================================================================
