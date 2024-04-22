@@ -11,10 +11,13 @@ const MainBanner = () => {
   return (
     <div className={styles?.banner}>
       <div className={styles?.banner__bgMain}>
-      <picture>
-        <source srcSet='/img/main-banner/bg-desktop.png' media='(min-width: 720px)' />
-        <img src='/img/main-banner/bg-mobile.png' alt="MDN" />
-      </picture>
+        <picture>
+          <source
+            srcSet='/img/main-banner/bg-desktop.png'
+            media='(min-width: 720px)'
+          />
+          <img src='/img/main-banner/bg-mobile.png' alt='MDN' />
+        </picture>
         {/* <Image
           src='/img/main-banner/bg-mobile.png'
           alt=''
@@ -24,14 +27,12 @@ const MainBanner = () => {
       </div>
       <div className={styles?.banner__content}>
         <div className={styles?.banner__logo}>
-          <Image
-            src='/img/main-banner/logo-30.png'
-            width={290}
-            height={170}
-          />
+          <Image src='/img/main-banner/logo-30.png' width={290} height={170} />
         </div>
         <p className={styles?.banner__text}>
-          Es el reconocimiento más importante del país a las empresas y personas que han superado las expectativas y promedios de sus propios sectores y entornos.
+          Es el reconocimiento más importante del país a las empresas y personas
+          que han superado las expectativas y promedios de sus propios sectores
+          y entornos.
         </p>
         <span className={styles?.banner__hashtag}>#Premiosportafolio</span>
         <div className={styles?.banner__socialMedia}>
@@ -54,9 +55,7 @@ const MainBanner = () => {
               height={270}
             />
           </div>
-
         </div>
-
       </div>
     </div>
   )

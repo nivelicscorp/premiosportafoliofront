@@ -195,6 +195,10 @@
                 svg {
                     height: 4.7rem;
                     width: 4.7rem;
+
+                }
+                li:nth-child(3) svg { 
+                    width: 6.5rem;         
                 }
             }
         }
