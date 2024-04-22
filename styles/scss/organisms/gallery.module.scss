@@ -1,0 +1,45 @@
+@import '../config/mixins';
+@import '../config/variables';
+
+.gallery {
+  height: 45rem;
+  background: url(../../../public/img/bg-white/bg-mobile.png) 0% 0% no-repeat
+    padding-box;
+  background-size: cover;
+  padding: 6rem 0;
+  &__titleContainer {
+    width: 81.5rem;
+    margin: auto;
+  }
+  &__title {
+    font: normal normal bold 2.5rem/3rem Tiempos Headline;
+    color: map-get($grayscale, white);
+    background-color: map-get($grayscale, 'gray-90');
+    padding: 0.5rem 0.9rem;
+    margin: 0 2.3rem 1.5rem;
+    width: fit-content;
+  }
+  &__preview {
+    width: 81.5rem;
+    height: 45.8rem;
+    display: none;
+    margin: auto;
+    img {
+      object-fit: cover;
+    }
+  }
+}
+
+@include mq-min(xl) {
+  .gallery {
+    height: 95rem;
+    background: url(../../../public/img/bg-white/bg-desktop.png) 0% 0% no-repeat;
+    &__title {
+      font: normal normal bold 2.2rem/2.6rem Tiempos Headline;
+      margin: 0;
+    }
+    &__preview {
+      display: block;
+    }
+  }
+}

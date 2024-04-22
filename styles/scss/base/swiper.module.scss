@@ -1,6 +1,5 @@
 /////// swiper categories styles ///////
 .swiper.swiper {
-  max-width: 35.5rem;
   padding-bottom: 10rem;
   .swiper {
     &-pagination {
@@ -42,11 +41,13 @@
     }
 
     &-button-next {
+      margin-right: 2rem;
       @include mq-min(md) {
         right: 30%;
       }
     }
     &-button-prev {
+      margin-left: 2rem;
       @include mq-min(md) {
         left: 30%;
       }
@@ -73,7 +74,6 @@
     }
   }
   &__grayscale__swiper {
-    max-width: 35.5rem;
     padding: 0 2.5rem 10rem;
     .swiper {
       &-pagination {
@@ -88,12 +88,6 @@
         background: map-get($grayscale, gray-90);
       }
     }
-  }
-}
-
-@include mq-min(md) {
-  .swiper.swiper {
-    max-width: 70rem;
   }
 }
 
@@ -133,6 +127,12 @@
         left: 1%;
         top: 50%;
       }
+    }
+  }
+  .noBackground {
+    &::before,
+    &::after {
+      background: transparent !important;
     }
   }
 }
