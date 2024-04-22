@@ -32,8 +32,9 @@ const MorePortafolioSection = ({ data }: Props) => {
           navigation={true}
           loop={false}
           breakpoints={{
-            768: {
-              slidesPerView: 1.8,
+            767: {
+              slidesPerView: 2,
+              spaceBetween: 10,
             },
             1024: {
               centeredSlides: true,

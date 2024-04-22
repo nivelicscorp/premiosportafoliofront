@@ -1,0 +1,46 @@
+@import '../../config/variables';
+@import '../../config/mixins';
+.card {
+  width: 29rem;
+  height: 19rem;
+  position: relative;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  &__bar {
+    position: absolute;
+    transition: all 0.5s ease;
+    opacity: 0;
+    bottom: 0;
+    height: 0.5rem;
+    width: 100%;
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  img {
+    object-fit: cover;
+  }
+}
+
+.card:hover {
+  transform: scale(1.05);
+  div {
+    transition: all 0.5s ease;
+    opacity: 100;
+  }
+}
+
+.active {
+  transition: all 0.5s ease;
+  opacity: 100;
+}
+
+@include mq-min(xl) {
+  .card {
+    width: 32.2rem;
+    height: 20.8rem;
+  }
+}

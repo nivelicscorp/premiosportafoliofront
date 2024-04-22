@@ -10,7 +10,7 @@ type Props = {
 
 const ContactUsSection = ({ data }: Props) => {
   return (
-    <div
+    <section
       className={styles.contactUs}
       style={{ backgroundImage: `url(${data.backgroundMobile.source})` }}
     >
@@ -32,7 +32,7 @@ const ContactUsSection = ({ data }: Props) => {
           height={450}
         />
       </div>
-    </div>
+    </section>
   )
 }
 
