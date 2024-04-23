@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <MainBanner />
         <Component {...pageProps} />
       </main>
     </div>

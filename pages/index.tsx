@@ -3,7 +3,9 @@ import { BtnFloat } from '@atoms/BtnFloat/BtnFloat'
 import { CategoryCard } from '@models/categories.model'
 import { ContactUsSectionModel } from '@models/contactUs.model'
 import { GallerySectionModel } from '@models/gallery.model'
+import { MainBanneSectionModel } from '@models/mainBanner.model'
 import { MorePortafolioSectionModel } from '@models/morePortafolioSection.model'
+import MainBanner from '@molecules/MainBanner/MainBanner'
 import CategoriesSection from '@organisms/CategoriesSection/CategoriesSection'
 import ContactUsSection from '@organisms/ContactUsSection/ContactUsSection'
 import GallerySection from '@organisms/GallerySection/GallerySection'
@@ -11,11 +13,13 @@ import MorePortafolioSection from '@organisms/MorePortafolioSection/MorePortafol
 import ContactUsSectionDTO from '@utils/DTO/ContactUsSectionDTO'
 import GallerySectionDTO from '@utils/DTO/GallerySectionDTO'
 import LandingPageDTO from '@utils/DTO/LandingPageDTO'
+import MainBannerDTO from '@utils/DTO/MainBannerDTO'
 import MorePortafolioSectionDTO from '@utils/DTO/MorePortafolioSectionDTO'
 import getImage from '@utils/getImage'
 import type { GetServerSideProps, NextPage } from 'next'
 const Home: NextPage<{
   pageData: any
+  mainBannerData: MainBanneSectionModel
   categoriesData: CategoryCard[]
   galleryData: GallerySectionModel
   contactUsData: ContactUsSectionModel
@@ -24,11 +28,16 @@ const Home: NextPage<{
   return (
     <>
       <BtnFloat />
+      {props.mainBannerData && <MainBanner banner={props.mainBannerData} />}
       {/* <CategoriesSection categories={categories} /> */}
-      <CategoriesSection categories={props.categoriesData} />
-      <GallerySection data={props.galleryData} />
-      <ContactUsSection data={props.contactUsData} />
-      <MorePortafolioSection data={props.morePortafolioData} />
+      {props.categoriesData && (
+        <CategoriesSection categories={props.categoriesData} />
+      )}
+      {props.galleryData && <GallerySection data={props.galleryData} />}
+      {props.contactUsData && <ContactUsSection data={props.contactUsData} />}
+      {props.morePortafolioData && (
+        <MorePortafolioSection data={props.morePortafolioData} />
+      )}
     </>
   )
 }
@@ -39,6 +48,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     '🚀 ~ constgetServerSideProps:GetServerSideProps= ~ pageData:',
     pageData
   )
+  const mainBannerData = MainBannerDTO(pageData?.mainBanner)
   const galleryData = GallerySectionDTO(pageData?.gallerySection)
   const contactUsData = ContactUsSectionDTO(pageData?.contactBanner)
   const morePortafolioData = MorePortafolioSectionDTO(
@@ -74,6 +84,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       pageData,
+      mainBannerData,
       categoriesData,
       contactUsData,
       morePortafolioData,

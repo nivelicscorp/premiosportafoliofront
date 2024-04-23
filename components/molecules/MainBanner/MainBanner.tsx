@@ -3,56 +3,63 @@ import Image from 'next/image'
 import styles from '@styles/scss/molecules/banner.module.scss'
 import SocialMedia from '@molecules/SocialMedia/SocialMedia'
 import Link from 'next/link'
+import { MainBanneSectionModel } from '@models/mainBanner.model'
+import { myLoader } from '@utils/customLoaderImages'
 
-const MainBanner = () => {
+type Props = {
+  banner: MainBanneSectionModel
+}
+
+const MainBanner = ({ banner }: Props) => {
   return (
     <div className={styles?.banner}>
       <div className={styles?.banner__bgMain}>
         <picture>
           <source
-            srcSet='/img/main-banner/bg-desktop.png'
+            srcSet={banner.backgroundDesktop.source}
             media='(min-width: 720px)'
           />
-          <img src='/img/main-banner/bg-mobile.png' alt='MDN' />
+          <img src={banner.backgroundMobile.source} alt='MDN' />
         </picture>
-        {/* <Image
-          src='/img/main-banner/bg-mobile.png'
-          alt=''
-          width={208}
-          height={781}
-        /> */}
       </div>
       <div className={styles?.banner__content}>
         <div className={styles?.banner__logo}>
           <Image
-            src='/img/main-banner/logo-30.png'
-            alt='logo'
+            loader={myLoader}
+            src={banner.logo.source}
+            alt={banner.logo.alt}
+            title={banner.logo.title}
             width={290}
             height={170}
           />
         </div>
-        <p className={styles?.banner__text}>
-          Es el reconocimiento más importante del país a las empresas y personas
-          que han superado las expectativas y promedios de sus propios sectores
-          y entornos.
-        </p>
-        <span className={styles?.banner__hashtag}>#Premiosportafolio</span>
+        <div
+          className={styles?.banner__text}
+          dangerouslySetInnerHTML={{ __html: banner.description }}
+        ></div>
+        <Link href={banner.hashtag.url} passHref>
+          <a className={styles?.banner__hashtag}>{banner.hashtag.text}</a>
+        </Link>
         <div className={styles?.banner__socialMedia}>
-          <SocialMedia />
+          <SocialMedia data={banner.socialMedia} />
         </div>
         <div className={styles?.banner__prize}>
           <div className={styles?.banner__prize__phrase}>
             <Image
-              src='/img/main-banner/phrase.png'
-              alt=''
+              loader={myLoader}
+              src={banner.mainIcon.source}
+              alt={banner.mainIcon.alt}
+              title={banner.mainIcon.title}
               width={218}
               height={67}
             />
           </div>
           <div className={styles?.banner__prize__award}>
             <Image
-              src='/img/main-banner/main-prize.png'
-              alt=''
+              loader={myLoader}
+              src={banner.auxiliaryIcon.source}
+              alt={banner.auxiliaryIcon.alt}
+              title={banner.auxiliaryIcon.title}
               width={179}
               height={270}
             />
