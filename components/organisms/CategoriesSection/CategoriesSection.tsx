@@ -11,20 +11,20 @@ import { FreeMode, Pagination, Navigation } from 'swiper/modules'
 
 import styles from '@styles/scss/organisms/categories.module.scss'
 import Link from 'next/dist/client/link'
-import { CategoryCard } from '@models/categories.model'
+import { CategorySectionModel } from '@models/categories.model'
 
 type Props = {
-  categories: CategoryCard[]
+  categories: CategorySectionModel
 }
 
 const CategoriesSection = ({ categories }: Props) => {
   return (
     <section className={styles?.categories}>
-      <h2 className={styles?.categories__title}> Categorías </h2>
-      <p className={styles?.categories__intro}>
-        Presentamos nuestra <span> 30° edición </span> de{' '}
-        <strong>Premios Portafolio</strong>, mostrando nuestras 11 categorías.
-      </p>
+      <h2 className={styles?.categories__title}>{categories.title}</h2>
+      <div
+        className={styles?.categories__intro}
+        dangerouslySetInnerHTML={{ __html: categories.description }}
+      />
       <Swiper
         modules={[FreeMode, Pagination, Navigation]}
         spaceBetween={30}
@@ -33,7 +33,7 @@ const CategoriesSection = ({ categories }: Props) => {
         freeMode={true}
         pagination={true}
         navigation={true}
-        loop={categories.length > 4}
+        loop={categories?.card?.length > 4}
         breakpoints={{
           768: {
             slidesPerView: 2,
@@ -49,16 +49,14 @@ const CategoriesSection = ({ categories }: Props) => {
           },
         }}
       >
-        {categories.map((category, index) => (
+        {categories?.card?.map((category, index) => (
           <SwiperSlide key={index}>
             <CardsCategories {...category} />
           </SwiperSlide>
         ))}
       </Swiper>
       <Link href='/registro' passHref>
-        <a className={styles?.categories__link}>
-          Postular en algunas categorías
-        </a>
+        <a className={styles?.categories__link}>{categories.downLink}</a>
       </Link>
     </section>
   )

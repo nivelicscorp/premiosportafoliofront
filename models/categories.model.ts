@@ -1,8 +1,16 @@
-export type CategoryCard = {
+import { ImagesModel } from './image.model'
+
+export type CategoryCardModel = {
   title: string
   description: string
-  types: string[]
-  image: string
-  icon: string
-  category: string
+  summary: string
+  image: ImagesModel
+  icon: ImagesModel
+}
+
+export type CategorySectionModel = {
+  title: string
+  description: string
+  downLink: string
+  card: CategoryCardModel[]
 }
