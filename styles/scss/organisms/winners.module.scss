@@ -1,0 +1,47 @@
+@import '../config/mixins';
+@import '../config/variables';
+
+.winners {
+  min-height: 45rem;
+  max-width: 120rem;
+  width: 100%;
+  margin: 3rem auto 0;
+  z-index: 10;
+  &__title {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: normal normal bold 3.2rem/3.3rem Tiempos Headline;
+    hr:first-child {
+      display: none;
+    }
+    hr {
+      display: block;
+      width: 22.5rem;
+      height: 0.1rem;
+      margin: 2.3rem auto;
+      border: 0.1rem solid map-get($primary, base);
+    }
+  }
+}
+
+@include mq-min(xl) {
+  .winners {
+    min-height: 45rem;
+    max-width: 120rem;
+    width: 100%;
+    margin: 3rem auto 0;
+    &__title {
+      font: normal normal bold 3.7rem/5.1rem Tiempos Headline;
+      flex-direction: row;
+      justify-content: space-between;
+      hr:first-child {
+        display: block;
+      }
+      hr {
+        width: 20%;
+      }
+    }
+  }
+}

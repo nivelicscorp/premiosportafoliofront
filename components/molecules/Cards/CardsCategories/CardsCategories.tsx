@@ -16,7 +16,9 @@ const CardsCategories = ({
   return (
     <div className={styles?.cardCategories}>
       <div
-        className={styles?.cardCategories__top + ' ' + checkCategoryCard(title)}
+        className={
+          styles?.cardCategories__top + ' ' + checkCategoryCard(title, styles)
+        }
       >
         <div className={styles?.cardCategories__top__image}>
           <Image

@@ -1,6 +1,4 @@
-import styles from '@styles/scss/molecules/cards/cards-categories.module.scss'
-
-const checkCategoryCard = (categoryName: string) => {
+const checkCategoryCard = (categoryName: string, styles: any) => {
   switch (categoryName) {
     case 'Esfuerzo exportador':
       return styles?.export

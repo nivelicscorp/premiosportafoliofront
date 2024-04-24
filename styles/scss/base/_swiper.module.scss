@@ -135,4 +135,11 @@
       background: transparent !important;
     }
   }
+  .noPaginatorDesktop {
+    .swiper {
+      &-pagination {
+        display: none !important;
+      }
+    }
+  }
 }

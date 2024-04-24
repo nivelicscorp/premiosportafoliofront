@@ -30,7 +30,7 @@ const MorePortafolioSection = ({ data }: Props) => {
           freeMode={true}
           pagination={true}
           navigation={true}
-          loop={false}
+          loop={data?.cards?.length > 4}
           breakpoints={{
             767: {
               slidesPerView: 2,

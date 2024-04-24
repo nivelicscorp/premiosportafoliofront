@@ -14,16 +14,16 @@ import Link from 'next/dist/client/link'
 import { CategorySectionModel } from '@models/categories.model'
 
 type Props = {
-  categories: CategorySectionModel
+  data: CategorySectionModel
 }
 
-const CategoriesSection = ({ categories }: Props) => {
+const CategoriesSection = ({ data }: Props) => {
   return (
     <section className={styles?.categories}>
-      <h2 className={styles?.categories__title}>{categories.title}</h2>
+      <h2 className={styles?.categories__title}>{data.title}</h2>
       <div
         className={styles?.categories__intro}
-        dangerouslySetInnerHTML={{ __html: categories.description }}
+        dangerouslySetInnerHTML={{ __html: data.description }}
       />
       <Swiper
         modules={[FreeMode, Pagination, Navigation]}
@@ -33,7 +33,7 @@ const CategoriesSection = ({ categories }: Props) => {
         freeMode={true}
         pagination={true}
         navigation={true}
-        loop={categories?.card?.length > 4}
+        loop={data?.card?.length > 4}
         breakpoints={{
           768: {
             slidesPerView: 2,
@@ -49,14 +49,14 @@ const CategoriesSection = ({ categories }: Props) => {
           },
         }}
       >
-        {categories?.card?.map((category, index) => (
+        {data?.card?.map((category, index) => (
           <SwiperSlide key={index}>
             <CardsCategories {...category} />
           </SwiperSlide>
         ))}
       </Swiper>
       <Link href='/registro' passHref>
-        <a className={styles?.categories__link}>{categories.downLink}</a>
+        <a className={styles?.categories__link}>{data.downLink}</a>
       </Link>
     </section>
   )

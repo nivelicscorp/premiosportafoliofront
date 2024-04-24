@@ -1,0 +1,78 @@
+@import '../../config/variables';
+@import '../../config/mixins';
+
+.card {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  &__photo {
+    width: 15.5rem;
+    height: 15.5rem;
+    border: 0.3rem solid map-get($primary, 'base');
+    box-shadow: 0 0 0 0.5rem #ffffff, 0 0 0 0.8rem map-get($primary, 'base');
+    border-radius: 50%;
+    margin: 20px;
+    img {
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  &__name {
+    font: normal normal bold 1.2rem/1.3rem Tiempos Headline;
+    min-width: 18.5rem;
+    color: map-get($grayscale, white);
+    padding: 0.3rem 0.5rem;
+    background-color: map-get($grayscale, 'gray-90');
+    border-bottom: 4px solid transparent;
+    &.export {
+      border-color: map-get($categories, export);
+    }
+    &.environment {
+      border-color: map-get($categories, environment);
+    }
+    &.client {
+      border-color: map-get($categories, client);
+    }
+    &.digital {
+      border-color: map-get($categories, digital);
+    }
+    &.master {
+      border-color: map-get($categories, master);
+    }
+    &.student {
+      border-color: map-get($categories, student);
+    }
+    &.social {
+      border-color: map-get($categories, social);
+    }
+    &.leader {
+      border-color: map-get($categories, leader);
+    }
+    &.humanResourses {
+      border-color: map-get($categories, humanResourses);
+    }
+    &.innovation {
+      border-color: map-get($categories, innovation);
+    }
+    &.community {
+      border-color: map-get($categories, community);
+    }
+  }
+  &__award {
+    font: normal normal bold 1.6rem/2.1rem Tiempos Headline;
+    margin-top: 1.2rem;
+    color: map-get($grayscale, 'gray-40');
+  }
+}
+
+@include mq-min(xl) {
+  .card {
+    width: 20rem;
+    &__name {
+      width: 100%;
+    }
+  }
+}
