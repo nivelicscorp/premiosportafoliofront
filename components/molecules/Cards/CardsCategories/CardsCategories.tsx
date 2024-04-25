@@ -35,7 +35,6 @@ const CardsCategories = ({
           <Image
             loader={myLoader}
             src={image?.source}
-            
             alt={image?.alt}
             title={image?.title}
             height={147}

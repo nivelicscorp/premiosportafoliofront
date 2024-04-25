@@ -10,48 +10,61 @@ import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css'
+import { JuriesSectionModel } from '@models/juries.model'
+import { myLoader } from '@utils/customLoaderImages'
 
-const JudgesSection = () => {
+interface JudgesSectionProps {
+  data: JuriesSectionModel
+}
+
+const JudgesSection = ({ data }: JudgesSectionProps) => {
   return (
     <div className={styles?.JudgesSection}>
-
-        <div className={styles?.JudgesSection__title}>
-            <div className={styles?.JudgesSection__title__img}>
-                <Image 
-                    src='/img/btn-float/prize.png'
-                    height='250'
-                    width='250'
-                />
-            </div>
-            <h2> title </h2>
+      <div className={styles?.JudgesSection__title}>
+        <div className={styles?.JudgesSection__title__img}>
+          <Image
+            loader={myLoader}
+            src={data?.icon?.source}
+            alt={data?.icon?.alt}
+            title={data?.icon?.title}
+            height='250'
+            width='250'
+          />
         </div>
-        <Swiper
-            modules={[FreeMode, Navigation, Pagination]}
-            slidesPerView={1.5}
-            className={'swiper swiper__judges'}
-            freeMode={true}
-            navigation={true}
-            pagination={true}
-            centeredSlides={true}
-            spaceBetween={50}
-            breakpoints={{
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
-                freeMode: false,
-                slidesPerView: 3,
-            },
-            1280: {
-                freeMode: false,
-                slidesPerView: 4,
-            },
+        <h2> {data?.title} </h2>
+      </div>
+      <Swiper
+        modules={[FreeMode, Navigation, Pagination]}
+        slidesPerView={1.5}
+        className={'swiper swiper__judges'}
+        freeMode={true}
+        navigation={true}
+        pagination={true}
+        centeredSlides={true}
+        spaceBetween={50}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            freeMode: false,
+            slidesPerView: 3,
+          },
+          1280: {
+            freeMode: false,
+            slidesPerView: 4,
+          },
         }}
       >
-        <SwiperSlide><CardsJudges name='Andrés Espinosa Fenwar' position='Presidente Banco de Occidente'/> </SwiperSlide>
-        <SwiperSlide><CardsJudges name='Andrés Espinosa Fenwar' position='Presidente Banco de Occidente'/> </SwiperSlide>
-        <SwiperSlide><CardsJudges name='Andrés Espinosa Fenwar' position='Presidente Banco de Occidente'/> </SwiperSlide>
-        <SwiperSlide><CardsJudges name='Andrés Espinosa Fenwar' position='Presidente Banco de Occidente'/> </SwiperSlide>
+        {data?.juries?.map((jury, index) => (
+          <SwiperSlide key={index}>
+            <CardsJudges
+              name={jury.name}
+              businessRole={jury.businessRole}
+              photo={jury.photo}
+            />{' '}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   )

@@ -19,7 +19,7 @@ const WinnersSection = ({ data }: WinnersSectionProps) => {
       <Swiper
         modules={[FreeMode, Navigation, Pagination]}
         slidesPerView={1.5}
-        className={'swiper__grayscale__swiper noBackground noPaginatorDesktop'}
+        className={'swiper swiper__grayscale noPaginatorDesktop'}
         freeMode={true}
         navigation={true}
         pagination={true}

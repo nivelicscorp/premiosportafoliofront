@@ -52,7 +52,7 @@ const GallerySection = ({ data }: Props) => {
       <Swiper
         modules={[Pagination, Navigation]}
         slidesPerView={1.2}
-        className={'swiper__primary__swiper noBackground'}
+        className={'swiper swiper__primary'}
         centeredSlides={true}
         pagination={true}
         navigation={true}

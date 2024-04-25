@@ -51,7 +51,7 @@
       }
     }
   }
-  &.swiper__primary {    
+  &.swiper__primary {
     padding-bottom: 3rem;
     .swiper {
       &-pagination {
@@ -72,7 +72,7 @@
       }
     }
   }
-  &__grayscale__swiper {
+  &.swiper__grayscale {
     padding: 0 2.5rem 10rem;
     .swiper {
       &-pagination {
@@ -94,13 +94,14 @@
   .swiper {
     max-width: 120rem;
     padding-top: 5rem;
-    &.swiper__primary { 
+    &.swiper__primary {
       padding-top: 5rem;
       padding-bottom: 8rem;
       &::before,
       &::after {
         background: transparent
-        linear-gradient(271deg, #ffffff00 0%, #ffffff 100%) 0% 0% no-repeat padding-box;
+          linear-gradient(271deg, #ffffff00 0%, #ffffff 100%) 0% 0% no-repeat
+          padding-box;
         position: absolute;
         content: '';
         height: 100%;
@@ -131,12 +132,6 @@
       right: -0.2rem;
     }
   }
-  .noBackground {
-    &::before,
-    &::after {
-      background: transparent !important;
-    }
-  }
   .noPaginatorDesktop {
     .swiper {
       &-pagination {
@@ -164,8 +159,10 @@
       }
       &-button-prev,
       &-button-next {
-        background: url(../../../public//img//icon/arrow-next.svg) center no-repeat map-get($grayscale, white);
-        &::after, &::before {
+        background: url(../../../public//img//icon/arrow-next.svg) center
+          no-repeat map-get($grayscale, white);
+        &::after,
+        &::before {
           color: transparent;
         }
       }
@@ -174,4 +171,4 @@
       }
     }
   }
-}  
+}

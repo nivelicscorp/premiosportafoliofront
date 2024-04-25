@@ -26,7 +26,7 @@ const MorePortafolioSection = ({ data }: Props) => {
           modules={[FreeMode, Pagination, Navigation]}
           spaceBetween={30}
           slidesPerView={1.1}
-          className={'swiper__grayscale__swiper'}
+          className={'swiper swiper__grayscale'}
           freeMode={true}
           pagination={true}
           navigation={true}
