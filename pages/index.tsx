@@ -10,6 +10,7 @@ import MainBanner from '@molecules/MainBanner/MainBanner'
 import CategoriesSection from '@organisms/CategoriesSection/CategoriesSection'
 import ContactUsSection from '@organisms/ContactUsSection/ContactUsSection'
 import GallerySection from '@organisms/GallerySection/GallerySection'
+import JudgesSection from '@organisms/JudgesSection/JudgesSection'
 import MorePortafolioSection from '@organisms/MorePortafolioSection/MorePortafolioSection'
 import WinnersSection from '@organisms/WinnersSection/WinnersSection'
 import CategorySectionDTO from '@utils/DTO/CategorySectionDTO'
@@ -31,13 +32,14 @@ const Home: NextPage<{
 }> = (props) => {
   return (
     <>
-      <BtnFloat />
+      <JudgesSection />
+      {/* <BtnFloat />
       <MainBanner data={props.mainBannerData} />
       <CategoriesSection data={props.categoriesData} />
       <WinnersSection data={props.winnersData} />
       <GallerySection data={props.galleryData} />
       <ContactUsSection data={props.contactUsData} />
-      <MorePortafolioSection data={props.morePortafolioData} />
+      <MorePortafolioSection data={props.morePortafolioData} /> */}
     </>
   )
 }
