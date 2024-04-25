@@ -1,0 +1,43 @@
+@import '../../config/variables';
+@import '../../config/mixins';
+
+.cardJudges {
+    text-align: center;
+    &__img {
+        aspect-ratio: 1;
+        background: black;
+        position: relative;
+        height: auto;
+        margin:  0 0 3.2rem;
+        width: 100%;
+        &::before {
+            border: .4rem solid map-get($grayscale, white);
+            content: '';
+            position: absolute;
+            height: calc(100% + 1.3rem);
+            right: -1.6rem;
+            top: 0;
+            width: 16rem;
+        }
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    &__data {
+        align-items: center;
+        color: map-get($grayscale, black);
+        display: flex;
+        flex-direction: column;
+        gap: 2.7rem;
+    }
+    &__name {
+        background: map-get($grayscale, white);
+        font: bold 1.6rem / 1.8rem $font-secondary; 
+        padding: .3rem .6rem;       
+        width: fit-content;
+    }
+    &__position {
+        font: bold 2rem / 2.3rem $font-secondary;   
+    }
+}

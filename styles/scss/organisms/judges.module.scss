@@ -1,0 +1,26 @@
+@import '../config/mixins';
+@import '../config/variables';
+
+.JudgesSection {
+    background: map-get($primary, general);
+    color: map-get($grayscale, white);
+    text-align: center;
+    &__title {
+        align-items: center;
+        font: bold  3.2rem / 4.4rem $font-secondary;
+        display: flex;
+        gap: 1.6rem;
+        justify-content: center;
+        margin-bottom: 2.2rem;
+        &__img {
+            height: 7.3rem;
+            position: relative;
+            width: 3.3rem;
+            span { height: 100% !important; }
+            img {
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+    }    
+}

@@ -1,5 +1,5 @@
 /////// swiper categories styles ///////
-.swiper.swiper {
+.swiper {
   padding-bottom: 10rem;
   .swiper {
     &-pagination {
@@ -22,7 +22,6 @@
         }
       }
     }
-
     &-button-next,
     &-button-prev {
       background: map-get($primary, general);
@@ -39,7 +38,6 @@
         color: map-get($grayscale, white);
       }
     }
-
     &-button-next {
       margin-right: 2rem;
       @include mq-min(md) {
@@ -53,20 +51,21 @@
       }
     }
   }
-  &__primary__swiper {
+  &.swiper__primary {    
+    padding-bottom: 3rem;
     .swiper {
       &-pagination {
         &-bullet {
           background: map-get($grayscale, gray-30);
           &-active {
-            background: map-get($primary, base);
+            background: map-get($primary, general);
           }
         }
       }
 
       &-button-next,
       &-button-prev {
-        background: map-get($primary, base);
+        background: map-get($primary, general);
         &::after {
           color: map-get($grayscale, white);
         }
@@ -92,20 +91,37 @@
 }
 
 @include mq-min(lg) {
-  .swiper.swiper {
+  .swiper {
     max-width: 120rem;
     padding-top: 5rem;
-    &::before,
-    &::after {
-      background: transparent
-        linear-gradient(271deg, #ffffff00 0%, #ffffff 100%) 0% 0% no-repeat
-        padding-box;
-      position: absolute;
-      content: '';
-      height: 100%;
-      top: 0;
-      width: 14rem;
-      z-index: 3;
+    &.swiper__primary { 
+      padding-top: 5rem;
+      padding-bottom: 8rem;
+      &::before,
+      &::after {
+        background: transparent
+        linear-gradient(271deg, #ffffff00 0%, #ffffff 100%) 0% 0% no-repeat padding-box;
+        position: absolute;
+        content: '';
+        height: 100%;
+        top: 0;
+        width: 14rem;
+        z-index: 3;
+      }
+      .swiper {
+        &-slide-active {
+          transform: scale(1.1);
+          z-index: 2;
+        }
+        &-button-next {
+          right: 1%;
+          top: 50%;
+        }
+        &-button-prev {
+          left: 1%;
+          top: 50%;
+        }
+      }
     }
     &::before {
       left: -0.2rem;
@@ -113,20 +129,6 @@
     &:after {
       transform: rotate(180deg);
       right: -0.2rem;
-    }
-    .swiper {
-      &-slide-active {
-        transform: scale(1.1);
-        z-index: 2;
-      }
-      &-button-next {
-        right: 1%;
-        top: 50%;
-      }
-      &-button-prev {
-        left: 1%;
-        top: 50%;
-      }
     }
   }
   .noBackground {
@@ -143,3 +145,33 @@
     }
   }
 }
+
+/////// swiper judges styles ///////
+.swiper {
+  &__judges {
+    padding: 0 0 6rem;
+    .swiper {
+      &-pagination {
+        gap: 2px;
+        &-bullet {
+          background: map-get($grayscale, white);
+          gap: 2px;
+          &-active {
+            background: map-get($grayscale, black);
+            border: 1px solid map-get($grayscale, white);
+          }
+        }
+      }
+      &-button-prev,
+      &-button-next {
+        background: url(../../../public//img//icon/arrow-next.svg) center no-repeat map-get($grayscale, white);
+        &::after, &::before {
+          color: transparent;
+        }
+      }
+      &-button-prev {
+        transform: rotate(-173deg);
+      }
+    }
+  }
+}  

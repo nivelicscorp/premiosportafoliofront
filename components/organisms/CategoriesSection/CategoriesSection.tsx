@@ -2,12 +2,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import CardsCategories from '@molecules/Cards/CardsCategories/CardsCategories'
 import React, { useState } from 'react'
 
-import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css'
 
-import { FreeMode, Pagination, Navigation } from 'swiper/modules'
+import { Pagination, Navigation } from 'swiper/modules'
 
 import styles from '@styles/scss/organisms/categories.module.scss'
 import Link from 'next/dist/client/link'
@@ -33,14 +32,14 @@ const CategoriesSection = ({ data }: Props) => {
         dangerouslySetInnerHTML={{ __html: data.description }}
       />
       <Swiper
-        modules={[FreeMode, Pagination, Navigation]}
+        modules={[Pagination, Navigation]}
         spaceBetween={30}
         slidesPerView={1}
-        className={'swiper primary__swiper noBackground'}
-        freeMode={true}
+        className={'swiper swiper__primary'}
         pagination={true}
         navigation={true}
-        loop={data?.card?.length > 4}
+        // loop={data?.card?.length > 4}
+        loop={true}
         breakpoints={{
           768: {
             slidesPerView: 2,

@@ -32,14 +32,14 @@ const Home: NextPage<{
 }> = (props) => {
   return (
     <>
-      <JudgesSection />
-      {/* <BtnFloat />
+      <BtnFloat />
       <MainBanner data={props.mainBannerData} />
       <CategoriesSection data={props.categoriesData} />
-      <WinnersSection data={props.winnersData} />
+      {/* <WinnersSection data={props.winnersData} />
       <GallerySection data={props.galleryData} />
       <ContactUsSection data={props.contactUsData} />
       <MorePortafolioSection data={props.morePortafolioData} /> */}
+      <JudgesSection />
     </>
   )
 }

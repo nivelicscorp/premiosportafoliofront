@@ -1,15 +1,27 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Image from 'next/image'
 
-const CardsJudges = () => {
+import styles from '@styles/scss/molecules/cards/cards-judges.module.scss'
+
+interface judges {
+    name?: string,
+    position?: string,
+}
+
+const CardsJudges = ({position, name}:judges) => {
   return (
-    <div>
-        <div>
+    <div className={styles?.cardJudges}>
+        <div className={styles?.cardJudges__img}>
             <Image 
-                src='https://s3.amazonaws.com/www-inside-design/uploads/2019/03/featureuserpersona-810x810.jpg'
+                src='/img/categories/hand.png'
                 height='250'
                 width='250'
             />
+        </div>
+        <div className={styles?.cardJudges__data}>
+            <p className={styles?.cardJudges__name}> {name} </p>
+            <p className={styles?.cardJudges__position}> {position} </p>
         </div>
     </div>
   )
