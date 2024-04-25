@@ -19,35 +19,37 @@ module.exports = {
         followSymlinks: false,
       },
       env_development: {
-        PORT: 3040,
-        BASE_DOMAIN: 'https://stg-*.com',
+        PORT: 3050,
+        BASE_DOMAIN: 'https://beta-*.com',
         ROBOTS: 'noindex, nofollow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
           INDEX: 'elasticsearch_index_premios_portafolio_2024_beta_multisite',
-          DOMAIN: 'http://localhost:3040',
+          DOMAIN: 'http://localhost:3050',
           ELASTIC_USERNAME: 'MultiSite_Stg',
           ELASTIC_PASSWORD: 'Mult1S1t3_Cl0ud_01',
         }),
         ELASTIC_API: '/api/elastic/portafolio',
         IMAGES: JSON.stringify({
-          FOLDER_OF_IMAGES: 'https://stg-premiospo.eltiempo.com.co',
+          FOLDER_OF_IMAGES:
+            'https://beta-premios.portafolio.co/static/assets/backend',
         }),
       },
       env_production: {
-        PORT: 3040,
+        PORT: 3050,
         BASE_DOMAIN: 'https://*.com',
         ROBOTS: 'index, follow',
         ELASTIC_DATA: JSON.stringify({
-          NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
-          INDEX: 'elasticsearch_index_premios_portafolio_2024_beta_multisite',
-          DOMAIN: 'http://localhost:3040',
-          ELASTIC_USERNAME: 'MultiSite_Stg',
-          ELASTIC_PASSWORD: 'Mult1S1t3_Cl0ud_01',
+          NODE: 'https://transprdelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
+          INDEX: 'elasticsearch_index_premios_portafolio_2024_multisite',
+          DOMAIN: 'http://localhost:3050',
+          ELASTIC_USERNAME: 'MultiSite_Prod',
+          ELASTIC_PASSWORD: 'Mult1S1t3_Pr0d24',
         }),
         ELASTIC_API: '/api/elastic/portafolio',
         IMAGES: JSON.stringify({
-          FOLDER_OF_IMAGES: 'https://stg-premiospo.eltiempo.com.co/',
+          FOLDER_OF_IMAGES:
+            'https://premios.portafolio.co/static/assets/backend',
         }),
       },
     },
