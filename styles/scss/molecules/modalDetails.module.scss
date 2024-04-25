@@ -1,0 +1,61 @@
+@import '../config/variables';
+@import '../config/mixins';
+
+.modal {
+    position: absolute;
+    top: 2.8rem;
+    left: -2.2rem;
+    background: rgba(#3B3B3B, 0.81);
+    padding: 5.2rem 2.3rem 5.9rem;
+    width: calc(100% + 4.4rem);
+    z-index: 2;
+    &.close {
+        display: none;
+    }
+    &__close {        
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: grid;
+        height: 3.6rem;
+        margin: 0 0 0 auto;
+        min-height: 3.6rem;
+        outline: none;
+        place-content: center;
+        transition: all .3s ease;
+        width: 3.6rem;
+        &:hover {
+            background: map-get($primary, base);
+            transition: all .3s ease;
+            svg {
+                fill: map-get($grayscale, white);
+            }
+        }
+    }
+    &__card {
+        margin: auto;
+        max-width: 63.2rem;
+        width: 100%;
+    }
+}
+
+@include mq-min(lg) {
+    .modal {
+        left: 50%;
+        max-width: 120rem;
+        transform: translateX(-50%);
+    }
+}  
+
+
+@include mq-min(xl) {
+    .modal {
+        &__top {
+
+        }
+        &__card {
+            padding: 6.1rem 2.3rem;
+            margin: 0 0 0 auto;
+        }
+    }
+}

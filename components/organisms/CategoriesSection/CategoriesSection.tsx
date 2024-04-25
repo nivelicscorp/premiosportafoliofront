@@ -12,14 +12,15 @@ import { FreeMode, Pagination, Navigation } from 'swiper/modules'
 import styles from '@styles/scss/organisms/categories.module.scss'
 import Link from 'next/dist/client/link'
 import { CategorySectionModel } from '@models/categories.model'
+import ModalDetails from '@molecules/ModalDetails/ModalDetails'
 
 type Props = {
-  categories: CategorySectionModel
+  categories: CategorySectionModel;
 }
 
 const CategoriesSection = ({ categories }: Props) => {
   return (
-    <section className={styles?.categories}>
+    <section className={styles?.categories} >
       <h2 className={styles?.categories__title}>{categories.title}</h2>
       <div
         className={styles?.categories__intro}
@@ -58,6 +59,8 @@ const CategoriesSection = ({ categories }: Props) => {
       <Link href='/registro' passHref>
         <a className={styles?.categories__link}>{categories.downLink}</a>
       </Link>
+      {/* Modal Detail */}
+      <ModalDetails />
     </section>
   )
 }

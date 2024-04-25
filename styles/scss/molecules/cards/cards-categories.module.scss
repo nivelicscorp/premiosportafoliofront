@@ -1,4 +1,5 @@
 @import '../../config/variables';
+@import '../../config/mixins';
 
 .cardCategories {
   border-radius: 29px;
@@ -8,46 +9,52 @@
   &__top {
     align-items: center;
     background: map-get($grayscale, black);
-    border-bottom: 8px solid transparent;
     border-radius: 3rem 3rem 0 0;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    padding: 1.4rem 4rem 0.7rem;
+    padding: 1.4rem 4rem 2rem;
+    position: relative;
     text-align: center;
+    .colorCategory {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
     &.export {
-      border-color: map-get($categories, export);
+      svg path.category { fill: map-get($categories, export); }
     }
     &.environment {
-      border-color: map-get($categories, environment);
+      svg path.category { fill: map-get($categories, environment); }
     }
     &.client {
-      border-color: map-get($categories, client);
+      svg path.category { fill: map-get($categories, client); }
     }
 
     &.digital {
-      border-color: map-get($categories, digital);
+      svg path.category { fill: map-get($categories, digital); }
     }
     &.master {
-      border-color: map-get($categories, master);
+      svg path.category { fill: map-get($categories, master); }
     }
     &.student {
-      border-color: map-get($categories, student);
+      svg path.category { fill: map-get($categories, student); }
     }
     &.social {
-      border-color: map-get($categories, social);
+      svg path.category { fill: map-get($categories, social); }
     }
     &.leader {
-      border-color: map-get($categories, leader);
+      svg path.category { fill: map-get($categories, leader); }
     }
     &.humanResourses {
-      border-color: map-get($categories, humanResourses);
+      svg path.category { fill: map-get($categories, humanResourses); }
     }
     &.innovation {
-      border-color: map-get($categories, innovation);
+      svg path.category { fill: map-get($categories, innovation); }
     }
     &.community {
-      border-color: map-get($categories, community);
+      svg path.category { fill: map-get($categories, community); }
     }
     &__image {
       height: 7rem;
@@ -80,7 +87,6 @@
       overflow: hidden;
     }
   }
-
   &__seeMore {
     border: none;
     background: map-get($grayscale, black);
@@ -92,5 +98,111 @@
     font: bold 1.3rem / 1.8rem $font-primary;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  // Variant Modal
+  &.modal {
+    background: map-get($grayscale, white);
+    margin-top: 9rem;
+    padding-bottom: 2.8rem;    
+    .cardCategories {
+      width: 100%;
+      &__top {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3.1rem 1.6rem;
+        padding: 1.4rem 2rem 2rem;
+        &__title {
+          max-width: calc(100% - 8.1rem);
+        }
+      }
+      &__detail {
+          color: map-get($grayscale, gray-50);
+          padding: 1.2rem 2.9rem 2.1rem;
+      }
+      &__imgModal {
+        margin: -10rem auto 0;
+        position: relative;
+        height: 19.5rem;
+        width: 90%;
+        z-index: 2;
+        span {
+          width: 100% !important;
+          height: 100% !important;
+        }
+        img {
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            width: 100%;
+        }
+        &.export {
+          background: map-get($categories, export);
+        }
+        &.environment {
+            background: map-get($categories, environment);
+        }
+        &.client {
+            background: map-get($categories, client);
+        }    
+        &.digital {
+            background: map-get($categories, digital);
+        }
+        &.master {
+            background: map-get($categories, master);
+        }
+        &.student {
+            background: map-get($categories, student);
+        }
+        &.social {
+            background: map-get($categories, social);
+        }
+        &.leader {
+            background: map-get($categories, leader);
+        }
+        &.humanResourses {
+            background: map-get($categories, humanResourses);
+        }
+        &.innovation {
+            background: map-get($categories, innovation);
+        }
+        &.community {
+            background: map-get($categories, community);
+        }
+      }
+      &__postulate {
+        align-items: center;
+        background: map-get($primary, general);
+        border-radius: 8px;
+        color: map-get($grayscale, white);
+        display: flex;
+        font: 700 2.1rem / 2.8rem $font-primary;
+        gap: 8px;
+        margin: auto;
+        padding: .6rem 4.1rem;
+        text-decoration: none;
+        width: fit-content;
+      }
+    }
+    @include mq-min(xl) {
+      margin: 0;
+      .cardCategories {
+        &__imgModal {
+          height: 32.2rem;
+          left: -42.3rem;
+          position: absolute;
+          margin: 0;
+          top: 50%;
+          width: 42.3rem;
+          img {
+            object-position: center bottom;
+          }
+        }
+        &__cards {
+          
+        }
+      }
+    }
   }
 }
