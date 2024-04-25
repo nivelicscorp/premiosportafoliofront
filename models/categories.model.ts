@@ -6,7 +6,7 @@ export type CategoryCardModel = {
   summary: string
   image: ImagesModel
   icon: ImagesModel
-  variant?: string 
+  variant?: string
 }
 
 export type CategorySectionModel = {

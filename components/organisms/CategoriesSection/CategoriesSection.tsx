@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import CardsCategories from '@molecules/Cards/CardsCategories/CardsCategories'
-import React from 'react'
+import React, { useState } from 'react'
 
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
@@ -11,16 +11,22 @@ import { FreeMode, Pagination, Navigation } from 'swiper/modules'
 
 import styles from '@styles/scss/organisms/categories.module.scss'
 import Link from 'next/dist/client/link'
-import { CategorySectionModel } from '@models/categories.model'
+import {
+  CategoryCardModel,
+  CategorySectionModel,
+} from '@models/categories.model'
 import ModalDetails from '@molecules/ModalDetails/ModalDetails'
 
 type Props = {
-  categories: CategorySectionModel;
+  categories: CategorySectionModel
 }
 
 const CategoriesSection = ({ categories }: Props) => {
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryCardModel | null>(null)
+
   return (
-    <section className={styles?.categories} >
+    <section className={styles?.categories}>
       <h2 className={styles?.categories__title}>{categories.title}</h2>
       <div
         className={styles?.categories__intro}
@@ -52,15 +58,22 @@ const CategoriesSection = ({ categories }: Props) => {
       >
         {categories?.card?.map((category, index) => (
           <SwiperSlide key={index}>
-            <CardsCategories {...category} />
+            <CardsCategories
+              {...category}
+              emitSelection={(card) => setSelectedCategory(card)}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
       <Link href='/registro' passHref>
         <a className={styles?.categories__link}>{categories.downLink}</a>
       </Link>
-      {/* Modal Detail */}
-      <ModalDetails />
+      {selectedCategory && (
+        <ModalDetails
+          {...selectedCategory}
+          emitClose={() => setSelectedCategory(null)}
+        />
+      )}
     </section>
   )
 }

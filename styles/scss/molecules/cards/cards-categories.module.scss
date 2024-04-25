@@ -23,38 +23,60 @@
       width: 100%;
     }
     &.export {
-      svg path.category { fill: map-get($categories, export); }
+      svg path.category {
+        fill: map-get($categories, export);
+      }
     }
     &.environment {
-      svg path.category { fill: map-get($categories, environment); }
+      svg path.category {
+        fill: map-get($categories, environment);
+      }
     }
     &.client {
-      svg path.category { fill: map-get($categories, client); }
+      svg path.category {
+        fill: map-get($categories, client);
+      }
     }
 
     &.digital {
-      svg path.category { fill: map-get($categories, digital); }
+      svg path.category {
+        fill: map-get($categories, digital);
+      }
     }
     &.master {
-      svg path.category { fill: map-get($categories, master); }
+      svg path.category {
+        fill: map-get($categories, master);
+      }
     }
     &.student {
-      svg path.category { fill: map-get($categories, student); }
+      svg path.category {
+        fill: map-get($categories, student);
+      }
     }
     &.social {
-      svg path.category { fill: map-get($categories, social); }
+      svg path.category {
+        fill: map-get($categories, social);
+      }
     }
     &.leader {
-      svg path.category { fill: map-get($categories, leader); }
+      svg path.category {
+        fill: map-get($categories, leader);
+      }
     }
     &.humanResourses {
-      svg path.category { fill: map-get($categories, humanResourses); }
+      svg path.category {
+        fill: map-get($categories, humanResourses);
+      }
     }
     &.innovation {
-      svg path.category { fill: map-get($categories, innovation); }
+      svg path.category {
+        fill: map-get($categories, innovation);
+      }
     }
     &.community {
-      svg path.category { fill: map-get($categories, community); }
+      svg path.category {
+        fill: map-get($categories, community);
+      }
     }
     &__image {
       height: 7rem;
@@ -102,9 +124,11 @@
 
   // Variant Modal
   &.modal {
-    background: map-get($grayscale, white);
-    margin-top: 13rem;
-    padding-bottom: 2.8rem;    
+    background: transparent;
+    padding-bottom: 2.8rem;
+    @include mq-min(xl) {
+      margin-top: 13rem;
+    }
     .cardCategories {
       width: 100%;
       &__top {
@@ -112,66 +136,62 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 3.1rem 1.6rem;
-        padding: 9rem 2rem 2rem;
+        padding: 2rem 2rem 2rem;
         &__title {
           max-width: calc(100% - 8.1rem);
         }
       }
       &__detail {
-          color: map-get($grayscale, gray-50);
-          padding: 1.2rem 2.9rem 2.1rem;
+        color: map-get($grayscale, gray-50);
+        padding: 1.2rem 2.9rem 7rem;
       }
       &__imgModal {
-        left: 50%;
         margin: 0 auto 0;
-        position: absolute;
-        height: 19.5rem;
-        top: -12rem;
-        transform: translateX(-50%);
-        width: 90%;
+        height: 14.6rem;
+        width: 75%;
         z-index: 2;
         span {
           width: 100% !important;
           height: 100% !important;
         }
         img {
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          width: 100%;
         }
         &.export {
           background: map-get($categories, export);
         }
         &.environment {
-            background: map-get($categories, environment);
+          background: map-get($categories, environment);
         }
         &.client {
-            background: map-get($categories, client);
-        }    
+          background: map-get($categories, client);
+        }
         &.digital {
-            background: map-get($categories, digital);
+          background: map-get($categories, digital);
         }
         &.master {
-            background: map-get($categories, master);
+          background: map-get($categories, master);
         }
         &.student {
-            background: map-get($categories, student);
+          background: map-get($categories, student);
         }
         &.social {
-            background: map-get($categories, social);
+          background: map-get($categories, social);
         }
         &.leader {
-            background: map-get($categories, leader);
+          background: map-get($categories, leader);
         }
         &.humanResourses {
-            background: map-get($categories, humanResourses);
+          background: map-get($categories, humanResourses);
         }
         &.innovation {
-            background: map-get($categories, innovation);
+          background: map-get($categories, innovation);
         }
         &.community {
-            background: map-get($categories, community);
+          background: map-get($categories, community);
         }
       }
       &__postulate {
@@ -183,7 +203,12 @@
         font: 700 2.1rem / 2.8rem $font-primary;
         gap: 8px;
         margin: auto;
-        padding: .6rem 4.1rem;
+        position: absolute;
+        bottom: 4rem;
+        right: 0;
+        left: 0;
+        margin: 0 auto 0;
+        padding: 0.6rem 4.1rem;
         text-decoration: none;
         width: fit-content;
       }
@@ -192,15 +217,14 @@
       margin: 0;
       .cardCategories {
         &__imgModal {
-          height: 32.2rem;
+          height: 65%;
           left: -42.3rem;
           position: absolute;
           margin: 0;
-          top: 50%;
-          transform: translateY(-50%);
+          top: 4rem;
           width: 42.3rem;
           img {
-            object-position: center bottom;
+            object-position: center;
           }
         }
         &__top {
