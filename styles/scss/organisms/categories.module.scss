@@ -32,6 +32,7 @@
         place-content: center;
         position: relative;
         text-align: center;
+        z-index: 3;
         &::after {
             background: map-get($grayscale, black);
             border-radius: 0 0 2rem 2rem;
