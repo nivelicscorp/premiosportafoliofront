@@ -5,7 +5,7 @@ import getImage from '@utils/getImage'
 
 const BestMomentSectionDTO = (sectionData: any): BestMomentsSectionModel => {
   const parseButton: ButtonModel[] = []
-  sectionData.texto_botones?.forEach((element: any, index: number) => {
+  sectionData?.texto_botones?.forEach((element: any, index: number) => {
     parseButton.push({
       title: sectionData?.texto_botones[index],
       url: sectionData?.enlaces_botones[index],

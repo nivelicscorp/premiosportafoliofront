@@ -2,17 +2,20 @@
 @import '../config/variables';
 
 .winners {
+  background: map-get($grayscale, white);
   min-height: 45rem;
-  max-width: 120rem;
   width: 100%;
-  margin: 3rem auto 0;
+  margin: 6rem auto 0;
+  padding: 3.4rem 0 3.4rem;
+  position: relative;
   z-index: 10;
   &__title {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font: normal normal bold 3.2rem/3.3rem Tiempos Headline;
+    font: normal normal bold 3.2rem/3.3rem $font-secondary;
+    padding: 0 2.6rem;
     hr:first-child {
       display: none;
     }
@@ -21,7 +24,7 @@
       width: 22.5rem;
       height: 0.1rem;
       margin: 2.3rem auto;
-      border: 0.1rem solid map-get($primary, base);
+      border: 0.15rem solid map-get($primary, base);
     }
   }
 }
@@ -29,9 +32,20 @@
 @include mq-min(xl) {
   .winners {
     min-height: 45rem;
-    max-width: 120rem;
     width: 100%;
-    margin: 3rem auto 0;
+    margin: 8rem auto 4rem;
+    &::before {
+      background: map-get($grayscale, white);
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: -2rem;
+      left: 0;
+      height: 15rem;       
+      transform: skewY(-2.2deg);
+      z-index: -1;
+    }
     &__title {
       font: normal normal bold 3.7rem/5.1rem Tiempos Headline;
       flex-direction: row;
