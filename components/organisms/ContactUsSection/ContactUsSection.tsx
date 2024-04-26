@@ -6,9 +6,10 @@ import { myLoader } from '@utils/customLoaderImages'
 
 type Props = {
   data: ContactUsSectionModel
+  activeRegister: boolean
 }
 
-const ContactUsSection = ({ data }: Props) => {
+const ContactUsSection = ({ data, activeRegister }: Props) => {
   return (
     <section
       className={styles.contactUs}
@@ -19,9 +20,11 @@ const ContactUsSection = ({ data }: Props) => {
         className={styles.contactUs__description}
         dangerouslySetInnerHTML={{ __html: data.description }}
       ></div>
-      <Link href={'/registro'} passHref>
-        <a className={styles.contactUs__button}>Regístrate aquí</a>
-      </Link>
+      {activeRegister && (
+        <Link href={'/registro'} passHref>
+          <a className={styles.contactUs__button}>Regístrate aquí</a>
+        </Link>
+      )}
       <div className={styles.contactUs__auxiliaryImage}>
         <Image
           loader={myLoader}

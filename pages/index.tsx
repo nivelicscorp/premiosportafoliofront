@@ -3,6 +3,7 @@ import { BtnFloat } from '@atoms/BtnFloat/BtnFloat'
 import { BestMomentsSectionModel } from '@models/bestMoments.model'
 import { CategorySectionModel } from '@models/categories.model'
 import { ContactUsSectionModel } from '@models/contactUs.model'
+import { FloatButtonModel } from '@models/floatButton.model'
 import { GallerySectionModel } from '@models/gallery.model'
 import { JuriesSectionModel } from '@models/juries.model'
 import { MainBanneSectionModel } from '@models/mainBanner.model'
@@ -27,6 +28,7 @@ import MorePortafolioSectionDTO from '@utils/DTO/MorePortafolioSectionDTO'
 import { WinnerSectionDTO } from '@utils/DTO/WinnerSectionDTO'
 import type { GetServerSideProps, NextPage } from 'next'
 const Home: NextPage<{
+  floatButton: FloatButtonModel
   mainBannerData: MainBanneSectionModel
   categoriesData: CategorySectionModel
   juriesData: JuriesSectionModel
@@ -38,21 +40,28 @@ const Home: NextPage<{
 }> = (props) => {
   return (
     <>
-      <BtnFloat />
+      {props.floatButton.active && <BtnFloat data={props.floatButton} />}
       <MainBanner data={props.mainBannerData} />
-      <CategoriesSection data={props.categoriesData} />
+      <CategoriesSection
+        data={props.categoriesData}
+        activeRegister={props.floatButton.active}
+      />
       <JudgesSection data={props.juriesData} />
       <BestMomentsSection data={props.bestMomentsData} />
       <WinnersSection data={props.winnersData} />
       <GallerySection data={props.galleryData} />
-      <ContactUsSection data={props.contactUsData} />
+      <ContactUsSection
+        data={props.contactUsData}
+        activeRegister={props.floatButton.active}
+      />
       <MorePortafolioSection data={props.morePortafolioData} />
     </>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const pageData = LandingPageDTO(await getLandingPage())
+  const [landingPageData, floatButton] = await getLandingPage()
+  const pageData = LandingPageDTO(landingPageData)
   const mainBannerData = MainBannerDTO(pageData?.mainBanner)
   const categoriesData = CategorySectionDTO(pageData?.categoriesSection)
   const bestMomentsData = BestMomentSectionDTO(pageData?.ceremoniesBanner)
@@ -66,6 +75,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
+      floatButton,
       mainBannerData,
       juriesData,
       categoriesData,

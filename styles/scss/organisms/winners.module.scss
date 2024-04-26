@@ -5,7 +5,7 @@
   background: map-get($grayscale, white);
   min-height: 45rem;
   width: 100%;
-  margin: 6rem auto 0;
+  margin: 0 auto;
   padding: 3.4rem 0 3.4rem;
   position: relative;
   z-index: 10;
@@ -33,7 +33,7 @@
   .winners {
     min-height: 45rem;
     width: 100%;
-    margin: 8rem auto 4rem;
+    margin: 0 auto;
     &::before {
       background: map-get($grayscale, white);
       content: '';
@@ -42,7 +42,7 @@
       width: 100%;
       top: -2rem;
       left: 0;
-      height: 15rem;       
+      height: 15rem;
       transform: skewY(-2.2deg);
       z-index: -1;
     }

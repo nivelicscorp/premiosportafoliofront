@@ -5,6 +5,7 @@ import { CategoryCardModel } from '@models/categories.model'
 
 interface Props extends CategoryCardModel {
   emitClose: () => void
+  activeRegister: boolean
 }
 
 const ModalDetails = ({
@@ -14,6 +15,7 @@ const ModalDetails = ({
   image,
   icon,
   variant,
+  activeRegister,
   emitClose,
 }: Props) => {
   return (
@@ -39,6 +41,7 @@ const ModalDetails = ({
             image={image}
             icon={icon}
             emitSelection={() => {}}
+            activeRegister={activeRegister}
           />
         </div>
       </div>

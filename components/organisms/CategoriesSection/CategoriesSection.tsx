@@ -18,9 +18,10 @@ import ModalDetails from '@molecules/ModalDetails/ModalDetails'
 
 type Props = {
   data: CategorySectionModel
+  activeRegister: boolean
 }
 
-const CategoriesSection = ({ data }: Props) => {
+const CategoriesSection = ({ data, activeRegister }: Props) => {
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryCardModel | null>(null)
 
@@ -60,17 +61,21 @@ const CategoriesSection = ({ data }: Props) => {
             <CardsCategories
               {...category}
               emitSelection={(card) => setSelectedCategory(card)}
+              activeRegister={activeRegister}
             />
           </SwiperSlide>
         ))}
       </Swiper>
-      <Link href='/registro' passHref>
-        <a className={styles?.categories__link}>{data.downLink}</a>
-      </Link>
+      {activeRegister && (
+        <Link href='/registro' passHref>
+          <a className={styles?.categories__link}>{data.downLink}</a>
+        </Link>
+      )}
       {selectedCategory && (
         <ModalDetails
           {...selectedCategory}
           emitClose={() => setSelectedCategory(null)}
+          activeRegister={activeRegister}
         />
       )}
     </section>

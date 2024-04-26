@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import styles from '@styles/scss/atoms/button-float.module.scss'
 import Link from 'next/link'
+import { FloatButtonModel } from '@models/floatButton.model'
 
-export const BtnFloat = () => {
+interface Props {
+  data: FloatButtonModel
+}
+
+export const BtnFloat = ({ data }: Props) => {
   const [openBtn, setBTN] = useState(false)
   const toggleBtn = () => {
     setBTN(!openBtn)
@@ -10,9 +15,9 @@ export const BtnFloat = () => {
   return (
     <div className={styles?.btnFloat + ' ' + (openBtn ? styles?.open : '')}>
       <div className={styles?.btnFloat__content}>
-        <Link href={'/registro'} passHref>
+        <Link href={data?.url} passHref>
           <a className={styles?.btnFloat__link}>
-            Postular ahora
+            {data?.text}
             <svg
               id='a'
               xmlns='http://www.w3.org/2000/svg'

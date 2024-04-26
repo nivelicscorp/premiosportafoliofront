@@ -49,7 +49,7 @@
     }
   }
   &.swiper__primary {
-    padding-bottom: 3rem;
+    padding: 0 2.5rem 7rem;
     .swiper {
       &-pagination {
         &-bullet {
@@ -83,10 +83,10 @@
       &-button-prev {
         background: map-get($grayscale, gray-90);
       }
-      &-button-next{
+      &-button-next {
         right: 2.3rem;
       }
-      &-button-prev  {
+      &-button-prev {
         left: 2.3rem;
       }
     }
@@ -134,31 +134,31 @@
       transform: rotate(180deg);
       right: -0.2rem;
     }
-    &.swiper__grayscale  {
+    &.swiper__grayscale {
       padding: 3rem 5rem 6rem 3rem;
       .swiper {
-        &-button-next{
+        &-button-next {
           right: 0;
         }
-        &-button-prev  {
+        &-button-prev {
           left: 2rem;
         }
         &-button-next,
-        &-button-prev  {
+        &-button-prev {
           bottom: 50%;
           transform: translateX(-50%);
         }
       }
       &.portafolio {
         .swiper {
-          &-button-next, 
+          &-button-next,
           &-button-prev {
             bottom: 0;
           }
-          &-button-next{
+          &-button-next {
             right: 2.3rem;
           }
-          &-button-prev  {
+          &-button-prev {
             left: 4.3rem;
           }
         }
@@ -187,7 +187,8 @@
       }
       &-button-prev,
       &-button-next {
-        background: url(../../../public//img//icon/arrow-next.svg) center no-repeat map-get($grayscale, white);
+        background: url(../../../public//img//icon/arrow-next.svg) center
+          no-repeat map-get($grayscale, white);
         &::after,
         &::before {
           color: transparent;
@@ -197,7 +198,7 @@
         left: 3.2rem;
         transform: rotate(-173deg);
       }
-      &-button-next{
+      &-button-next {
         right: 3.2rem;
       }
     }
@@ -219,7 +220,7 @@
         }
         &-button-prev {
           left: 0;
-          transform: translateY(-50%)  rotate(-173deg);
+          transform: translateY(-50%) rotate(-173deg);
         }
       }
     }
