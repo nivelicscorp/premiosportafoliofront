@@ -12,7 +12,9 @@ const getImage = (url: string | Array<any>): string => {
   }
   // Get the image from string
   if (typeof url === 'string') {
-    return `${IMAGES?.FOLDER_OF_IMAGES ?? '/'}${url?.replace('public://', '')}`
+    return `${IMAGES?.FOLDER_OF_IMAGES ?? '/'}${url
+      ?.replace('public://', '')
+      .replace('sites/premios-portafolio/files/', '')}`
   }
   // Get the image from the images array
   return `${IMAGES?.FOLDER_OF_IMAGES}${arrayDestructuring(url, '')?.replace(
