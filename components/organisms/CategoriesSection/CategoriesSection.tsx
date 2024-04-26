@@ -41,7 +41,7 @@ const CategoriesSection = ({ data }: Props) => {
         // loop={data?.card?.length > 4}
         loop={true}
         breakpoints={{
-          768: {
+          620: {
             slidesPerView: 2,
           },
           1024: {

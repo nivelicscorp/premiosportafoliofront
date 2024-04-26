@@ -9,18 +9,6 @@
     width: calc(100% - 4.4rem);
     z-index: 5;
 
-    &::before {
-        background: url(../../../public/img/bg/fondoCategorias.png) center no-repeat map-get($grayscale, white);
-        background-size: cover;
-        content: '';
-        position: absolute;
-        height: 100%;
-        left: -2.2rem;
-        top: 3rem;
-        width: calc(100% + 4.4rem);
-        z-index: -2;
-    }
-
     &__title {
         background: map-get($grayscale, white);
         box-shadow: 0px 1px 8px #00000052;

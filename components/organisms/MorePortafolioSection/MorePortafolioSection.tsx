@@ -1,6 +1,6 @@
 import CardsPortafolio from '@molecules/Cards/CardsPortafolio/CardsPortafolio'
 import styles from '@styles/scss/organisms/morePortafolio.module.scss'
-import { FreeMode, Pagination, Navigation } from 'swiper/modules'
+import { Pagination, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css/free-mode'
@@ -23,26 +23,27 @@ const MorePortafolioSection = ({ data }: Props) => {
       </div>
       <div className={styles.morePortafolio__carrousel}>
         <Swiper
-          modules={[FreeMode, Pagination, Navigation]}
+          modules={[Pagination, Navigation]}
           spaceBetween={30}
           slidesPerView={1.1}
-          className={'swiper swiper__grayscale'}
-          freeMode={true}
+          className={'swiper swiper__grayscale portafolio'}
           pagination={true}
           navigation={true}
           loop={data?.cards?.length > 4}
           breakpoints={{
-            767: {
+            544: {
               slidesPerView: 2,
               spaceBetween: 10,
             },
+            767: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
             1024: {
-              centeredSlides: true,
               spaceBetween: 50,
               slidesPerView: 3,
             },
             1280: {
-              centeredSlides: true,
               slidesPerView: 3.4,
             },
           }}

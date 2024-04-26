@@ -1,7 +1,7 @@
 import { WinnerSectionModel } from '@models/winner.model'
 import CardsWinner from '@molecules/Cards/CardsWinner/CardsWinner'
 import style from '@styles/scss/organisms/winners.module.scss'
-import { FreeMode, Navigation, Pagination } from 'swiper/modules'
+import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 interface WinnersSectionProps {
@@ -17,24 +17,22 @@ const WinnersSection = ({ data }: WinnersSectionProps) => {
         <hr />
       </div>
       <Swiper
-        modules={[FreeMode, Navigation, Pagination]}
+        modules={[Navigation, Pagination]}
         slidesPerView={1.5}
-        className={'swiper swiper__grayscale noPaginatorDesktop'}
-        freeMode={true}
+        className={'swiper swiper__grayscale'}
         navigation={true}
         pagination={true}
-        centeredSlides={true}
         loop={data?.winners?.length > 5}
         breakpoints={{
           768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            freeMode: false,
             slidesPerView: 3,
           },
+          1024: {
+            pagination: false,
+            spaceBetween: 50,
+            slidesPerView: 4,
+          },
           1280: {
-            freeMode: false,
             slidesPerView: 5,
           },
         }}
