@@ -1,7 +1,30 @@
-@import "../config/variables";
+@import '../config/variables';
 
 .btn {
-    &.float {
-        position: fixed;
-    }
+  &.float {
+    position: fixed;
+  }
+}
+
+.linkBtn {
+  padding: 1rem 2.5rem;
+  width: 100%;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  border-radius: 1rem;
+  font: normal normal bold 2.4rem/3.3rem Open Sans;
+  letter-spacing: 0px;
+  &__primary {
+    background: map-get($grayscale, white) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 0.2rem solid map-get($primary, general);
+    color: map-get($primary, general);
+  }
+  &__secondary {
+    background: map-get($primary, general) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 0.2rem solid map-get($grayscale, white);
+    color: map-get($grayscale, white);
+  }
 }

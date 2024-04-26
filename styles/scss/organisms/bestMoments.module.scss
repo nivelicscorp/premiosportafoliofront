@@ -1,0 +1,80 @@
+@import '../config/mixins';
+@import '../config/variables';
+
+.bestMoments {
+  height: 70rem;
+  background: url(../../../public/img/bg-white/bg-mobile.png) 0% 0% no-repeat
+    padding-box;
+  background-size: cover;
+  padding: 3.5rem 1rem 7.5rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  &__container {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 5.6rem 2.4rem;
+    .logo {
+      height: 20rem;
+      width: 15rem;
+      margin: 0 auto;
+    }
+    .title {
+      font: normal normal bold 3.2rem/3.6rem Tiempos Headline;
+      letter-spacing: 0;
+      text-align: center;
+      margin: 3rem 0;
+      max-width: 34rem;
+      color: map-get($grayscale, white);
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: auto;
+      width: 25rem;
+      gap: 2.5rem;
+    }
+  }
+  &__imgDesktop {
+    position: absolute;
+    display: none;
+  }
+  &__imgMobile {
+    position: absolute;
+    display: block;
+  }
+}
+
+@include mq-min(xl) {
+  .bestMoments {
+    height: 40rem;
+    padding: 6.4rem 1rem 16rem;
+    background: url(../../../public/img/bg-white/bg-desktop.png) 0% 0% no-repeat
+      padding-box;
+    align-items: center;
+    &__container {
+      padding: 0;
+      flex-direction: row;
+      gap: 5.6rem;
+      .title {
+        font: normal normal bold 4.7rem/5.3rem Tiempos Headline;
+        max-width: 43rem;
+      }
+      .logo {
+        height: 15rem;
+        width: 12rem;
+        margin: 0 auto;
+      }
+    }
+    &__imgDesktop {
+      position: absolute;
+      display: block;
+    }
+    &__imgMobile {
+      position: absolute;
+      display: none;
+    }
+  }
+}
