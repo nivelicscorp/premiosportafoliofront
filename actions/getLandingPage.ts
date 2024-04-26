@@ -1,12 +1,16 @@
 import getComponentByUuid from './getComponentByUuid'
 import arrayDestructuring from '@utils/arrayDestructuring'
 import getPageByUrl from './getPageByUrl'
+import { FloatButtonModel } from '@models/floatButton.model'
 
 const ELASTIC_DATA = JSON.parse(process.env.ELASTIC_DATA || '')
 const URL = `${ELASTIC_DATA.DOMAIN}${process.env.ELASTIC_API}`
 
 type LandingPage = {
   components_type: string[]
+  boton_flotante_url: string
+  boton_flotante_texto: string
+  activar_postulaciones: boolean
   components_uuid: string[]
 }
 
@@ -22,6 +26,8 @@ const getLandingPage = async () => {
     '/premios-2024',
     'landing_page'
   )
+  console.log('🚀 ~ getLandingPage ~ landingPage:', landingPage)
+
   /**
    * Get the sections data
    */
@@ -38,8 +44,15 @@ const getLandingPage = async () => {
       data.items_contenido_uuid = articles
     }
   }
-
-  return componentsData
+  const floatButton: FloatButtonModel = {
+    url: arrayDestructuring(landingPage?.boton_flotante_url, '').replace(
+      'internal:',
+      ''
+    ),
+    text: arrayDestructuring(landingPage?.boton_flotante_texto, ''),
+    active: arrayDestructuring(landingPage?.activar_postulaciones, false),
+  }
+  return [componentsData, floatButton]
 }
 
 export default getLandingPage

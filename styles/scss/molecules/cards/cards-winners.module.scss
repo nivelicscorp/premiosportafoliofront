@@ -68,11 +68,11 @@
   }
 }
 
-@include mq-min(xl) {
-  .card {
-    width: 20rem;
-    &__name {
-      width: 100%;
-    }
-  }
-}
+// @include mq-min(xl) {
+//   .card {
+//     width: 20rem;
+//     &__name {
+//       width: 100%;
+//     }
+//   }
+// }

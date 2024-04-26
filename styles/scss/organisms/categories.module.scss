@@ -1,156 +1,144 @@
-@import "../config/mixins";
-@import "../config/variables";
+@import '../config/mixins';
+@import '../config/variables';
 
 .categories {
-    gap: 2rem 0;
-    margin: -3rem auto 0;
-    padding-bottom: 2rem;
+  gap: 2rem 0;
+  margin: -3rem auto 0;
+  position: relative;
+  width: calc(100% - 4.4rem);
+  z-index: 5;
+
+  &__title {
+    background: map-get($grayscale, white);
+    box-shadow: 0px 1px 8px #00000052;
+    border-radius: 0.8rem 0.8rem 0 0;
+    color: map-get($grayscale, black);
+    font: bold 3.2rem / 4rem $font-secondary;
+    min-height: 6rem;
+    display: grid;
+    place-content: center;
     position: relative;
-    width: calc(100% - 4.4rem);
-    z-index: 5;
+    text-align: center;
+    z-index: 3;
+    &::after {
+      background: map-get($grayscale, black);
+      border-radius: 0 0 2rem 2rem;
+      bottom: -1rem;
+      content: '';
+      height: 1rem;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 16.8rem;
+    }
+  }
+
+  &__intro {
+    color: map-get($grayscale, gray-50);
+    font: 400 1.8rem / 2.2rem $font-primary;
+    margin: 2rem auto 3.2rem;
+    span {
+      color: #31abaa;
+      font-weight: bold;
+    }
+  }
+
+  &__link {
+    background: url(../../../public/img/main-banner/hand-click.svg) center right
+      12px no-repeat map-get($grayscale, gray-40);
+    background-size: 2.2rem;
+    border-radius: 0.8rem;
+    color: map-get($grayscale, white);
+    cursor: pointer;
+    display: block;
+    font: bold 1.8rem / 2.2rem $font-primary;
+    margin: 3.6rem auto;
+    min-height: 3rem;
+    padding: 1.3rem 4.6rem 1.3rem 1.3rem;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+
+    &::before,
+    &::after {
+      background: map-get($primary, general);
+      content: '';
+      position: absolute;
+      height: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6.4rem;
+      z-index: -1;
+    }
 
     &::before {
-        background: url(../../../public/img/bg/fondoCategorias.png) center no-repeat map-get($grayscale, white);
-        background-size: cover;
-        content: '';
-        position: absolute;
-        height: 100%;
-        left: -2.2rem;
-        top: 3rem;
-        width: calc(100% + 4.4rem);
-        z-index: -2;
+      right: -8.4rem;
     }
 
-    &__title {
-        background: map-get($grayscale, white);
-        box-shadow: 0px 1px 8px #00000052;
-        border-radius: .8rem .8rem 0 0;
-        color: map-get($grayscale, black);
-        font: bold 3.2rem / 4rem $font-secondary;
-        min-height: 6rem;
-        display: grid;
-        place-content: center;
-        position: relative;
-        text-align: center;
-        z-index: 3;
-        &::after {
-            background: map-get($grayscale, black);
-            border-radius: 0 0 2rem 2rem;
-            bottom: -1rem;
-            content: '';
-            height: 1rem;
-            left: 50%;
-            position: absolute;
-            transform: translateX(-50%);
-            width: 16.8rem;
-        }
+    &::after {
+      left: -8.4rem;
     }
-
-    &__intro {
-        color: map-get($grayscale, gray-50);
-        font: 400 1.8rem / 2.2rem $font-primary;
-        margin: 2rem auto 3.2rem;
-        span {
-            color: #31ABAA;
-            font-weight: bold;
-        }
-    }
-
-    &__link {
-        background: url(../../../public/img/main-banner/hand-click.svg) center right 12px no-repeat map-get($grayscale, gray-40);
-        background-size: 2.2rem;
-        border-radius: .8rem;
-        color: map-get($grayscale, white);
-        cursor: pointer;
-        display: block;
-        font: bold 1.8rem / 2.2rem $font-primary;
-        margin: 3.6rem auto;
-        min-height: 3rem;
-        padding: 1.3rem 4.6rem 1.3rem 1.3rem;
-        position: relative;
-        text-decoration: none;
-        text-align: center;
-        width: fit-content;
-
-        &::before,
-        &::after {
-            background: map-get($primary, general);
-            content: "";
-            position: absolute;
-            height: 3px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6.4rem;
-            z-index: -1;
-        }
-
-        &::before {
-            right: -8.4rem;
-        }
-
-        &::after {
-            left: -8.4rem;
-        }
-    }
+  }
 }
 
 @include mq-min(sm) {
-    .categories {
-        &__title {
-            margin: auto;
-        }
-        &__intro {
-            margin: 2rem auto 3.2rem;
-            text-align: center;
-            &::after {
-                margin-top: 2rem;
-            }
-        }
-        &__title, 
-        &__intro {
-            max-width: 46.2rem;
-            width: 100%;
-        }
+  .categories {
+    &__title {
+      margin: auto;
     }
+    &__intro {
+      margin: 2rem auto 3.2rem;
+      text-align: center;
+      &::after {
+        margin-top: 2rem;
+      }
+    }
+    &__title,
+    &__intro {
+      max-width: 46.2rem;
+      width: 100%;
+    }
+  }
 }
 
 @include mq-min(lg) {
-    .categories {
-        &__title {
-            padding: 1.2rem 5rem;
-            font-size: 3.7rem;
-            line-height: 5.1rem;
-        }
-        &__title, 
-        &__intro {
-            max-width: 85.2rem;
-        }
-        &__intro {
-            font-size: 2.7rem;
-            line-height: 1.2;
-            margin: 4.7rem auto 6.1rem;
-        }
-        &__link {
-            &::before,
-            &::after {
-                width: 10rem;
-            }
-            &::before {
-                right: -12.4rem;
-            }
-    
-            &::after {
-                left: -12.4rem;
-            }
-        }
+  .categories {
+    &__title {
+      padding: 1.2rem 5rem;
+      font-size: 3.7rem;
+      line-height: 5.1rem;
     }
+    &__title,
+    &__intro {
+      max-width: 85.2rem;
+    }
+    &__intro {
+      font-size: 2.7rem;
+      line-height: 1.2;
+      margin: 4.7rem auto 6.1rem;
+    }
+    &__link {
+      &::before,
+      &::after {
+        width: 10rem;
+      }
+      &::before {
+        right: -12.4rem;
+      }
+
+      &::after {
+        left: -12.4rem;
+      }
+    }
+  }
 }
 
 @include mq-min(xl) {
-    .categories {
-        &__title, 
-        &__intro {
-            max-width: 120rem;
-        }
+  .categories {
+    &__title,
+    &__intro {
+      max-width: 120rem;
     }
+  }
 }

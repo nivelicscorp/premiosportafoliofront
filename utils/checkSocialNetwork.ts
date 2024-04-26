@@ -11,6 +11,9 @@ const checkSocialNetwork = (media: string) => {
   if (media.includes('linkedin')) {
     return 'linkedin'
   }
+  if (media.includes('youtube')) {
+    return 'youtube'
+  }
   return 'other'
 }
 

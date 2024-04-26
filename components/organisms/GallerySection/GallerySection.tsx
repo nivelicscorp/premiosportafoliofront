@@ -8,7 +8,7 @@ import 'swiper/css'
 import CardsGallery from '@molecules/Cards/CardsGallery/CardsGallery'
 import { GallerySectionModel } from '@models/gallery.model'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { myLoader } from '@utils/customLoaderImages'
 
 type Props = {
@@ -16,9 +16,6 @@ type Props = {
 }
 const GallerySection = ({ data }: Props) => {
   const [activeContent, setActiveContent] = useState(data.cards[0])
-  useEffect(() => {
-    console.log('activeContent', activeContent)
-  }, [activeContent])
 
   return (
     <section className={styles.gallery}>
@@ -52,7 +49,7 @@ const GallerySection = ({ data }: Props) => {
       <Swiper
         modules={[Pagination, Navigation]}
         slidesPerView={1.2}
-        className={'swiper__primary__swiper noBackground'}
+        className={'swiper swiper__primary'}
         centeredSlides={true}
         pagination={true}
         navigation={true}

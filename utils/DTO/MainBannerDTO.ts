@@ -43,7 +43,7 @@ const MainBannerDTO = (sectionData: any): MainBanneSectionModel => {
       text: arrayDestructuring(sectionData?.hashtag, ''),
       url: arrayDestructuring(sectionData?.hashtag_link, ''),
     },
-    socialMedia: socialMedia || [],
+    socialMedia: socialMedia ?? [],
   }
 }
 
