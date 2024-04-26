@@ -48,13 +48,13 @@ const GallerySection = ({ data }: Props) => {
       </div>
       <Swiper
         modules={[Pagination, Navigation]}
-        slidesPerView={1.2}
-        className={'swiper swiper__primary'}
+        slidesPerView={1}
+        className={'swiper swiper__primary swiper__gallery'}
         centeredSlides={true}
         pagination={true}
         navigation={true}
         slideToClickedSlide={true}
-        loop={false}
+        loop={true}
         onActiveIndexChange={(index: any) =>
           setActiveContent(data.cards[index.activeIndex])
         }
@@ -63,12 +63,12 @@ const GallerySection = ({ data }: Props) => {
             slidesPerView: 1.5,
           },
           1024: {
-            centeredSlides: true,
+            loop: false,
             spaceBetween: 50,
             slidesPerView: 3,
           },
           1280: {
-            centeredSlides: true,
+            loop: false,
             spaceBetween: 50,
             slidesPerView: 3.5,
           },
