@@ -53,6 +53,7 @@ const GallerySection = ({ data }: Props) => {
         centeredSlides={true}
         pagination={true}
         navigation={true}
+        slideToClickedSlide={true}
         loop={false}
         onActiveIndexChange={(index: any) =>
           setActiveContent(data.cards[index.activeIndex])
@@ -68,7 +69,8 @@ const GallerySection = ({ data }: Props) => {
           },
           1280: {
             centeredSlides: true,
-            slidesPerView: 3.4,
+            spaceBetween: 50,
+            slidesPerView: 3.5,
           },
         }}
       >
