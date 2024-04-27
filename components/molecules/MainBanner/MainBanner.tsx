@@ -70,4 +70,4 @@ const MainBanner = ({ data }: Props) => {
   )
 }
 
-export default MainBanner
+export default React.memo(MainBanner)

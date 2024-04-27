@@ -9,6 +9,7 @@ import 'swiper/css/navigation'
 import 'swiper/css'
 import { MorePortafolioSectionModel } from '@models/morePortafolioSection.model'
 import { Fragment } from 'react'
+import React from 'react'
 
 type Props = {
   data: MorePortafolioSectionModel
@@ -67,4 +68,4 @@ const MorePortafolioSection = ({ data }: Props) => {
   )
 }
 
-export default MorePortafolioSection
+export default React.memo(MorePortafolioSection)
