@@ -5,7 +5,10 @@ import {
 import arrayDestructuring from '@utils/arrayDestructuring'
 import getImage from '@utils/getImage'
 
-const CategorySectionDTO = (sectionData: any): CategorySectionModel => {
+const CategorySectionDTO = (sectionData: any): CategorySectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   const parsedCards: CategoryCardModel[] = []
   sectionData?.card_titulo.forEach((content: any, index: number) => {
     parsedCards.push({

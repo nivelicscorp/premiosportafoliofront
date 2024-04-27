@@ -3,7 +3,12 @@ import { ButtonModel } from '@models/button.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
 import getImage from '@utils/getImage'
 
-const BestMomentSectionDTO = (sectionData: any): BestMomentsSectionModel => {
+const BestMomentSectionDTO = (
+  sectionData: any
+): BestMomentsSectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   const parseButton: ButtonModel[] = []
   sectionData?.texto_botones?.forEach((element: any, index: number) => {
     parseButton.push({

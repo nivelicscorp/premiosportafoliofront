@@ -2,7 +2,12 @@ import { WinnerCardModel, WinnerSectionModel } from '@models/winner.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
 import getImage from '@utils/getImage'
 
-export const WinnerSectionDTO = (sectionData: any): WinnerSectionModel => {
+export const WinnerSectionDTO = (
+  sectionData: any
+): WinnerSectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   const parsedCards: WinnerCardModel[] = []
   sectionData?.personajes_field_nombre.forEach(
     (content: any, index: number) => {

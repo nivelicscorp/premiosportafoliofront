@@ -2,7 +2,12 @@ import { ContactUsSectionModel } from '@models/contactUs.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
 import getImage from '@utils/getImage'
 
-const ContactUsSectionDTO = (sectionData: any): ContactUsSectionModel => {
+const ContactUsSectionDTO = (
+  sectionData: any
+): ContactUsSectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   return {
     title: arrayDestructuring(sectionData?.field_titulo, 'Contáctanos'),
     description: arrayDestructuring(sectionData?.descripcion, ''),

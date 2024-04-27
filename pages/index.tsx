@@ -28,33 +28,41 @@ import MorePortafolioSectionDTO from '@utils/DTO/MorePortafolioSectionDTO'
 import { WinnerSectionDTO } from '@utils/DTO/WinnerSectionDTO'
 import type { GetServerSideProps, NextPage } from 'next'
 const Home: NextPage<{
-  floatButton: FloatButtonModel
-  mainBannerData: MainBanneSectionModel
-  categoriesData: CategorySectionModel
-  juriesData: JuriesSectionModel
-  bestMomentsData: BestMomentsSectionModel
-  winnersData: WinnerSectionModel
-  galleryData: GallerySectionModel
-  contactUsData: ContactUsSectionModel
-  morePortafolioData: MorePortafolioSectionModel
+  floatButton: FloatButtonModel | null
+  mainBannerData: MainBanneSectionModel | null
+  categoriesData: CategorySectionModel | null
+  juriesData: JuriesSectionModel | null
+  bestMomentsData: BestMomentsSectionModel | null
+  winnersData: WinnerSectionModel | null
+  galleryData: GallerySectionModel | null
+  contactUsData: ContactUsSectionModel | null
+  morePortafolioData: MorePortafolioSectionModel | null
 }> = (props) => {
   return (
     <>
-      {props.floatButton.active && <BtnFloat data={props.floatButton} />}
-      <MainBanner data={props.mainBannerData} />
-      <CategoriesSection
-        data={props.categoriesData}
-        activeRegister={props.floatButton.active}
-      />
-      <JudgesSection data={props.juriesData} />
-      <BestMomentsSection data={props.bestMomentsData} />
-      <WinnersSection data={props.winnersData} />
-      <GallerySection data={props.galleryData} />
-      <ContactUsSection
-        data={props.contactUsData}
-        activeRegister={props.floatButton.active}
-      />
-      <MorePortafolioSection data={props.morePortafolioData} />
+      {props.floatButton?.active && <BtnFloat data={props.floatButton} />}
+      {props.mainBannerData && <MainBanner data={props.mainBannerData} />}
+      {props.categoriesData && (
+        <CategoriesSection
+          data={props.categoriesData}
+          activeRegister={props.floatButton?.active ?? false}
+        />
+      )}
+      {props.juriesData && <JudgesSection data={props.juriesData} />}
+      {props.bestMomentsData && (
+        <BestMomentsSection data={props.bestMomentsData} />
+      )}
+      {props.winnersData && <WinnersSection data={props.winnersData} />}
+      {props.galleryData && <GallerySection data={props.galleryData} />}
+      {props.contactUsData && (
+        <ContactUsSection
+          data={props.contactUsData}
+          activeRegister={props.floatButton?.active ?? false}
+        />
+      )}
+      {props.morePortafolioData && (
+        <MorePortafolioSection data={props.morePortafolioData} />
+      )}
     </>
   )
 }

@@ -26,7 +26,6 @@ const getLandingPage = async () => {
     '/premios-2024',
     'landing_page'
   )
-  console.log('🚀 ~ getLandingPage ~ landingPage:', landingPage)
 
   /**
    * Get the sections data

@@ -2,7 +2,10 @@ import { JuriesCardModel, JuriesSectionModel } from '@models/juries.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
 import getImage from '@utils/getImage'
 
-const JuriesSectionDTO = (sectionData: any): JuriesSectionModel => {
+const JuriesSectionDTO = (sectionData: any): JuriesSectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   const parsedCards: JuriesCardModel[] = []
   sectionData?.personajes_field_nombre.forEach(
     (content: any, index: number) => {
