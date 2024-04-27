@@ -1,0 +1,83 @@
+@import '../../scss/config/variables';
+@import '../../scss/config/mixins';
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  input,
+  select,
+  textarea {
+    padding: 0.8rem 1.4rem;
+    font-family: Open Sans;
+    border: 0.1rem solid map-get($grayscale, 'gray-30');
+    background-color: map-get($grayscale, white);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    display: block;
+    width: 100%;
+  }
+
+  input.error,
+  select.error,
+  textarea.error {
+    border: 0.1rem solid map-get($alert, 'base');
+    background-color: map-get($alert, 'light');
+  }
+
+  input.disabled,
+  select.disabled,
+  textarea.disabled {
+    border: 0.1rem solid map-get($grayscale, 'gray-20');
+    background-color: map-get($grayscale, 'gray-10');
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    background-color: map-get($grayscale, white);
+    border: 0.1rem solid map-get($secondary, 'active');
+  }
+
+  label {
+    display: block;
+    position: absolute;
+    font-size: 1rem;
+    top: -0.8rem;
+    left: 1.4rem;
+    padding: 0 0.5rem;
+    background-image: linear-gradient(
+      to top,
+      map-get($grayscale, white) 50%,
+      transparent 50%
+    );
+    border-radius: 50%;
+    color: map-get($primary, 'base');
+  }
+
+  label.active {
+    color: map-get($grayscale, 'gray-30');
+  }
+  label.error {
+    background-image: linear-gradient(
+      to top,
+      map-get($alert, 'light') 50%,
+      transparent 50%
+    );
+    color: map-get($alert, 'base');
+  }
+  label.disabled {
+    background-image: linear-gradient(
+      to top,
+      map-get($grayscale, 'gray-10') 50%,
+      transparent 50%
+    );
+    color: map-get($grayscale, 'gray-20');
+  }
+  .errorMessage {
+    color: map-get($alert, 'base');
+    font-size: 1.2rem;
+    margin: 0.5rem 1rem 0;
+  }
+}

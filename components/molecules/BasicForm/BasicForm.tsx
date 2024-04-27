@@ -10,7 +10,16 @@ const BasicForm = () => {
   } = useForm()
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form
+      onSubmit={handleSubmit((data) => console.log(data))}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.5rem',
+        backgroundColor: 'white',
+        padding: '1.5rem',
+      }}
+    >
       <Input
         type='text'
         placeholder='First Name'
@@ -42,6 +51,7 @@ const BasicForm = () => {
         type='text'
         placeholder='Age'
         label='Age'
+        disabled
         errorMessage={errors.age ? 'Please enter number for age.' : false}
         {...register('age', { pattern: /\d+/ })}
       />

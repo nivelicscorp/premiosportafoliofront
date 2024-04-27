@@ -1,23 +1,47 @@
-import { forwardRef } from 'react'
+import styles from '@styles/scss/atoms/inputs.module.scss'
+import { forwardRef, useState } from 'react'
 
 interface InputProps {
   label?: string
   required?: boolean
   placeholder?: string
   type: string
+  disabled?: boolean
   options?: string[]
   errorMessage?: string | boolean
   name: string
 }
 
-const Input = forwardRef<any, InputProps>(function render(
+const Input = forwardRef<any, InputProps>(function Render(
   this: any,
-  { type, name, label, required, placeholder, options, errorMessage, ...props },
+  {
+    type,
+    name,
+    label,
+    required,
+    placeholder,
+    disabled,
+    options,
+    errorMessage,
+    ...props
+  },
   ref
 ) {
+  const [focus, setFocus] = useState(false)
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <label>
+    <div className={styles.inputContainer}>
+      <label
+        htmlFor={`field-${name}`}
+        className={
+          focus
+            ? styles.active
+            : '' || errorMessage
+            ? styles.error
+            : '' || disabled
+            ? styles.disabled
+            : ''
+        }
+      >
         {label} {required && '*'}
       </label>
       {type === 'select' ? (
@@ -36,9 +60,21 @@ const Input = forwardRef<any, InputProps>(function render(
           {...props}
         ></textarea>
       ) : (
-        <input ref={ref} name={name} placeholder={placeholder} {...props} />
+        <input
+          id={`field-${name}`}
+          ref={ref}
+          name={name}
+          placeholder={disabled ? '' : placeholder}
+          disabled={disabled}
+          className={
+            errorMessage ? styles.error : '' || disabled ? styles.disabled : ''
+          }
+          onFocus={(e) => setFocus(true)}
+          onBlur={(e) => setFocus(false)}
+          type={type}
+        />
       )}
-      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
     </div>
   )
 })
