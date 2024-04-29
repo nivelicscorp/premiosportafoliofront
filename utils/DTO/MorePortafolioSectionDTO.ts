@@ -4,7 +4,10 @@ import getImage from '@utils/getImage'
 
 const MorePortafolioSectionDTO = (
   sectionData: any
-): MorePortafolioSectionModel => {
+): MorePortafolioSectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   return {
     title: arrayDestructuring(sectionData?.field_titulo, 'Más de Portafolio'),
     cards:

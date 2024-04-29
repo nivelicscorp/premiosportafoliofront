@@ -164,6 +164,20 @@
         }
       }
     }
+    &.swiper__gallery {
+      padding-top: 7rem;
+      .swiper-button-prev {
+        left: 30%;
+        top: 10%;
+      }
+      .swiper-button-next {
+        right: 30%;
+        top: 10%;
+      }
+      .swiper-pagination {
+        top: -80%;
+      }
+    }
   }
 }
 

@@ -2,7 +2,10 @@ import { GalleryCardModel, GallerySectionModel } from '@models/gallery.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
 import getImage from '@utils/getImage'
 
-const GallerySectionDTO = (sectionData: any): GallerySectionModel => {
+const GallerySectionDTO = (sectionData: any): GallerySectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   let indexImages = 0
   let indexVideos = 0
   const parsedCards: GalleryCardModel[] = []

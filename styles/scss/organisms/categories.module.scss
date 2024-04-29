@@ -5,11 +5,12 @@
   gap: 2rem 0;
   margin: -3rem auto 0;
   position: relative;
-  width: calc(100% - 4.4rem);
   z-index: 5;
 
   &__title {
     background: map-get($grayscale, white);
+    width: calc(100% - 4.4rem);
+    margin: 0 auto;
     box-shadow: 0px 1px 8px #00000052;
     border-radius: 0.8rem 0.8rem 0 0;
     color: map-get($grayscale, black);
@@ -36,6 +37,7 @@
   &__intro {
     color: map-get($grayscale, gray-50);
     font: 400 1.8rem / 2.2rem $font-primary;
+    width: calc(100% - 4.4rem);
     margin: 2rem auto 3.2rem;
     span {
       color: #31abaa;

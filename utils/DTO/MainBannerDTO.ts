@@ -3,7 +3,10 @@ import arrayDestructuring from '@utils/arrayDestructuring'
 import checkSocialNetwork from '@utils/checkSocialNetwork'
 import getImage from '@utils/getImage'
 
-const MainBannerDTO = (sectionData: any): MainBanneSectionModel => {
+const MainBannerDTO = (sectionData: any): MainBanneSectionModel | null => {
+  if (!sectionData) {
+    return null
+  }
   const socialMedia = sectionData?.field_enlaces_de_redes?.map((item: any) => ({
     url: item,
     type: checkSocialNetwork(item),

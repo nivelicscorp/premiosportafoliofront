@@ -40,14 +40,17 @@ const JudgesSection = ({ data }: JudgesSectionProps) => {
         navigation={true}
         pagination={true}
         spaceBetween={50}
+        centeredSlides={true}
         breakpoints={{
           768: {
             slidesPerView: 2,
           },
           1024: {
+            centeredSlides: false,
             slidesPerView: 3,
           },
           1280: {
+            centeredSlides: false,
             slidesPerView: 4,
           },
         }}
