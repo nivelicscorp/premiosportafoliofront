@@ -18,7 +18,7 @@ const GallerySectionDTO = (sectionData: any): GallerySectionModel | null => {
       indexVideos++
     } else {
       parsedCards.push({
-        urlSource: getImage(sectionData?.multimedia_imagen_url[indexImages]),
+        urlSource: sectionData?.multimedia_imagen_url[indexImages],
         alt: sectionData?.multimedia_imagen_alt[indexImages],
         title: sectionData?.multimedia_imagen_title[indexImages],
         type: 'image',

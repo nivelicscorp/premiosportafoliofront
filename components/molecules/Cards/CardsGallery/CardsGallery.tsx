@@ -1,6 +1,6 @@
 import { GalleryCardModel } from '@models/gallery.model'
 import styles from '@styles/scss/molecules/cards/cards-gallery.module.scss'
-import { myLoader } from '@utils/customLoaderImages'
+import getImage from '@utils/getImage'
 import Image from 'next/image'
 
 const CardsGallery = ({
@@ -8,12 +8,16 @@ const CardsGallery = ({
   type,
   isActive = false,
 }: GalleryCardModel) => {
+  const IMAGES = JSON.parse(process.env.IMAGES || '{}')
   return (
     <div className={styles.card}>
       {type === 'image' && (
         <Image
-          loader={myLoader}
-          src={urlSource}
+          src={getImage(
+            urlSource,
+            IMAGES.GALLERY.CROP_THUMBNAIL.WIDTH,
+            IMAGES.GALLERY.CROP_THUMBNAIL.HEIGHT
+          )}
           alt='img1'
           width={322}
           height={208}
@@ -22,7 +26,6 @@ const CardsGallery = ({
       {type === 'video' && (
         <>
           <Image
-            loader={myLoader}
             src={`https://img.youtube.com/vi/${urlSource}/0.jpg`}
             alt='img1'
             width={322}

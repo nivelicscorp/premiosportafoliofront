@@ -4,29 +4,40 @@ import styles from '@styles/scss/molecules/banner.module.scss'
 import SocialMedia from '@molecules/SocialMedia/SocialMedia'
 import Link from 'next/link'
 import { MainBanneSectionModel } from '@models/mainBanner.model'
-import { myLoader } from '@utils/customLoaderImages'
+import getImage from '@utils/getImage'
 
 type Props = {
   data: MainBanneSectionModel
 }
 
 const MainBanner = ({ data }: Props) => {
+  const IMAGES = JSON.parse(process.env.IMAGES || '{}')
   return (
     <div className={styles?.banner}>
       <div className={styles?.banner__bgMain}>
         <picture>
           <source
-            srcSet={data.backgroundDesktop.source}
+            srcSet={getImage(
+              data.backgroundDesktop.source,
+              IMAGES.MAIN_BANNER.CROP_BANNER_DESKTOP.WIDTH,
+              IMAGES.MAIN_BANNER.CROP_BANNER_DESKTOP.HEIGHT
+            )}
             media='(min-width: 720px)'
           />
-          <img src={data.backgroundMobile.source} alt='MDN' />
+          <img
+            src={getImage(
+              data.backgroundMobile.source,
+              IMAGES.MAIN_BANNER.CROP_BANNER_MOBILE.WIDTH,
+              IMAGES.MAIN_BANNER.CROP_BANNER_MOBILE.HEIGHT
+            )}
+            alt='MDN'
+          />
         </picture>
       </div>
       <div className={styles?.banner__content}>
         <div className={styles?.banner__logo}>
           <Image
-            loader={myLoader}
-            src={data.logo.source}
+            src={getImage(data.logo.source)}
             alt={data.logo.alt}
             title={data.logo.title}
             width={290}
@@ -46,8 +57,7 @@ const MainBanner = ({ data }: Props) => {
         <div className={styles?.banner__prize}>
           <div className={styles?.banner__prize__phrase}>
             <Image
-              loader={myLoader}
-              src={data.mainIcon.source}
+              src={getImage(data.mainIcon.source)}
               alt={data.mainIcon.alt}
               title={data.mainIcon.title}
               width={218}
@@ -56,8 +66,7 @@ const MainBanner = ({ data }: Props) => {
           </div>
           <div className={styles?.banner__prize__award}>
             <Image
-              loader={myLoader}
-              src={data.auxiliaryIcon.source}
+              src={getImage(data.auxiliaryIcon.source)}
               alt={data.auxiliaryIcon.alt}
               title={data.auxiliaryIcon.title}
               width={179}

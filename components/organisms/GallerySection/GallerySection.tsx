@@ -9,12 +9,13 @@ import CardsGallery from '@molecules/Cards/CardsGallery/CardsGallery'
 import { GallerySectionModel } from '@models/gallery.model'
 import Image from 'next/image'
 import { useState } from 'react'
-import { myLoader } from '@utils/customLoaderImages'
+import getImage from '@utils/getImage'
 
 type Props = {
   data: GallerySectionModel
 }
 const GallerySection = ({ data }: Props) => {
+  const IMAGES = JSON.parse(process.env.IMAGES || '{}')
   const [activeContent, setActiveContent] = useState(data.cards[0])
 
   return (
@@ -26,8 +27,11 @@ const GallerySection = ({ data }: Props) => {
       <div className={styles.gallery__preview}>
         {activeContent?.type === 'image' && (
           <Image
-            loader={myLoader}
-            src={activeContent?.urlSource}
+            src={getImage(
+              activeContent?.urlSource,
+              IMAGES.GALLERY.CROP_MAIN_DESKTOP.WIDTH,
+              IMAGES.GALLERY.CROP_MAIN_DESKTOP.HEIGHT
+            )}
             alt='img1'
             width={815}
             height={458}

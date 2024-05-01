@@ -1,6 +1,6 @@
 import { CardsMorePortafolioModel } from '@models/morePortafolioSection.model'
 import styles from '@styles/scss/molecules/cards/cards-portafolio.module.scss'
-import { myLoader } from '@utils/customLoaderImages'
+import getImage from '@utils/getImage'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,13 +10,17 @@ const CardsPortafolio = ({
   image,
   url,
 }: CardsMorePortafolioModel) => {
+  const IMAGES = JSON.parse(process.env.IMAGES || '{}')
   return (
     <Link href={url} passHref>
       <a className={styles.card}>
         <div className={styles.card__image}>
           <Image
-            loader={myLoader}
-            src={image.source}
+            src={getImage(
+              image.source,
+              IMAGES.MORE_PORTAFOLIO.CROP_MORE_PORTAFOLIO.WIDTH,
+              IMAGES.MORE_PORTAFOLIO.CROP_MORE_PORTAFOLIO.HEIGHT
+            )}
             alt={image.alt}
             objectFit='cover'
             width={115}

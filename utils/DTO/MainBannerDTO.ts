@@ -14,31 +14,27 @@ const MainBannerDTO = (sectionData: any): MainBanneSectionModel | null => {
   return {
     description: arrayDestructuring(sectionData?.descripcion, ''),
     backgroundDesktop: {
-      source: getImage(
-        arrayDestructuring(sectionData?.background_desktop_url, '')
-      ),
+      source: arrayDestructuring(sectionData?.background_desktop_url, ''),
       alt: arrayDestructuring(sectionData?.background_desktop_alt, ''),
       title: arrayDestructuring(sectionData?.background_desktop_title, ''),
     },
     backgroundMobile: {
-      source: getImage(
-        arrayDestructuring(sectionData?.background_mobile_url, '')
-      ),
+      source: arrayDestructuring(sectionData?.background_mobile_url, ''),
       alt: arrayDestructuring(sectionData?.background_mobile_alt, ''),
       title: arrayDestructuring(sectionData?.background_mobile_title, ''),
     },
     mainIcon: {
-      source: getImage(arrayDestructuring(sectionData?.icono_url, '')),
+      source: arrayDestructuring(sectionData?.icono_url, ''),
       alt: arrayDestructuring(sectionData?.icono_alt, ''),
       title: arrayDestructuring(sectionData?.icono_title, ''),
     },
     auxiliaryIcon: {
-      source: getImage(arrayDestructuring(sectionData?.imagen_dos_url, '')),
+      source: arrayDestructuring(sectionData?.imagen_dos_url, ''),
       alt: arrayDestructuring(sectionData?.imagen_dos_alt, ''),
       title: arrayDestructuring(sectionData?.imagen_dos_title, ''),
     },
     logo: {
-      source: getImage(arrayDestructuring(sectionData?.logo_url, '')),
+      source: arrayDestructuring(sectionData?.logo_url, ''),
       alt: arrayDestructuring(sectionData?.logo_alt, ''),
       title: arrayDestructuring(sectionData?.logo_title, ''),
     },

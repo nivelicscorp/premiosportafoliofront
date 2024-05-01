@@ -15,7 +15,7 @@ const MorePortafolioSectionDTO = (
         category: arrayDestructuring(item.field_categoria, ''),
         title: arrayDestructuring(item.field_titulo, ''),
         image: {
-          source: getImage(arrayDestructuring(item.imagen_url, '')),
+          source: arrayDestructuring(item.imagen_url, ''),
           alt: arrayDestructuring(item.imagen_alt, ''),
           title: arrayDestructuring(item.imagen_title, ''),
         },

@@ -20,7 +20,7 @@ module.exports = {
       },
       env_development: {
         PORT: 3050,
-        BASE_DOMAIN: 'https://beta-*.com',
+        BASE_DOMAIN: 'https://beta-premios.portafolio.co',
         ROBOTS: 'noindex, nofollow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
@@ -33,11 +33,71 @@ module.exports = {
         IMAGES: JSON.stringify({
           FOLDER_OF_IMAGES:
             'https://beta-premios.portafolio.co/static/assets/backend',
+          MAIN_BANNER: {
+            CROP_BANNER_DESKTOP: {
+              WIDTH: 1920,
+              HEIGHT: 988,
+            },
+            CROP_BANNER_MOBILE: {
+              WIDTH: 360,
+              HEIGHT: 718,
+            },
+          },
+          CATEGORIES: {
+            CROP_CATEGORY: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          JURIES: {
+            CROP_JURIES: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          BEST_MOMENTS: {
+            CROP_BEST_MOMENTS: {
+              WIDTH: 154,
+              HEIGHT: 198,
+            },
+          },
+          WINNERS: {
+            CROP_WINNERS: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          GALLERY: {
+            CROP_MAIN_DESKTOP: {
+              WIDTH: 815,
+              HEIGHT: 458,
+            },
+            CROP_MAIN_MOBILE: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+            CROP_THUMBNAIL: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+          },
+          CONTACT: {
+            CROP_CONTACT: {
+              WIDTH: 240,
+              HEIGHT: 248,
+            },
+          },
+          MORE_PORTAFOLIO: {
+            CROP_MORE_PORTAFOLIO: {
+              WIDTH: 115,
+              HEIGHT: 86,
+            },
+          },
         }),
       },
       env_production: {
         PORT: 3050,
-        BASE_DOMAIN: 'https://*.com',
+        BASE_DOMAIN: 'https://premios.portafolio.co',
         ROBOTS: 'index, follow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://transprdelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
@@ -50,6 +110,66 @@ module.exports = {
         IMAGES: JSON.stringify({
           FOLDER_OF_IMAGES:
             'https://premios.portafolio.co/static/assets/backend',
+          MAIN_BANNER: {
+            CROP_BANNER_DESKTOP: {
+              WIDTH: 1920,
+              HEIGHT: 988,
+            },
+            CROP_BANNER_MOBILE: {
+              WIDTH: 360,
+              HEIGHT: 718,
+            },
+          },
+          CATEGORIES: {
+            CROP_CATEGORY: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          JURIES: {
+            CROP_JURIES: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          BEST_MOMENTS: {
+            CROP_BEST_MOMENTS: {
+              WIDTH: 154,
+              HEIGHT: 198,
+            },
+          },
+          WINNERS: {
+            CROP_WINNERS: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          GALLERY: {
+            CROP_MAIN_DESKTOP: {
+              WIDTH: 815,
+              HEIGHT: 458,
+            },
+            CROP_MAIN_MOBILE: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+            CROP_THUMBNAIL: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+          },
+          CONTACT: {
+            CROP_CONTACT: {
+              WIDTH: 240,
+              HEIGHT: 248,
+            },
+          },
+          MORE_PORTAFOLIO: {
+            CROP_MORE_PORTAFOLIO: {
+              WIDTH: 115,
+              HEIGHT: 86,
+            },
+          },
         }),
       },
     },
