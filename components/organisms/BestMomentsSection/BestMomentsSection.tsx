@@ -16,7 +16,11 @@ const BestMomentsSection = ({ data }: BestMomentsSectionProps) => {
       <div className={styles.bestMoments__container}>
         <div className={styles.logo}>
           <Image
-            src={getImage(data?.logo?.source)}
+            src={getImage(
+              data?.logo?.source,
+              IMAGES.BEST_MOMENTS.CROP_BEST_MOMENTS.WIDTH,
+              IMAGES.BEST_MOMENTS.CROP_BEST_MOMENTS.HEIGHT
+            )}
             height={200}
             width={150}
             alt={data?.logo?.alt}
