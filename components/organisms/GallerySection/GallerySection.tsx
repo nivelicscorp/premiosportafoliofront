@@ -67,12 +67,10 @@ const GallerySection = ({ data }: Props) => {
             slidesPerView: 1.5,
           },
           1024: {
-            loop: false,
             spaceBetween: 50,
             slidesPerView: 3,
           },
           1280: {
-            loop: false,
             spaceBetween: 50,
             slidesPerView: 3.5,
           },
