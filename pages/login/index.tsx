@@ -7,16 +7,21 @@ import MainBanner from '@molecules/MainBanner/MainBanner'
 import { MorePortafolioSectionModel } from '@models/morePortafolioSection.model'
 import { MainBanneSectionModel } from '@models/mainBanner.model'
 import MorePortafolioSection from '@organisms/MorePortafolioSection/MorePortafolioSection'
-import RegisterForm from '@molecules/RegisterForm/RegisterForm'
 
 const UserPage: NextPage<{
   mainBannerData: MainBanneSectionModel | null
   morePortafolioData: MorePortafolioSectionModel | null
 }> = (props) => {
+  //   const router = useRouter()
+  //   setCookie('userData', JSON.stringify(userData))
+
+  //   const deleteCookieUser = () => {
+  //     deleteCookie('userData')
+  //     router.push('/')
+  //   }
   return (
     <>
       {props.mainBannerData && <MainBanner data={props.mainBannerData} />}
-      <RegisterForm />
       {props.morePortafolioData && (
         <MorePortafolioSection data={props.morePortafolioData} />
       )}

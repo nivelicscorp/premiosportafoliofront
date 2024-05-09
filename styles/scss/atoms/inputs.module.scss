@@ -15,7 +15,7 @@
     border-radius: 0.5rem;
     font-size: 1.6rem;
     display: block;
-    width: 100%;
+    width: auto;
   }
 
   input.error,
@@ -79,5 +79,30 @@
     color: map-get($alert, 'base');
     font-size: 1.2rem;
     margin: 0.5rem 1rem 0;
+  }
+  .checkbox {
+    display: flex;
+    align-items: center;
+    input {
+      margin-right: 0.5rem;
+    }
+  }
+  .insideButton {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    background: none;
+    border: none;
+    transform: translateY(-50%);
+  }
+  .disabled {
+    path {
+      fill: map-get($primary, 'base');
+    }
+  }
+  .main {
+    path {
+      fill: map-get($grayscale, 'gray-30');
+    }
   }
 }

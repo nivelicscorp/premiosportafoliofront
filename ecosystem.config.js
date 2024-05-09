@@ -20,7 +20,7 @@ module.exports = {
       },
       env_development: {
         PORT: 3050,
-        BASE_DOMAIN: 'https://beta-premios.portafolio.co',
+        BASE_DOMAIN: 'https://stg-premiospo.eltiempo.com.co', // to change after back to real domain
         ROBOTS: 'noindex, nofollow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
