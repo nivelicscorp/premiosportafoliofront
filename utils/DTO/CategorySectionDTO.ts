@@ -16,12 +16,12 @@ const CategorySectionDTO = (sectionData: any): CategorySectionModel | null => {
       description: sectionData?.card_descripciom[index],
       summary: sectionData?.card_resumen[index],
       image: {
-        source: getImage(sectionData?.card_imagen_url[index]),
+        source: sectionData?.card_imagen_url[index],
         alt: sectionData?.card_imagen_alt[index],
         title: sectionData?.card_imagen_title[index],
       },
       icon: {
-        source: getImage(sectionData?.card_icono_url[index]),
+        source: sectionData?.card_icono_url[index],
         alt: sectionData?.card_icono_alt[index],
         title: sectionData?.card_icono_title[index],
       },

@@ -11,7 +11,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import 'swiper/css'
 import { JuriesSectionModel } from '@models/juries.model'
-import { myLoader } from '@utils/customLoaderImages'
+import getImage from '@utils/getImage'
 
 interface JudgesSectionProps {
   data: JuriesSectionModel
@@ -23,12 +23,12 @@ const JudgesSection = ({ data }: JudgesSectionProps) => {
       <div className={styles?.JudgesSection__title}>
         <div className={styles?.JudgesSection__title__img}>
           <Image
-            loader={myLoader}
-            src={data?.icon?.source}
+            src={getImage(data?.icon?.source)}
             alt={data?.icon?.alt}
             title={data?.icon?.title}
             height='250'
             width='250'
+            quality={100}
           />
         </div>
         <h2> {data?.title} </h2>
@@ -38,7 +38,7 @@ const JudgesSection = ({ data }: JudgesSectionProps) => {
         slidesPerView={1.5}
         className={'swiper swiper__judges'}
         navigation={true}
-        pagination={true}
+        pagination={{ clickable: true }}
         spaceBetween={50}
         centeredSlides={true}
         breakpoints={{

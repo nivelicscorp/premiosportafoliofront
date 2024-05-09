@@ -3,9 +3,9 @@ import React from 'react'
 
 import styles from '@styles/scss/molecules/cards/cards-categories.module.scss'
 import { CategoryCardModel } from '@models/categories.model'
-import { myLoader } from '@utils/customLoaderImages'
 import checkCategoryCard from '@utils/checkCategoryCard'
 import Link from 'next/link'
+import getImage from '@utils/getImage'
 
 interface Props extends CategoryCardModel {
   activeRegister: boolean
@@ -22,6 +22,7 @@ const CardsCategories = ({
   activeRegister,
   emitSelection,
 }: Props) => {
+  const IMAGES = JSON.parse(process.env.IMAGES || '{}')
   return (
     <div
       className={styles?.cardCategories + ' ' + (variant ? styles?.modal : '')}
@@ -35,12 +36,16 @@ const CardsCategories = ({
           }
         >
           <Image
-            loader={myLoader}
-            src={image?.source}
+            src={getImage(
+              image?.source,
+              IMAGES.CATEGORIES.CROP_CATEGORY.WIDTH,
+              IMAGES.CATEGORIES.CROP_CATEGORY.HEIGHT
+            )}
             alt={image?.alt}
             title={image?.title}
-            height={147}
-            width={142}
+            height={420}
+            width={420}
+            quality={100}
           />
         </div>
       ) : (
@@ -53,12 +58,12 @@ const CardsCategories = ({
       >
         <div className={styles?.cardCategories__top__image}>
           <Image
-            loader={myLoader}
-            src={icon?.source}
+            src={getImage(icon?.source)}
             alt={icon?.alt}
             title={icon?.title}
             height={70}
             width={65}
+            quality={100}
           />
         </div>
         <h3 className={styles?.cardCategories__top__title}>{title}</h3>

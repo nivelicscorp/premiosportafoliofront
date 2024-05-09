@@ -15,7 +15,7 @@ export const WinnerSectionDTO = (
         name: sectionData?.personajes_field_nombre[index],
         award: sectionData?.personajes_field_cargo[index],
         photo: {
-          source: getImage(sectionData?.personaje_imagen_url[index]),
+          source: sectionData?.personaje_imagen_url[index],
           alt: sectionData?.personaje_imagen_alt[index],
           title: sectionData?.personaje_imagen_title[index],
         },

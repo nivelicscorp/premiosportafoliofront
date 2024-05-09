@@ -16,6 +16,7 @@
     padding: 1.4rem 4rem 2rem;
     position: relative;
     text-align: center;
+    min-height: 162px;
     .colorCategory {
       bottom: 0;
       left: 0;
@@ -102,6 +103,7 @@
     border-radius: 0 0 3rem 3rem;
     font: 400 1.6rem / 2rem $font-primary;
     padding: 2.8rem 3rem 4.5rem;
+    min-height: 233px;
     p {
       display: -webkit-box;
       -webkit-line-clamp: 8;
@@ -231,7 +233,7 @@
           padding: 1.8rem;
         }
         &__detail {
-          padding: 2rem 3rem;
+          padding: 2rem 3rem 7rem;
         }
         &__postulate {
           margin: 0 5.3rem 0 auto;

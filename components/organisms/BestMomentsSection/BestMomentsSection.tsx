@@ -1,7 +1,7 @@
 import LinkButton from '@atoms/LinkButton/LinkButton'
 import { BestMomentsSectionModel } from '@models/bestMoments.model'
 import styles from '@styles/scss/organisms/bestMoments.module.scss'
-import { myLoader } from '@utils/customLoaderImages'
+import getImage from '@utils/getImage'
 import Image from 'next/image'
 import { Fragment } from 'react'
 
@@ -10,17 +10,22 @@ interface BestMomentsSectionProps {
 }
 
 const BestMomentsSection = ({ data }: BestMomentsSectionProps) => {
+  const IMAGES = JSON.parse(process.env.IMAGES || '{}')
   return (
     <div className={styles.bestMoments}>
       <div className={styles.bestMoments__container}>
         <div className={styles.logo}>
           <Image
-            loader={myLoader}
-            src={data?.logo?.source}
+            src={getImage(
+              data?.logo?.source,
+              IMAGES.BEST_MOMENTS.CROP_BEST_MOMENTS.WIDTH,
+              IMAGES.BEST_MOMENTS.CROP_BEST_MOMENTS.HEIGHT
+            )}
             height={200}
             width={150}
             alt={data?.logo?.alt}
             title={data?.logo?.title}
+            quality={100}
           />
         </div>
         <h2 className={styles.title}>{data?.title}</h2>
@@ -39,22 +44,22 @@ const BestMomentsSection = ({ data }: BestMomentsSectionProps) => {
       </div>
       <div className={styles.bestMoments__imgDesktop}>
         <Image
-          loader={myLoader}
-          src={data?.backgroundDesktop?.source}
+          src={getImage(data?.backgroundDesktop?.source)}
           height={176}
           width={1200}
           alt={data?.backgroundDesktop?.alt}
           title={data?.backgroundDesktop?.title}
+          quality={100}
         />
       </div>
       <div className={styles.bestMoments__imgMobile}>
         <Image
-          loader={myLoader}
-          src={data?.backgroundMobile?.source}
+          src={getImage(data?.backgroundMobile?.source)}
           width={340}
           height={575}
           alt={data?.backgroundMobile?.alt}
           title={data?.backgroundMobile?.title}
+          quality={100}
         />
       </div>
     </div>

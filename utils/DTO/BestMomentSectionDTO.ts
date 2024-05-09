@@ -19,21 +19,17 @@ const BestMomentSectionDTO = (
   })
   return {
     backgroundDesktop: {
-      source: getImage(
-        arrayDestructuring(sectionData?.background_desktop_url, '')
-      ),
+      source: arrayDestructuring(sectionData?.background_desktop_url, ''),
       alt: arrayDestructuring(sectionData?.background_desktop_alt, ''),
       title: arrayDestructuring(sectionData?.background_desktop_title, ''),
     },
     backgroundMobile: {
-      source: getImage(
-        arrayDestructuring(sectionData?.background_mobile_url, '')
-      ),
+      source: arrayDestructuring(sectionData?.background_mobile_url, ''),
       alt: arrayDestructuring(sectionData?.background_mobile_alt, ''),
       title: arrayDestructuring(sectionData?.background_mobile_title, ''),
     },
     logo: {
-      source: getImage(arrayDestructuring(sectionData?.imagen_dos_url, '')),
+      source: arrayDestructuring(sectionData?.imagen_dos_url, ''),
       alt: arrayDestructuring(sectionData?.imagen_dos_alt, ''),
       title: arrayDestructuring(sectionData?.imagen_dos_title, ''),
     },

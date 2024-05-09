@@ -6,7 +6,7 @@ const cors = require('cors')
 const compression = require('compression')
 const dev = process.env.NODE_ENV !== 'production'
 const hostname = process.env.HOSTNAME || 'localhost'
-const port = process.env.PORT || 3040
+const port = process.env.PORT || 3050
 const app = next({ dev, hostname, port })
 const handle = routes.getRequestHandler(app)
 const { join } = require('path')

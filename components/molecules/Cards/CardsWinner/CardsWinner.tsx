@@ -1,19 +1,24 @@
 import { WinnerCardModel } from '@models/winner.model'
 import styles from '@styles/scss/molecules/cards/cards-winners.module.scss'
 import checkCategoryCard from '@utils/checkCategoryCard'
-import { myLoader } from '@utils/customLoaderImages'
+import getImage from '@utils/getImage'
 import Image from 'next/image'
 
 const CardsWinner = ({ name, award, photo }: WinnerCardModel) => {
+  const IMAGES = JSON.parse(process.env.IMAGES || '{}')
   return (
     <div className={styles.card}>
       <div className={styles.card__photo}>
         <Image
-          loader={myLoader}
-          src={photo.source}
+          src={getImage(
+            photo.source,
+            IMAGES.WINNERS.CROP_WINNERS.WIDTH,
+            IMAGES.WINNERS.CROP_WINNERS.HEIGHT
+          )}
           alt={photo.alt}
           height={175}
           width={175}
+          quality={100}
         />
       </div>
       <h3

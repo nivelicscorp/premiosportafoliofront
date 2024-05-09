@@ -13,7 +13,7 @@ const JuriesSectionDTO = (sectionData: any): JuriesSectionModel | null => {
         name: sectionData?.personajes_field_nombre[index],
         businessRole: sectionData?.personajes_field_cargo[index],
         photo: {
-          source: getImage(sectionData?.personaje_imagen_url[index]),
+          source: sectionData?.personaje_imagen_url[index],
           alt: sectionData?.personaje_imagen_alt[index],
           title: sectionData?.personaje_imagen_title[index],
         },
@@ -23,7 +23,7 @@ const JuriesSectionDTO = (sectionData: any): JuriesSectionModel | null => {
   return {
     title: arrayDestructuring(sectionData?.field_titulo, 'Categorías'),
     icon: {
-      source: getImage(arrayDestructuring(sectionData?.icono_url, '')),
+      source: arrayDestructuring(sectionData?.icono_url, ''),
       alt: arrayDestructuring(sectionData?.icono_alt, ''),
       title: arrayDestructuring(sectionData?.icono_title, ''),
     },

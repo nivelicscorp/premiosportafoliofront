@@ -19,35 +19,157 @@ module.exports = {
         followSymlinks: false,
       },
       env_development: {
-        PORT: 3040,
-        BASE_DOMAIN: 'https://stg-*.com',
+        PORT: 3050,
+        BASE_DOMAIN: 'https://beta-premios.portafolio.co',
         ROBOTS: 'noindex, nofollow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
           INDEX: 'elasticsearch_index_premios_portafolio_2024_beta_multisite',
-          DOMAIN: 'http://localhost:3040',
+          DOMAIN: 'http://localhost:3050',
           ELASTIC_USERNAME: 'MultiSite_Stg',
           ELASTIC_PASSWORD: 'Mult1S1t3_Cl0ud_01',
         }),
         ELASTIC_API: '/api/elastic/portafolio',
         IMAGES: JSON.stringify({
-          FOLDER_OF_IMAGES: 'https://stg-premiospo.eltiempo.com.co',
+          FOLDER_OF_IMAGES:
+            'https://beta-premios.portafolio.co/static/assets/backend',
+          MAIN_BANNER: {
+            CROP_BANNER_DESKTOP: {
+              WIDTH: 1920,
+              HEIGHT: 988,
+            },
+            CROP_BANNER_MOBILE: {
+              WIDTH: 360,
+              HEIGHT: 718,
+            },
+          },
+          CATEGORIES: {
+            CROP_CATEGORY: {
+              WIDTH: 815,
+              HEIGHT: 458,
+            },
+          },
+          JURIES: {
+            CROP_JURIES: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          BEST_MOMENTS: {
+            CROP_BEST_MOMENTS: {
+              WIDTH: 154,
+              HEIGHT: 198,
+            },
+          },
+          WINNERS: {
+            CROP_WINNERS: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          GALLERY: {
+            CROP_MAIN_DESKTOP: {
+              WIDTH: 815,
+              HEIGHT: 458,
+            },
+            CROP_MAIN_MOBILE: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+            CROP_THUMBNAIL: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+          },
+          CONTACT: {
+            CROP_CONTACT: {
+              WIDTH: 240,
+              HEIGHT: 248,
+            },
+          },
+          MORE_PORTAFOLIO: {
+            CROP_MORE_PORTAFOLIO: {
+              WIDTH: 115,
+              HEIGHT: 86,
+            },
+          },
         }),
       },
       env_production: {
-        PORT: 3040,
-        BASE_DOMAIN: 'https://*.com',
+        PORT: 3050,
+        BASE_DOMAIN: 'https://premios.portafolio.co',
         ROBOTS: 'index, follow',
         ELASTIC_DATA: JSON.stringify({
-          NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
+          NODE: 'https://transprdelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
           INDEX: 'elasticsearch_index_premios_portafolio_2024_beta_multisite',
-          DOMAIN: 'http://localhost:3040',
-          ELASTIC_USERNAME: 'MultiSite_Stg',
-          ELASTIC_PASSWORD: 'Mult1S1t3_Cl0ud_01',
+          DOMAIN: 'http://localhost:3050',
+          ELASTIC_USERNAME: 'MultiSite_Prod',
+          ELASTIC_PASSWORD: '*Mult1S1t3_Pr0d24*',
         }),
         ELASTIC_API: '/api/elastic/portafolio',
         IMAGES: JSON.stringify({
-          FOLDER_OF_IMAGES: 'https://stg-premiospo.eltiempo.com.co/',
+          FOLDER_OF_IMAGES:
+            'https://premios.portafolio.co/static/assets/backend',
+          MAIN_BANNER: {
+            CROP_BANNER_DESKTOP: {
+              WIDTH: 1920,
+              HEIGHT: 988,
+            },
+            CROP_BANNER_MOBILE: {
+              WIDTH: 360,
+              HEIGHT: 718,
+            },
+          },
+          CATEGORIES: {
+            CROP_CATEGORY: {
+              WIDTH: 815,
+              HEIGHT: 458,
+            },
+          },
+          JURIES: {
+            CROP_JURIES: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          BEST_MOMENTS: {
+            CROP_BEST_MOMENTS: {
+              WIDTH: 154,
+              HEIGHT: 198,
+            },
+          },
+          WINNERS: {
+            CROP_WINNERS: {
+              WIDTH: 332,
+              HEIGHT: 332,
+            },
+          },
+          GALLERY: {
+            CROP_MAIN_DESKTOP: {
+              WIDTH: 815,
+              HEIGHT: 458,
+            },
+            CROP_MAIN_MOBILE: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+            CROP_THUMBNAIL: {
+              WIDTH: 293,
+              HEIGHT: 192,
+            },
+          },
+          CONTACT: {
+            CROP_CONTACT: {
+              WIDTH: 240,
+              HEIGHT: 248,
+            },
+          },
+          MORE_PORTAFOLIO: {
+            CROP_MORE_PORTAFOLIO: {
+              WIDTH: 115,
+              HEIGHT: 86,
+            },
+          },
         }),
       },
     },

@@ -21,7 +21,7 @@ const WinnersSection = ({ data }: WinnersSectionProps) => {
         slidesPerView={1.5}
         className={'swiper swiper__grayscale'}
         navigation={true}
-        pagination={true}
+        pagination={{ clickable: true }}
         loop={data?.winners?.length > 5}
         breakpoints={{
           768: {
