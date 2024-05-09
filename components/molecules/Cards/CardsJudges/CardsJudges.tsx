@@ -21,6 +21,7 @@ const CardsJudges = ({ businessRole, name, photo }: JuriesCardModel) => {
           title={photo?.title}
           height='250'
           width='250'
+          quality={100}
         />
       </div>
       <div className={styles?.cardJudges__data}>

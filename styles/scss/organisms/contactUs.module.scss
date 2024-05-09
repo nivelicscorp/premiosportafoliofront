@@ -68,7 +68,7 @@
 .mobile {
   display: block;
 }
-
+ 
 @include mq-min(xl) {
   .contactUs {
     min-height: 3.4rem;

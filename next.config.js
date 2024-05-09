@@ -12,6 +12,7 @@ const nextConfig = {
       'stg-premiospo.eltiempo.com.co',
       'img.youtube.com',
       'beta-premios.portafolio.co',
+      'premios.portafolio.co',
     ],
   },
 }

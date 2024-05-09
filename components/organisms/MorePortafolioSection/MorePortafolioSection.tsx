@@ -27,7 +27,7 @@ const MorePortafolioSection = ({ data }: Props) => {
           spaceBetween={30}
           slidesPerView={1.1}
           className={'swiper swiper__grayscale portafolio'}
-          pagination={true}
+          pagination={{ clickable: true }}
           navigation={true}
           loop={data?.cards?.length > 4}
           breakpoints={{

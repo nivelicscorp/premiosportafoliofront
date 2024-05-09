@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "node server.js",
     "start:next": "next start -p 3050",
-    "start:express": "npm run build && npm run start:express",
+    "start:express": "npm run build && node server.js",
     "dev": "next dev -p 3050",
     "lint": "next lint",
     "lint:fix": "next lint --fix"

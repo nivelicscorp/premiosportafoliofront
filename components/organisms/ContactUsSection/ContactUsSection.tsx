@@ -20,6 +20,7 @@ const ContactUsSection = ({ data, activeRegister }: Props) => {
           title={data.backgroundDesktop.title}
           layout='fill'
           objectFit='cover'
+          quality={100}
         />
       </div>
       <div className={styles.contactUs__background + ' ' + styles.mobile}>
@@ -29,6 +30,7 @@ const ContactUsSection = ({ data, activeRegister }: Props) => {
           title={data.backgroundMobile.title}
           layout='fill'
           objectFit='cover'
+          quality={100}
         />
       </div>
       <h2 className={styles.contactUs__title}>{data.title}</h2>
@@ -52,6 +54,7 @@ const ContactUsSection = ({ data, activeRegister }: Props) => {
           title={data.auxiliaryImage.title}
           width={450}
           height={450}
+          quality={100}
         />
       </div>
       <div className={styles.contactUs__auxiliaryImage + ' ' + styles.desktop}>
@@ -61,6 +64,7 @@ const ContactUsSection = ({ data, activeRegister }: Props) => {
           title={data.auxiliaryImage.title}
           width={450}
           height={450}
+          quality={100}
         />
       </div>
     </section>

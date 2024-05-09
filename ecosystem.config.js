@@ -45,8 +45,8 @@ module.exports = {
           },
           CATEGORIES: {
             CROP_CATEGORY: {
-              WIDTH: 332,
-              HEIGHT: 332,
+              WIDTH: 815,
+              HEIGHT: 458,
             },
           },
           JURIES: {
@@ -101,10 +101,10 @@ module.exports = {
         ROBOTS: 'index, follow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://transprdelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
-          INDEX: 'elasticsearch_index_premios_portafolio_2024_multisite',
+          INDEX: 'elasticsearch_index_premios_portafolio_2024_beta_multisite',
           DOMAIN: 'http://localhost:3050',
           ELASTIC_USERNAME: 'MultiSite_Prod',
-          ELASTIC_PASSWORD: 'Mult1S1t3_Pr0d24',
+          ELASTIC_PASSWORD: '*Mult1S1t3_Pr0d24*',
         }),
         ELASTIC_API: '/api/elastic/portafolio',
         IMAGES: JSON.stringify({
@@ -122,8 +122,8 @@ module.exports = {
           },
           CATEGORIES: {
             CROP_CATEGORY: {
-              WIDTH: 332,
-              HEIGHT: 332,
+              WIDTH: 815,
+              HEIGHT: 458,
             },
           },
           JURIES: {

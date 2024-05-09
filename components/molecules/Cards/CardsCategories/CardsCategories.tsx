@@ -43,8 +43,9 @@ const CardsCategories = ({
             )}
             alt={image?.alt}
             title={image?.title}
-            height={147}
-            width={142}
+            height={420}
+            width={420}
+            quality={100}
           />
         </div>
       ) : (
@@ -62,6 +63,7 @@ const CardsCategories = ({
             title={icon?.title}
             height={70}
             width={65}
+            quality={100}
           />
         </div>
         <h3 className={styles?.cardCategories__top__title}>{title}</h3>

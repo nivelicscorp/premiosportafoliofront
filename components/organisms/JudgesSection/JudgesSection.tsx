@@ -28,6 +28,7 @@ const JudgesSection = ({ data }: JudgesSectionProps) => {
             title={data?.icon?.title}
             height='250'
             width='250'
+            quality={100}
           />
         </div>
         <h2> {data?.title} </h2>
@@ -37,7 +38,7 @@ const JudgesSection = ({ data }: JudgesSectionProps) => {
         slidesPerView={1.5}
         className={'swiper swiper__judges'}
         navigation={true}
-        pagination={true}
+        pagination={{ clickable: true }}
         spaceBetween={50}
         centeredSlides={true}
         breakpoints={{

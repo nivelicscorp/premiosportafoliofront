@@ -21,6 +21,7 @@ const CardsGallery = ({
           alt='img1'
           width={322}
           height={208}
+          quality={100}
         />
       )}
       {type === 'video' && (

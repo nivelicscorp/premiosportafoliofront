@@ -37,7 +37,7 @@ const CategoriesSection = ({ data, activeRegister }: Props) => {
         spaceBetween={30}
         slidesPerView={1}
         className={'swiper swiper__primary'}
-        pagination={true}
+        pagination={{ clickable: true }}
         navigation={true}
         loop={data?.card?.length > 4}
         breakpoints={{

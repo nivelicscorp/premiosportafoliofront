@@ -35,6 +35,7 @@ const GallerySection = ({ data }: Props) => {
             alt='img1'
             width={815}
             height={458}
+            quality={100}
           />
         )}
         {activeContent?.type === 'video' && (
@@ -55,13 +56,13 @@ const GallerySection = ({ data }: Props) => {
         slidesPerView={1}
         className={'swiper swiper__primary swiper__gallery'}
         centeredSlides={true}
-        pagination={true}
+        pagination={{ clickable: true }}
         navigation={true}
         slideToClickedSlide={true}
         loop={true}
-        onActiveIndexChange={(index: any) =>
-          setActiveContent(data.cards[index.activeIndex])
-        }
+        onActiveIndexChange={(index: any) => {
+          setActiveContent(data.cards[index.realIndex])
+        }}
         breakpoints={{
           768: {
             slidesPerView: 1.5,

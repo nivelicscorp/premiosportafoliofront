@@ -18,6 +18,7 @@ const CardsWinner = ({ name, award, photo }: WinnerCardModel) => {
           alt={photo.alt}
           height={175}
           width={175}
+          quality={100}
         />
       </div>
       <h3

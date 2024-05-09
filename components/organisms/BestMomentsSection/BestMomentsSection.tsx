@@ -25,6 +25,7 @@ const BestMomentsSection = ({ data }: BestMomentsSectionProps) => {
             width={150}
             alt={data?.logo?.alt}
             title={data?.logo?.title}
+            quality={100}
           />
         </div>
         <h2 className={styles.title}>{data?.title}</h2>
@@ -48,6 +49,7 @@ const BestMomentsSection = ({ data }: BestMomentsSectionProps) => {
           width={1200}
           alt={data?.backgroundDesktop?.alt}
           title={data?.backgroundDesktop?.title}
+          quality={100}
         />
       </div>
       <div className={styles.bestMoments__imgMobile}>
@@ -57,6 +59,7 @@ const BestMomentsSection = ({ data }: BestMomentsSectionProps) => {
           height={575}
           alt={data?.backgroundMobile?.alt}
           title={data?.backgroundMobile?.title}
+          quality={100}
         />
       </div>
     </div>

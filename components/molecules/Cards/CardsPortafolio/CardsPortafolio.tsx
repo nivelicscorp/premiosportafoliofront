@@ -25,6 +25,7 @@ const CardsPortafolio = ({
             objectFit='cover'
             width={115}
             height={90}
+            quality={100}
           />
         </div>
         <div className={styles.card__text}>

@@ -42,6 +42,7 @@ const MainBanner = ({ data }: Props) => {
             title={data.logo.title}
             width={290}
             height={170}
+            quality={100}
           />
         </div>
         <div
@@ -62,6 +63,7 @@ const MainBanner = ({ data }: Props) => {
               title={data.mainIcon.title}
               width={218}
               height={67}
+              quality={100}
             />
           </div>
           <div className={styles?.banner__prize__award}>
@@ -71,6 +73,7 @@ const MainBanner = ({ data }: Props) => {
               title={data.auxiliaryIcon.title}
               width={179}
               height={270}
+              quality={100}
             />
           </div>
         </div>
