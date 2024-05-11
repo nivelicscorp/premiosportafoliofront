@@ -9,6 +9,7 @@ interface InputProps {
   disabled?: boolean
   options?: string[]
   errorMessage?: string | boolean
+  tooltip?: string
   name: string
   onChange?: (event: any) => void
   onBlur?: (event: any) => void
@@ -25,6 +26,7 @@ const Input = forwardRef<any, InputProps>(function Render(
     disabled,
     options,
     errorMessage,
+    tooltip,
     onChange,
     onBlur,
   },
@@ -32,9 +34,10 @@ const Input = forwardRef<any, InputProps>(function Render(
 ) {
   const [focus, setFocus] = useState(false)
   const [typeField, setTypeField] = useState(type)
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false)
   return (
     <div className={styles.inputContainer}>
-      {type !== 'checkbox' && (
+      {type !== 'checkbox' && type !== 'radio' && (
         <label
           htmlFor={`field-${name}`}
           className={
@@ -72,7 +75,7 @@ const Input = forwardRef<any, InputProps>(function Render(
           placeholder={placeholder}
           onChange={onChange}
         ></textarea>
-      ) : type === 'checkbox' ? (
+      ) : type === 'checkbox' || type === 'radio' ? (
         <div className={styles.checkbox}>
           <input
             id={`field-${name}`}
@@ -81,9 +84,24 @@ const Input = forwardRef<any, InputProps>(function Render(
             type={type}
             disabled={disabled}
             placeholder={placeholder}
+            value={label}
             onChange={onChange}
           />
           <div dangerouslySetInnerHTML={{ __html: label ?? '' }} />
+          {tooltip && (
+            <>
+              <div
+                className={styles.tooltipButton}
+                onMouseEnter={() => setIsTooltipVisible(true)}
+                onMouseLeave={() => setIsTooltipVisible(false)}
+              >
+                i
+              </div>
+              {isTooltipVisible && (
+                <p className={styles.tooltipText}>{tooltip}</p>
+              )}
+            </>
+          )}
         </div>
       ) : type === 'password' ? (
         <>
