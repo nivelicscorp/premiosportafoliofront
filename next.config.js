@@ -4,6 +4,7 @@ const nextConfig = {
   env: {
     BASE_DOMAIN: process.env.BASE_DOMAIN,
     ENCRYPTATION_KEY: process.env.ENCRYPTATION_KEY,
+    ENCRYPTATION_IV: process.env.ENCRYPTATION_IV,
     IMAGES: process.env.IMAGES,
   },
   reactStrictMode: true,

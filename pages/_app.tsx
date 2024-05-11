@@ -1,12 +1,16 @@
 import 'styles.scss'
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
 import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
-import MainBanner from '@molecules/MainBanner/MainBanner'
-import MorePortafolioSection from '@organisms/MorePortafolioSection/MorePortafolioSection'
-import Header from '@molecules/Header/Header'
+import decryptCryptoData from '@utils/decryptCryptoData'
+const MainBanner = dynamic(() => import('@molecules/MainBanner/MainBanner'))
+const MorePortafolioSection = dynamic(
+  () => import('@organisms/MorePortafolioSection/MorePortafolioSection')
+)
+const Header = dynamic(() => import('@molecules/Header/Header'))
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -39,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         JSON.parse(sessionStorage.getItem('portafolioData') || 'null')
       )
     }
-    setCookieValue(JSON.parse(getCookie('user-data') ?? '{}'))
+    setCookieValue(getCookie('user-data'))
   }, [router.pathname])
 
   return (
@@ -53,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        {cookieValue?.iv && <Header />}
+        {cookieValue && <Header />}
         {mainBannerData && router.pathname !== '/' && (
           <MainBanner data={mainBannerData} />
         )}

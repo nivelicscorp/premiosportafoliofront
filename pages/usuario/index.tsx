@@ -5,13 +5,15 @@ import { GetServerSideProps } from 'next'
 import { useEffect, useState } from 'react'
 
 const DashboardPage = () => {
-  const cookieValue = JSON.parse(getCookie('user-data') ?? '{}')
-  const userData = decryptCryptoData(cookieValue)
   const [userName, setUserName] = useState('')
   useEffect(() => {
-    const userDataParsed = JSON.parse(userData ?? '{}')
-    setUserName(userDataParsed?.current_user?.name ?? 'Usuario')
-  }, [userData])
+    const decypherData = async () => {
+      const deciphedData = await decryptCryptoData(getCookie('user-data'))
+      const userDataParsed = JSON.parse(deciphedData ?? '{}')
+      setUserName(userDataParsed?.current_user?.name ?? 'Usuario')
+    }
+    decypherData()
+  }, [])
 
   return (
     <>

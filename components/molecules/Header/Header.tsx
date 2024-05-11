@@ -9,15 +9,14 @@ const Header = () => {
   const [userName, setUserName] = useState('')
   const [showMenu, setShowMenu] = useState(false)
   useEffect(() => {
-    const cookieValue = JSON.parse(getCookie('user-data') ?? '{}')
-    if (!cookieValue.iv) {
-      return
-    }
-    try {
-      const userData = decryptCryptoData(cookieValue)
-      const userDataParsed = JSON.parse(userData ?? '{}')
+    const decypherData = async () => {
+      const deciphedData = await decryptCryptoData(getCookie('user-data'))
+      const userDataParsed = JSON.parse(deciphedData ?? '{}')
       setUserName(userDataParsed?.current_user?.name ?? 'Usuario')
-    } catch (error) {}
+    }
+    if (userName === '') {
+      decypherData()
+    }
   }, [])
 
   const clearSession = () => {

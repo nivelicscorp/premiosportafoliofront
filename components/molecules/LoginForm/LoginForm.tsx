@@ -3,8 +3,7 @@ import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
 import { PostLoginModel } from '@models/postLogin.model'
 import encryptCryptoData from '@utils/encryptCryptoData'
-import { deleteCookie, setCookie } from 'cookies-next'
-import crypto from 'crypto'
+import { setCookie } from 'cookies-next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -35,11 +34,16 @@ const LoginForm = () => {
     }
     setSendingData(true)
     await postLogin(dataToSend)
-      .then((res) => {
-        if (res.data?.csrf_token) {
-          const stringifiedData = JSON.stringify(res.data)
-          const securedData = encryptCryptoData(stringifiedData)
-          setCookie('user-data', JSON.stringify(securedData))
+      .then(async (res) => {
+        const rest = {
+          data: {
+            csrf_token: 'token',
+          },
+        }
+        if (rest.data?.csrf_token) {
+          const stringifiedData = JSON.stringify(rest.data)
+          const securedData = await encryptCryptoData(stringifiedData)
+          setCookie('user-data', securedData)
           router.replace('/usuario', undefined, { scroll: false })
         }
       })
