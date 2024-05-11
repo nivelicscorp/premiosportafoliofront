@@ -11,7 +11,12 @@ const Button = ({ title, variant, disabled, clickHandler }: ButtonProps) => {
     <>
       {variant === 'primary' && (
         <button
-          className={style.linkBtn + ' ' + style.linkBtn__primary}
+          className={
+            style.linkBtn +
+            ' ' +
+            style.linkBtn__primary +
+            (disabled ? ' ' + style.linkBtn__disabled : '')
+          }
           onClick={clickHandler}
           disabled={disabled}
         >
@@ -20,7 +25,12 @@ const Button = ({ title, variant, disabled, clickHandler }: ButtonProps) => {
       )}
       {variant === 'secondary' && (
         <button
-          className={style.linkBtn + ' ' + style.linkBtn__secondary}
+          className={
+            style.linkBtn +
+            ' ' +
+            style.linkBtn__secondary +
+            (disabled ? ' ' + style.linkBtn__disabled : '')
+          }
           onClick={clickHandler}
           disabled={disabled}
         >

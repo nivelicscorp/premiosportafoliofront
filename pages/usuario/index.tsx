@@ -1,25 +1,39 @@
-import { GetServerSideProps, NextPage } from 'next'
-import Link from 'next/link'
+import LinkButton from '@atoms/LinkButton/LinkButton'
+import decryptCryptoData from '@utils/decryptCryptoData'
+import { getCookie } from 'cookies-next'
+import { GetServerSideProps } from 'next'
+import { useEffect, useState } from 'react'
 
-const UserPage: NextPage = () => {
+const DashboardPage = () => {
+  const cookieValue = JSON.parse(getCookie('user-data') ?? '{}')
+  const userData = decryptCryptoData(cookieValue)
+  const [userName, setUserName] = useState('')
+  useEffect(() => {
+    const userDataParsed = JSON.parse(userData ?? '{}')
+    setUserName(userDataParsed?.current_user?.name ?? 'Usuario')
+  }, [userData])
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <h1>Usuario works</h1>
-      <Link href={'/usuario/postulacion'}> Go to postulations </Link>
-      <Link href={'/'}> Back to home </Link>
-    </div>
+    <>
+      <div style={{ width: '500px', margin: '20px auto' }}>
+        <p>Hola</p>
+        <p>{userName}</p>
+        <p>Bienvenido a tu cuenta</p>
+        <LinkButton
+          variant='secondary'
+          target='_self'
+          url='/usuario/postulacion'
+          title='¡Postúlate aquí!'
+        />
+      </div>
+    </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {},
   }
 }
 
-export default UserPage
+export default DashboardPage

@@ -27,6 +27,7 @@ import MainBannerDTO from '@utils/DTO/MainBannerDTO'
 import MorePortafolioSectionDTO from '@utils/DTO/MorePortafolioSectionDTO'
 import { WinnerSectionDTO } from '@utils/DTO/WinnerSectionDTO'
 import type { GetServerSideProps, NextPage } from 'next'
+import { useEffect } from 'react'
 const Home: NextPage<{
   floatButton: FloatButtonModel | null
   mainBannerData: MainBanneSectionModel | null
@@ -38,6 +39,17 @@ const Home: NextPage<{
   contactUsData: ContactUsSectionModel | null
   morePortafolioData: MorePortafolioSectionModel | null
 }> = (props) => {
+  /**
+   * Save the data in the sessionStorage to avoid flickering inside app.tsx
+   */
+  useEffect(() => {
+    sessionStorage.setItem('bannerData', JSON.stringify(props.mainBannerData))
+    sessionStorage.setItem(
+      'portafolioData',
+      JSON.stringify(props.morePortafolioData)
+    )
+  }, [props.mainBannerData, props.morePortafolioData])
+
   return (
     <>
       {props.floatButton?.active && <BtnFloat data={props.floatButton} />}

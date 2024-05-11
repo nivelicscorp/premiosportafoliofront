@@ -21,6 +21,8 @@ module.exports = {
       env_development: {
         PORT: 3050,
         BASE_DOMAIN: 'https://stg-premiospo.eltiempo.com.co', // to change after back to real domain
+        ENCRYPTATION_KEY:
+          '24b60a73512fcc1817b1214bfb26a55c4202f3da212b1f61842be6ad9c29429d',
         ROBOTS: 'noindex, nofollow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
@@ -98,6 +100,8 @@ module.exports = {
       env_production: {
         PORT: 3050,
         BASE_DOMAIN: 'https://premios.portafolio.co',
+        ENCRYPTATION_KEY:
+          '24b60a73512fcc1817b1214bfb26a55c4202f3da212b1f61842be6ad9c29429d',
         ROBOTS: 'index, follow',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://transprdelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',

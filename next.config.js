@@ -3,6 +3,7 @@ require('./process.env.config.js').execute()
 const nextConfig = {
   env: {
     BASE_DOMAIN: process.env.BASE_DOMAIN,
+    ENCRYPTATION_KEY: process.env.ENCRYPTATION_KEY,
     IMAGES: process.env.IMAGES,
   },
   reactStrictMode: true,

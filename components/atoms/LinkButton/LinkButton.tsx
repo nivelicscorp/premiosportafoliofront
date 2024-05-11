@@ -10,7 +10,7 @@ const LinkButton = ({ title, url, variant, target }: LinkButtonProps) => {
   return (
     <>
       {variant === 'primary' && (
-        <Link href={url} passHref>
+        <Link href={url} passHref scroll={false}>
           <a
             className={style.linkBtn + ' ' + style.linkBtn__primary}
             target={target}
@@ -20,7 +20,7 @@ const LinkButton = ({ title, url, variant, target }: LinkButtonProps) => {
         </Link>
       )}
       {variant === 'secondary' && (
-        <Link href={url} passHref>
+        <Link href={url} passHref scroll={false}>
           <a
             className={style.linkBtn + ' ' + style.linkBtn__secondary}
             target={target}

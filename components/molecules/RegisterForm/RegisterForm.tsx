@@ -77,7 +77,7 @@ const RegisterForm = () => {
     await postRegister(dataToSend)
       .then((res) => {
         if (res.data?.uuid?.length > 0) {
-          router.replace('/login')
+          router.replace('/login', undefined, { scroll: false })
         }
       })
       .catch((err) => {
@@ -110,7 +110,7 @@ const RegisterForm = () => {
           {...register('firstName', { required: 'El nombre es requerido.' })}
         />
         <Input
-          type='text'
+          type='email'
           placeholder='Correo...'
           label='Correo'
           errorMessage={errors.email?.message?.toString()}
@@ -200,7 +200,7 @@ const RegisterForm = () => {
               {...register('agencyNit')}
             />
             <Input
-              type='text'
+              type='tel'
               placeholder='Número de teléfono'
               label='Número de teléfono'
               errorMessage={errors.telephoneNumber?.message?.toString()}
@@ -227,7 +227,7 @@ const RegisterForm = () => {
           disabled={sendingData}
         />
       </form>
-      <Link href='/login'>
+      <Link href='/login' passHref scroll={false}>
         <a>¿Ya tienes un perfil registrado? Inicia sesión</a>
       </Link>
     </div>
