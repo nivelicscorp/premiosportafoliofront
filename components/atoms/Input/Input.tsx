@@ -1,8 +1,10 @@
+import Tooltip from '@atoms/Tooltip/Tooltip'
 import styles from '@styles/scss/atoms/inputs.module.scss'
 import { forwardRef, useState } from 'react'
 
 interface InputProps {
   label?: string
+  smallLabel?: string
   required?: boolean
   placeholder?: string
   type: string
@@ -10,6 +12,7 @@ interface InputProps {
   options?: string[]
   errorMessage?: string | boolean
   tooltip?: string
+  tooltipLabel?: string
   name: string
   onChange?: (event: any) => void
   onBlur?: (event: any) => void
@@ -21,12 +24,14 @@ const Input = forwardRef<any, InputProps>(function Render(
     type,
     name,
     label,
+    smallLabel,
     required = true,
     placeholder,
     disabled,
     options,
     errorMessage,
     tooltip,
+    tooltipLabel,
     onChange,
     onBlur,
   },
@@ -34,7 +39,6 @@ const Input = forwardRef<any, InputProps>(function Render(
 ) {
   const [focus, setFocus] = useState(false)
   const [typeField, setTypeField] = useState(type)
-  const [isTooltipVisible, setIsTooltipVisible] = useState(false)
   return (
     <div className={styles.inputContainer}>
       {type !== 'checkbox' && type !== 'radio' && (
@@ -50,7 +54,10 @@ const Input = forwardRef<any, InputProps>(function Render(
               : ''
           }
         >
-          {label} <span>{!required && '(Opcional)'}</span>
+          {label} <span>{smallLabel}</span>
+          {tooltipLabel && (
+            <Tooltip tooltipLabel={tooltipLabel} closePosition={true} />
+          )}
         </label>
       )}
       {type === 'select' ? (
@@ -88,20 +95,7 @@ const Input = forwardRef<any, InputProps>(function Render(
             onChange={onChange}
           />
           <div dangerouslySetInnerHTML={{ __html: label ?? '' }} />
-          {tooltip && (
-            <>
-              <div
-                className={styles.tooltipButton}
-                onMouseEnter={() => setIsTooltipVisible(true)}
-                onMouseLeave={() => setIsTooltipVisible(false)}
-              >
-                i
-              </div>
-              {isTooltipVisible && (
-                <p className={styles.tooltipText}>{tooltip}</p>
-              )}
-            </>
-          )}
+          {tooltip && <Tooltip tooltipLabel={tooltip} closePosition={false} />}
         </div>
       ) : type === 'password' ? (
         <>

@@ -81,7 +81,7 @@ const RegisterPersonExperienceForm = ({
         <Input
           type='textarea'
           label='Otras Actividades'
-          required={false}
+          smallLabel='(Opcional)'
           placeholder='Otras Actividades...'
           {...register('others')}
         />

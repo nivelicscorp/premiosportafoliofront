@@ -53,7 +53,7 @@ const LoginForm = () => {
             csrf_token: 'token',
             current_user: {
               name: 'Usuario',
-              role: 'persona',
+              role: 'agencia',
             },
           },
         }

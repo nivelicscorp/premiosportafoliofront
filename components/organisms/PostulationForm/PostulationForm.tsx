@@ -1,6 +1,9 @@
 import Button from '@atoms/Button/Button'
 import StepButton from '@atoms/StepButton/StepButton'
 import CategoryForm from '@molecules/CategoryForm/CategoryForm'
+import DescriptionAgencyForm from '@molecules/DescriptionAgencyForm/DescriptionAgencyForm'
+import DescriptionCompanyForm from '@molecules/DescriptionCompanyForm/DescriptionCompanyForm'
+import DescriptionPersonForm from '@molecules/DescriptionPersonForm/DescriptionPersonForm'
 import RegisterAgencyInfoForm from '@molecules/RegisterAgencyInfoForm/RegisterAgencyInfoForm'
 import RegisterCompanyInfoForm from '@molecules/RegisterCompanyInfoForm/RegisterCompanyInfoForm'
 import RegisterPersonExperienceForm from '@molecules/RegisterPersonExperienceForm/RegisterPersonExperienceForm'
@@ -104,7 +107,15 @@ const PostulationForm = () => {
         {step === 2 && role === 'agencia' && (
           <RegisterAgencyInfoForm formDirective={register} />
         )}
-        {step === 3 && <h2>Paso 3</h2>}
+        {step === 3 && role === 'empresa' && (
+          <DescriptionCompanyForm formDirective={register} />
+        )}
+        {step === 3 && role === 'persona' && (
+          <DescriptionPersonForm formDirective={register} />
+        )}
+        {step === 3 && role === 'agencia' && (
+          <DescriptionAgencyForm formDirective={register} />
+        )}
         {step === 4 && <h2>Paso 4</h2>}
         {step === 5 && <h2>Paso 5</h2>}
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>

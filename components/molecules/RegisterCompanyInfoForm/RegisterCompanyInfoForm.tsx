@@ -88,7 +88,7 @@ const RegisterCompanyInfoForm = ({ formDirective }: FormProps) => {
       <Input
         type='text'
         label='Teléfono'
-        required={false}
+        smallLabel='(Opcional)'
         placeholder='Teléfono...'
         {...formDirective('phoneCompany')}
       />

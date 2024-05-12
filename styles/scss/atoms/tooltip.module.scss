@@ -1,0 +1,32 @@
+@import '../../scss/config/variables';
+@import '../../scss/config/mixins';
+
+.tooltipButton {
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  right: -1.5rem;
+  top: 0rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-align: center;
+  background-color: map-get($primary, 'general');
+  color: map-get($grayscale, white);
+  border-radius: 50%;
+  &.labelTooltip {
+    right: -1rem;
+  }
+}
+.tooltipText {
+  position: absolute;
+  right: -8rem;
+  top: 0;
+  font-size: 0.8rem;
+  padding: 1rem;
+  background-color: map-get($grayscale, white);
+  border-radius: 1rem;
+  &.labelTooltip {
+    top: 1.5rem;
+    right: 0rem;
+  }
+}

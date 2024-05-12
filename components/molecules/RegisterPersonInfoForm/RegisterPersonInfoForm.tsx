@@ -89,7 +89,7 @@ const RegisterPersonInfoForm = ({ formDirective }: FormProps) => {
       <Input
         type='text'
         label='Segundo contacto'
-        required={false}
+        smallLabel='(Opcional)'
         placeholder='(Teléfono asistente presidencial)...'
         {...formDirective('phonePerson')}
       />
