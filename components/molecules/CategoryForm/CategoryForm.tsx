@@ -1,12 +1,12 @@
 import Input from '@atoms/Input/Input'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-interface CategoryFormProps {
+interface FormProps {
   role: string
   formDirective: UseFormRegister<FieldValues>
 }
 
-const CategoryForm = ({ role, formDirective }: CategoryFormProps) => {
+const CategoryForm = ({ role, formDirective }: FormProps) => {
   return (
     <div>
       <h3>

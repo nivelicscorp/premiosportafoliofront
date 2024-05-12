@@ -1,6 +1,11 @@
 import Button from '@atoms/Button/Button'
 import StepButton from '@atoms/StepButton/StepButton'
 import CategoryForm from '@molecules/CategoryForm/CategoryForm'
+import RegisterAgencyInfoForm from '@molecules/RegisterAgencyInfoForm/RegisterAgencyInfoForm'
+import RegisterCompanyInfoForm from '@molecules/RegisterCompanyInfoForm/RegisterCompanyInfoForm'
+import RegisterPersonExperienceForm from '@molecules/RegisterPersonExperienceForm/RegisterPersonExperienceForm'
+import RegisterPersonInfoForm from '@molecules/RegisterPersonInfoForm/RegisterPersonInfoForm'
+import RegisterPersonStudiesForm from '@molecules/RegisterPersonStudiesForm/RegisterPersonStudiesForm'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie } from 'cookies-next'
 import { useEffect, useState } from 'react'
@@ -27,6 +32,7 @@ const PostulationForm = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     watch,
     formState: { errors },
   } = useForm()
@@ -58,7 +64,15 @@ const PostulationForm = () => {
   }
 
   return (
-    <div style={{ width: '1200px', margin: '50px auto', textAlign: 'center' }}>
+    <div
+      style={{
+        width: '1200px',
+        margin: '50px auto',
+        textAlign: 'center',
+        backgroundColor: 'white',
+        borderRadius: '10px',
+      }}
+    >
       <h1>Formulario de inscripción</h1>
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
         <StepButton stepNumber={1} onClick={() => changeStep(1)} />
@@ -71,7 +85,25 @@ const PostulationForm = () => {
       </div>
       <form style={{ padding: '20px' }} onSubmit={handleSubmit(onSubmit)}>
         {step === 1 && <CategoryForm role={role} formDirective={register} />}
-        {step === 2 && <h2>Paso 2</h2>}
+        {step === 2 && role === 'empresa' && (
+          <RegisterCompanyInfoForm formDirective={register} />
+        )}
+        {step === 2 && role === 'persona' && (
+          <>
+            <RegisterPersonInfoForm formDirective={register} />
+            <RegisterPersonStudiesForm
+              formDirective={register}
+              setValue={setValue}
+            />
+            <RegisterPersonExperienceForm
+              formDirective={register}
+              setValue={setValue}
+            />
+          </>
+        )}
+        {step === 2 && role === 'agencia' && (
+          <RegisterAgencyInfoForm formDirective={register} />
+        )}
         {step === 3 && <h2>Paso 3</h2>}
         {step === 4 && <h2>Paso 4</h2>}
         {step === 5 && <h2>Paso 5</h2>}

@@ -21,7 +21,7 @@ const Input = forwardRef<any, InputProps>(function Render(
     type,
     name,
     label,
-    required,
+    required = true,
     placeholder,
     disabled,
     options,
@@ -50,7 +50,7 @@ const Input = forwardRef<any, InputProps>(function Render(
               : ''
           }
         >
-          {label} {required && '*'}
+          {label} <span>{!required && '(Opcional)'}</span>
         </label>
       )}
       {type === 'select' ? (

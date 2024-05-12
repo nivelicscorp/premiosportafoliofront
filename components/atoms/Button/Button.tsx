@@ -46,6 +46,21 @@ const Button = ({
           {title}
         </button>
       )}
+      {variant === 'tertiary' && (
+        <button
+          className={
+            style.linkBtn +
+            ' ' +
+            style.linkBtn__tertiary +
+            (disabled ? ' ' + style.linkBtn__disabled : '')
+          }
+          onClick={clickHandler}
+          disabled={disabled}
+          type={type}
+        >
+          {title}
+        </button>
+      )}
       {variant === 'prev' && (
         <button
           className={
