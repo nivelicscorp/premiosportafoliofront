@@ -10,6 +10,7 @@ import RegisterPersonExperienceForm from '@molecules/RegisterPersonExperienceFor
 import RegisterPersonInfoForm from '@molecules/RegisterPersonInfoForm/RegisterPersonInfoForm'
 import RegisterPersonStudiesForm from '@molecules/RegisterPersonStudiesForm/RegisterPersonStudiesForm'
 import UploadFilesForm from '@molecules/UploadFilesForm/UploadFilesForm'
+import FinanceForm from '@molecules/FinanceForm/FinanceForm'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie } from 'cookies-next'
 import { useEffect, useState } from 'react'
@@ -79,12 +80,32 @@ const PostulationForm = () => {
     >
       <h1>Formulario de inscripción</h1>
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <StepButton stepNumber={1} onClick={() => changeStep(1)} />
-        <StepButton stepNumber={2} onClick={() => changeStep(2)} />
-        <StepButton stepNumber={3} onClick={() => changeStep(3)} />
-        <StepButton stepNumber={4} onClick={() => changeStep(4)} />
+        <StepButton
+          stepNumber={1}
+          active={step === 1}
+          onClick={() => changeStep(1)}
+        />
+        <StepButton
+          stepNumber={2}
+          active={step === 2}
+          onClick={() => changeStep(2)}
+        />
+        <StepButton
+          stepNumber={3}
+          active={step === 3}
+          onClick={() => changeStep(3)}
+        />
+        <StepButton
+          stepNumber={4}
+          active={step === 4}
+          onClick={() => changeStep(4)}
+        />
         {category === 'Esfuerzo exportador' && (
-          <StepButton stepNumber={5} onClick={() => changeStep(5)} />
+          <StepButton
+            stepNumber={5}
+            active={step === 5}
+            onClick={() => changeStep(5)}
+          />
         )}
       </div>
       <form style={{ padding: '20px' }} onSubmit={handleSubmit(onSubmit)}>
@@ -124,7 +145,7 @@ const PostulationForm = () => {
             setValue={setValue}
           />
         )}
-        {step === 5 && <h2>Paso 5</h2>}
+        {step === 5 && <FinanceForm formDirective={register} />}
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <Button
             title='Anterior'
