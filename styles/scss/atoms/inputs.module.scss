@@ -19,6 +19,13 @@
     width: auto;
   }
 
+  input[type='file'] {
+    color: map-get($grayscale, 'gray-30');
+  }
+  input[type='file']::-webkit-file-upload-button {
+    display: none;
+  }
+
   input.error,
   select.error,
   textarea.error {
@@ -100,6 +107,7 @@
     background: none;
     border: none;
     transform: translateY(-50%);
+    cursor: pointer;
   }
   .disabled {
     path {

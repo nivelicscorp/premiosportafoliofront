@@ -9,6 +9,7 @@ import RegisterCompanyInfoForm from '@molecules/RegisterCompanyInfoForm/Register
 import RegisterPersonExperienceForm from '@molecules/RegisterPersonExperienceForm/RegisterPersonExperienceForm'
 import RegisterPersonInfoForm from '@molecules/RegisterPersonInfoForm/RegisterPersonInfoForm'
 import RegisterPersonStudiesForm from '@molecules/RegisterPersonStudiesForm/RegisterPersonStudiesForm'
+import UploadFilesForm from '@molecules/UploadFilesForm/UploadFilesForm'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie } from 'cookies-next'
 import { useEffect, useState } from 'react'
@@ -116,7 +117,13 @@ const PostulationForm = () => {
         {step === 3 && role === 'agencia' && (
           <DescriptionAgencyForm formDirective={register} />
         )}
-        {step === 4 && <h2>Paso 4</h2>}
+        {step === 4 && (
+          <UploadFilesForm
+            role={role}
+            formDirective={register}
+            setValue={setValue}
+          />
+        )}
         {step === 5 && <h2>Paso 5</h2>}
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <Button
@@ -127,17 +134,27 @@ const PostulationForm = () => {
             type='button'
           />
           <Button
-            title='Siguiente'
-            variant='next'
-            disabled={
+            title={
               (step === 4 && category !== 'Esfuerzo exportador') ||
               (step === 5 && category === 'Esfuerzo exportador')
+                ? 'Enviar'
+                : 'Siguiente'
             }
-            clickHandler={() => changeStep(step + 1)}
+            variant={
+              (step === 4 && category !== 'Esfuerzo exportador') ||
+              (step === 5 && category === 'Esfuerzo exportador')
+                ? 'tertiary'
+                : 'next'
+            }
+            clickHandler={
+              (step === 4 && category !== 'Esfuerzo exportador') ||
+              (step === 5 && category === 'Esfuerzo exportador')
+                ? handleSubmit(onSubmit)
+                : () => changeStep(step + 1)
+            }
             type='button'
           />
         </div>
-        <button>SAVE</button>
       </form>
     </div>
   )
