@@ -8,6 +8,7 @@ interface InputProps {
   required?: boolean
   placeholder?: string
   type: string
+  value?: string
   disabled?: boolean
   options?: string[]
   accept?: string
@@ -28,6 +29,7 @@ const Input = forwardRef<any, InputProps>(function Render(
     smallLabel,
     required = true,
     placeholder,
+    value,
     disabled,
     options,
     accept,
@@ -93,7 +95,7 @@ const Input = forwardRef<any, InputProps>(function Render(
             type={type}
             disabled={disabled}
             placeholder={placeholder}
-            value={label}
+            value={value ?? label}
             onChange={onChange}
           />
           <div dangerouslySetInnerHTML={{ __html: label ?? '' }} />

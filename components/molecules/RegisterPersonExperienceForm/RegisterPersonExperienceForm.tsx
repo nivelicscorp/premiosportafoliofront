@@ -58,32 +58,32 @@ const RegisterPersonExperienceForm = ({
           type='text'
           label='Empresa o Universidad'
           placeholder='Empresa o Universidad...'
-          {...register('entity')}
+          {...register('empleador')}
         />
         <Input
           type='text'
           label='Cargo'
           placeholder='Cargo...'
-          {...register('labor')}
+          {...register('cargo')}
         />
         <Input
           type='text'
           label='Año'
           placeholder='Año...'
-          {...register('year')}
+          {...register('anio')}
         />
         <Input
           type='text'
           label='Teléfono'
           placeholder='Teléfono...'
-          {...register('phone')}
+          {...register('telefono')}
         />
         <Input
           type='textarea'
           label='Otras Actividades'
           smallLabel='(Opcional)'
           placeholder='Otras Actividades...'
-          {...register('others')}
+          {...register('otras_actividades')}
         />
         <Button
           title={'Agregar'}

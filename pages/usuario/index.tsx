@@ -1,6 +1,6 @@
 import LinkButton from '@atoms/LinkButton/LinkButton'
 import decryptCryptoData from '@utils/decryptCryptoData'
-import { getCookie } from 'cookies-next'
+import { getCookie, setCookie } from 'cookies-next'
 import { GetServerSideProps } from 'next'
 import { useEffect, useState } from 'react'
 
@@ -11,6 +11,7 @@ const DashboardPage = () => {
       const deciphedData = await decryptCryptoData(getCookie('user-data'))
       const userDataParsed = JSON.parse(deciphedData ?? '{}')
       setUserName(userDataParsed?.current_user?.name ?? 'Usuario')
+      setCookie('temp-role', userDataParsed?.current_user?.role)
     }
     decypherData()
   }, [])

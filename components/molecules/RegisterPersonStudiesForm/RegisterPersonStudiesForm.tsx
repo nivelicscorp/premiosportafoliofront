@@ -67,25 +67,25 @@ const RegisterPersonStudiesForm = ({ formDirective, setValue }: FormProps) => {
             'Maestría',
             'Doctorado',
           ]}
-          {...register('study')}
+          {...register('estudio')}
         />
         <Input
           type='text'
           label='Institución'
           placeholder='Institución...'
-          {...register('institution')}
+          {...register('institucion')}
         />
         <Input
           type='text'
           label='Año'
           placeholder='Año...'
-          {...register('year')}
+          {...register('anio')}
         />
         <Input
           type='textarea'
           label='Otros'
           placeholder='Otros...'
-          {...register('others')}
+          {...register('otros')}
         />
         <Button
           title={'Agregar'}

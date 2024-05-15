@@ -1,19 +1,20 @@
 import Input from '@atoms/Input/Input'
+import { InformacionFinanciera } from '@models/getCompanyForm.model'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 interface FormProps {
   role: string
   formDirective: UseFormRegister<FieldValues>
+  data: InformacionFinanciera
 }
 
-const CategoryForm = ({ role, formDirective }: FormProps) => {
+const CategoryForm = ({ data, role, formDirective }: FormProps) => {
   return (
     <div>
-      <h3>
-        Si quiere realizar el proceso de inscripción como empresa y persona,
-        deberá hacer el registro con usuarios diferentes para cada postulación.
-      </h3>
-      <p>Seleccione la categoría a la que desee postularse:</p>
+      <h3
+        dangerouslySetInnerHTML={{ __html: data?.markup?.['#markup'] ?? '' }}
+      ></h3>
+      <p>{data?.categoria?.['#title']}</p>
       {role !== '' && (
         <div
           style={{
@@ -26,64 +27,85 @@ const CategoryForm = ({ role, formDirective }: FormProps) => {
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Esfuerzo exportador'
-              tooltip='Esto aclara'
+              label={data?.categoria?.['#options']?.empresa_esfuerzo_exportador}
+              value='empresa_esfuerzo_exportador'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Innovación'
-              tooltip='Esto aclara'
+              label={data?.categoria?.['#options']?.empresa_innovacion}
+              value='empresa_innovacion'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Transformación digital'
-              tooltip='Esto aclara'
+              label={
+                data?.categoria?.['#options']?.empresa_transformacion_digital
+              }
+              value='empresa_transformacion_digital'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Gestión del recurso humano'
-              tooltip='Esto aclara'
+              label={
+                data?.categoria?.['#options']
+                  ?.empresa_gestion_del_recurso_humano
+              }
+              value='empresa_gestion_del_recurso_humano'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Proteccón al medio ambiente'
-              tooltip='Esto aclara'
+              label={
+                data?.categoria?.['#options']
+                  ?.empresa_proteccion_al_medio_ambiente
+              }
+              value='empresa_proteccion_al_medio_ambiente'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Aporte a la comunidad'
-              tooltip='Esto aclara'
+              label={
+                data?.categoria?.['#options']?.empresa_aporte_a_la_comunidad
+              }
+              value='empresa_aporte_a_la_comunidad'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Responsabilidad social empresarial'
-              tooltip='Esto aclara'
+              label={
+                data?.categoria?.['#options']
+                  ?.empresa_responsabilidad_social_empresarial
+              }
+              value='empresa_responsabilidad_social_empresarial'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'persona' && (
             <Input
               type='radio'
-              label='Servicio al cliente'
-              tooltip='Esto aclara'
+              label={data?.categoria?.['#options']?.empresa_servicio_al_cliente}
+              value='empresa_servicio_al_cliente'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
@@ -91,24 +113,29 @@ const CategoryForm = ({ role, formDirective }: FormProps) => {
           {role !== 'empresa' && (
             <Input
               type='radio'
-              label='Mejor docente'
-              tooltip='Esto aclara'
+              label={data?.categoria?.['#options']?.persona_mejor_docente}
+              value='persona_mejor_docente'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'empresa' && (
             <Input
               type='radio'
-              label='Mejor estudiante'
-              tooltip='Esto aclara'
+              label={data?.categoria?.['#options']?.persona_mejor_estudiante}
+              value='persona_mejor_estudiante'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}
           {role !== 'empresa' && (
             <Input
               type='radio'
-              label='Mejor líder empresarial'
-              tooltip='Esto aclara'
+              label={
+                data?.categoria?.['#options']?.persona_mejor_lider_empresarial
+              }
+              value='persona_mejor_lider_empresarial'
+              tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
               {...formDirective('category')}
             />
           )}

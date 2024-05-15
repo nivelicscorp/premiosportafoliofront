@@ -35,34 +35,30 @@ const LoginForm = () => {
     setSendingData(true)
     await postLogin(dataToSend)
       .then(async (res) => {
-        const rest = {
-          data: {
-            csrf_token: 'token',
-          },
-        }
-        if (rest.data?.csrf_token) {
-          const stringifiedData = JSON.stringify(rest.data)
+        if (res.data?.csrf_token) {
+          res.data.current_user.role = 'agencia'
+          const stringifiedData = JSON.stringify(res.data)
           const securedData = await encryptCryptoData(stringifiedData)
           setCookie('user-data', securedData)
           router.replace('/usuario', undefined, { scroll: false })
         }
       })
       .catch(async (err) => {
-        const objUser = {
-          data: {
-            csrf_token: 'token',
-            current_user: {
-              name: 'Usuario',
-              role: 'empresa',
-            },
-          },
-        }
-        const stringifiedData = JSON.stringify(objUser.data)
-        const securedData = await encryptCryptoData(stringifiedData)
-        setCookie('user-data', securedData)
-        router.replace('/usuario', undefined, { scroll: false })
-        // console.error('Error al iniciar sesión el usuario')
-        // setSendingData(false)
+        // const objUser = {
+        //   data: {
+        //     csrf_token: 'token',
+        //     current_user: {
+        //       name: 'Usuario',
+        //       role: 'empresa',
+        //     },
+        //   },
+        // }
+        // const stringifiedData = JSON.stringify(objUser.data)
+        // const securedData = await encryptCryptoData(stringifiedData)
+        // setCookie('user-data', securedData)
+        // router.replace('/usuario', undefined, { scroll: false })
+        console.error('Error al iniciar sesión el usuario')
+        setSendingData(false)
       })
   }
   return (

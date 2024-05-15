@@ -34,7 +34,7 @@ const RegisterPersonInfoForm = ({ formDirective }: FormProps) => {
           type='select'
           label='Tipo de documento'
           placeholder='Seleccione...'
-          options={['C.C.', 'C.E.', 'Pasaporte']}
+          options={['CC', 'CE', 'Pasaporte']}
           {...formDirective('documentTypePerson')}
         />
         <Input

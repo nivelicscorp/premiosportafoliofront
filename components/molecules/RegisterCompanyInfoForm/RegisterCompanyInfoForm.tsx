@@ -1,11 +1,13 @@
 import Input from '@atoms/Input/Input'
+import { InformacionFinanciera } from '@models/getCompanyForm.model'
 import { UseFormRegister, FieldValues } from 'react-hook-form'
 
 interface FormProps {
+  data: InformacionFinanciera
   formDirective: UseFormRegister<FieldValues>
 }
 
-const RegisterCompanyInfoForm = ({ formDirective }: FormProps) => {
+const RegisterCompanyInfoForm = ({ data, formDirective }: FormProps) => {
   return (
     <div
       style={{
@@ -16,7 +18,7 @@ const RegisterCompanyInfoForm = ({ formDirective }: FormProps) => {
         gap: '10px',
       }}
     >
-      <h3>Postulación empresa directa</h3>
+      <h3>{data?.postulacion_empresa_directa?.['#title']}</h3>
       <Input
         type='text'
         label='Nombre de la empresa'

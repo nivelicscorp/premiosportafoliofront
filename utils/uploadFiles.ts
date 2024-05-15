@@ -55,3 +55,25 @@ const checkFile = (file: any, allowedFormats: string[]) => {
       return false
     })
 }
+/**
+ * Function to upload a file to the backend through a POST request in server.js
+ * @param file - File to upload
+ * @returns URL of the uploaded file
+ */
+export const onFileUpload = async (file: { filetype: Blob; name: string }) => {
+  const formData = new FormData()
+  formData.append('file', file.filetype)
+  formData.append('name', file.name)
+  const res = await fetch(`/upload-file`, {
+    method: 'POST',
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      return `${process.env.BASE_DOMAIN}/static/assets/backend/private/${res.data.name}`.replace(
+        'https://',
+        ''
+      )
+    })
+  return res
+}
