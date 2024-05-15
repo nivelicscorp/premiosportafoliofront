@@ -10,6 +10,7 @@ import MainBanner from '@molecules/MainBanner/MainBanner'
 import { MorePortafolioSectionModel } from '@models/morePortafolioSection.model'
 import { MainBanneSectionModel } from '@models/mainBanner.model'
 import MorePortafolioSection from '@organisms/MorePortafolioSection/MorePortafolioSection'
+import Introduccionblock from '@molecules/Introduccionblock/Introduccionblock'
 
 const UserPage: NextPage<{
   mainBannerData: MainBanneSectionModel | null
@@ -30,6 +31,7 @@ const UserPage: NextPage<{
   return (
     <>
       {props.mainBannerData && <MainBanner data={props.mainBannerData} />}
+      <Introduccionblock />
       <h1>Registro works</h1>
       <button onClick={() => deleteCookieUser()}>Logout</button>
       <Link href='/'>Volver</Link>
