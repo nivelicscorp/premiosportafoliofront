@@ -1,0 +1,56 @@
+@import '../config/variables';
+@import '../config/mixins';
+
+.introduccionblock {
+    background: map-get($primary, base);   
+    &__info { 
+        font: 400 1.6rem / 2rem $font-primary;
+        padding: 1.6rem;
+        text-align: center;
+        mark {
+            background: map-get($grayscale, white);
+            font-weight: bold;
+        }
+        &__img {
+            height: 4.5rem;
+            margin: 0 auto .5rem;
+            position: relative;
+            width: 2rem;
+            span {
+                position: static !important;
+            }
+            // img {
+            //     height: 100% !important;
+            //     width: 100% ;
+            // }
+        }
+    }
+}
+
+@include mq-min(md) {
+    .introduccionblock {
+        &__info {
+            display: flex;
+            font-size: 2.4rem;
+            line-height: 3rem;
+            margin: auto;
+            max-width: 65rem;
+            padding: 3.2rem 1.8rem 2rem;
+            &__img {
+                height: 7rem;
+                width: 8rem;
+            }
+        }
+    }
+}
+
+@include mq-min(x) {
+    .introduccionblock {
+        &__info {
+            max-width: 90rem;
+            &__img {
+                height: 6rem;
+            }
+        }
+    }
+}
