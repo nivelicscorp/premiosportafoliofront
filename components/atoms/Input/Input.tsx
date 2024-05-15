@@ -98,7 +98,10 @@ const Input = forwardRef<any, InputProps>(function Render(
             value={value ?? label}
             onChange={onChange}
           />
-          <div dangerouslySetInnerHTML={{ __html: label ?? '' }} />
+          <div
+            className={styles.checkbox__div}
+            dangerouslySetInnerHTML={{ __html: label ?? '' }}
+          />
           {tooltip && <Tooltip tooltipLabel={tooltip} closePosition={false} />}
         </div>
       ) : type === 'password' ? (

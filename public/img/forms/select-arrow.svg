@@ -1,0 +1,16 @@
+<svg id="Botón_flecha_-_Arrow_button" data-name="Botón flecha - Arrow button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_63763" data-name="Rectángulo 63763" width="24" height="24" transform="translate(0 24) rotate(-90)" fill="#31abaa" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Botón_flecha_-_Arrow_button-2" data-name="Botón flecha - Arrow button" transform="translate(24) rotate(90)">
+    <g id="Grupo_107550" data-name="Grupo 107550">
+      <g id="Enmascarar_grupo_859" data-name="Enmascarar grupo 859" transform="translate(24 24) rotate(180)" clip-path="url(#clip-path)">
+        <g id="angle-right" transform="translate(4.5 0)">
+          <path id="Trazado_22147" data-name="Trazado 22147" d="M14,22a.76.76,0,0,0-.24-.553L4.3,12l9.451-9.451a.757.757,0,0,0,0-1.106l-1.2-1.2a.757.757,0,0,0-1.106,0L.24,11.447a.757.757,0,0,0,0,1.106L11.447,23.76a.757.757,0,0,0,1.106,0l1.2-1.2A.76.76,0,0,0,14,22Z" transform="translate(0 0)" fill="#31abaa"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

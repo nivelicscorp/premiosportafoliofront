@@ -1,0 +1,49 @@
+@import '../../config/variables';
+@import '../../config/mixins';
+
+.formNote {
+    background: map-get($grayscale, gray-40);
+    border-bottom: .8rem solid map-get($primary, general);
+    color: map-get($grayscale, white);
+    font: 400 1.6rem / 2rem $font-primary;
+    margin: 7.5rem 0 0 -1.6rem;
+    padding: 3.6rem 2.5rem 3.6rem 9rem;
+    text-align: center;
+    width: calc(100% + 3.2rem);
+    &__p {
+        margin: auto;
+        position: relative;
+        width: fit-content;
+        &::before {
+            background: url(../../../../public/img/forms/prize-form.png) center bottom no-repeat;
+            background-size: contain;
+            bottom: -3.6rem;
+            content: '';
+            display: block;
+            height: calc(100% + 11rem);
+            left: -8rem;
+            position: absolute;
+            width: 11.5rem;
+        }
+    }
+}
+
+@include mq-min(md) { 
+    .formNote {
+        font-size: 1.8rem;
+        list-style: 2rem;
+        margin-top: 2rem;
+        padding: 2rem 2.5rem;
+        text-align: center;
+        &__p {
+            max-width: 31rem;            
+            width: 100%;
+            &::before {
+                bottom: -2rem;
+                height: calc(100% + 18rem);
+                left: -21rem;
+                width: 12.5rem;
+            }
+        }
+    }
+}

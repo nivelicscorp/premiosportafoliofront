@@ -9,14 +9,28 @@
   input,
   select,
   textarea {
-    padding: 0.8rem 1.4rem;
+    padding: 1.8rem .5rem 1.2rem 2.2rem;
     font-family: Open Sans;
-    border: 0.1rem solid map-get($grayscale, 'gray-30');
+    border: 0.2rem solid map-get($grayscale, 'gray-30');
     background-color: map-get($grayscale, white);
     border-radius: 0.5rem;
     font-size: 1.6rem;
     display: block;
     width: auto;
+  }
+  select {
+    background: url(../../../public/img/forms/select-arrow.svg) center right 1rem no-repeat;
+    background-size: 2rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  input {
+    padding: 1.8rem .5rem 1.2rem 2.2rem;
+    &::placeholder {
+      color: map-get($grayscale, gray-25);
+      font-weight: bold;
+    }
   }
 
   input[type='file'] {
@@ -26,89 +40,116 @@
     display: none;
   }
 
-  input.error,
-  select.error,
-  textarea.error {
-    border: 0.1rem solid map-get($alert, 'base');
-    background-color: map-get($alert, 'light');
+  input,
+  select,
+  textarea {
+    &.error {
+      border-color: map-get($alert, 'base');
+      background-color: map-get($alert, 'light');
+    }
+    &.disabled {
+      border-color: map-get($grayscale, 'gray-20');
+      background-color: map-get($grayscale, 'gray-10');
+    }
+    &:focus {
+      outline: none;
+      background-color: map-get($grayscale, white);
+      border-color: map-get($secondary, 'active');
+    }
   }
 
-  input.disabled,
-  select.disabled,
-  textarea.disabled {
-    border: 0.1rem solid map-get($grayscale, 'gray-20');
-    background-color: map-get($grayscale, 'gray-10');
-  }
-
-  input:focus,
-  select:focus,
-  textarea:focus {
-    outline: none;
-    background-color: map-get($grayscale, white);
-    border: 0.1rem solid map-get($secondary, 'active');
+  label.error {
+    + select {
+      border-color: map-get($alert, 'base');
+      background-color: map-get($alert, 'light');
+      background-image: url(../../../public/img/forms/select-arrow-error.svg);
+    }
   }
 
   label {
     display: block;
     position: absolute;
-    font-size: 1rem;
-    top: -0.8rem;
-    left: 1.4rem;
-    padding: 0 0.5rem;
-    background-image: linear-gradient(
-      to top,
-      map-get($grayscale, white) 50%,
-      transparent 50%
-    );
-    border-radius: 50%;
-    color: map-get($primary, 'base');
+    font-size: 1.4rem;
+    top: -.5rem;
+    left: 1.9rem;
+    padding: .5rem;
+    background: map-get($grayscale, White);
+    line-height: 0;
+    color: map-get($primary, dark);
     span {
       font-size: 0.8rem;
     }
+    &.active {
+      color: map-get($grayscale, 'gray-30');
+    }
+    &.error {
+      background-image: linear-gradient( to top, map-get($alert, 'light') 50%, transparent 50% );
+      color: map-get($alert, 'base');
+      + input + button svg path {
+        fill: map-get($alert, 'base');
+      }
+    }
+    &.disabled {
+      background-image: linear-gradient( to top, map-get($grayscale, 'gray-10') 50%, transparent 50%);
+      color: map-get($grayscale, 'gray-20');
+    }
   }
 
-  label.active {
-    color: map-get($grayscale, 'gray-30');
-  }
-  label.error {
-    background-image: linear-gradient(
-      to top,
-      map-get($alert, 'light') 50%,
-      transparent 50%
-    );
-    color: map-get($alert, 'base');
-  }
-  label.disabled {
-    background-image: linear-gradient(
-      to top,
-      map-get($grayscale, 'gray-10') 50%,
-      transparent 50%
-    );
-    color: map-get($grayscale, 'gray-20');
-  }
   .errorMessage {
     color: map-get($alert, 'base');
     font-size: 1.2rem;
     margin: 0.5rem 1rem 0;
   }
   .checkbox {
-    display: flex;
     align-items: center;
+    margin-top: 2rem;
     position: relative;
     width: fit-content;
-    input {
-      margin-right: 0.5rem;
+    &__div, input {
+      display: inline;
+      vertical-align: middle;
+    }
+    &__div {
+      font: 500 1.4rem / 2.2rem $font-primary;
+      a {
+        color: map-get($primary, general);
+        text-decoration: underline;
+      }
+    }
+    input {    
+      border-radius: .4rem;
+      border-width: .15rem;
+      appearance: none;
+      height: 2rem;
+      margin: 0 1rem 0 0;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      width: 2rem;
+      &:checked {
+        border-color: map-get($primary, general);
+        &::after {
+          background: map-get($primary, general);
+          border: .2rem solid map-get($grayscale, white);      
+          border-radius: .4rem;    
+          content: '';
+          display: block;
+          position: absolute;
+          height: 100%;
+          width: 100%;
+        }
+      }
     }
   }
   .insideButton {
     position: absolute;
     right: 1rem;
-    top: 50%;
+    top: 2rem;
     background: none;
     border: none;
-    transform: translateY(-50%);
     cursor: pointer;
   }
+
   .disabled {
     path {
       fill: map-get($primary, 'base');
