@@ -1,0 +1,48 @@
+@import '../config/variables'; 
+@import '../config/mixins'; 
+
+.head {
+    background: map-get($grayscale, white);
+    box-shadow: 0 .1rem .7rem #0000004D;
+    border-radius: .8rem .8rem 0 0;
+    font: bold 2.2rem / 2.8rem $font-secondary; 
+    margin: -3rem auto 0;
+    max-width: calc(100% - 3.2rem);
+    padding: 1.8rem 4rem;
+    position: relative;
+    text-align: center;
+    &:after {
+        background: map-get($grayscale, black);
+        border-radius: 0 0 .8rem .8rem;
+        bottom: -1rem;
+        content: '';
+        display: block;
+        height: 1rem;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        transform: translateX(-50%);
+        width: calc(100% - 14rem);
+    }
+}
+
+@include mq-min(md) {
+    .head {
+        font-size: 2.8rem;
+        line-height: 5.1rem;
+    }
+}
+
+
+@include mq-min(x) {
+    .head {
+       max-width: 128rem;
+    }
+}
+
+@include mq-min(xxl) {
+    .head {
+        font-size: 3.7rem;
+        line-height: 5.1rem;
+    }
+}
