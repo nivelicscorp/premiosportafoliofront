@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="328" height="55" viewBox="0 0 328 55">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Rectángulo_65595" data-name="Rectángulo 65595" d="M8,0H320a8,8,0,0,1,8,8V55a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V8A8,8,0,0,1,8,0Z" transform="translate(637 1591.423)" fill="#2f323c"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectángulo_63907" data-name="Rectángulo 63907" width="313" height="249" rx="8" transform="translate(0.307 -0.031)" fill="#2f323c"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="1.054" y1="0.225" x2="-0.052" y2="0.774" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#818685" stop-opacity="0"/>
+      <stop offset="1" stop-color="#b5b5b5" stop-opacity="0.502"/>
+    </linearGradient>
+  </defs>
+  <g id="Enmascarar_grupo_62233" data-name="Enmascarar grupo 62233" transform="translate(-637 -1591.423)" clip-path="url(#clip-path)">
+    <g id="Enmascarar_grupo_748" data-name="Enmascarar grupo 748" transform="translate(624.693 1416.454)" clip-path="url(#clip-path-2)">
+      <g id="Grupo_14590" data-name="Grupo 14590" transform="matrix(0.966, -0.259, 0.259, 0.966, -25.299, 79.336)" opacity="0.3">
+        <path id="Sustracción_9" data-name="Sustracción 9" d="M99.023,227.529h0L0,170.645V56.881L99.024,0l99.024,56.881V170.645L99.024,227.529Zm0-222.4L4.466,59.449V168.08L99.024,222.4l94.557-54.318V59.449L99.024,5.131Z" transform="translate(10.854 10.853)" fill="url(#linear-gradient)"/>
+        <path id="Sustracción_10" data-name="Sustracción 10" d="M109.877,249.237h0L0,186.926V62.308L109.878,0,219.755,62.308V186.926L109.878,249.237Zm0-243.617L4.956,65.121V184.116l104.922,59.5,104.922-59.5V65.121L109.878,5.62Z" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+        <path id="Sustracción_11" data-name="Sustracción 11" d="M88.169,198.585h0L0,148.937V49.645L88.169,0l88.169,49.645v99.292L88.169,198.585Zm0-194.107L3.977,51.886V146.7l84.193,47.408L172.362,146.7V51.886L88.169,4.478Z" transform="translate(21.708 25.326)" fill="url(#linear-gradient)"/>
+        <path id="Sustracción_12" data-name="Sustracción 12" d="M77.315,176.877h0L0,132.656V44.218L77.315,0l77.315,44.218v88.438l-77.315,44.22Zm0-172.889L3.487,46.215v84.448l73.828,42.226,73.828-42.226V46.215L77.315,3.989Z" transform="translate(32.562 36.18)" fill="url(#linear-gradient)"/>
+        <path id="Sustracción_13" data-name="Sustracción 13" d="M66.461,155.169h0L0,116.376V38.791L66.461,0l66.461,38.791v77.584L66.461,155.169Zm0-151.67L3,40.543v74.083L66.461,151.67l63.464-37.044V40.543L66.461,3.5Z" transform="translate(43.416 47.034)" fill="url(#linear-gradient)"/>
+        <path id="Sustracción_14" data-name="Sustracción 14" d="M55.607,133.461h0L0,100.095V33.364L55.607,0l55.607,33.364v66.73L55.607,133.461Zm0-130.451L2.508,34.871V98.59l53.1,31.861,53.1-31.861V34.871L55.607,3.009Z" transform="translate(54.27 57.889)" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+  </g>
+</svg>
