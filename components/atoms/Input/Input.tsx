@@ -12,6 +12,7 @@ interface InputProps {
   disabled?: boolean
   options?: string[]
   accept?: string
+  hasError?: boolean
   errorMessage?: string | boolean
   tooltip?: string
   tooltipLabel?: string
@@ -33,6 +34,7 @@ const Input = forwardRef<any, InputProps>(function Render(
     disabled,
     options,
     accept,
+    hasError,
     errorMessage,
     tooltip,
     tooltipLabel,
@@ -43,6 +45,9 @@ const Input = forwardRef<any, InputProps>(function Render(
 ) {
   const [focus, setFocus] = useState(false)
   const [typeField, setTypeField] = useState(type)
+  if (errorMessage) {
+    hasError = true
+  }
   return (
     <div className={styles.inputContainer}>
       {type !== 'checkbox' && type !== 'radio' && (
@@ -51,7 +56,7 @@ const Input = forwardRef<any, InputProps>(function Render(
           className={
             focus
               ? styles.active
-              : '' || errorMessage
+              : '' || hasError
               ? styles.error
               : '' || disabled
               ? styles.disabled
@@ -83,6 +88,9 @@ const Input = forwardRef<any, InputProps>(function Render(
           ref={ref}
           name={name}
           disabled={disabled}
+          className={
+            hasError ? styles.error : '' || disabled ? styles.disabled : ''
+          }
           placeholder={placeholder}
           onChange={onChange}
         ></textarea>
@@ -110,11 +118,7 @@ const Input = forwardRef<any, InputProps>(function Render(
             placeholder={disabled ? '' : placeholder}
             disabled={disabled}
             className={
-              errorMessage
-                ? styles.error
-                : '' || disabled
-                ? styles.disabled
-                : ''
+              hasError ? styles.error : '' || disabled ? styles.disabled : ''
             }
             onFocus={(e) => setFocus(true)}
             onBlur={(e) => setFocus(false)}
@@ -173,11 +177,7 @@ const Input = forwardRef<any, InputProps>(function Render(
             disabled={disabled}
             accept={accept}
             className={
-              errorMessage
-                ? styles.error
-                : '' || disabled
-                ? styles.disabled
-                : ''
+              hasError ? styles.error : '' || disabled ? styles.disabled : ''
             }
             onFocus={(e) => setFocus(true)}
             onBlur={(e) => setFocus(false)}
@@ -209,7 +209,7 @@ const Input = forwardRef<any, InputProps>(function Render(
           placeholder={disabled ? '' : placeholder}
           disabled={disabled}
           className={
-            errorMessage ? styles.error : '' || disabled ? styles.disabled : ''
+            hasError ? styles.error : '' || disabled ? styles.disabled : ''
           }
           onFocus={(e) => setFocus(true)}
           onBlur={(e) => setFocus(false)}

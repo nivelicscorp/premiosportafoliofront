@@ -4,15 +4,31 @@ import { FileTypeModel } from '@models/fileType.model'
 import CardFile from '@molecules/Cards/CardFile/CardFile'
 import { onFileAttachImage } from '@utils/uploadFiles'
 import { Fragment, useRef, useState } from 'react'
-import { UseFormRegister, FieldValues, UseFormSetValue } from 'react-hook-form'
+import {
+  UseFormRegister,
+  FieldValues,
+  UseFormSetValue,
+  FieldErrors,
+} from 'react-hook-form'
+import { DescripcionDelProyecto } from '@models/getCompanyForm.model'
 
 interface FormProps {
   role: string
+  data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
   setValue: UseFormSetValue<FieldValues>
+  errors: FieldErrors<FieldValues>
 }
 
-const UploadFilesForm = ({ role, formDirective, setValue }: FormProps) => {
+const UploadFilesForm = ({
+  data,
+  errors,
+  role,
+  formDirective,
+  setValue,
+}: FormProps) => {
+  console.log('data', data)
+
   const [filesLoaded, setFilesLoaded] = useState<FileTypeModel[]>([])
   const [errorMessage, setErrorMessage] = useState('')
   // Create a ref for the input
@@ -20,7 +36,10 @@ const UploadFilesForm = ({ role, formDirective, setValue }: FormProps) => {
   /**
    * Set the files loaded in the form
    */
-  formDirective('files', { value: filesLoaded })
+  formDirective('files', {
+    value: filesLoaded,
+    required: data?.adjuntar_documentacion?.archivos?.['#required'],
+  })
   return (
     <div style={{ width: '800px', margin: '20px auto' }}>
       <h3>
@@ -39,12 +58,13 @@ const UploadFilesForm = ({ role, formDirective, setValue }: FormProps) => {
       </h3>
       <div style={{ display: 'flex', gap: '20px' }}>
         <div>
-          <p>Adjuntar documentación</p>
+          <p>{data?.adjuntar_documentacion?.['#title']}</p>
           <Input
             ref={inputRef}
             type='file'
-            label='Archivos'
+            label={data?.adjuntar_documentacion?.archivos?.['#title'] ?? ''}
             name='files'
+            hasError={errors?.files ? true : false}
             errorMessage={errorMessage}
             tooltipLabel='Tenga en cuenta que los archivos deben llevar el nombre del participante y # de documento (NIT si es empresa)'
             accept='.pdf'
@@ -65,7 +85,9 @@ const UploadFilesForm = ({ role, formDirective, setValue }: FormProps) => {
               }
               setErrorMessage('')
               setFilesLoaded([...filesLoaded, response])
-              setValue('files', [...filesLoaded, response])
+              setValue('files', [...filesLoaded, response], {
+                shouldValidate: true,
+              })
             }}
           />
         </div>

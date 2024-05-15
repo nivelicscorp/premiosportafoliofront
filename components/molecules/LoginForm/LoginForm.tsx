@@ -36,7 +36,7 @@ const LoginForm = () => {
     await postLogin(dataToSend)
       .then(async (res) => {
         if (res.data?.csrf_token) {
-          res.data.current_user.role = 'agencia'
+          res.data.current_user.role = 'empresa'
           const stringifiedData = JSON.stringify(res.data)
           const securedData = await encryptCryptoData(stringifiedData)
           setCookie('user-data', securedData)

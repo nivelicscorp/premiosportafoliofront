@@ -1,3 +1,4 @@
+import styles from '@styles/scss/organisms/postulationForm.module.scss'
 import Button from '@atoms/Button/Button'
 import StepButton from '@atoms/StepButton/StepButton'
 import CategoryForm from '@molecules/CategoryForm/CategoryForm'
@@ -277,21 +278,34 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
             )}
           </div>
           <form style={{ padding: '20px' }} onSubmit={handleSubmit(onSubmit)}>
-            {step === 1 && (
+            <section
+              className={`${styles.section} ${step === 1 ? styles.active : ''}`}
+            >
               <CategoryForm
                 data={formsData?.tipo_de_inscripcion}
                 role={role}
                 formDirective={register}
               />
+            </section>
+            {role === 'empresa' && (
+              <section
+                className={`${styles.section} ${
+                  step === 2 ? styles.active : ''
+                }`}
+              >
+                <RegisterCompanyInfoForm
+                  data={formsData?.ingreso_de_datos}
+                  errors={errors}
+                  formDirective={register}
+                />
+              </section>
             )}
-            {step === 2 && role === 'empresa' && (
-              <RegisterCompanyInfoForm
-                data={formsData?.ingreso_de_datos}
-                formDirective={register}
-              />
-            )}
-            {step === 2 && role === 'persona' && (
-              <>
+            {role === 'persona' && (
+              <section
+                className={`${styles.section} ${
+                  step === 2 ? styles.active : ''
+                }`}
+              >
                 <RegisterPersonInfoForm formDirective={register} />
                 <RegisterPersonStudiesForm
                   formDirective={register}
@@ -301,28 +315,64 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   formDirective={register}
                   setValue={setValue}
                 />
-              </>
+              </section>
             )}
-            {step === 2 && role === 'agencia' && (
-              <RegisterAgencyInfoForm formDirective={register} />
+            {role === 'agencia' && (
+              <section
+                className={`${styles.section} ${
+                  step === 2 ? styles.active : ''
+                }`}
+              >
+                <RegisterAgencyInfoForm formDirective={register} />
+              </section>
             )}
-            {step === 3 && role === 'empresa' && (
-              <DescriptionCompanyForm formDirective={register} />
+            {role === 'empresa' && (
+              <section
+                className={`${styles.section} ${
+                  step === 3 ? styles.active : ''
+                }`}
+              >
+                <DescriptionCompanyForm
+                  data={formsData?.descripcion_del_proyecto}
+                  errors={errors}
+                  formDirective={register}
+                />
+              </section>
             )}
-            {step === 3 && role === 'persona' && (
-              <DescriptionPersonForm formDirective={register} />
+            {role === 'persona' && (
+              <section
+                className={`${styles.section} ${
+                  step === 3 ? styles.active : ''
+                }`}
+              >
+                <DescriptionPersonForm formDirective={register} />
+              </section>
             )}
-            {step === 3 && role === 'agencia' && (
-              <DescriptionAgencyForm formDirective={register} />
+            {role === 'agencia' && (
+              <section
+                className={`${styles.section} ${
+                  step === 3 ? styles.active : ''
+                }`}
+              >
+                <DescriptionAgencyForm formDirective={register} />
+              </section>
             )}
-            {step === 4 && (
+            <section
+              className={`${styles.section} ${step === 4 ? styles.active : ''}`}
+            >
               <UploadFilesForm
+                data={formsData?.documentacion_adjunta}
+                errors={errors}
                 role={role}
                 formDirective={register}
                 setValue={setValue}
               />
-            )}
-            {step === 5 && <FinanceForm formDirective={register} />}
+            </section>
+            <section
+              className={`${styles.section} ${step === 5 ? styles.active : ''}`}
+            >
+              <FinanceForm formDirective={register} />
+            </section>
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
               <Button
                 title='Anterior'
