@@ -90,6 +90,9 @@ app
           }
         )
         const data = await response.json()
+        if (!data?.field_tipo_de_usuario) {
+          return res.status(401).json({ error: 'Unauthorized' })
+        }
         return res.status(200).json(data)
       } catch (error) {
         console.log('🚀 ~ error:', error)

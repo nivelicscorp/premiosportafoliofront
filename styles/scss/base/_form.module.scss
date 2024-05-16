@@ -1,0 +1,139 @@
+.form-content {
+    background: map-get($grayscale, white);
+    border-radius: .8rem;
+    box-shadow: 0 .3rem .6rem #00000045;
+    margin: 4rem auto 0;
+    max-width: calc(100% - 3.2rem);
+    min-height: 70.4rem;
+    overflow: hidden;
+    padding: 10rem 1.6rem 3rem;
+    position: relative;
+    width: 100%;
+    &::before {
+        background: url(../../../public/img/forms/form-top.png) no-repeat map-get($grayscale, black);
+        background-size: cover;
+        content: '';
+        display: block;
+        height: 5.5rem;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    .form {
+
+        &__fieldset {
+            display: grid;
+            gap: 2rem;
+            &.tyc {
+                margin-bottom: 2rem;
+            }
+        }
+        &__title {
+            font: normal 1.8rem / 2.6rem $font-secondary;
+            text-align: center;
+        }
+        &__links {
+            margin-top: 3rem;
+            a {
+                color: map-get($grayscale, gray-40);
+                display: flex;
+                flex-direction: column;
+                font: normal 1.6rem / 2.2rem $font-primary;
+                text-align: center;
+            }
+        }
+        &__btn {
+            button {
+                border-color: map-get($primary, general);
+                color: map-get($grayscale, black);
+                font: bold 1.8rem / 2.4rem $font-primary;
+                margin: auto;
+                padding: 1rem 2.5rem;
+                width: fit-content;
+            }
+        }
+    }
+}
+
+@include mq-min(md) {
+    .form-content {     
+        max-width: 68.8rem;
+        padding-top: 11rem;
+        &::before {
+            height: 7.1rem;
+        }
+        .form {
+            &__fieldset {
+                max-width: 38rem;
+                margin: auto;
+            }
+        }
+    }
+}
+
+
+@include mq-min(lg) {
+    .form-content {     
+        max-width: 96.8rem;
+        .form {
+            &__fieldset {
+                gap: 3rem;
+                max-width: 38rem;
+                margin: auto;
+                &.tyc {
+                    max-width: 53rem;
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+    }
+}
+
+
+// LOGIN STYLES 
+.form {
+    &__top {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1.7rem;
+        &__title {
+            color: map-get($primary, general);
+            font: 900 2.5rem / 3.4rem $font-primary;
+        }
+        &__img {
+            display: grid;
+            place-content: center;
+            position: relative;
+            width: 100%;
+            &::before,
+            &::after {
+                background: map-get($primary, general);
+                content: '';
+                display: block;
+                height: .2rem;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 35%;
+
+            }
+            &::before {
+                left: -1.6rem;
+                @include mq-min(sm) { left: 0; }
+            }
+            &::after {
+                right: -1.6rem;
+                @include mq-min(sm) { right: 0; }
+
+            }
+            svg {
+                background: map-get($grayscale, white);
+                border-radius: 50%;
+                position: relative;
+
+            }
+        }
+    }
+}
