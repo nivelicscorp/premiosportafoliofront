@@ -7,6 +7,7 @@ import { hexToArray } from './decodeHelper'
 const decryptCryptoData = async (data: any) => {
   const jwk = JSON.parse(process.env.ENCRYPTATION_KEY ?? '{}')
   const iv = hexToArray(process.env.ENCRYPTATION_IV ?? '')
+  let decryptedString = data
   try {
     // Import the key
     const key = await window.crypto.subtle.importKey(
@@ -38,11 +39,12 @@ const decryptCryptoData = async (data: any) => {
     )
 
     // Convert the decrypted data back to a string
-    return new TextDecoder().decode(decryptedData)
+    decryptedString = new TextDecoder().decode(decryptedData)
+    return decryptedString
   } catch (error) {
     console.error('Error during decryption:', error)
+    return decryptedString
   }
-  return
 }
 
 export default decryptCryptoData

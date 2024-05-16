@@ -37,7 +37,7 @@ const LoginForm = () => {
       name: data.email,
       pass: data.password,
     }
-    // setSendingData(true)
+    setSendingData(true)
     await postLogin(dataToSend)
       .then(async (res) => {
         if (res.data?.csrf_token) {
@@ -47,14 +47,16 @@ const LoginForm = () => {
                 resProfile.field_tipo_de_usuario,
                 ''
               )?.value
+              res.data.current_user.name = arrayDestructuring(
+                resProfile.field_nombre,
+                ''
+              )?.value
               const stringifiedData = JSON.stringify(res.data)
-              console.log('🚀 ~ .then ~ stringifiedData:', stringifiedData)
               const securedData = await encryptCryptoData(stringifiedData)
               setCookie('user-data', securedData)
-              // router.replace('/usuario', undefined, { scroll: false })
+              router.replace('/usuario', undefined, { scroll: false })
             })
             .catch((err: any) => {
-              console.log('🚀 ~ .then ~ err:', err)
               console.error('Error al iniciar sesión el usuario')
               setSendingData(false)
             })
