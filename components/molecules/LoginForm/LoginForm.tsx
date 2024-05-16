@@ -1,9 +1,12 @@
+import getProfile from '@actions/getProfile'
 import postLogin from '@actions/postLogin'
 import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
+import { GetProfileModel } from '@models/getProfile.model'
 import { PostLoginModel } from '@models/postLogin.model'
+import arrayDestructuring from '@utils/arrayDestructuring'
 import encryptCryptoData from '@utils/encryptCryptoData'
-import { setCookie } from 'cookies-next'
+import { getCookie, setCookie } from 'cookies-next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -25,6 +28,8 @@ const LoginForm = () => {
   } = useForm()
   /**
    * Function to send the data to the backend
+   * using postLogin to get the access token
+   * and getProfile to get the user profile and role
    * @param data - Data to send to the backend
    */
   const onSubmit: SubmitHandler<any> = async (data) => {
@@ -32,31 +37,30 @@ const LoginForm = () => {
       name: data.email,
       pass: data.password,
     }
-    setSendingData(true)
+    // setSendingData(true)
     await postLogin(dataToSend)
       .then(async (res) => {
         if (res.data?.csrf_token) {
-          res.data.current_user.role = 'empresa'
-          const stringifiedData = JSON.stringify(res.data)
-          const securedData = await encryptCryptoData(stringifiedData)
-          setCookie('user-data', securedData)
-          router.replace('/usuario', undefined, { scroll: false })
+          getProfile(res.data.current_user.uid, res.data.csrf_token)
+            .then(async (resProfile: GetProfileModel) => {
+              res.data.current_user.role = arrayDestructuring(
+                resProfile.field_tipo_de_usuario,
+                ''
+              )?.value
+              const stringifiedData = JSON.stringify(res.data)
+              console.log('🚀 ~ .then ~ stringifiedData:', stringifiedData)
+              const securedData = await encryptCryptoData(stringifiedData)
+              setCookie('user-data', securedData)
+              // router.replace('/usuario', undefined, { scroll: false })
+            })
+            .catch((err: any) => {
+              console.log('🚀 ~ .then ~ err:', err)
+              console.error('Error al iniciar sesión el usuario')
+              setSendingData(false)
+            })
         }
       })
       .catch(async (err) => {
-        // const objUser = {
-        //   data: {
-        //     csrf_token: 'token',
-        //     current_user: {
-        //       name: 'Usuario',
-        //       role: 'empresa',
-        //     },
-        //   },
-        // }
-        // const stringifiedData = JSON.stringify(objUser.data)
-        // const securedData = await encryptCryptoData(stringifiedData)
-        // setCookie('user-data', securedData)
-        // router.replace('/usuario', undefined, { scroll: false })
         console.error('Error al iniciar sesión el usuario')
         setSendingData(false)
       })

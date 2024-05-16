@@ -34,7 +34,7 @@ const RegisterForm = () => {
     const dataToSend: PostRegisterData = {
       name: [
         {
-          value: data.firstName,
+          value: data.email,
         },
       ],
       mail: [
@@ -69,7 +69,7 @@ const RegisterForm = () => {
       ],
       field_nombre: [
         {
-          value: typeUser === 'Agencia' ? data.nameAgency : '',
+          value: typeUser === 'Agencia' ? data.nameAgency : data?.firstName,
         },
       ],
     }

@@ -20,7 +20,8 @@ module.exports = {
       },
       env_development: {
         PORT: 3050,
-        BASE_DOMAIN: 'https://stg-premiospo.eltiempo.com.co', // to change after back to real domain
+        BASE_DOMAIN: 'https://beta-premios.portafolio.co',
+        BACKEND_DOMAIN: 'https://stg-premiospo.eltiempo.com.co',
         ENCRYPTATION_KEY:
           '{"alg":"A256GCM","ext":true,"k":"x_w5nag_IGblaKj1XPPfH1m_2ifuKHFOmLIKynGVoV8","key_ops":["encrypt","decrypt"],"kty":"oct"}',
         ENCRYPTATION_IV: 'd0b071ba02dd2f268cb69f97',
@@ -101,6 +102,7 @@ module.exports = {
       env_production: {
         PORT: 3050,
         BASE_DOMAIN: 'https://premios.portafolio.co',
+        BACKEND_DOMAIN: 'https://premiospo.eltiempo.com.co',
         ENCRYPTATION_KEY:
           '{"alg":"A256GCM","ext":true,"k":"x_w5nag_IGblaKj1XPPfH1m_2ifuKHFOmLIKynGVoV8","key_ops":["encrypt","decrypt"],"kty":"oct"}',
         ENCRYPTATION_IV: 'd0b071ba02dd2f268cb69f97',

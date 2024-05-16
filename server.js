@@ -8,6 +8,7 @@ const dev = process.env.NODE_ENV !== 'production'
 const hostname = process.env.HOSTNAME || 'localhost'
 const port = process.env.PORT || 3050
 const app = next({ dev, hostname, port })
+const bodyParser = require('body-parser')
 const handle = routes.getRequestHandler(app)
 const { join } = require('path')
 
@@ -17,6 +18,7 @@ app
     const server = express()
     server.use(compression())
     server.use(cors())
+    server.use(bodyParser.json())
     server.use('/', express.static('public'))
 
     // Implementacion de CORS para la realizacion de request a servicios externos
@@ -44,6 +46,54 @@ app
         app.serveStatic(req, res, filePath)
       } else {
         handle(req, res, req.url)
+      }
+    })
+    // Intercept the login post to store the HTTPS Cookie by the change
+    // of the domain
+    server.post('/api/login', async (req, res) => {
+      try {
+        const response = await fetch(
+          `${process.env.BASE_DOMAIN}/user/login?_format=json`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(req.body),
+          }
+        )
+        const cookie = response.headers
+          .get('set-cookie')
+          .replace(
+            `${process.env.BACKEND_DOMAIN.replace('https://', '')}`,
+            `${process.env.BASE_DOMAIN.replace('https://', '')}`
+          )
+        const data = await response.json()
+        res.setHeader('Set-Cookie', cookie)
+        return res.status(200).json(data)
+      } catch (error) {
+        return res.status(500).json({ error: error.message })
+      }
+    })
+    // Intercept the profile post to send the HTTPS Cookie
+    server.post('/api/profile', async (req, res) => {
+      const { uid, token } = req.body
+      try {
+        const response = await fetch(
+          `${process.env.BASE_DOMAIN}/user/${uid}?_format=json`,
+          {
+            headers: {
+              'X-CSRF-Token': token,
+              'Content-Type': 'application/json',
+              Cookie: req.headers.cookie,
+            },
+          }
+        )
+        const data = await response.json()
+        return res.status(200).json(data)
+      } catch (error) {
+        console.log('🚀 ~ error:', error)
+        return res.status(500).json({ error: error.message })
       }
     })
 
