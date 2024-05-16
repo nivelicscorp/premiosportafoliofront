@@ -4,6 +4,7 @@
     box-shadow: 0 .3rem .6rem #00000045;
     margin: 4rem auto 0;
     max-width: calc(100% - 3.2rem);
+    min-height: 70.4rem;
     overflow: hidden;
     padding: 10rem 1.6rem 3rem;
     position: relative;
@@ -84,6 +85,54 @@
                     max-width: 53rem;
                     margin-bottom: 3rem;
                 }
+            }
+        }
+    }
+}
+
+
+// LOGIN STYLES 
+.form {
+    &__top {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1.7rem;
+        &__title {
+            color: map-get($primary, general);
+            font: 900 2.5rem / 3.4rem $font-primary;
+        }
+        &__img {
+            display: grid;
+            place-content: center;
+            position: relative;
+            width: 100%;
+            &::before,
+            &::after {
+                background: map-get($primary, general);
+                content: '';
+                display: block;
+                height: .2rem;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 35%;
+
+            }
+            &::before {
+                left: -1.6rem;
+                @include mq-min(sm) { left: 0; }
+            }
+            &::after {
+                right: -1.6rem;
+                @include mq-min(sm) { right: 0; }
+
+            }
+            svg {
+                background: map-get($grayscale, white);
+                border-radius: 50%;
+                position: relative;
+
             }
         }
     }
