@@ -1,0 +1,134 @@
+@import '../config/mixins';
+@import '../config/variables';
+
+.header {
+    background: map-get($grayscale, black);
+    border-bottom: .4rem solid map-get($primary, general);
+    left: 0;
+    padding: 1.6rem;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    &__content {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        max-width: 128rem;
+        width: 100%;
+    }
+    a,
+    &__menu__btn {
+        color: map-get($grayscale, white);
+        font: normal 1.4rem / normal $font-secondary;
+        text-decoration: none;
+        &:hover { 
+            opacity: .8;
+        }
+    }
+    &__mainMenu {
+        display: flex;
+        gap: 1rem;
+        li {
+            align-items: center;
+            display: flex;
+            gap: 1rem;
+            &::after {
+                background: map-get($primary, general);
+                content: '';
+                display: block;
+                height: 1.3rem;
+                width: .2rem;
+            }
+        }
+    }
+    &__menu {
+        position: relative;
+        &__btn {
+            align-items: center;
+            background: none;
+            border: none;
+            display: flex;
+            gap: 1rem;
+            &__close {
+                transition: all .5s ease;
+            }
+            &.open {
+                .header__menu__btn__close {
+                    transform: rotate(-180deg);
+                    transition: all .5s ease;
+                }
+            }
+            &::before {
+                background: map-get($primary, general);
+                content: '';
+                display: block;
+                height: 1.3rem;
+                width: .2rem;
+            }
+        }
+        &__options {
+            border: .1rem solid #B1B1B1;
+            background: map-get($grayscale, white);
+            border-radius: .4rem;
+            box-shadow: 0 .1rem .4rem #00000026;
+            display: grid;
+            padding: .7rem 2.6rem;
+            position: absolute;
+            left: 1.6rem;
+            top: calc(100% + .6rem);
+            z-index: 3;
+            a {
+                align-items: center;
+                border-bottom: .1rem solid #B1B1B1;
+                color: map-get($primary, general);
+                display: flex;
+                justify-content: center;
+                gap: 1.1rem;
+                font: bold 1.2rem / 2.2rem $font-primary;
+                padding: .7rem 0;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@include mq-min(md) {
+    .header {
+        a,
+        &__menu__btn {
+            font-size: 2.2rem;
+        }
+        &__mainMenu {
+            gap: 3rem;
+            li {
+                gap: 3rem;
+                &:after {
+                    height: 2.6rem;
+                }
+            }
+            
+        }
+        &__menu {
+            &__btn {
+                &__user {
+                    width: 2.8rem;
+                    height: 2.8rem;
+                }
+                &::before {
+                    height: 2.6rem;
+                    margin-right: 2rem;
+                }
+            }
+            &__options {
+                left: 3rem;
+                width: calc(100% - 3rem);
+                a {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+}
