@@ -62,14 +62,18 @@ app
             body: JSON.stringify(req.body),
           }
         )
-        const cookie = response.headers
-          .get('set-cookie')
-          .replace(
-            `${process.env.BACKEND_DOMAIN.replace('https://', '')}`,
-            `${process.env.BASE_DOMAIN.replace('https://', '')}`
-          )
+        const cookie = response.headers.get('set-cookie')
+
+        if (!cookie) {
+          return res.status(500).json({ error: 'No authorization cookie' })
+        }
+
+        const overwritedCookie = cookie?.replace(
+          `${process.env.BACKEND_DOMAIN?.replace('https://', '')}`,
+          `${process.env.BASE_DOMAIN?.replace('https://', '')}`
+        )
         const data = await response.json()
-        res.setHeader('Set-Cookie', cookie)
+        res.setHeader('Set-Cookie', overwritedCookie)
         return res.status(200).json(data)
       } catch (error) {
         return res.status(500).json({ error: error.message })
@@ -91,7 +95,36 @@ app
         )
         const data = await response.json()
         if (!data?.field_tipo_de_usuario) {
-          return res.status(401).json({ error: 'Unauthorized' })
+          return res
+            .status(401)
+            .json({ error: data?.message ?? 'Unauthorized' })
+        }
+        return res.status(200).json(data)
+      } catch (error) {
+        console.log('🚀 ~ error:', error)
+        return res.status(500).json({ error: error.message })
+      }
+    })
+    // Intercept the post to send the HTTPS Cookie and server headers
+    server.post('/api/post-form', async (req, res) => {
+      try {
+        const response = await fetch(
+          `${process.env.BASE_DOMAIN}/webform_rest/submit?_format=json`,
+          {
+            method: 'POST',
+            headers: {
+              'X-CSRF-Token': req.body.token,
+              'Content-Type': 'application/json',
+              Cookie: req.headers.cookie,
+            },
+            body: JSON.stringify(req.body),
+          }
+        )
+        const data = await response.json()
+        if (!data?.sid) {
+          return res
+            .status(500)
+            .json({ error: data.message ?? 'Error al enviar el formulario' })
         }
         return res.status(200).json(data)
       } catch (error) {

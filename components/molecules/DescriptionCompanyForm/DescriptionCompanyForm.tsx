@@ -1,6 +1,6 @@
 import Input from '@atoms/Input/Input'
 import Tooltip from '@atoms/Tooltip/Tooltip'
-import { DescripcionDelProyecto } from '@models/getCompanyForm.model'
+import { DescripcionDelProyecto } from '@models/getForms.model'
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
@@ -26,7 +26,10 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
           data?.descripcion_de_producto_servicios_de_la_empresa
             ?.descripcion_de_producto_servicio?.['#title'] ?? ''
         }
-        type='textarea'
+        type={
+          data?.descripcion_de_producto_servicios_de_la_empresa
+            ?.descripcion_de_producto_servicio?.['#type'] ?? ''
+        }
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionCompanyCompany ? true : false}
         {...formDirective('descriptionCompanyCompany', {
@@ -48,7 +51,11 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
             '#title'
           ] ?? ''
         }
-        type='textarea'
+        type={
+          data?.descripcionl_proyecto_participa?.nombre_del_proyecto?.[
+            '#type'
+          ] ?? ''
+        }
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionNameCompany ? true : false}
         {...formDirective('descriptionNameCompany', {
@@ -64,7 +71,11 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
             '#title'
           ] ?? ''
         }
-        type='textarea'
+        type={
+          data?.descripcionl_proyecto_participa?.de_que_trata_el_proyecto?.[
+            '#type'
+          ] ?? ''
+        }
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionAboutCompany ? true : false}
         {...formDirective('descriptionAboutCompany', {
@@ -80,7 +91,11 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
             '#title'
           ] ?? ''
         }
-        type='textarea'
+        type={
+          data?.descripcionl_proyecto_participa?.cobertura_alcance_proyecto?.[
+            '#type'
+          ] ?? ''
+        }
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionCoverageCompany ? true : false}
         {...formDirective('descriptionCoverageCompany', {
@@ -96,7 +111,11 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
             '#title'
           ] ?? ''
         }
-        type='textarea'
+        type={
+          data?.descripcionl_proyecto_participa?.tiempo_desarrollado_proyecto?.[
+            '#type'
+          ] ?? ''
+        }
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionTimeCompany ? true : false}
         {...formDirective('descriptionTimeCompany', {
@@ -111,7 +130,11 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
             '#title'
           ] ?? ''
         }
-        type='textarea'
+        type={
+          data?.descripcionl_proyecto_participa?.indicadores_de_gestion?.[
+            '#type'
+          ] ?? ''
+        }
         placeholder='Escriba aquí...'
         tooltipLabel='(Indicador con relación a la industria. Si el indicador es propio, explicar por favor).'
         hasError={errors?.descriptionIndicatorsCompany ? true : false}
@@ -128,7 +151,11 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
             '#title'
           ] ?? ''
         }
-        type='textarea'
+        type={
+          data?.descripcionl_proyecto_participa?.por_que_proyecto_premiado?.[
+            '#type'
+          ] ?? ''
+        }
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionReasonCompany ? true : false}
         {...formDirective('descriptionReasonCompany', {

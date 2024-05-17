@@ -1,6 +1,7 @@
 import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
 import { CardExperienceProps } from '@models/experience.model'
+import { AdjuntarDocumentacion } from '@models/getForms.model'
 import CardExperience from '@molecules/Cards/CardExperience/CardExperience'
 import { Fragment, useState } from 'react'
 import {
@@ -12,11 +13,13 @@ import {
 } from 'react-hook-form'
 
 interface FormProps {
+  data: AdjuntarDocumentacion
   formDirective: UseFormRegister<FieldValues>
   setValue: UseFormSetValue<FieldValues>
 }
 
 const RegisterPersonExperienceForm = ({
+  data,
   formDirective,
   setValue,
 }: FormProps) => {
@@ -28,11 +31,13 @@ const RegisterPersonExperienceForm = ({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm()
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     setExperience([...experience, data])
+    reset()
     setValue('experience', [...experience, data])
   }
 
@@ -53,37 +58,81 @@ const RegisterPersonExperienceForm = ({
           gap: '10px',
         }}
       >
-        <h3>Experiencia Laboral</h3>
+        <h3>{data?.['#title']}</h3>
         <Input
-          type='text'
-          label='Empresa o Universidad'
-          placeholder='Empresa o Universidad...'
-          {...register('empleador')}
+          label={data?.empleador?.['#element']?.empleador?.['#title'] ?? ''}
+          type={data?.empleador?.['#element']?.empleador?.['#type'] ?? ''}
+          placeholder={`${data?.empleador?.['#element']?.empleador?.['#title']}...`}
+          smallLabel={
+            !data?.empleador?.['#element']?.empleador?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.empleador ? true : false}
+          {...register('empleador', {
+            required: data?.empleador?.['#element']?.empleador?.['#required'],
+          })}
         />
         <Input
-          type='text'
-          label='Cargo'
-          placeholder='Cargo...'
-          {...register('cargo')}
+          label={data?.empleador?.['#element']?.cargo?.['#title'] ?? ''}
+          type={data?.empleador?.['#element']?.cargo?.['#type'] ?? ''}
+          placeholder={`${data?.empleador?.['#element']?.cargo?.['#title']}...`}
+          smallLabel={
+            !data?.empleador?.['#element']?.cargo?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.cargo ? true : false}
+          {...register('cargo', {
+            required: data?.empleador?.['#element']?.cargo?.['#required'],
+          })}
         />
         <Input
-          type='text'
-          label='Año'
-          placeholder='Año...'
-          {...register('anio')}
+          label={data?.empleador?.['#element']?.anio?.['#title'] ?? ''}
+          type={data?.empleador?.['#element']?.anio?.['#type'] ?? ''}
+          placeholder={`${data?.empleador?.['#element']?.anio?.['#title']}...`}
+          smallLabel={
+            !data?.empleador?.['#element']?.anio?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.anio ? true : false}
+          {...register('anio', {
+            required: data?.empleador?.['#element']?.anio?.['#required'],
+          })}
         />
         <Input
-          type='text'
-          label='Teléfono'
-          placeholder='Teléfono...'
-          {...register('telefono')}
+          label={data?.empleador?.['#element']?.telefono?.['#title'] ?? ''}
+          type={data?.empleador?.['#element']?.telefono?.['#type'] ?? ''}
+          placeholder={`${data?.empleador?.['#element']?.telefono?.['#title']}...`}
+          smallLabel={
+            !data?.empleador?.['#element']?.telefono?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.telefono ? true : false}
+          {...register('telefono', {
+            required: data?.empleador?.['#element']?.telefono?.['#required'],
+          })}
         />
         <Input
-          type='textarea'
-          label='Otras Actividades'
-          smallLabel='(Opcional)'
-          placeholder='Otras Actividades...'
-          {...register('otras_actividades')}
+          label={
+            data?.empleador?.['#element']?.otras_actividades?.['#title'] ?? ''
+          }
+          type={
+            data?.empleador?.['#element']?.otras_actividades?.['#type'] ?? ''
+          }
+          placeholder={`${data?.empleador?.['#element']?.otras_actividades?.['#title']}...`}
+          smallLabel={
+            !data?.empleador?.['#element']?.otras_actividades?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.otras_actividades ? true : false}
+          {...register('otras_actividades', {
+            required:
+              data?.empleador?.['#element']?.otras_actividades?.['#required'],
+          })}
         />
         <Button
           title={'Agregar'}
@@ -96,11 +145,20 @@ const RegisterPersonExperienceForm = ({
       {experience.map((exp, index) => (
         <Fragment key={index}>
           <CardExperience
-            entity={exp.entity}
-            labor={exp.labor}
-            phone={exp.phone}
-            year={exp.year}
-            others={exp.others}
+            empleador={exp.empleador}
+            empleadorLabel={
+              data?.empleador?.['#element']?.empleador?.['#title']
+            }
+            cargo={exp.cargo}
+            cargoLabel={data?.empleador?.['#element']?.cargo?.['#title']}
+            telefono={exp.telefono}
+            telefonoLabel={data?.empleador?.['#element']?.telefono?.['#title']}
+            anio={exp.anio}
+            anioLabel={data?.empleador?.['#element']?.anio?.['#title']}
+            otras_actividades={exp.otras_actividades}
+            otras_actividadesLabel={
+              data?.empleador?.['#element']?.otras_actividades?.['#title']
+            }
             handleClick={() => {
               const newExperience = experience.filter((_, i) => i !== index)
               setExperience(newExperience)

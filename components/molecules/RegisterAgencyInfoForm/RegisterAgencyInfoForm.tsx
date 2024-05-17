@@ -1,11 +1,14 @@
 import Input from '@atoms/Input/Input'
-import { UseFormRegister, FieldValues } from 'react-hook-form'
+import { DescripcionDelProyecto } from '@models/getForms.model'
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
+  data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
+  errors: FieldErrors<FieldValues>
 }
 
-const RegisterAgencyInfoForm = ({ formDirective }: FormProps) => {
+const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
   return (
     <div
       style={{
@@ -16,30 +19,70 @@ const RegisterAgencyInfoForm = ({ formDirective }: FormProps) => {
         gap: '10px',
       }}
     >
-      <h3>Postulación a través de agencia</h3>
+      <h3>{data?.postulacion_agencia?.['#title']}</h3>
       <Input
-        type='text'
-        label='Nombre de la agencia'
-        placeholder='Nombre de la agencia...'
-        {...formDirective('nameAgency')}
+        label={data?.postulacion_agencia?.nombre_completo?.['#title'] ?? ''}
+        type={data?.postulacion_agencia?.nombre_completo?.['#type'] ?? 'text'}
+        placeholder={`${data?.postulacion_agencia?.nombre_completo?.['#title']}...`}
+        hasError={errors?.nameAgency ? true : false}
+        {...formDirective('nameAgency', {
+          required: data?.postulacion_agencia?.nombre_completo?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Nombre representante de la agencia'
-        placeholder='Nombre representante de la agencia...'
-        {...formDirective('legalRepresentativeAgency')}
+        label={
+          data?.postulacion_agencia?.nombre_representante_agencia?.['#title'] ??
+          'Nombre representante de la agencia'
+        }
+        type={
+          data?.postulacion_agencia?.nombre_representante_agencia?.['#type'] ??
+          'text'
+        }
+        placeholder={
+          data?.postulacion_agencia?.nombre_representante_agencia?.['#title'] ??
+          'Nombre representante de la agencia...'
+        }
+        hasError={errors?.legalRepresentativeAgency ? true : false}
+        {...formDirective('legalRepresentativeAgency', {
+          required:
+            data?.postulacion_agencia?.nombre_representante_agencia?.[
+              '#required'
+            ],
+        })}
       />
       <Input
-        type='text'
-        label='Correo contacto de la agencia'
-        placeholder='Correo contacto de la agencia...'
-        {...formDirective('contactEmailAgency')}
+        label={
+          data?.postulacion_agencia?.correo_contacto_agencia?.['#title'] ??
+          'Correo contacto de la agencia'
+        }
+        type={
+          data?.postulacion_agencia?.correo_contacto_agencia?.['#type'] ??
+          'text'
+        }
+        placeholder={
+          data?.postulacion_agencia?.correo_contacto_agencia?.['#title'] ??
+          'Correo contacto de la agencia...'
+        }
+        hasError={errors?.contactEmailAgency ? true : false}
+        {...formDirective('contactEmailAgency', {
+          required:
+            data?.postulacion_agencia?.correo_contacto_agencia?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Celular contacto de la agencia'
-        placeholder='Celular contacto de la agencia...'
-        {...formDirective('contactCelphoneAgency')}
+        label={
+          data?.postulacion_agencia?.celular?.['#title'] ??
+          'Celular contacto de la agencia'
+        }
+        type={data?.postulacion_agencia?.celular?.['#type'] ?? 'text'}
+        placeholder={
+          data?.postulacion_agencia?.celular?.['#title'] ??
+          'Celular contacto de la agencia...'
+        }
+        hasError={errors?.contactCelphoneAgency ? true : false}
+        {...formDirective('contactCelphoneAgency', {
+          required: data?.postulacion_agencia?.celular?.['#required'],
+        })}
       />
       <h3>Datos empresa/persona participante</h3>
       <Input

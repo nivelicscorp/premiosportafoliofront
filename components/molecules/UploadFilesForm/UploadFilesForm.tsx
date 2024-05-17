@@ -10,7 +10,7 @@ import {
   UseFormSetValue,
   FieldErrors,
 } from 'react-hook-form'
-import { DescripcionDelProyecto } from '@models/getCompanyForm.model'
+import { DescripcionDelProyecto } from '@models/getForms.model'
 
 interface FormProps {
   role: string
@@ -27,8 +27,6 @@ const UploadFilesForm = ({
   formDirective,
   setValue,
 }: FormProps) => {
-  console.log('data', data)
-
   const [filesLoaded, setFilesLoaded] = useState<FileTypeModel[]>([])
   const [errorMessage, setErrorMessage] = useState('')
   // Create a ref for the input

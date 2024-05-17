@@ -3,7 +3,6 @@ import {
   getFormsCompanyData,
   getFormsPersonData,
 } from '@actions/getFormsData'
-import { GetPersonForm } from '@models/getPersonForm.model'
 import PostulationForm from '@organisms/PostulationForm/PostulationForm'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie } from 'cookies-next'
@@ -11,8 +10,11 @@ import { GetServerSideProps, NextPage } from 'next'
 import { parse } from 'cookie'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { GetCompanyForm } from '@models/getCompanyForm.model'
-import { GetAgencyForm } from '@models/getAgencyForm.model'
+import {
+  GetAgencyForm,
+  GetCompanyForm,
+  GetPersonForm,
+} from '@models/getForms.model'
 
 const PostulationPage: NextPage<{
   formData: GetPersonForm | GetCompanyForm | GetAgencyForm | undefined

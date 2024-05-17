@@ -1,7 +1,11 @@
 export interface CardStudiesProps {
-  study: string
-  institution: string
-  year: string
-  others: string
+  estudio: string
+  estudioLabel?: string
+  institucion: string
+  institucionLabel?: string
+  anio: string
+  anioLabel?: string
+  otros: string
+  otrosLabel?: string
   handleClick: () => void
 }

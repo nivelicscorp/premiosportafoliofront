@@ -1,5 +1,5 @@
 import Input from '@atoms/Input/Input'
-import { DescripcionDelProyecto } from '@models/getCompanyForm.model'
+import { DescripcionDelProyecto } from '@models/getForms.model'
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 interface FormProps {

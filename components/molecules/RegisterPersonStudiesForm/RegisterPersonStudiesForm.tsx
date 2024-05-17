@@ -1,9 +1,11 @@
 import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
+import { AdjuntarDocumentacion } from '@models/getForms.model'
 import { CardStudiesProps } from '@models/studies.model'
 import CardStudies from '@molecules/Cards/CardStudies/CardStudies'
 import { Fragment, useState } from 'react'
 import {
+  FieldErrors,
   FieldValues,
   SubmitHandler,
   UseFormRegister,
@@ -12,11 +14,16 @@ import {
 } from 'react-hook-form'
 
 interface FormProps {
+  data: AdjuntarDocumentacion
   formDirective: UseFormRegister<FieldValues>
   setValue: UseFormSetValue<FieldValues>
 }
 
-const RegisterPersonStudiesForm = ({ formDirective, setValue }: FormProps) => {
+const RegisterPersonStudiesForm = ({
+  data,
+  formDirective,
+  setValue,
+}: FormProps) => {
   const [studies, setStudies] = useState<CardStudiesProps[]>([])
   /**
    * Set the studies in the form
@@ -28,6 +35,7 @@ const RegisterPersonStudiesForm = ({ formDirective, setValue }: FormProps) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm()
   /**
@@ -36,6 +44,7 @@ const RegisterPersonStudiesForm = ({ formDirective, setValue }: FormProps) => {
    */
   const onSubmit: SubmitHandler<any> = async (data) => {
     setStudies([...studies, data])
+    reset()
     setValue('studies', [...studies, data])
   }
 
@@ -56,36 +65,57 @@ const RegisterPersonStudiesForm = ({ formDirective, setValue }: FormProps) => {
           gap: '10px',
         }}
       >
-        <h3>Formación Académica</h3>
+        <h3>{data?.['#title']}</h3>
         <Input
-          type='select'
-          label='Estudio'
-          placeholder='Seleccione...'
-          options={[
-            'Universitario',
-            'Especialización',
-            'Maestría',
-            'Doctorado',
-          ]}
-          {...register('estudio')}
+          label={data?.estudio?.['#element']?.estudio?.['#title'] ?? ''}
+          type={data?.estudio?.['#element']?.estudio?.['#type'] ?? ''}
+          placeholder={`${data?.estudio?.['#element']?.estudio?.['#title']}...`}
+          options={
+            Object.values(
+              data?.estudio?.['#element']?.estudio?.['#options'] ?? {}
+            ) ?? []
+          }
+          hasError={errors?.estudio ? true : false}
+          {...register('estudio', {
+            required: data?.estudio?.['#element']?.estudio?.['#required'],
+          })}
         />
         <Input
-          type='text'
-          label='Institución'
-          placeholder='Institución...'
-          {...register('institucion')}
+          label={data?.estudio?.['#element']?.institucion?.['#title'] ?? ''}
+          type={data?.estudio?.['#element']?.institucion?.['#type'] ?? ''}
+          placeholder={`${data?.estudio?.['#element']?.institucion?.['#title']}...`}
+          hasError={errors?.institucion ? true : false}
+          {...register('institucion', {
+            required: data?.estudio?.['#element']?.institucion?.['#required'],
+          })}
         />
         <Input
-          type='text'
-          label='Año'
-          placeholder='Año...'
-          {...register('anio')}
+          label={data?.estudio?.['#element']?.anio?.['#title'] ?? ''}
+          type={data?.estudio?.['#element']?.anio?.['#type'] ?? ''}
+          placeholder={`${data?.estudio?.['#element']?.anio?.['#title']}...`}
+          smallLabel={
+            !data?.estudio?.['#element']?.anio?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.anio ? true : false}
+          {...register('anio', {
+            required: data?.estudio?.['#element']?.anio?.['#required'],
+          })}
         />
         <Input
-          type='textarea'
-          label='Otros'
-          placeholder='Otros...'
-          {...register('otros')}
+          label={data?.estudio?.['#element']?.otros?.['#title'] ?? ''}
+          type={data?.estudio?.['#element']?.otros?.['#type'] ?? ''}
+          placeholder={`${data?.estudio?.['#element']?.otros?.['#title']}...`}
+          smallLabel={
+            !data?.estudio?.['#element']?.otros?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.otros ? true : false}
+          {...register('otros', {
+            required: data?.estudio?.['#element']?.otros?.['#required'],
+          })}
         />
         <Button
           title={'Agregar'}
@@ -98,10 +128,16 @@ const RegisterPersonStudiesForm = ({ formDirective, setValue }: FormProps) => {
       {studies.map((study, index) => (
         <Fragment key={index}>
           <CardStudies
-            study={study.study}
-            institution={study.institution}
-            year={study.year}
-            others={study.others}
+            estudio={study.estudio}
+            estudioLabel={data?.estudio?.['#element']?.estudio?.['#title']}
+            institucion={study.institucion}
+            institucionLabel={
+              data?.estudio?.['#element']?.institucion?.['#title']
+            }
+            anio={study.anio}
+            anioLabel={data?.estudio?.['#element']?.anio?.['#title']}
+            otros={study.otros}
+            otrosLabel={data?.estudio?.['#element']?.otros?.['#title']}
             handleClick={() => {
               const newStudies = studies.filter((_, i) => i !== index)
               setStudies(newStudies)

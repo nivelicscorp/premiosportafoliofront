@@ -1,5 +1,5 @@
 import Input from '@atoms/Input/Input'
-import { DescripcionDelProyecto } from '@models/getCompanyForm.model'
+import { DescripcionDelProyecto } from '@models/getForms.model'
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
@@ -25,9 +25,11 @@ const RegisterCompanyInfoForm = ({
     >
       <h3>{data?.postulacion_empresa_directa?.['#title']}</h3>
       <Input
-        type='text'
         label={
           data?.postulacion_empresa_directa?.nombre_completo?.['#title'] ?? ''
+        }
+        type={
+          data?.postulacion_empresa_directa?.nombre_completo?.['#type'] ?? ''
         }
         placeholder={`${data?.postulacion_empresa_directa?.nombre_completo?.['#title']}...`}
         hasError={errors?.nameCompany ? true : false}
@@ -44,8 +46,8 @@ const RegisterCompanyInfoForm = ({
         }}
       >
         <Input
-          type='text'
           label={data?.postulacion_empresa_directa?.nit?.['#title'] ?? ''}
+          type={data?.postulacion_empresa_directa?.nit?.['#type'] ?? ''}
           placeholder={`${data?.postulacion_empresa_directa?.nit?.['#title']}...`}
           hasError={errors?.NitCompany ? true : false}
           {...formDirective('NitCompany', {
@@ -53,11 +55,14 @@ const RegisterCompanyInfoForm = ({
           })}
         />
         <Input
-          type='text'
           label={
             data?.postulacion_empresa_directa?.numero_de_documento?.[
               '#title'
             ] ?? ''
+          }
+          type={
+            data?.postulacion_empresa_directa?.numero_de_documento?.['#type'] ??
+            ''
           }
           placeholder={`${data?.postulacion_empresa_directa?.numero_de_documento?.['#title']}...`}
           hasError={errors?.documentIdCompany ? true : false}
@@ -70,10 +75,14 @@ const RegisterCompanyInfoForm = ({
         />
       </div>
       <Input
-        type='text'
         label={
           data?.postulacion_empresa_directa?.departamento_de_residencia?.[
             '#title'
+          ] ?? ''
+        }
+        type={
+          data?.postulacion_empresa_directa?.departamento_de_residencia?.[
+            '#type'
           ] ?? ''
         }
         placeholder={`${data?.postulacion_empresa_directa?.departamento_de_residencia?.['#title']}...`}
@@ -86,9 +95,12 @@ const RegisterCompanyInfoForm = ({
         })}
       />
       <Input
-        type='text'
         label={
           data?.postulacion_empresa_directa?.ciudad_de_residencia?.['#title'] ??
+          ''
+        }
+        type={
+          data?.postulacion_empresa_directa?.ciudad_de_residencia?.['#type'] ??
           ''
         }
         placeholder={`${data?.postulacion_empresa_directa?.ciudad_de_residencia?.['#title']}...`}
@@ -101,8 +113,8 @@ const RegisterCompanyInfoForm = ({
         })}
       />
       <Input
-        type='text'
         label={data?.postulacion_empresa_directa?.direccion?.['#title'] ?? ''}
+        type={data?.postulacion_empresa_directa?.direccion?.['#type'] ?? ''}
         placeholder={`${data?.postulacion_empresa_directa?.direccion?.['#title']}...`}
         hasError={errors?.directionCompany ? true : false}
         {...formDirective('directionCompany', {
@@ -110,9 +122,11 @@ const RegisterCompanyInfoForm = ({
         })}
       />
       <Input
-        type='text'
         label={
           data?.postulacion_empresa_directa?.quien_contactar?.['#title'] ?? ''
+        }
+        type={
+          data?.postulacion_empresa_directa?.quien_contactar?.['#type'] ?? ''
         }
         placeholder={`${data?.postulacion_empresa_directa?.quien_contactar?.['#title']}...`}
         hasError={errors?.whoContactCompany ? true : false}
@@ -122,8 +136,8 @@ const RegisterCompanyInfoForm = ({
         })}
       />
       <Input
-        type='text'
         label={data?.postulacion_empresa_directa?.cargo?.['#title'] ?? ''}
+        type={data?.postulacion_empresa_directa?.cargo?.['#type'] ?? ''}
         placeholder={`${data?.postulacion_empresa_directa?.cargo?.['#title']}...`}
         hasError={errors?.laborCompany ? true : false}
         {...formDirective('laborCompany', {
@@ -131,8 +145,8 @@ const RegisterCompanyInfoForm = ({
         })}
       />
       <Input
-        type='text'
         label={data?.postulacion_empresa_directa?.correo?.['#title'] ?? ''}
+        type={data?.postulacion_empresa_directa?.correo?.['#type'] ?? ''}
         placeholder={`${data?.postulacion_empresa_directa?.correo?.['#title']}...`}
         hasError={errors?.corporateEmailCompany ? true : false}
         {...formDirective('corporateEmailCompany', {
@@ -140,8 +154,8 @@ const RegisterCompanyInfoForm = ({
         })}
       />
       <Input
-        type='text'
         label={data?.postulacion_empresa_directa?.celular?.['#title'] ?? ''}
+        type={data?.postulacion_empresa_directa?.celular?.['#type'] ?? ''}
         placeholder={`${data?.postulacion_empresa_directa?.celular?.['#title']}...`}
         hasError={errors?.celphoneCompany ? true : false}
         {...formDirective('celphoneCompany', {
@@ -149,9 +163,13 @@ const RegisterCompanyInfoForm = ({
         })}
       />
       <Input
-        type='text'
         label={data?.postulacion_empresa_directa?.telefono?.['#title'] ?? ''}
-        smallLabel='(Opcional)'
+        type={data?.postulacion_empresa_directa?.telefono?.['#type'] ?? ''}
+        smallLabel={
+          !data?.postulacion_empresa_directa?.telefono?.['#required']
+            ? '(Opcional)'
+            : ''
+        }
         placeholder={`${data?.postulacion_empresa_directa?.telefono?.['#title']}...`}
         hasError={errors?.phoneCompany ? true : false}
         {...formDirective('phoneCompany', {

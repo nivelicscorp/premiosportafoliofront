@@ -15,11 +15,13 @@ import FinanceForm from '@molecules/FinanceForm/FinanceForm'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { PostFormPerson } from '@models/postFormPerson.model'
-import { GetPersonForm } from '@models/getPersonForm.model'
 import { PostFormCompany } from '@models/postFormCompany.model'
 import { PostFormAgency } from '@models/postFormAgency.model'
-import { GetAgencyForm } from '@models/getAgencyForm.model'
-import { GetCompanyForm } from '@models/getCompanyForm.model'
+import {
+  GetAgencyForm,
+  GetCompanyForm,
+  GetPersonForm,
+} from '@models/getForms.model'
 import { onFileUpload } from '@utils/uploadFiles'
 import postFormPostulation from '@actions/postFormPostulation'
 import ConfirmationPostulation from '@molecules/ConfirmationPostulation/ConfirmationPostulation'
@@ -306,12 +308,20 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   step === 2 ? styles.active : ''
                 }`}
               >
-                <RegisterPersonInfoForm formDirective={register} />
+                <RegisterPersonInfoForm
+                  data={
+                    formsData?.ingreso_de_datos?.postulacion_persona_directa
+                  }
+                  errors={errors}
+                  formDirective={register}
+                />
                 <RegisterPersonStudiesForm
+                  data={formsData?.ingreso_de_datos?.formacion_academica}
                   formDirective={register}
                   setValue={setValue}
                 />
                 <RegisterPersonExperienceForm
+                  data={formsData?.ingreso_de_datos?.experiencia_laboral}
                   formDirective={register}
                   setValue={setValue}
                 />
@@ -323,7 +333,11 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   step === 2 ? styles.active : ''
                 }`}
               >
-                <RegisterAgencyInfoForm formDirective={register} />
+                <RegisterAgencyInfoForm
+                  data={formsData?.ingreso_de_datos}
+                  formDirective={register}
+                  errors={errors}
+                />
               </section>
             )}
             {role === 'empresa' && (
@@ -345,7 +359,11 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   step === 3 ? styles.active : ''
                 }`}
               >
-                <DescriptionPersonForm formDirective={register} />
+                <DescriptionPersonForm
+                  data={formsData?.descripcion_del_proyecto.ampliar_informacion}
+                  errors={errors}
+                  formDirective={register}
+                />
               </section>
             )}
             {role === 'agencia' && (
@@ -354,14 +372,18 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   step === 3 ? styles.active : ''
                 }`}
               >
-                <DescriptionAgencyForm formDirective={register} />
+                <DescriptionAgencyForm
+                  data={formsData?.descripcion_del_proyecto}
+                  errors={errors}
+                  formDirective={register}
+                />
               </section>
             )}
             <section
               className={`${styles.section} ${step === 4 ? styles.active : ''}`}
             >
               <UploadFilesForm
-                data={formsData?.documentacion_adjunta}
+                data={formsData?.documentacion_adjunta ?? formsData}
                 errors={errors}
                 role={role}
                 formDirective={register}

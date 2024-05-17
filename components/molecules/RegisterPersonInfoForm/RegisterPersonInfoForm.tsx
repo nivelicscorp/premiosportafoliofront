@@ -1,11 +1,14 @@
 import Input from '@atoms/Input/Input'
-import { UseFormRegister, FieldValues } from 'react-hook-form'
+import { PostulacionPersonaDirecta } from '@models/getForms.model'
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
+  data: PostulacionPersonaDirecta
   formDirective: UseFormRegister<FieldValues>
+  errors: FieldErrors<FieldValues>
 }
 
-const RegisterPersonInfoForm = ({ formDirective }: FormProps) => {
+const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
   return (
     <div
       style={{
@@ -16,12 +19,16 @@ const RegisterPersonInfoForm = ({ formDirective }: FormProps) => {
         gap: '10px',
       }}
     >
-      <h3>Postulación persona directa</h3>
+      <h3>{data?.['#title']}</h3>
       <Input
-        type='text'
-        label='Nombre Completo'
-        placeholder='Nombre Completo...'
-        {...formDirective('namePerson')}
+        label={data?.nombre_completo?.['#title'] ?? ''}
+        type={data?.nombre_completo?.['#type'] ?? ''}
+        smallLabel={!data?.nombre_completo?.['#required'] ? '(Opcional)' : ''}
+        placeholder={`${data?.nombre_completo?.['#title']}...`}
+        hasError={errors?.namePerson ? true : false}
+        {...formDirective('namePerson', {
+          required: data?.nombre_completo?.['#required'],
+        })}
       />
       <div
         style={{
@@ -31,67 +38,122 @@ const RegisterPersonInfoForm = ({ formDirective }: FormProps) => {
         }}
       >
         <Input
-          type='select'
-          label='Tipo de documento'
-          placeholder='Seleccione...'
-          options={['CC', 'CE', 'Pasaporte']}
-          {...formDirective('documentTypePerson')}
+          label={data?.tipo_de_documento?.['#title'] ?? ''}
+          type={data?.tipo_de_documento?.['#type'] ?? ''}
+          smallLabel={
+            !data?.tipo_de_documento?.['#required'] ? '(Opcional)' : ''
+          }
+          placeholder={`${data?.tipo_de_documento?.['#title']}...`}
+          options={
+            Object.values(data?.tipo_de_documento?.['#options'] ?? {}) ?? []
+          }
+          hasError={errors?.documentTypePerson ? true : false}
+          {...formDirective('documentTypePerson', {
+            required: data?.tipo_de_documento?.['#required'],
+          })}
         />
         <Input
-          type='text'
-          label='Número documento'
-          placeholder='Número...'
-          {...formDirective('documentIdPerson')}
+          label={data?.numero_de_documento?.['#title'] ?? ''}
+          type={data?.numero_de_documento?.['#type'] ?? ''}
+          smallLabel={
+            !data?.numero_de_documento?.['#required'] ? '(Opcional)' : ''
+          }
+          placeholder={`${data?.numero_de_documento?.['#title']}...`}
+          hasError={errors?.documentIdPerson ? true : false}
+          {...formDirective('documentIdPerson', {
+            required: data?.numero_de_documento?.['#required'],
+          })}
         />
       </div>
       <Input
-        type='text'
-        label='País de Nacimiento'
-        placeholder='País de Nacimiento...'
-        {...formDirective('countryPerson')}
+        label={data?.pais_de_nacimiento?.['#title'] ?? ''}
+        type={data?.pais_de_nacimiento?.['#type'] ?? ''}
+        smallLabel={
+          !data?.pais_de_nacimiento?.['#required'] ? '(Opcional)' : ''
+        }
+        placeholder={`${data?.pais_de_nacimiento?.['#title']}...`}
+        hasError={errors?.countryPerson ? true : false}
+        {...formDirective('countryPerson', {
+          required: data?.pais_de_nacimiento?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Departmento de Nacimiento'
-        placeholder='Departmento de Nacimiento...'
-        {...formDirective('departmentPerson')}
+        label={data?.departamento_de_nacimiento?.['#title'] ?? ''}
+        type={data?.departamento_de_nacimiento?.['#type'] ?? ''}
+        smallLabel={
+          !data?.departamento_de_nacimiento?.['#required'] ? '(Opcional)' : ''
+        }
+        placeholder={`${data?.departamento_de_nacimiento?.['#title']}...`}
+        hasError={errors?.departmentPerson ? true : false}
+        {...formDirective('departmentPerson', {
+          required: data?.departamento_de_nacimiento?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Departamento de Residencia'
-        placeholder='Departamento de Residencia...'
-        {...formDirective('departmentResidencePerson')}
+        label={data?.departamento_de_residencia?.['#title'] ?? ''}
+        type={data?.departamento_de_residencia?.['#type'] ?? ''}
+        smallLabel={
+          !data?.departamento_de_residencia?.['#required'] ? '(Opcional)' : ''
+        }
+        placeholder={`${data?.departamento_de_residencia?.['#title']}...`}
+        hasError={errors?.departmentResidencePerson ? true : false}
+        {...formDirective('departmentResidencePerson', {
+          required: data?.departamento_de_residencia?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Ciudad de Residencia'
-        placeholder='Ciudad de Residencia...'
-        {...formDirective('cityPerson')}
+        label={data?.ciudad_de_residencia?.['#title'] ?? ''}
+        type={data?.ciudad_de_residencia?.['#type'] ?? ''}
+        smallLabel={
+          !data?.ciudad_de_residencia?.['#required'] ? '(Opcional)' : ''
+        }
+        placeholder={`${data?.ciudad_de_residencia?.['#title']}...`}
+        hasError={errors?.cityPerson ? true : false}
+        {...formDirective('cityPerson', {
+          required: data?.ciudad_de_residencia?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Empresa o Universidad'
-        placeholder='Empresa o Universidad...'
-        {...formDirective('laborCompany')}
+        label={data?.empresa_universidad?.['#title'] ?? ''}
+        type={data?.empresa_universidad?.['#type'] ?? ''}
+        smallLabel={
+          !data?.empresa_universidad?.['#required'] ? '(Opcional)' : ''
+        }
+        placeholder={`${data?.empresa_universidad?.['#title']}...`}
+        hasError={errors?.laborCompany ? true : false}
+        {...formDirective('laborCompany', {
+          required: data?.empresa_universidad?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Correo'
-        placeholder='Correo...'
-        {...formDirective('emailPerson')}
+        label={data?.correo?.['#title'] ?? ''}
+        type={data?.correo?.['#type'] ?? ''}
+        smallLabel={!data?.correo?.['#required'] ? '(Opcional)' : ''}
+        placeholder={`${data?.correo?.['#title']}...`}
+        hasError={errors?.emailPerson ? true : false}
+        {...formDirective('emailPerson', {
+          required: data?.correo?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Celular'
-        placeholder='Celular...'
-        {...formDirective('celphonePerson')}
+        label={data?.celular?.['#title'] ?? ''}
+        type={data?.celular?.['#type'] ?? ''}
+        smallLabel={!data?.celular?.['#required'] ? '(Opcional)' : ''}
+        placeholder={`${data?.celular?.['#title']}...`}
+        hasError={errors?.celphonePerson ? true : false}
+        {...formDirective('celphonePerson', {
+          required: data?.celular?.['#required'],
+        })}
       />
       <Input
-        type='text'
-        label='Segundo contacto'
-        smallLabel='(Opcional)'
-        placeholder='(Teléfono asistente presidencial)...'
-        {...formDirective('phonePerson')}
+        label={data?.segundo_contacto?.['#title'] ?? ''}
+        type={data?.segundo_contacto?.['#type'] ?? ''}
+        smallLabel={!data?.segundo_contacto?.['#required'] ? '(Opcional)' : ''}
+        placeholder={`${data?.segundo_contacto?.['#title']}...`}
+        hasError={errors?.phonePerson ? true : false}
+        {...formDirective('phonePerson', {
+          required: data?.segundo_contacto?.['#required'],
+        })}
       />
     </div>
   )

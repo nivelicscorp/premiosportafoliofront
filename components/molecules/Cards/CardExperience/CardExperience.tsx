@@ -1,11 +1,16 @@
 import { CardExperienceProps } from '@models/experience.model'
 
 const CardExperience = ({
-  entity,
-  labor,
-  year,
-  phone,
-  others,
+  empleador,
+  empleadorLabel,
+  cargo,
+  cargoLabel,
+  anio,
+  anioLabel,
+  telefono,
+  telefonoLabel,
+  otras_actividades,
+  otras_actividadesLabel,
   handleClick,
 }: CardExperienceProps) => {
   return (
@@ -21,24 +26,24 @@ const CardExperience = ({
       }}
     >
       <div>
-        <p>Empresa o Universidad</p>
-        <p>{entity}</p>
+        <p>{empleadorLabel}</p>
+        <p>{empleador}</p>
       </div>
       <div>
-        <p>Cargo</p>
-        <p>{labor}</p>
+        <p>{cargoLabel}</p>
+        <p>{cargo}</p>
       </div>
       <div>
-        <p>Año</p>
-        <p>{year}</p>
+        <p>{anioLabel}</p>
+        <p>{anio}</p>
       </div>
       <div>
-        <p>Teléfono</p>
-        <p>{phone}</p>
+        <p>{telefonoLabel}</p>
+        <p>{telefono}</p>
       </div>
       <div>
-        <p>Otras Actividades</p>
-        <p>{others}</p>
+        <p>{otras_actividadesLabel}</p>
+        <p>{otras_actividades}</p>
       </div>
       <div
         style={{

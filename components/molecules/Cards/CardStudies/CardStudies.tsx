@@ -1,10 +1,14 @@
 import { CardStudiesProps } from '@models/studies.model'
 
 const CardStudies = ({
-  study,
-  institution,
-  year,
-  others,
+  estudio,
+  estudioLabel,
+  institucion,
+  institucionLabel,
+  anio,
+  anioLabel,
+  otros,
+  otrosLabel,
   handleClick,
 }: CardStudiesProps) => {
   return (
@@ -18,22 +22,22 @@ const CardStudies = ({
     >
       <div style={{ display: 'flex', gap: '5px' }}>
         <div>
-          <p>Estudio</p>
-          <p>{study}</p>
+          <p>{estudioLabel}</p>
+          <p>{estudio}</p>
         </div>
         <div>
-          <p>Institución</p>
-          <p>{institution}</p>
+          <p>{institucionLabel}</p>
+          <p>{institucion}</p>
         </div>
       </div>
       <div style={{ display: 'flex', gap: '5px' }}>
         <div>
-          <p>Año</p>
-          <p>{year}</p>
+          <p>{anioLabel}</p>
+          <p>{anio}</p>
         </div>
         <div>
-          <p>Otros</p>
-          <p>{others}</p>
+          <p>{otrosLabel}</p>
+          <p>{otros}</p>
         </div>
       </div>
       <div
