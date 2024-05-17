@@ -122,6 +122,7 @@ app
         )
         const data = await response.json()
         if (!data?.sid) {
+          console.log('🚀 ~ server.post ~ data:', data)
           return res
             .status(500)
             .json({ error: data.message ?? 'Error al enviar el formulario' })

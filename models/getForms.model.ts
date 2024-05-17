@@ -149,6 +149,7 @@ export interface DescripcionDelProyecto {
   '#admin_title': null | string
   '#webform_plugin_id': any
   descripcion_de_producto_servicio?: DescripcionDelProyecto
+  datos_empresa_persona_participate?: any
   '#required'?: boolean
   adjuntar_documentacion?: DescripcionDelProyecto
   archivos?: DescripcionDelProyecto

@@ -37,7 +37,6 @@ const RegisterPersonExperienceForm = ({
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     setExperience([...experience, data])
-    reset()
     setValue('experience', [...experience, data])
   }
 

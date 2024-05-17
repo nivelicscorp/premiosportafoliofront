@@ -44,7 +44,6 @@ const RegisterPersonStudiesForm = ({
    */
   const onSubmit: SubmitHandler<any> = async (data) => {
     setStudies([...studies, data])
-    reset()
     setValue('studies', [...studies, data])
   }
 

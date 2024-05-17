@@ -45,7 +45,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
           }
           placeholder={`${data?.tipo_de_documento?.['#title']}...`}
           options={
-            Object.values(data?.tipo_de_documento?.['#options'] ?? {}) ?? []
+            Object.keys(data?.tipo_de_documento?.['#options'] ?? {}) ?? []
           }
           hasError={errors?.documentTypePerson ? true : false}
           {...formDirective('documentTypePerson', {
@@ -133,6 +133,10 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         hasError={errors?.emailPerson ? true : false}
         {...formDirective('emailPerson', {
           required: data?.correo?.['#required'],
+          pattern: {
+            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+            message: 'Correo inválido',
+          },
         })}
       />
       <Input

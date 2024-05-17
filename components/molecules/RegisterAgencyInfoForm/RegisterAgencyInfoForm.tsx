@@ -24,6 +24,11 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         label={data?.postulacion_agencia?.nombre_completo?.['#title'] ?? ''}
         type={data?.postulacion_agencia?.nombre_completo?.['#type'] ?? 'text'}
         placeholder={`${data?.postulacion_agencia?.nombre_completo?.['#title']}...`}
+        smallLabel={
+          !data?.postulacion_agencia?.nombre_completo?.['#required']
+            ? '(Opcional)'
+            : ''
+        }
         hasError={errors?.nameAgency ? true : false}
         {...formDirective('nameAgency', {
           required: data?.postulacion_agencia?.nombre_completo?.['#required'],
@@ -38,9 +43,13 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
           data?.postulacion_agencia?.nombre_representante_agencia?.['#type'] ??
           'text'
         }
-        placeholder={
-          data?.postulacion_agencia?.nombre_representante_agencia?.['#title'] ??
-          'Nombre representante de la agencia...'
+        placeholder={`${data?.postulacion_agencia?.nombre_representante_agencia?.['#title']}...`}
+        smallLabel={
+          !data?.postulacion_agencia?.nombre_representante_agencia?.[
+            '#required'
+          ]
+            ? '(Opcional)'
+            : ''
         }
         hasError={errors?.legalRepresentativeAgency ? true : false}
         {...formDirective('legalRepresentativeAgency', {
@@ -59,14 +68,20 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
           data?.postulacion_agencia?.correo_contacto_agencia?.['#type'] ??
           'text'
         }
-        placeholder={
-          data?.postulacion_agencia?.correo_contacto_agencia?.['#title'] ??
-          'Correo contacto de la agencia...'
+        placeholder={`${data?.postulacion_agencia?.correo_contacto_agencia?.['#title']}...`}
+        smallLabel={
+          !data?.postulacion_agencia?.correo_contacto_agencia?.['#required']
+            ? '(Opcional)'
+            : ''
         }
         hasError={errors?.contactEmailAgency ? true : false}
         {...formDirective('contactEmailAgency', {
           required:
             data?.postulacion_agencia?.correo_contacto_agencia?.['#required'],
+          pattern: {
+            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+            message: 'Correo inválido',
+          },
         })}
       />
       <Input
@@ -75,21 +90,42 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
           'Celular contacto de la agencia'
         }
         type={data?.postulacion_agencia?.celular?.['#type'] ?? 'text'}
-        placeholder={
-          data?.postulacion_agencia?.celular?.['#title'] ??
-          'Celular contacto de la agencia...'
+        placeholder={`${data?.postulacion_agencia?.celular?.['#title']}...`}
+        smallLabel={
+          !data?.postulacion_agencia?.celular?.['#required'] ? '(Opcional)' : ''
         }
         hasError={errors?.contactCelphoneAgency ? true : false}
         {...formDirective('contactCelphoneAgency', {
           required: data?.postulacion_agencia?.celular?.['#required'],
         })}
       />
-      <h3>Datos empresa/persona participante</h3>
+      <h3>{data?.datos_empresa_persona_participate?.['#title']}</h3>
       <Input
-        type='text'
-        label='Nombre Completo'
-        placeholder='Nombre Completo...'
-        {...formDirective('completeNameAgency')}
+        label={
+          data?.datos_empresa_persona_participate?.nombre_participante?.[
+            '#title'
+          ] ?? ''
+        }
+        type={
+          data?.datos_empresa_persona_participate?.nombre_participante?.[
+            '#type'
+          ] ?? 'text'
+        }
+        placeholder={`${data?.datos_empresa_persona_participate?.nombre_participante?.['#title']}...`}
+        smallLabel={
+          !data?.datos_empresa_persona_participate?.nombre_participante?.[
+            '#required'
+          ]
+            ? '(Opcional)'
+            : ''
+        }
+        hasError={errors?.completeNameAgency ? true : false}
+        {...formDirective('completeNameAgency', {
+          required:
+            data?.datos_empresa_persona_participate?.nombre_participante?.[
+              '#required'
+            ],
+        })}
       />
       <div
         style={{
@@ -100,29 +136,92 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
       >
         <Input
           type='select'
-          label='Tipo de documento'
-          placeholder='Seleccione...'
-          options={['CC', 'CE', 'Pasaporte']}
-          {...formDirective('documentTypeAgency')}
+          label={
+            data?.datos_empresa_persona_participate?.tipo_de_documento?.[
+              '#title'
+            ] ?? ''
+          }
+          placeholder={`${data?.datos_empresa_persona_participate?.tipo_de_documento?.['#title']}...`}
+          smallLabel={
+            !data?.datos_empresa_persona_participate?.tipo_de_documento?.[
+              '#required'
+            ]
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.documentTypeAgency ? true : false}
+          options={
+            Object.keys(
+              data?.datos_empresa_persona_participate?.tipo_de_documento?.[
+                '#options'
+              ] ?? {}
+            ) ?? []
+          }
+          {...formDirective('documentTypeAgency', {
+            required:
+              data?.datos_empresa_persona_participate?.tipo_de_documento?.[
+                '#required'
+              ],
+          })}
         />
         <Input
-          type='text'
-          label='Número documento'
-          placeholder='Número...'
-          {...formDirective('documentIdAgency')}
+          label={
+            data?.datos_empresa_persona_participate?.numero_?.['#title'] ?? ''
+          }
+          type={
+            data?.datos_empresa_persona_participate?.numero_?.['#type'] ?? ''
+          }
+          placeholder={`${data?.datos_empresa_persona_participate?.numero_?.['#title']}...`}
+          smallLabel={
+            !data?.datos_empresa_persona_participate?.numero_?.['#required']
+              ? '(Opcional)'
+              : ''
+          }
+          hasError={errors?.documentIdAgency ? true : false}
+          {...formDirective('documentIdAgency', {
+            required:
+              data?.datos_empresa_persona_participate?.numero_?.['#required'],
+          })}
         />
       </div>
       <Input
-        type='text'
-        label='Departamento'
-        placeholder='Departamento...'
-        {...formDirective('departmentAgency')}
+        label={
+          data?.datos_empresa_persona_participate?.departamento?.['#title'] ??
+          ''
+        }
+        type={
+          data?.datos_empresa_persona_participate?.departamento?.['#type'] ?? ''
+        }
+        placeholder={`${data?.datos_empresa_persona_participate?.departamento?.['#title']}...`}
+        smallLabel={
+          !data?.datos_empresa_persona_participate?.departamento?.['#required']
+            ? '(Opcional)'
+            : ''
+        }
+        hasError={errors?.departmentAgency ? true : false}
+        {...formDirective('departmentAgency', {
+          required:
+            data?.datos_empresa_persona_participate?.departamento?.[
+              '#required'
+            ],
+        })}
       />
       <Input
-        type='text'
-        label='Ciudad'
-        placeholder='Ciudad...'
-        {...formDirective('cityAgency')}
+        label={
+          data?.datos_empresa_persona_participate?.ciudad?.['#title'] ?? ''
+        }
+        type={data?.datos_empresa_persona_participate?.ciudad?.['#type'] ?? ''}
+        placeholder={`${data?.datos_empresa_persona_participate?.ciudad?.['#title']}...`}
+        smallLabel={
+          !data?.datos_empresa_persona_participate?.ciudad?.['#required']
+            ? '(Opcional)'
+            : ''
+        }
+        hasError={errors?.cityAgency ? true : false}
+        {...formDirective('cityAgency', {
+          required:
+            data?.datos_empresa_persona_participate?.ciudad?.['#required'],
+        })}
       />
     </div>
   )
