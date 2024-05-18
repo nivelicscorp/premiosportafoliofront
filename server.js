@@ -99,9 +99,52 @@ app
             .status(401)
             .json({ error: data?.message ?? 'Unauthorized' })
         }
-        return res.status(200).json(data)
+        return res.status(200).json({
+          field_nombre: data.field_nombre,
+          field_numero_de_telefono: data.field_numero_de_telefono,
+          field_tipo_de_usuario: data.field_tipo_de_usuario,
+          mail: data.mail,
+        })
       } catch (error) {
-        console.log('🚀 ~ error:', error)
+        console.error('🚀 ~ error:', error)
+        return res.status(500).json({ error: error.message })
+      }
+    })
+    // Intercept the profile patch to send the HTTPS Cookie
+    server.patch('/api/profile', async (req, res) => {
+      const { uid, token, name, celphone } = req.body
+      const obj = {}
+      if (celphone) {
+        obj['field_numero_de_telefono'] = [{ value: celphone }]
+      }
+      obj['field_nombre'] = [{ value: name }]
+      try {
+        const response = await fetch(
+          `${process.env.BASE_DOMAIN}/user/${uid}?_format=json`,
+          {
+            method: 'PATCH',
+            headers: {
+              'X-CSRF-Token': token,
+              'Content-Type': 'application/json',
+              Cookie: req.headers.cookie,
+            },
+            body: JSON.stringify(obj),
+          }
+        )
+        const data = await response.json()
+        if (!data?.field_nombre) {
+          return res
+            .status(401)
+            .json({ error: data?.message ?? 'Unauthorized' })
+        }
+        return res.status(200).json({
+          field_nombre: data.field_nombre,
+          field_numero_de_telefono: data.field_numero_de_telefono,
+          field_tipo_de_usuario: data.field_tipo_de_usuario,
+          mail: data.mail,
+        })
+      } catch (error) {
+        console.error('🚀 ~ error:', error)
         return res.status(500).json({ error: error.message })
       }
     })
@@ -122,14 +165,13 @@ app
         )
         const data = await response.json()
         if (!data?.sid) {
-          console.log('🚀 ~ server.post ~ data:', data)
           return res
             .status(500)
             .json({ error: data.message ?? 'Error al enviar el formulario' })
         }
         return res.status(200).json(data)
       } catch (error) {
-        console.log('🚀 ~ error:', error)
+        console.error('🚀 ~ error:', error)
         return res.status(500).json({ error: error.message })
       }
     })

@@ -5,15 +5,26 @@ import Input from '@atoms/Input/Input'
 import { GetProfileModel } from '@models/getProfile.model'
 import { PostLoginModel } from '@models/postLogin.model'
 import arrayDestructuring from '@utils/arrayDestructuring'
+import decryptCryptoData from '@utils/decryptCryptoData'
 import encryptCryptoData from '@utils/encryptCryptoData'
 import { getCookie, setCookie } from 'cookies-next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 const LoginForm = () => {
   const router = useRouter()
+  useEffect(() => {
+    const decypherData = async () => {
+      const deciphedData = await decryptCryptoData(getCookie('user-data'))
+      const userDataParsed = JSON.parse(deciphedData ?? '{}')
+      if (userDataParsed?.csrf_token) {
+        router.replace('/usuario', undefined, { scroll: false })
+      }
+    }
+    decypherData()
+  }, [])
   /**
    * State to know if the data is being sent to the backend
    */
@@ -53,6 +64,14 @@ const LoginForm = () => {
               )?.value
               res.data.current_user.name = arrayDestructuring(
                 resProfile.field_nombre,
+                ''
+              )?.value
+              res.data.current_user.email = arrayDestructuring(
+                resProfile.mail,
+                ''
+              )?.value
+              res.data.current_user.phone = arrayDestructuring(
+                resProfile.field_numero_de_telefono,
                 ''
               )?.value
               const stringifiedData = JSON.stringify(res.data)

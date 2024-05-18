@@ -5,7 +5,6 @@ import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
 import { getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
-import decryptCryptoData from '@utils/decryptCryptoData'
 const MainBanner = dynamic(() => import('@molecules/MainBanner/MainBanner'))
 const MorePortafolioSection = dynamic(
   () => import('@organisms/MorePortafolioSection/MorePortafolioSection')
@@ -28,6 +27,9 @@ function MyApp({ Component, pageProps }: AppProps) {
    * the landingPage
    */
   useEffect(() => {
+    if (!sessionStorage.getItem('bannerData')) {
+      router.replace('/')
+    }
     if (
       sessionStorage.getItem('bannerData') != JSON.stringify(mainBannerData)
     ) {

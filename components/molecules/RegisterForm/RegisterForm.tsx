@@ -4,14 +4,26 @@ import Input from '@atoms/Input/Input'
 import { PostRegisterData } from '@models/postRegister.model'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import styles from '@styles/scss/components/forms/register.module.scss'
 import FormNote from '@molecules/FormNote/FormNote'
+import decryptCryptoData from '@utils/decryptCryptoData'
+import { getCookie } from 'cookies-next'
 
 const RegisterForm = () => {
   const router = useRouter()
+  useEffect(() => {
+    const decypherData = async () => {
+      const deciphedData = await decryptCryptoData(getCookie('user-data'))
+      const userDataParsed = JSON.parse(deciphedData ?? '{}')
+      if (userDataParsed?.csrf_token) {
+        router.replace('/usuario', undefined, { scroll: false })
+      }
+    }
+    decypherData()
+  }, [])
   /**
    * State to know if the data is being sent to the backend
    */
@@ -72,7 +84,7 @@ const RegisterForm = () => {
       ],
       field_nombre: [
         {
-          value: typeUser === 'Agencia' ? data.nameAgency : data?.firstName,
+          value: data?.firstName,
         },
       ],
     }

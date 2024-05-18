@@ -2,7 +2,7 @@ import LinkButton from '@atoms/LinkButton/LinkButton'
 import ProfileData from '@molecules/ProfileData/ProfileData'
 import { GetServerSideProps } from 'next'
 
-const index = () => {
+const ProfilePage = () => {
   return (
     <>
       <ProfileData />
@@ -26,4 +26,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 }
 
-export default index
+export default ProfilePage
