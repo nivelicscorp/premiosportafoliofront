@@ -1,7 +1,6 @@
 import LinkButton from '@atoms/LinkButton/LinkButton'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie, setCookie } from 'cookies-next'
-import { GetServerSideProps } from 'next'
 import { useEffect, useState } from 'react'
 
 const DashboardPage = () => {
@@ -31,12 +30,6 @@ const DashboardPage = () => {
       </div>
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {},
-  }
 }
 
 export default DashboardPage
