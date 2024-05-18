@@ -1,6 +1,5 @@
 import LinkButton from '@atoms/LinkButton/LinkButton'
 import ProfileData from '@molecules/ProfileData/ProfileData'
-import { GetServerSideProps } from 'next'
 
 const ProfilePage = () => {
   return (
@@ -16,14 +15,6 @@ const ProfilePage = () => {
       </div>
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {
-      data: null,
-    },
-  }
 }
 
 export default ProfilePage

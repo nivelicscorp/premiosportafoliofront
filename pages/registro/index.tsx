@@ -1,7 +1,5 @@
-import { GetServerSideProps } from 'next'
 import RegisterForm from '@molecules/RegisterForm/RegisterForm'
 import Introduccionblock from '@molecules/Introduccionblock/Introduccionblock'
-import MainBanner from '@molecules/MainBanner/MainBanner'
 
 const UserPage = () => {
   return (
@@ -17,12 +15,6 @@ const UserPage = () => {
       <RegisterForm />
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  return {
-    props: {},
-  }
 }
 
 export default UserPage

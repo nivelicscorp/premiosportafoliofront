@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next'
 import LoginForm from '@molecules/LoginForm/LoginForm'
 
 const UserPage = () => {
@@ -7,12 +6,6 @@ const UserPage = () => {
       <LoginForm />
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  return {
-    props: {},
-  }
 }
 
 export default UserPage
