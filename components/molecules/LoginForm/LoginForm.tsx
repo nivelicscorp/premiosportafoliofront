@@ -172,10 +172,10 @@ const LoginForm = () => {
             errorMessage={errors?.email?.message?.toString()}
             {...register('email', {
               required: 'El correo es requerido.',
-              // pattern: {
-              //   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              //   message: 'El correo no es válido.',
-              // },
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'El correo no es válido.',
+              },
             })}
           />
           <Input
@@ -197,7 +197,7 @@ const LoginForm = () => {
         </fieldset>
       </form>
       <div className='form__links'>
-        <Link href='/recuperar-contrasena' passHref scroll={false}>
+        <Link href='/restaurar-contrasena' passHref scroll={false}>
           <a>¿Olvidaste tu contraseña?</a>
         </Link>
       </div>
