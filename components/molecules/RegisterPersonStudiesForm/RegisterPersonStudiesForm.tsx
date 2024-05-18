@@ -5,7 +5,6 @@ import { CardStudiesProps } from '@models/studies.model'
 import CardStudies from '@molecules/Cards/CardStudies/CardStudies'
 import { Fragment, useState } from 'react'
 import {
-  FieldErrors,
   FieldValues,
   SubmitHandler,
   UseFormRegister,
@@ -25,6 +24,7 @@ const RegisterPersonStudiesForm = ({
   setValue,
 }: FormProps) => {
   const [studies, setStudies] = useState<CardStudiesProps[]>([])
+  const [pagination, setPagination] = useState(3)
   /**
    * Set the studies in the form
    */
@@ -124,7 +124,7 @@ const RegisterPersonStudiesForm = ({
         />
       </div>
       <h4>Estudios Ingresados</h4>
-      {studies.map((study, index) => (
+      {studies.slice(0, pagination).map((study, index) => (
         <Fragment key={index}>
           <CardStudies
             estudio={study.estudio}
@@ -145,6 +145,13 @@ const RegisterPersonStudiesForm = ({
           />
         </Fragment>
       ))}
+      {studies.length > pagination && (
+        <Button
+          title={'Ver más'}
+          variant={'tertiary'}
+          clickHandler={() => setPagination(pagination + 3)}
+        />
+      )}
     </div>
   )
 }

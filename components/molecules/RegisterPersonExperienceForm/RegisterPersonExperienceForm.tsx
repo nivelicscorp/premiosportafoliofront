@@ -24,6 +24,7 @@ const RegisterPersonExperienceForm = ({
   setValue,
 }: FormProps) => {
   const [experience, setExperience] = useState<CardExperienceProps[]>([])
+  const [pagination, setPagination] = useState(3)
   formDirective('experience', { value: experience })
   /**
    * Form hook to handle the form data
@@ -141,7 +142,7 @@ const RegisterPersonExperienceForm = ({
         />
       </div>
       <h4>Experiencias Laborales Ingresadas</h4>
-      {experience.map((exp, index) => (
+      {experience.slice(0, pagination).map((exp, index) => (
         <Fragment key={index}>
           <CardExperience
             empleador={exp.empleador}
@@ -166,6 +167,13 @@ const RegisterPersonExperienceForm = ({
           />
         </Fragment>
       ))}
+      {experience.length > pagination && (
+        <Button
+          title={'Ver más'}
+          variant={'tertiary'}
+          clickHandler={() => setPagination(pagination + 3)}
+        />
+      )}
     </div>
   )
 }

@@ -175,6 +175,80 @@ app
         return res.status(500).json({ error: error.message })
       }
     })
+    // Intercept the post to send the HTTPS Cookie and server headers
+    server.post('/api/postulations', async (req, res) => {
+      const { uid, token, role } = req.body
+      try {
+        const response = await fetch(
+          `${process.env.BASE_DOMAIN}/webform_rest/postulaciones/${uid}?_format=json`,
+          {
+            headers: {
+              'X-CSRF-Token': token,
+              'Content-Type': 'application/json',
+              Cookie: req.headers.cookie,
+            },
+          }
+        )
+        const data = await response.json()
+        if (!data || data?.length === 0) {
+          return res
+            .status(401)
+            .json({ error: data?.message ?? 'No postulations' })
+        }
+        const postulations = []
+        let formByRole = ''
+        switch (role) {
+          case 'persona':
+            formByRole = 'postulaciones'
+            break
+          case 'empresa':
+            formByRole = 'postulaciones_empresa'
+            break
+          case 'agencia':
+            formByRole = 'postulaciones_agencia'
+            break
+        }
+        // Create the promises to get the postulations
+        data.forEach((postulation) => {
+          postulations.push(
+            fetch(
+              `${process.env.BASE_DOMAIN}/webform_rest/${formByRole}/submission/${postulation.uuid}?_format=json`,
+              {
+                headers: {
+                  'X-CSRF-Token': token,
+                  'Content-Type': 'application/json',
+                  Cookie: req.headers.cookie,
+                },
+              }
+            )
+          )
+        })
+        // Promises to get the postulations details
+        Promise.all(postulations)
+          .then((responses) =>
+            Promise.all(responses.map((response) => response.json()))
+          )
+          .then((data) => {
+            // parse the data to get the category cleaned
+            return res.status(200).json(
+              data.map((postulation) =>
+                postulation.data?.categoria[0]
+                  .replace(/empresa_/g, ' ')
+                  .replace(/persona_/g, ' ')
+                  .replace(/_/g, ' ')
+                  .trim()
+              )
+            )
+          })
+          .catch((error) => {
+            console.error('🚀 ~ error:', error)
+            return res.status(500).json({ error: error.message })
+          })
+      } catch (error) {
+        console.error('🚀 ~ error:', error)
+        return res.status(500).json({ error: error.message })
+      }
+    })
 
     // Intercepto del post a upload-file para la carga de archivos
     server.post('/upload-file', async (req, res) => {

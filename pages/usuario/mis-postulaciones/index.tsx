@@ -1,15 +1,18 @@
-import { GetServerSideProps } from 'next'
+import LinkButton from '@atoms/LinkButton/LinkButton'
+import MyPostulations from '@organisms/MyPostulations/MyPostulations'
 
-const index = () => {
-  return <div>Enter</div>
+const PostulationsPage = () => {
+  return (
+    <div style={{ width: '500px', margin: 'auto' }}>
+      <MyPostulations />
+      <LinkButton
+        url='/usuario'
+        title='Volver'
+        target={'_self'}
+        variant={'primary'}
+      />
+    </div>
+  )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {
-      data: null,
-    },
-  }
-}
-
-export default index
+export default PostulationsPage
