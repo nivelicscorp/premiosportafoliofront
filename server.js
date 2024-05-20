@@ -202,10 +202,10 @@ app
             formByRole = 'postulaciones'
             break
           case 'empresa':
-            formByRole = 'postulaciones_empresa'
+            formByRole = 'postulaciones_empresas'
             break
           case 'agencia':
-            formByRole = 'postulaciones_agencia'
+            formByRole = 'postulaciones_agencias'
             break
         }
         // Create the promises to get the postulations
