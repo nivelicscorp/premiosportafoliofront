@@ -9,7 +9,7 @@
   input,
   select,
   textarea {
-    padding: 1.8rem .5rem 1.2rem 2.2rem;
+    padding: 1.8rem 0.5rem 1.2rem 2.2rem;
     font-family: Open Sans;
     border: 0.2rem solid map-get($grayscale, 'gray-30');
     background-color: map-get($grayscale, white);
@@ -19,14 +19,15 @@
     width: auto;
   }
   select {
-    background: url(../../../public/img/forms/select-arrow.svg) center right 1rem no-repeat;
+    background: url(../../../public/img/forms/select-arrow.svg) center right
+      1rem no-repeat;
     background-size: 2rem;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
   }
   input {
-    padding: 1.8rem .5rem 1.2rem 2.2rem;
+    padding: 1.8rem 0.5rem 1.2rem 2.2rem;
     &::placeholder {
       color: map-get($grayscale, gray-25);
       font-weight: bold;
@@ -70,9 +71,9 @@
     display: block;
     position: absolute;
     font-size: 1.4rem;
-    top: -.5rem;
+    top: -0.5rem;
     left: 1.9rem;
-    padding: .5rem;
+    padding: 0.5rem;
     background: map-get($grayscale, White);
     line-height: 0;
     color: map-get($primary, dark);
@@ -83,29 +84,71 @@
       color: map-get($grayscale, 'gray-30');
     }
     &.error {
-      background-image: linear-gradient( to top, map-get($alert, 'light') 50%, transparent 50% );
+      background-image: linear-gradient(
+        to top,
+        map-get($alert, 'light') 50%,
+        transparent 50%
+      );
       color: map-get($alert, 'base');
       + input + button svg path {
         fill: map-get($alert, 'base');
       }
     }
     &.disabled {
-      background-image: linear-gradient( to top, map-get($grayscale, 'gray-10') 50%, transparent 50%);
+      background-image: linear-gradient(
+        to top,
+        map-get($grayscale, 'gray-10') 50%,
+        transparent 50%
+      );
       color: map-get($grayscale, 'gray-20');
     }
   }
 
   .errorMessage {
-    color: map-get($alert, 'base');
-    font-size: 1.2rem;
-    margin: 0.5rem 1rem 0;
+    font-size: 1rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    position: absolute;
+    border-radius: 0.8rem;
+    max-width: 35rem;
+    z-index: 10;
+    top: -35%;
+    right: -35%;
+    background-color: #efefef;
+    display: flex;
+    align-items: center;
+    &__text {
+      span {
+        color: map-get($primary, general);
+      }
+    }
+    &__title {
+      font-size: 1.2rem;
+      color: map-get($alert, 'base');
+      margin-right: 1rem;
+    }
+    &__closeButton {
+      font-size: 0.8rem;
+      height: 1.2rem;
+      width: 1.2rem;
+      z-index: 11;
+      padding: 0;
+      position: absolute;
+      right: -33%;
+      top: -30%;
+      border-radius: 50%;
+      background: map-get($grayscale, gray-40);
+      color: map-get($grayscale, white);
+      border: none;
+      cursor: pointer;
+    }
   }
   .checkbox {
     align-items: center;
     margin-top: 2rem;
     position: relative;
     width: fit-content;
-    &__div, input {
+    &__div,
+    input {
       display: inline;
       vertical-align: middle;
     }
@@ -116,9 +159,9 @@
         text-decoration: underline;
       }
     }
-    input {    
-      border-radius: .4rem;
-      border-width: .15rem;
+    input {
+      border-radius: 0.4rem;
+      border-width: 0.15rem;
       appearance: none;
       height: 2rem;
       margin: 0 1rem 0 0;
@@ -130,8 +173,8 @@
         border-color: map-get($primary, general);
         &::after {
           background: map-get($primary, general);
-          border: .2rem solid map-get($grayscale, white);      
-          border-radius: .4rem;    
+          border: 0.2rem solid map-get($grayscale, white);
+          border-radius: 0.4rem;
           content: '';
           display: block;
           position: absolute;

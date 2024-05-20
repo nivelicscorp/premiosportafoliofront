@@ -44,6 +44,7 @@ const Input = forwardRef<any, InputProps>(function Render(
   ref
 ) {
   const [focus, setFocus] = useState(false)
+  const [showErrorState, setShowErrorState] = useState(true)
   const [typeField, setTypeField] = useState(type)
   if (errorMessage) {
     hasError = true
@@ -220,7 +221,24 @@ const Input = forwardRef<any, InputProps>(function Render(
           type={type}
         />
       )}
-      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+      {errorMessage && showErrorState && (
+        <>
+          <div className={styles.errorMessage}>
+            <span className={styles.errorMessage__title}>Error:</span>
+            <div
+              className={styles.errorMessage__text}
+              dangerouslySetInnerHTML={{ __html: errorMessage.toString() }}
+            />
+          </div>
+          <button
+            type='button'
+            className={styles.errorMessage__closeButton}
+            onClick={() => setShowErrorState(false)}
+          >
+            x
+          </button>
+        </>
+      )}
     </div>
   )
 })

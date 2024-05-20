@@ -110,7 +110,10 @@ const RegisterForm = () => {
             placeholder='Nombre...'
             label='Nombre'
             errorMessage={errors?.firstName?.message?.toString()}
-            {...register('firstName', { required: 'El nombre es requerido.' })}
+            {...register('firstName', {
+              required:
+                '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
+            })}
           />
           <Input
             type='email'
@@ -118,10 +121,12 @@ const RegisterForm = () => {
             label='Correo'
             errorMessage={errors.email?.message?.toString()}
             {...register('email', {
-              required: 'El correo es requerido.',
+              required:
+                '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
               pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'El correo no es válido.',
+                value: /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/,
+                message:
+                  '<p>El correo diligenciado <span>no tiene el formato</span> correcto</p>',
               },
             })}
           />
@@ -131,12 +136,13 @@ const RegisterForm = () => {
             label='Contraseña'
             errorMessage={errors.password?.message?.toString()}
             {...register('password', {
-              required: 'La contraseña es requerida.',
+              required:
+                '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
               pattern: {
                 value:
                   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                 message:
-                  'La contraseña debe tener al menos 8 caracteres, una letra, un número y un carácter especial.',
+                  '<p>La contraseña no cumple con los requisitos</p> <p>*Debe contener un caracter <span>numérico</span>, un caracter <span>alfabético</span> y un caracter <span>especial</span> con un mínimo de <span>8 caracteres</span> en total</p>',
               },
             })}
           />
@@ -146,9 +152,11 @@ const RegisterForm = () => {
             label='Confirmar contraseña'
             errorMessage={errors.confirmPassword?.message?.toString()}
             {...register('confirmPassword', {
-              required: 'La confirmación de la contraseña es requerida.',
+              required:
+                '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
               validate: (value) =>
-                value === watch('password') || 'Las contraseñas no coinciden.',
+                value === watch('password') ||
+                '<p>Las contraseñas <span>no coinciden</span>, inténtalo de nuevo</p>',
             })}
           />
           <h3 className='form__title'>Seleccione el tipo de inscripción</h3>
@@ -159,7 +167,8 @@ const RegisterForm = () => {
             options={['', 'Empresa', 'Persona', 'Agencia']}
             errorMessage={errors.type?.message?.toString()}
             {...register('type', {
-              required: 'El tipo de inscripción es requerido.',
+              required:
+                '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
             })}
           />
           {typeUser === 'Empresa' && (
@@ -168,7 +177,10 @@ const RegisterForm = () => {
               placeholder='NIT de la empresa'
               label='NIT'
               errorMessage={errors.businessNit?.message?.toString()}
-              {...register('businessNit', { required: 'El NIT es requerido.' })}
+              {...register('businessNit', {
+                required:
+                  '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
+              })}
             />
           )}
           {typeUser === 'Persona' && (
@@ -179,7 +191,8 @@ const RegisterForm = () => {
                 label='Número de identificación'
                 errorMessage={errors.idPerson?.message?.toString()}
                 {...register('idPerson', {
-                  required: 'El número de identificación es requerido.',
+                  required:
+                    '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
                 })}
               />
             </>
@@ -192,7 +205,8 @@ const RegisterForm = () => {
                 label='Nombre de la agencia'
                 errorMessage={errors.nameAgency?.message?.toString()}
                 {...register('nameAgency', {
-                  required: 'El nombre de la agencia es requerido.',
+                  required:
+                    '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
                 })}
               />
               <Input
@@ -200,7 +214,10 @@ const RegisterForm = () => {
                 placeholder='NIT de la agencia'
                 label='NIT'
                 errorMessage={errors.agencyNit?.message?.toString()}
-                {...register('agencyNit')}
+                {...register('agencyNit', {
+                  required:
+                    '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
+                })}
               />
               <Input
                 type='tel'
@@ -208,7 +225,8 @@ const RegisterForm = () => {
                 label='Número de teléfono'
                 errorMessage={errors.telephoneNumber?.message?.toString()}
                 {...register('telephoneNumber', {
-                  required: 'El número de teléfono es requerido.',
+                  required:
+                    '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
                 })}
               />
             </>
@@ -221,7 +239,8 @@ const RegisterForm = () => {
             label='Autorizo el tratamiento de mis datos personales conforme con la <strong>Política de Tratamiento de Datos</strong> de CASA EDITORIAL EL TIMPO S.A. y su Política de datos de Navegación/cookies, las cuales declaro que he leído y entiendo.'
             errorMessage={errors.termsAndConditions?.message?.toString()}
             {...register('termsAndConditions', {
-              required: 'Debe aceptar los términos y condiciones.',
+              required:
+                '<p>Este campo no puede estar vacio</p><p>*Debe <span>aceptar las políticas</span> de tratamiento de datos para poder continuar</p>',
             })}
           />
         </fieldset>

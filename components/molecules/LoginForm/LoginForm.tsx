@@ -34,6 +34,7 @@ const LoginForm = () => {
    */
   const {
     register,
+    setError,
     handleSubmit,
     formState: { errors },
   } = useForm()
@@ -87,6 +88,10 @@ const LoginForm = () => {
       })
       .catch(async (err) => {
         console.error('Error al iniciar sesión el usuario')
+        setError('password', {
+          type: 'manual',
+          message: 'El correo y la contraseña no coinciden.',
+        })
         setSendingData(false)
       })
   }
@@ -173,8 +178,9 @@ const LoginForm = () => {
             {...register('email', {
               required: 'El correo es requerido.',
               pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'El correo no es válido.',
+                value: /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/,
+                message:
+                  '<p>El correo diligenciado <span>no tiene el formato</span> correcto</p>',
               },
             })}
           />
@@ -182,9 +188,10 @@ const LoginForm = () => {
             type='password'
             placeholder='Contraseña...'
             label='Contraseña'
+            hasError={errors?.password ? true : false}
             errorMessage={errors?.password?.message?.toString()}
             {...register('password', {
-              required: 'La contraseña es requerida.',
+              required: true,
             })}
           />
           <div className='form__btn'>
