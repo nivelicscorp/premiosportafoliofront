@@ -6,6 +6,7 @@ const nextConfig = {
     ENCRYPTATION_KEY: process.env.ENCRYPTATION_KEY,
     ENCRYPTATION_IV: process.env.ENCRYPTATION_IV,
     IMAGES: process.env.IMAGES,
+    COOKIE_AUTH: process.env.COOKIE_AUTH,
   },
   reactStrictMode: true,
   swcMinify: true,

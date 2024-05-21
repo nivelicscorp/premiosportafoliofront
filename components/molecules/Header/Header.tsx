@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import styles from '@styles/scss/organisms/header.module.scss'
+import axios from 'axios'
 
 const Header = () => {
   const router = useRouter()
@@ -21,9 +22,11 @@ const Header = () => {
   }, [])
 
   const clearSession = () => {
-    deleteCookie('user-data')
-    sessionStorage.clear()
-    router.reload()
+    axios.post('/api/clear-cookie').then((res) => {
+      deleteCookie('user-data')
+      sessionStorage.clear()
+      router.reload()
+    })
   }
 
   return (

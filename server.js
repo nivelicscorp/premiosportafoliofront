@@ -250,6 +250,14 @@ app
       }
     })
 
+    server.post('/api/clear-cookie', (req, res) => {
+      res.clearCookie(process.env.COOKIE_AUTH, {
+        path: '/',
+        domain: process.env.BASE_DOMAIN.replace('https://', '.'),
+      })
+      res.status(200).send('Cookie user-data has been cleared')
+    })
+
     // Intercepto del post a upload-file para la carga de archivos
     server.post('/upload-file', async (req, res) => {
       try {

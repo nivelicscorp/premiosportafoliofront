@@ -26,6 +26,7 @@ module.exports = {
           '{"alg":"A256GCM","ext":true,"k":"x_w5nag_IGblaKj1XPPfH1m_2ifuKHFOmLIKynGVoV8","key_ops":["encrypt","decrypt"],"kty":"oct"}',
         ENCRYPTATION_IV: 'd0b071ba02dd2f268cb69f97',
         ROBOTS: 'noindex, nofollow',
+        COOKIE_AUTH: 'SESSd1a2a7cae6953a5d55c15ec5db9cb322',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://mtsstgelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
           INDEX: 'elasticsearch_index_premios_portafolio_2024_beta_multisite',
@@ -107,6 +108,7 @@ module.exports = {
           '{"alg":"A256GCM","ext":true,"k":"x_w5nag_IGblaKj1XPPfH1m_2ifuKHFOmLIKynGVoV8","key_ops":["encrypt","decrypt"],"kty":"oct"}',
         ENCRYPTATION_IV: 'd0b071ba02dd2f268cb69f97',
         ROBOTS: 'index, follow',
+        COOKIE_AUTH: 'SESSd1a2a7cae6953a5d55c15ec5db9cb322',
         ELASTIC_DATA: JSON.stringify({
           NODE: 'https://transprdelastic-cloud.es.privatelink.eastus2.azure.elastic-cloud.com:9243',
           INDEX: 'elasticsearch_index_premios_portafolio_2024_beta_multisite',
