@@ -56,7 +56,11 @@ const GallerySection = ({ data }: Props) => {
         slidesPerView={1}
         className={'swiper swiper__primary swiper__gallery'}
         centeredSlides={true}
-        pagination={{ clickable: true }}
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 10,
+        }}
         navigation={true}
         slideToClickedSlide={true}
         loop={true}
