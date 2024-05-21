@@ -2,6 +2,8 @@ import LinkButton from '@atoms/LinkButton/LinkButton'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie, setCookie } from 'cookies-next'
 import { useEffect, useState } from 'react'
+import styles from '@styles/scss/molecules/welcome.module.scss'
+import ContactBlock from '@molecules/ContactBlock/ContactBlock'
 
 const DashboardPage = () => {
   const [userName, setUserName] = useState('')
@@ -17,17 +19,28 @@ const DashboardPage = () => {
 
   return (
     <>
-      <div style={{ width: '500px', margin: '20px auto' }}>
-        <p>Hola</p>
-        <p>{userName}</p>
-        <p>Bienvenido a tu cuenta</p>
-        <LinkButton
-          variant='secondary'
-          target='_self'
-          url='/usuario/postulacion'
-          title='¡Postúlate aquí!'
-        />
+      <div className={styles?.welcomBlock + ' form-content'}>
+        <div className={styles?.welcomBlock__title}>
+          <h1>
+            <span> Hola </span>
+            <span>{userName} </span>
+            <p>Bienvenido a tu cuenta</p>
+          </h1>
+        </div>
+        <div className={styles?.welcomBlock__msg}>
+          <p>
+            Para comenzar con tu postulación has clic en el botón y sigue estos
+            pasos
+          </p>
+          <LinkButton
+            variant='secondary'
+            target='_self'
+            url='/usuario/postulacion'
+            title='¡Postúlate aquí!'
+          />
+        </div>
       </div>
+      <ContactBlock />
     </>
   )
 }

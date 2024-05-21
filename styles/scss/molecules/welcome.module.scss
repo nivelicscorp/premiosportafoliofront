@@ -1,0 +1,92 @@
+@import "../config/variables";
+@import "../config/mixins";
+
+.welcomBlock {
+    box-shadow: 0 .3rem .6rem #00000070;
+    border-radius: 2rem 2rem 0 0;
+    min-height: auto;
+    margin-bottom: 2rem;
+    padding: 5.5rem 0 0;
+    &__title {
+        font: bold 3rem / 3.5rem $font-secondary;
+        color: map-get($grayscale, gray-40);
+        padding: 3.8rem 2.7rem;
+
+        span, p { display: block; }
+        p { font: bold 2.4rem / 2.8rem $font-secondary; }
+    }
+
+    &__msg {
+        background: map-get($grayscale, gray-40);
+        border-top: .2rem solid map-get($primary, general);
+        color: map-get($grayscale, white);
+        display: grid;
+        gap: 1.6rem;
+        font: 400 2.4rem / 2.8rem $font-primary;
+        padding: 4rem 4rem 4.8rem;
+        position: relative;
+        text-align: center;
+
+        &::before {
+            background: url(../../../public/img/user/prize-white.svg) center no-repeat;
+            background-size: contain;
+            content: '';
+            display: block;
+            height: 4.2rem;
+            left: 50%;
+            position: absolute;
+            top: -2rem;
+            transform: translateX(-50%);
+            width: 4.2rem;
+        }
+
+        a {
+            background: map-get($grayscale, white);
+            border-color: map-get($primary, general);
+            color: map-get($primary, general);
+            font-weight: 700;
+            margin: auto;
+            max-width: 24.5rem;
+            width: 100%;
+
+            &:hover {
+                background: map-get($primary, general);
+                color: map-get($grayscale, white);
+            }
+        }
+    }
+}
+
+
+@include mq-min(md) {
+    .welcomBlock {
+        margin-bottom: 7.3rem;
+        &__title {
+            margin: auto;
+            max-width: 28rem;
+            padding: 3.8rem 0;
+            width: 100%;
+        }
+        &__msg {
+            gap: 3.2rem;
+            padding: 6rem 4rem 6.9rem;
+            &::before {
+                height: 6rem;
+                top: -3rem;
+                width: 6rem;
+            }
+            p {
+                margin: auto;
+                max-width: 44rem;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@include mq-min(lg) {
+    .welcomBlock {
+        max-width: 69.4rem;
+
+    }
+}

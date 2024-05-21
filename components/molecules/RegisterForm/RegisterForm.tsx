@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import styles from '@styles/scss/components/forms/register.module.scss'
 import FormNote from '@molecules/FormNote/FormNote'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie } from 'cookies-next'
@@ -102,7 +101,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <section className={styles?.register + ' form-content'}>
+    <section className='form-content'>
       <form onSubmit={handleSubmit(onSubmit)} className='form'>
         <fieldset className={'form__fieldset'}>
           <Input
