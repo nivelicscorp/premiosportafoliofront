@@ -10,15 +10,7 @@ interface FormProps {
 
 const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
   return (
-    <div
-      style={{
-        width: '500px',
-        margin: '20px auto',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-      }}
-    >
+    <div className='form'>
       <h3>{data?.['#title']}</h3>
       <Input
         label={data?.nombre_completo?.['#title'] ?? ''}
@@ -30,13 +22,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
           required: data?.nombre_completo?.['#required'],
         })}
       />
-      <div
-        style={{
-          display: 'flex',
-          gap: '5px',
-          justifyContent: 'space-between',
-        }}
-      >
+      <div className='form'>
         <Input
           label={data?.tipo_de_documento?.['#title'] ?? ''}
           type={data?.tipo_de_documento?.['#type'] ?? ''}

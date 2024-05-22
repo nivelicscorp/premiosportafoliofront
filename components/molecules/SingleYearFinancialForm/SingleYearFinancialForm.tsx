@@ -1,6 +1,6 @@
+import { FinancialTitle } from '@atoms/FinancialTitle/FinancialTitle'
 import Input from '@atoms/Input/Input'
 import { UseFormRegister, FieldValues } from 'react-hook-form'
-
 interface FormProps {
   year: string
   nameFieldYear: string
@@ -13,15 +13,9 @@ const SingleYearFinancialForm = ({
   formDirective,
 }: FormProps) => {
   return (
-    <div>
-      <h4>Año {year}</h4>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '10px',
-        }}
-      >
+    <div className='form step-5'>
+      <FinancialTitle>Año {year}</FinancialTitle>
+      <div className='form step-5-inputs'>
         <Input
           type={'number'}
           label='Activos'

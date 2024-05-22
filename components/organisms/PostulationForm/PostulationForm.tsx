@@ -244,13 +244,25 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
           <div className={styles?.inscription__top}>
             <h1>Formulario de inscripción</h1>
           </div>
-          <div className={styles?.inscription__tabs}>
+          {/* TABS */}
+          <div
+            className={
+              styles?.inscription__tabs +
+              ' ' +
+              (category === 'empresa_esfuerzo_exportador'
+                ? styles?.fiveStep
+                : '')
+            }
+          >
             <StepButton
               stepNumber={1}
               active={step === 1}
               onClick={() => changeStep(1)}
               nameStep='Tipo de inscripción'
               conpleted={false}
+              fiveStep={
+                category === 'empresa_esfuerzo_exportador' ? true : false
+              }
             />
             <StepButton
               stepNumber={2}
@@ -258,6 +270,9 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               onClick={() => changeStep(2)}
               nameStep='Ingreso de datos'
               conpleted
+              fiveStep={
+                category === 'empresa_esfuerzo_exportador' ? true : false
+              }
             />
             <StepButton
               stepNumber={3}
@@ -265,6 +280,9 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               onClick={() => changeStep(3)}
               nameStep='Descripción del proyecto'
               conpleted={false}
+              fiveStep={
+                category === 'empresa_esfuerzo_exportador' ? true : false
+              }
             />
             <StepButton
               stepNumber={4}
@@ -272,12 +290,16 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               onClick={() => changeStep(4)}
               nameStep='Documentación Adjunta'
               conpleted={false}
+              fiveStep={
+                category === 'empresa_esfuerzo_exportador' ? true : false
+              }
             />
             {category === 'empresa_esfuerzo_exportador' && (
               <StepButton
                 stepNumber={5}
                 active={step === 5}
                 onClick={() => changeStep(5)}
+                nameStep='Información financiera'
                 conpleted={false}
               />
             )}

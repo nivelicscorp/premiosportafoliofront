@@ -7,6 +7,7 @@ interface ButtonProps extends Omit<ButtonModel, 'url'> {
   clickHandler?: () => void
   nameStep?: string
   className?: string
+  fiveStep?: boolean
 }
 
 const Button = ({
@@ -16,6 +17,7 @@ const Button = ({
   type = 'submit',
   nameStep,
   className,
+  fiveStep = false,
   clickHandler,
 }: ButtonProps) => {
   return (
@@ -114,7 +116,10 @@ const Button = ({
             style.linkBtn__tab +
             ' ' +
             className +
-            (disabled ? ' ' + style.linkBtn__disabled : '')
+            ' ' +
+            (disabled ? ' ' + style.linkBtn__disabled : '') +
+            ' ' +
+            (fiveStep ? ' ' + style?.fiveStep : '')
           }
           onClick={clickHandler}
           disabled={disabled}

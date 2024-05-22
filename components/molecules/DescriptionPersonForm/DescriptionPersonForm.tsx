@@ -10,7 +10,7 @@ interface FormProps {
 
 const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div className='form'>
       <h3>{data?.['#title']}</h3>
       <Input
         label={data?.info_empresa_universidad?.['#title'] ?? ''}

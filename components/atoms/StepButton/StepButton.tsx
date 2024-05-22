@@ -8,6 +8,7 @@ interface StepButtonProps {
   nameStep?: string
   onClick: () => void
   className?: string
+  fiveStep?: boolean
 }
 
 const StepButton = ({
@@ -17,15 +18,16 @@ const StepButton = ({
   onClick,
   className,
   conpleted = false,
+  fiveStep = false,
 }: StepButtonProps) => {
   return (
     <Button
       title={stepNumber.toString()}
       clickHandler={onClick}
-      // variant={active ? 'secondary' : 'primary'}
       variant='tab'
       className={active ? style?.active : conpleted ? style?.completed : ''}
       nameStep={nameStep}
+      fiveStep={fiveStep}
     ></Button>
   )
 }

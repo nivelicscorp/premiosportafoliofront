@@ -42,22 +42,8 @@ const RegisterPersonExperienceForm = ({
   }
 
   return (
-    <div
-      style={{
-        width: '500px',
-        margin: '20px auto',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-        }}
-      >
+    <div>
+      <div className='form'>
         <h3>{data?.['#title']}</h3>
         <Input
           label={data?.empleador?.['#element']?.empleador?.['#title'] ?? ''}
