@@ -7,13 +7,43 @@
     min-height: auto;
     margin-bottom: 2rem;
     padding: 5.5rem 0 0;
+    position: relative;
+
+    &::after {
+        background: url(../../../public/img/user/user-top.svg) center no-repeat;
+        background-size: contain;
+        content: '';
+        position: absolute;
+        height: 4rem;
+        left: 50%;
+        top: .6rem;
+        transform: translateX(-50%);
+        width: 4rem;
+    }
+
+    &.success {
+        .welcomBlock {
+            &__title {
+                color: map-get($primary, general);
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
     &__title {
         font: bold 3rem / 3.5rem $font-secondary;
         color: map-get($grayscale, gray-40);
         padding: 3.8rem 2.7rem;
 
-        span, p { display: block; }
-        p { font: bold 2.4rem / 2.8rem $font-secondary; }
+        span,
+        p {
+            display: block;
+        }
+
+        p {
+            font: bold 2.4rem / 2.8rem $font-secondary;
+        }
     }
 
     &__msg {
@@ -61,20 +91,28 @@
 @include mq-min(md) {
     .welcomBlock {
         margin-bottom: 7.3rem;
+        &::after {
+            height: 6rem;
+            width: 6rem;
+        }
+
         &__title {
             margin: auto;
             max-width: 28rem;
             padding: 3.8rem 0;
             width: 100%;
         }
+
         &__msg {
             gap: 3.2rem;
             padding: 6rem 4rem 6.9rem;
+
             &::before {
                 height: 6rem;
                 top: -3rem;
                 width: 6rem;
             }
+
             p {
                 margin: auto;
                 max-width: 44rem;

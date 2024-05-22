@@ -1,5 +1,4 @@
 import Input from '@atoms/Input/Input'
-import Image from 'next/image'
 import { FileTypeModel } from '@models/fileType.model'
 import CardFile from '@molecules/Cards/CardFile/CardFile'
 import { onFileAttachImage } from '@utils/uploadFiles'
@@ -11,9 +10,11 @@ import {
   FieldErrors,
 } from 'react-hook-form'
 import { DescripcionDelProyecto } from '@models/getForms.model'
+import styles from '@styles/scss/molecules/categoryForm.module.scss'
 
 interface FormProps {
   role: string
+  className?: string
   data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
   setValue: UseFormSetValue<FieldValues>
@@ -26,6 +27,7 @@ const UploadFilesForm = ({
   role,
   formDirective,
   setValue,
+  className,
 }: FormProps) => {
   const [filesLoaded, setFilesLoaded] = useState<FileTypeModel[]>([])
   const [errorMessage, setErrorMessage] = useState('')
@@ -39,10 +41,11 @@ const UploadFilesForm = ({
     required: data?.adjuntar_documentacion?.archivos?.['#required'],
   })
   return (
-    <div style={{ width: '800px', margin: '20px auto' }}>
-      <h3>
-        Nota: <br />
-        <ul>
+    <div className={styles?.categoryForm__step4}>
+      {/* NOTE */}
+      <div className={styles?.categoryForm__note}>
+        <h3 className={styles?.categoryForm__note__title}> Nota: </h3>
+        <ul className={styles?.categoryForm__note__list}>
           <li>
             Por favor adjuntar el certificado de Cámara de comercio, RUT
             {role === 'persona' &&
@@ -53,10 +56,13 @@ const UploadFilesForm = ({
             sólo aplica para categoría de Esfuerzo exportador).`}
           </li>
         </ul>
-      </h3>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        <div>
-          <p>{data?.adjuntar_documentacion?.['#title']}</p>
+      </div>
+      {/* FORM */}
+      <div className={styles?.categoryForm__content}>
+        <div className={className + ' form'}>
+          <h3 className='form-subTitle'>
+            {data?.adjuntar_documentacion?.['#title']}
+          </h3>
           <Input
             ref={inputRef}
             type='file'
@@ -88,41 +94,35 @@ const UploadFilesForm = ({
               })
             }}
           />
+          <div className='form-files'>
+            {filesLoaded.length > 0 &&
+              filesLoaded.map((file, index) => (
+                <Fragment key={index}>
+                  <CardFile
+                    name={file.name}
+                    handleClick={() => {
+                      setFilesLoaded(
+                        filesLoaded.filter((f) => f.name !== file.name)
+                      )
+                      setValue(
+                        'files',
+                        filesLoaded.filter((f) => f.name !== file.name)
+                      )
+                    }}
+                  />
+                </Fragment>
+              ))}
+          </div>
         </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '100%',
-            gap: '10px',
-          }}
-        >
-          {filesLoaded.length > 0 &&
-            filesLoaded.map((file, index) => (
-              <Fragment key={index}>
-                <CardFile
-                  name={file.name}
-                  handleClick={() => {
-                    setFilesLoaded(
-                      filesLoaded.filter((f) => f.name !== file.name)
-                    )
-                    setValue(
-                      'files',
-                      filesLoaded.filter((f) => f.name !== file.name)
-                    )
-                  }}
-                />
-              </Fragment>
-            ))}
-        </div>
+        <h3 className='form-subTitle'>Imágen de referencia</h3>
+        <picture>
+          <source
+            srcSet='/img/reference_upload.png'
+            media='(min-width: 600px)'
+          />
+          <img src='/img/reference_upload.png' alt='MDN' />
+        </picture>
       </div>
-      <h3>Imágen de referencia</h3>
-      <Image
-        src='/img/reference_upload.png'
-        alt='ref'
-        width={578}
-        height={102}
-      />
     </div>
   )
 }

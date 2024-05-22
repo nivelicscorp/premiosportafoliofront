@@ -36,6 +36,15 @@
 
   input[type='file'] {
     color: map-get($grayscale, 'gray-30');
+    background: url(../../../public/img/forms/upload-file.svg) right 1.2rem center no-repeat;
+    background-size: 3.2rem;
+    padding-right: 6rem;
+    + svg { display: none; }
+    &.error {
+      background-color: map-get($alert, 'light');
+      background-image: url(../../../public/img/forms/upload-file-error.svg);
+      border-color: map-get($alert, 'base');
+    }
   }
   input[type='file']::-webkit-file-upload-button {
     display: none;
@@ -68,15 +77,18 @@
   }
 
   label {
-    display: block;
+    display: -webkit-box;
     position: absolute;
     font-size: 1.4rem;
-    top: -0.5rem;
+    top: -1.5rem;
     left: 1.9rem;
-    padding: 0.5rem;
+    padding: 0.5rem .5rem 0;
     background: map-get($grayscale, White);
-    line-height: 0;
+    line-height: 1.5;
     color: map-get($primary, dark);
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     span {
       font-size: 0.8rem;
     }

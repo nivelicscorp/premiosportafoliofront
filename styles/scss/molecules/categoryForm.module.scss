@@ -1,0 +1,117 @@
+@import '../config/variables';
+@import '../config/mixins';
+
+.categoryForm {
+    &__title {  
+        border-bottom: .2rem solid map-get($primary, general);
+        color: map-get($grayscale, gray-50);
+        font: 400 1.6rem / 1.9rem $font-secondary;
+        padding-bottom: .9rem;
+        text-align: center;
+        em {
+            color: map-get($primary, general);
+            font-style: normal;
+        }
+    }
+    &__form {
+        padding: 3.5rem 0 4.6rem;
+        legend {
+            font: 400 1.6rem / 2.2rem $font-primary;
+        }
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            padding: 2.8rem 0 0;
+            div > div {
+                margin-top: 0 !important;
+            }
+        }
+    }
+    &__note {
+        background: map-get($grayscale, gray-40);
+        color: map-get($grayscale, white);
+        font: 400 1.6rem / 2.2rem $font-secondary;
+        margin-left: -2rem;
+        padding: 1.8rem 1.3rem;
+        width: calc(100% + 4rem);
+        &__title {
+            font-weight: 600;
+            margin-left: 2rem;
+        }
+        &__list {
+            list-style: disc;
+            padding-left: 2rem;
+            li {
+                &::marker {
+                    color: map-get($primary, general);
+                    font-size: 3rem;
+                }
+                span {
+                    color: map-get($primary, general);;
+                }
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /// form step4
+    &__step4 {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        img {
+            width: 100%;
+        }
+        input[type=file] {
+            margin: 0 2rem;
+        }
+    }
+}
+
+@include mq-min(md) {
+    .categoryForm {
+        &__title {
+            border: none;
+            margin: auto;
+            max-width: 55rem;
+            width: 100%; 
+            &::after {
+                background: map-get($primary, general);
+                content: '';
+                display: block;
+                height: .2rem;
+                margin: 1.2rem auto 0;
+                width: 60%;
+            }
+        }
+        fieldset {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        &__content {
+            max-width: 73.9rem;
+            margin: auto;
+            width: 100%;
+            picture {
+                max-width: 57.8rem;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+@include mq-min(xl) {
+    .categoryForm {
+        fieldset {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
