@@ -240,194 +240,221 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
   return (
     <>
       {!submitted && (
-        <div
-          style={{
-            width: '1200px',
-            margin: '50px auto',
-            textAlign: 'center',
-            backgroundColor: 'white',
-            borderRadius: '10px',
-          }}
-        >
-          <h1>Formulario de inscripción</h1>
-          <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <section className={styles?.inscription}>
+          <div className={styles?.inscription__top}>
+            <h1>Formulario de inscripción</h1>
+          </div>
+          <div className={styles?.inscription__tabs}>
             <StepButton
               stepNumber={1}
               active={step === 1}
               onClick={() => changeStep(1)}
+              nameStep='Tipo de inscripción'
+              conpleted={false}
             />
             <StepButton
               stepNumber={2}
               active={step === 2}
               onClick={() => changeStep(2)}
+              nameStep='Ingreso de datos'
+              conpleted
             />
             <StepButton
               stepNumber={3}
               active={step === 3}
               onClick={() => changeStep(3)}
+              nameStep='Descripción del proyecto'
+              conpleted={false}
             />
             <StepButton
               stepNumber={4}
               active={step === 4}
               onClick={() => changeStep(4)}
+              nameStep='Documentación Adjunta'
+              conpleted={false}
             />
             {category === 'empresa_esfuerzo_exportador' && (
               <StepButton
                 stepNumber={5}
                 active={step === 5}
                 onClick={() => changeStep(5)}
+                conpleted={false}
               />
             )}
           </div>
-          <form style={{ padding: '20px' }} onSubmit={handleSubmit(onSubmit)}>
-            <section
-              className={`${styles.section} ${step === 1 ? styles.active : ''}`}
-            >
-              <CategoryForm
-                data={formsData?.tipo_de_inscripcion}
-                role={role}
-                formDirective={register}
-              />
-            </section>
-            {role === 'empresa' && (
+          <div className={styles?.inscription__form + ' form-content'}>
+            <form className='form' onSubmit={handleSubmit(onSubmit)}>
+              {/* STEP 01 */}
               <section
                 className={`${styles.section} ${
-                  step === 2 ? styles.active : ''
+                  step === 1 ? styles.active : ''
                 }`}
               >
-                <RegisterCompanyInfoForm
-                  data={formsData?.ingreso_de_datos}
-                  errors={errors}
+                <CategoryForm
+                  data={formsData?.tipo_de_inscripcion}
+                  role={role}
                   formDirective={register}
                 />
               </section>
-            )}
-            {role === 'persona' && (
+              {/* STEP 02 */}
+              {role === 'empresa' && (
+                <section
+                  className={`${styles.section} ${
+                    step === 2 ? styles.active : ''
+                  }`}
+                >
+                  <RegisterCompanyInfoForm
+                    className='step2'
+                    data={formsData?.ingreso_de_datos}
+                    errors={errors}
+                    formDirective={register}
+                  />
+                </section>
+              )}
+              {role === 'persona' && (
+                <section
+                  className={`${styles.section} ${
+                    step === 2 ? styles.active : ''
+                  }`}
+                >
+                  <RegisterPersonInfoForm
+                    data={
+                      formsData?.ingreso_de_datos?.postulacion_persona_directa
+                    }
+                    errors={errors}
+                    formDirective={register}
+                  />
+                  <RegisterPersonStudiesForm
+                    data={formsData?.ingreso_de_datos?.formacion_academica}
+                    formDirective={register}
+                    setValue={setValue}
+                  />
+                  <RegisterPersonExperienceForm
+                    data={formsData?.ingreso_de_datos?.experiencia_laboral}
+                    formDirective={register}
+                    setValue={setValue}
+                  />
+                </section>
+              )}
+              {role === 'agencia' && (
+                <section
+                  className={`${styles.section} ${
+                    step === 2 ? styles.active : ''
+                  }`}
+                >
+                  <RegisterAgencyInfoForm
+                    data={formsData?.ingreso_de_datos}
+                    formDirective={register}
+                    errors={errors}
+                  />
+                </section>
+              )}
+              {/* STEP 03 */}
+              {role === 'empresa' && (
+                <section
+                  className={`${styles.section} ${
+                    step === 3 ? styles.active : ''
+                  }`}
+                >
+                  <DescriptionCompanyForm
+                    data={formsData?.descripcion_del_proyecto}
+                    errors={errors}
+                    formDirective={register}
+                  />
+                </section>
+              )}
+              {role === 'persona' && (
+                <section
+                  className={`${styles.section} ${
+                    step === 3 ? styles.active : ''
+                  }`}
+                >
+                  <DescriptionPersonForm
+                    data={
+                      formsData?.descripcion_del_proyecto.ampliar_informacion
+                    }
+                    errors={errors}
+                    formDirective={register}
+                  />
+                </section>
+              )}
+              {role === 'agencia' && (
+                <section
+                  className={`${styles.section} ${
+                    step === 3 ? styles.active : ''
+                  }`}
+                >
+                  <DescriptionAgencyForm
+                    data={formsData?.descripcion_del_proyecto}
+                    errors={errors}
+                    formDirective={register}
+                  />
+                </section>
+              )}
+              {/* STEP 04 */}
               <section
                 className={`${styles.section} ${
-                  step === 2 ? styles.active : ''
+                  step === 4 ? styles.active : ''
                 }`}
               >
-                <RegisterPersonInfoForm
-                  data={
-                    formsData?.ingreso_de_datos?.postulacion_persona_directa
+                <UploadFilesForm
+                  data={formsData?.documentacion_adjunta ?? formsData}
+                  errors={errors}
+                  role={role}
+                  formDirective={register}
+                  setValue={setValue}
+                  className='step4'
+                />
+              </section>
+              {/* STEP 05 */}
+              <section
+                className={`${styles.section} ${
+                  step === 5 ? styles.active : ''
+                }`}
+              >
+                <FinanceForm formDirective={register} />
+              </section>
+              {/* BUTTONS */}
+              <div className={styles?.inscription__btns}>
+                <Button
+                  title='Anterior'
+                  variant='prev'
+                  disabled={step === 1}
+                  clickHandler={() => changeStep(step - 1)}
+                  type='button'
+                />
+                <Button
+                  className={
+                    (step === 4 && category !== 'Esfuerzo exportador') ||
+                    (step === 5 && category === 'Esfuerzo exportador')
+                      ? 'submit'
+                      : ''
                   }
-                  errors={errors}
-                  formDirective={register}
+                  title={
+                    (step === 4 && category !== 'Esfuerzo exportador') ||
+                    (step === 5 && category === 'Esfuerzo exportador')
+                      ? 'Enviar'
+                      : 'Siguiente'
+                  }
+                  variant={
+                    (step === 4 && category !== 'Esfuerzo exportador') ||
+                    (step === 5 && category === 'Esfuerzo exportador')
+                      ? 'tertiary'
+                      : 'next'
+                  }
+                  clickHandler={
+                    (step === 4 && category !== 'Esfuerzo exportador') ||
+                    (step === 5 && category === 'Esfuerzo exportador')
+                      ? handleSubmit(onSubmit)
+                      : () => changeStep(step + 1)
+                  }
+                  disabled={submitting}
+                  type='button'
                 />
-                <RegisterPersonStudiesForm
-                  data={formsData?.ingreso_de_datos?.formacion_academica}
-                  formDirective={register}
-                  setValue={setValue}
-                />
-                <RegisterPersonExperienceForm
-                  data={formsData?.ingreso_de_datos?.experiencia_laboral}
-                  formDirective={register}
-                  setValue={setValue}
-                />
-              </section>
-            )}
-            {role === 'agencia' && (
-              <section
-                className={`${styles.section} ${
-                  step === 2 ? styles.active : ''
-                }`}
-              >
-                <RegisterAgencyInfoForm
-                  data={formsData?.ingreso_de_datos}
-                  formDirective={register}
-                  errors={errors}
-                />
-              </section>
-            )}
-            {role === 'empresa' && (
-              <section
-                className={`${styles.section} ${
-                  step === 3 ? styles.active : ''
-                }`}
-              >
-                <DescriptionCompanyForm
-                  data={formsData?.descripcion_del_proyecto}
-                  errors={errors}
-                  formDirective={register}
-                />
-              </section>
-            )}
-            {role === 'persona' && (
-              <section
-                className={`${styles.section} ${
-                  step === 3 ? styles.active : ''
-                }`}
-              >
-                <DescriptionPersonForm
-                  data={formsData?.descripcion_del_proyecto.ampliar_informacion}
-                  errors={errors}
-                  formDirective={register}
-                />
-              </section>
-            )}
-            {role === 'agencia' && (
-              <section
-                className={`${styles.section} ${
-                  step === 3 ? styles.active : ''
-                }`}
-              >
-                <DescriptionAgencyForm
-                  data={formsData?.descripcion_del_proyecto}
-                  errors={errors}
-                  formDirective={register}
-                />
-              </section>
-            )}
-            <section
-              className={`${styles.section} ${step === 4 ? styles.active : ''}`}
-            >
-              <UploadFilesForm
-                data={formsData?.documentacion_adjunta ?? formsData}
-                errors={errors}
-                role={role}
-                formDirective={register}
-                setValue={setValue}
-              />
-            </section>
-            <section
-              className={`${styles.section} ${step === 5 ? styles.active : ''}`}
-            >
-              <FinanceForm formDirective={register} />
-            </section>
-            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-              <Button
-                title='Anterior'
-                variant='prev'
-                disabled={step === 1}
-                clickHandler={() => changeStep(step - 1)}
-                type='button'
-              />
-              <Button
-                title={
-                  (step === 4 && category !== 'empresa_esfuerzo_exportador') ||
-                  (step === 5 && category === 'empresa_esfuerzo_exportador')
-                    ? 'Enviar'
-                    : 'Siguiente'
-                }
-                variant={
-                  (step === 4 && category !== 'empresa_esfuerzo_exportador') ||
-                  (step === 5 && category === 'empresa_esfuerzo_exportador')
-                    ? 'tertiary'
-                    : 'next'
-                }
-                clickHandler={
-                  (step === 4 && category !== 'empresa_esfuerzo_exportador') ||
-                  (step === 5 && category === 'empresa_esfuerzo_exportador')
-                    ? handleSubmit(onSubmit)
-                    : () => changeStep(step + 1)
-                }
-                disabled={submitting}
-                type='button'
-              />
-            </div>
-          </form>
-        </div>
+              </div>
+            </form>
+          </div>
+        </section>
       )}
       {submitted && <ConfirmationPostulation />}
     </>

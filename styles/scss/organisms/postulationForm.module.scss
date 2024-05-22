@@ -1,6 +1,109 @@
-.section {
-  display: none;
-  &.active {
-    display: block;
+@import '../config/mixins';
+@import '../config/variables';
+
+.inscription {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  max-width: calc(100% - 4rem);
+  margin: 4rem auto;
+  width: 100%;
+
+  &__top {
+    align-items: center;
+    background: map-get($grayscale, black);
+    border-radius: .8rem;
+    display: flex;
+    color: map-get($grayscale, white);
+    font: bold 3.1rem / 3.5rem $font-secondary;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 0 auto;
+    max-width: 96.8rem;
+    padding: .8rem 5rem .8rem 1.7rem;
+    text-align: center;
+    width: 100%;
+    &::before {
+      background: url(../../../public/img/user/file.png) center no-repeat;
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 4.2rem;
+      min-width: 2.8rem;
+      width: 2.8rem;
+    }
+  }
+
+  &__tabs {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__form {
+    min-height: auto;
+    padding: 2rem 2rem 3.7rem;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    margin-left: -1.5rem;
+    padding: 4.1rem 0 0;
+    width:calc(100% + 3rem);
+  }
+
+  .section {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+@include mq-min(sm) {
+  .inscription {
+    &__tabs {
+      gap: 3rem;
+      justify-content: space-around;
+
+    }
+  }
+}
+
+@include mq-min(md) {
+  .inscription {
+    &__btns {
+      margin: 0 auto; 
+      width: 100%;
+    }
+
+  }
+}
+
+@include mq-min(lg) {
+  .inscription {
+    &__btns {
+      margin: 0 auto; 
+      width: calc(100% - 26rem);
+    }
+    &__tabs {
+      max-width: 76.2rem;
+      margin: auto;
+      width: 100%;
+    }
+  }
+}
+
+@include mq-min(x) {
+  .inscription {
+    &__tabs {
+      margin: 4.5rem auto 0;
+    }
   }
 }

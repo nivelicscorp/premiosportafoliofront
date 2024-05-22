@@ -25,6 +25,7 @@
         &__fieldset {
             display: grid;
             gap: 2rem;
+            width: 100%;
             &.tyc {
                 margin-bottom: 2rem;
             }
@@ -133,6 +134,113 @@
                 border-radius: 50%;
                 position: relative;
 
+            }
+        }
+    }
+}
+
+// STEPS FORMS
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    textarea {
+        min-height: 15rem;
+    }
+    .submit {
+        max-width: 15.1rem;
+        padding:  0.6rem 2rem;
+    }
+    &__registerCompany {
+        .fieldset {
+            display: flex;
+            gap: 2rem;
+            > div {
+                &:first-child {
+                    max-width: calc(40% - 1rem);
+                }
+                &:nth-child(2) {
+                    max-width: calc(60% - 1rem);
+                }
+            }
+        }
+        label span {
+            font-size: inherit !important;
+        }
+    }
+    .title {
+        &-step {
+            display: block;
+            font: 400 2.2rem / 2.4rem $font-secondary;            
+            position: relative;
+            width: 100%;
+            &::before {
+                background: map-get($primary, general);
+                content: '';
+                display: block;
+                height: .2rem;
+                left: -2rem;
+                position: absolute;
+                top: 50%;
+                transform: translateY(50%);
+                width: calc(100% + 4rem);
+            }
+        }
+        &-text {
+            background: map-get($grayscale, white);
+            font-weight: normal;
+            max-width: 20rem;
+            position: relative;
+            padding: 0 1rem 0;
+            width: 100%;
+        }
+    }
+    &-subTitle {
+        font: normal 1.6rem / 2.2rem $font-primary;     
+        h3 {
+            display: inline;
+            font-weight: normal;
+        }
+    }
+    &-files {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+}
+
+@include mq-min(md) {
+    .form {
+        &.step2 {
+            margin: auto;
+            max-width: 37.9rem;
+            width: 100%;
+        }
+        &.step3 {
+            margin: auto;
+            max-width: 47.9rem;
+            width: 100%;
+            .form-subTitle {
+                margin-left: -5rem;
+            }
+        }
+        &.step4 {
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-width: 96.2rem;
+            width: 100%;
+            > div {
+                width: calc(50% - 1.2rem);
+            }
+            .form-subTitle {
+                width: 100%;
+            }
+            input[type=file] {
+                margin: 0;
+            }
+            picture {
+                max-width: 57.8rem;
+                width: 100%;
             }
         }
     }

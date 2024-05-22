@@ -10,15 +10,7 @@ interface FormProps {
 
 const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
   return (
-    <div
-      style={{
-        width: '500px',
-        margin: '20px auto',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-      }}
-    >
+    <div className='form'>
       <h3>{data?.postulacion_agencia?.['#title']}</h3>
       <Input
         label={data?.postulacion_agencia?.nombre_completo?.['#title'] ?? ''}

@@ -6,24 +6,22 @@ interface FormProps {
   data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
+  className: string
 }
 
 const RegisterCompanyInfoForm = ({
   data,
   errors,
+  className,
   formDirective,
 }: FormProps) => {
   return (
-    <div
-      style={{
-        width: '500px',
-        margin: '20px auto',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-      }}
-    >
-      <h3>{data?.postulacion_empresa_directa?.['#title']}</h3>
+    <form className={className + ' form form__registerCompany'}>
+      <div className='title-step'>
+        <h3 className='title-text'>
+          {data?.postulacion_empresa_directa?.['#title']}
+        </h3>
+      </div>
       <Input
         label={
           data?.postulacion_empresa_directa?.nombre_completo?.['#title'] ?? ''
@@ -43,13 +41,7 @@ const RegisterCompanyInfoForm = ({
             data?.postulacion_empresa_directa?.nombre_completo?.['#required'],
         })}
       />
-      <div
-        style={{
-          display: 'flex',
-          gap: '5px',
-          justifyContent: 'space-between',
-        }}
-      >
+      <div className='fieldset'>
         <Input
           label={data?.postulacion_empresa_directa?.nit?.['#title'] ?? ''}
           type={data?.postulacion_empresa_directa?.nit?.['#type'] ?? ''}
@@ -236,7 +228,7 @@ const RegisterCompanyInfoForm = ({
           required: data?.postulacion_empresa_directa?.telefono?.['#required'],
         })}
       />
-    </div>
+    </form>
   )
 }
 
