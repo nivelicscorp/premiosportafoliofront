@@ -37,7 +37,13 @@
   &__tabs {
     align-items: flex-start;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;   
+    &.fiveStep {
+      gap: 3rem;
+      overflow: auto;
+      padding: 0 0 1rem;
+      @include mq-min(md) { overflow: hidden; }
+    }
   }
 
   &__form {

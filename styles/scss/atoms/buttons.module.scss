@@ -167,7 +167,6 @@
         width: 176%;
       }
     }
-
     &__title {
       position: absolute;
       top: 1rem;
@@ -213,6 +212,17 @@
           width: 340%;
         }
       }
+    }    
+    &.fiveStep {
+      .linkBtn {
+        &__tab {
+          &__number {
+            &::after {
+              width: 250%;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -240,6 +250,17 @@
         svg {
           height: 100%;
           width: 100%;
+        }
+      }
+    }
+    &.fiveStep {
+      .linkBtn {
+        &__tab {
+          &__number {
+            &::after {
+              width: 190%;
+            }
+          }
         }
       }
     }

@@ -6,8 +6,8 @@ interface FormProps {
 }
 const FinanceForm = ({ formDirective }: FormProps) => {
   return (
-    <div style={{ margin: '20px' }}>
-      <h3>Información sujeta a validación:</h3>
+    <div className='form'>
+      <h3 className='form-title step-5'>Información sujeta a validación:</h3>
       <SingleYearFinancialForm
         year='2021'
         nameFieldYear='TwentyOne'

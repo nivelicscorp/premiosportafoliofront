@@ -207,6 +207,19 @@
         flex-direction: column;
         gap: 1.2rem;
     }
+    &.step-5 {
+        padding: 2rem;
+        input  {
+            width: 100%;
+        }
+    }
+    &-title {
+        &.step-5 {
+            margin: 2rem 0 0;
+            font: 400 2.1rem / 2.1rem $font-secondary;
+        }
+    }
+
 }
 
 @include mq-min(md) {
@@ -241,6 +254,46 @@
             picture {
                 max-width: 57.8rem;
                 width: 100%;
+            }
+        }
+        &.step-5  {
+            padding: 0;
+            &-inputs {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                margin: 4rem 0;
+            }
+        }
+    }
+}
+
+@include mq-min(lg) {
+    .form {
+        &.step-5 {
+            margin: auto;
+            max-width: calc(100% - 5.6rem - 5.6rem);
+            width: 100%;
+            &-inputs {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 0;
+            }
+        }
+        &-title {
+            &.step-5 {
+                margin: 2rem auto 0;
+                max-width: calc(100% - 5.6rem - 5.6rem);
+                width: 100%;
+            }
+        }        
+    }
+}
+
+@include mq-min(x) {
+    .form {
+        &.step-5 { 
+            &-inputs {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
     }
