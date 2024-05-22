@@ -54,15 +54,15 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
   const changeStep = (step: number) => {
     if (
       step <= 0 ||
-      (step === 5 && category !== 'Esfuerzo exportador') ||
-      (step > 5 && category === 'Esfuerzo exportador')
+      (step === 5 && category !== 'empresa_esfuerzo_exportador') ||
+      (step > 5 && category === 'empresa_esfuerzo_exportador')
     ) {
       return
     }
     setStep(step)
   }
   /**
-   * Watch the category to show the step 5 if the category is 'Esfuerzo exportador'
+   * Watch the category to show the step 5 if the category is 'empresa_esfuerzo_exportador'
    */
   const category = watch('category')
   /**
@@ -271,7 +271,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               active={step === 4}
               onClick={() => changeStep(4)}
             />
-            {category === 'Esfuerzo exportador' && (
+            {category === 'empresa_esfuerzo_exportador' && (
               <StepButton
                 stepNumber={5}
                 active={step === 5}
@@ -405,20 +405,20 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               />
               <Button
                 title={
-                  (step === 4 && category !== 'Esfuerzo exportador') ||
-                  (step === 5 && category === 'Esfuerzo exportador')
+                  (step === 4 && category !== 'empresa_esfuerzo_exportador') ||
+                  (step === 5 && category === 'empresa_esfuerzo_exportador')
                     ? 'Enviar'
                     : 'Siguiente'
                 }
                 variant={
-                  (step === 4 && category !== 'Esfuerzo exportador') ||
-                  (step === 5 && category === 'Esfuerzo exportador')
+                  (step === 4 && category !== 'empresa_esfuerzo_exportador') ||
+                  (step === 5 && category === 'empresa_esfuerzo_exportador')
                     ? 'tertiary'
                     : 'next'
                 }
                 clickHandler={
-                  (step === 4 && category !== 'Esfuerzo exportador') ||
-                  (step === 5 && category === 'Esfuerzo exportador')
+                  (step === 4 && category !== 'empresa_esfuerzo_exportador') ||
+                  (step === 5 && category === 'empresa_esfuerzo_exportador')
                     ? handleSubmit(onSubmit)
                     : () => changeStep(step + 1)
                 }
