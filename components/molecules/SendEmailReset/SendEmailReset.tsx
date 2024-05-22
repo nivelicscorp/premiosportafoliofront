@@ -1,6 +1,7 @@
 import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
 import axios from 'axios'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 interface SendEmailResetProps {
@@ -8,6 +9,7 @@ interface SendEmailResetProps {
 }
 
 const SendEmailReset = ({ handleSubmitForm }: SendEmailResetProps) => {
+  const [submitting, setSubmitting] = useState<boolean>(false)
   const {
     register,
     handleSubmit,
@@ -15,11 +17,13 @@ const SendEmailReset = ({ handleSubmitForm }: SendEmailResetProps) => {
   } = useForm()
 
   const onSubmit = (data: any) => {
+    setSubmitting(true)
     axios
       .post(`${process.env.BASE_DOMAIN}/user/lost-password?_format=hal_json`, {
         mail: data.email,
       })
       .then(() => {
+        setSubmitting(false)
         handleSubmitForm(data.email)
       })
       .catch((error) => {
@@ -28,21 +32,27 @@ const SendEmailReset = ({ handleSubmitForm }: SendEmailResetProps) => {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}
+      >
         <Input
           type='email'
           label='Correo electrónico'
           placeholder='Correo electrónico...'
           hasError={errors?.email ? true : false}
+          errorMessage={errors.email?.message?.toString()}
           {...register('email', {
-            required: 'El correo es requerido.',
+            required:
+              '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
             pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: 'El correo no es válido.',
+              value: /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/,
+              message:
+                '<p>El correo diligenciado <span>no tiene el formato</span> correcto</p>',
             },
           })}
         />
-        <Button title='Enviar' variant='primary' />
+        <Button title='Enviar' variant='primary' disabled={submitting} />
       </form>
     </div>
   )

@@ -7,7 +7,7 @@ const ResetPage = () => {
   const router = useRouter()
   const [sent, setSent] = useState<string | undefined>()
   return (
-    <div>
+    <div style={{ width: '800px', margin: '20px auto' }}>
       {!sent && (
         <div>
           <h1>Ingrese su correo electronico</h1>
@@ -19,7 +19,9 @@ const ResetPage = () => {
           <h1>Ingrese su nueva contraseña</h1>
           <ResetPassword
             email={sent}
-            handleSubmitForm={() => router.replace('/login')}
+            handleSubmitForm={() =>
+              router.replace('/login', undefined, { scroll: false })
+            }
           />
         </div>
       )}
