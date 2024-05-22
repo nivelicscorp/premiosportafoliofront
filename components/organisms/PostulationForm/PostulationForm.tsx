@@ -425,26 +425,30 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                 />
                 <Button
                   className={
-                    (step === 4 && category !== 'Esfuerzo exportador') ||
-                    (step === 5 && category === 'Esfuerzo exportador')
+                    (step === 4 &&
+                      category !== 'empresa_esfuerzo_exportador') ||
+                    (step === 5 && category === 'empresa_esfuerzo_exportador')
                       ? 'submit'
                       : ''
                   }
                   title={
-                    (step === 4 && category !== 'Esfuerzo exportador') ||
-                    (step === 5 && category === 'Esfuerzo exportador')
+                    (step === 4 &&
+                      category !== 'empresa_esfuerzo_exportador') ||
+                    (step === 5 && category === 'empresa_esfuerzo_exportador')
                       ? 'Enviar'
                       : 'Siguiente'
                   }
                   variant={
-                    (step === 4 && category !== 'Esfuerzo exportador') ||
-                    (step === 5 && category === 'Esfuerzo exportador')
+                    (step === 4 &&
+                      category !== 'empresa_esfuerzo_exportador') ||
+                    (step === 5 && category === 'empresa_esfuerzo_exportador')
                       ? 'tertiary'
                       : 'next'
                   }
                   clickHandler={
-                    (step === 4 && category !== 'Esfuerzo exportador') ||
-                    (step === 5 && category === 'Esfuerzo exportador')
+                    (step === 4 &&
+                      category !== 'empresa_esfuerzo_exportador') ||
+                    (step === 5 && category === 'empresa_esfuerzo_exportador')
                       ? handleSubmit(onSubmit)
                       : () => changeStep(step + 1)
                   }
