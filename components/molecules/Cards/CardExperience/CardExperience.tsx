@@ -1,5 +1,5 @@
 import { CardExperienceProps } from '@models/experience.model'
-
+import styles from '@styles/scss/molecules/cards/cardExperience.module.scss'
 const CardExperience = ({
   empleador,
   empleadorLabel,
@@ -14,48 +14,42 @@ const CardExperience = ({
   handleClick,
 }: CardExperienceProps) => {
   return (
-    <div
-      style={{
-        position: 'relative',
-        boxShadow: '0px 3px 6px #00000029',
-        padding: '10px',
-        borderRadius: '5px',
-        display: 'grid',
-        textAlign: 'left',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-      }}
-    >
-      <div>
-        <p>{empleadorLabel}</p>
-        <p>{empleador}</p>
-      </div>
-      <div>
-        <p>{cargoLabel}</p>
-        <p>{cargo}</p>
-      </div>
-      <div>
-        <p>{anioLabel}</p>
-        <p>{anio}</p>
-      </div>
-      <div>
-        <p>{telefonoLabel}</p>
-        <p>{telefono}</p>
-      </div>
-      <div>
-        <p>{otras_actividadesLabel}</p>
-        <p>{otras_actividades}</p>
-      </div>
-      <div
-        style={{
-          position: 'absolute',
-          top: '10px',
-          right: '10px',
-          cursor: 'pointer',
-        }}
-        onClick={handleClick}
-      >
-        x
-      </div>
+    <div className={styles?.cardExperience}>
+      <button className={styles?.cardExperience__btn} onClick={handleClick}>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          height='24px'
+          viewBox='0 -960 960 960'
+          width='24px'
+          fill='#31abaa'
+        >
+          <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
+        </svg>
+      </button>
+      <table>
+        <tr>
+          <th> {empleadorLabel} </th>
+          <th> {cargoLabel} </th>
+        </tr>
+        <tr>
+          <td> {empleador} </td>
+          <td> {cargo} </td>
+        </tr>
+        <tr>
+          <th> {anioLabel} </th>
+          <th> {telefonoLabel} </th>
+        </tr>
+        <tr>
+          <td> {anio} </td>
+          <td> {telefono} </td>
+        </tr>
+        <tr>
+          <th colSpan={2}> {otras_actividadesLabel}</th>
+        </tr>
+        <tr>
+          <td colSpan={2}> {otras_actividades} </td>
+        </tr>
+      </table>
     </div>
   )
 }

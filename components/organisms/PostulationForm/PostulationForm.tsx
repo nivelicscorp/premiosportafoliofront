@@ -305,7 +305,13 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                 />
               )}
           </div>
-          <div className={styles?.inscription__form + ' form-content'}>
+          <div
+            className={
+              styles?.inscription__form +
+              ' form-content' +
+              (role === 'persona' && step === 2 ? ' person' : '')
+            }
+          >
             <form className='form' onSubmit={handleSubmit(onSubmit)}>
               {/* STEP 01 */}
               <section

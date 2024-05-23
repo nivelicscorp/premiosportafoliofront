@@ -10,8 +10,8 @@ interface FormProps {
 
 const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
   return (
-    <div className='form'>
-      <h3>{data?.['#title']}</h3>
+    <div className='form step3'>
+      <h3 className='form-subTitle'>{data?.['#title']}</h3>
       <Input
         label={data?.info_empresa_universidad?.['#title'] ?? ''}
         type={data?.info_empresa_universidad?.['#type'] ?? ''}

@@ -10,8 +10,10 @@ interface FormProps {
 
 const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
   return (
-    <div className='form'>
-      <h3>{data?.['#title']}</h3>
+    <div className='form step2'>
+      <div className='title-step'>
+        <h3 className='title-text'>{data?.['#title']}</h3>
+      </div>
       <Input
         label={data?.nombre_completo?.['#title'] ?? ''}
         type={data?.nombre_completo?.['#type'] ?? ''}

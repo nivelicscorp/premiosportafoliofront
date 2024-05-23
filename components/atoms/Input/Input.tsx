@@ -17,6 +17,7 @@ interface InputProps {
   tooltip?: string
   tooltipLabel?: string
   name: string
+  rounded?: boolean
   onChange?: (event: any) => void
   onBlur?: (event: any) => void
 }
@@ -38,6 +39,7 @@ const Input = forwardRef<any, InputProps>(function Render(
     errorMessage,
     tooltip,
     tooltipLabel,
+    rounded,
     onChange,
     onBlur,
   },
@@ -106,6 +108,7 @@ const Input = forwardRef<any, InputProps>(function Render(
             placeholder={placeholder}
             value={value ?? label}
             onChange={onChange}
+            className={rounded ? styles?.rounded : ''}
           />
           <div
             className={styles.checkbox__div}
