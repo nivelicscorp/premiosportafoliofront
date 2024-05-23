@@ -259,7 +259,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               active={step === 1}
               onClick={() => changeStep(1)}
               nameStep='Tipo de inscripción'
-              conpleted={false}
+              conpleted={step > 1}
               fiveStep={
                 category === 'empresa_esfuerzo_exportador' ? true : false
               }
@@ -269,7 +269,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               active={step === 2}
               onClick={() => changeStep(2)}
               nameStep='Ingreso de datos'
-              conpleted
+              conpleted={step > 2}
               fiveStep={
                 category === 'empresa_esfuerzo_exportador' ? true : false
               }
@@ -279,7 +279,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               active={step === 3}
               onClick={() => changeStep(3)}
               nameStep='Descripción del proyecto'
-              conpleted={false}
+              conpleted={step > 3}
               fiveStep={
                 category === 'empresa_esfuerzo_exportador' ? true : false
               }
@@ -289,20 +289,21 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               active={step === 4}
               onClick={() => changeStep(4)}
               nameStep='Documentación Adjunta'
-              conpleted={false}
+              conpleted={step > 4}
               fiveStep={
                 category === 'empresa_esfuerzo_exportador' ? true : false
               }
             />
-            {category === 'empresa_esfuerzo_exportador' && (
-              <StepButton
-                stepNumber={5}
-                active={step === 5}
-                onClick={() => changeStep(5)}
-                nameStep='Información financiera'
-                conpleted={false}
-              />
-            )}
+            {category === 'empresa_esfuerzo_exportador' &&
+              role === 'empresa' && (
+                <StepButton
+                  stepNumber={5}
+                  active={step === 5}
+                  onClick={() => changeStep(5)}
+                  nameStep='Información financiera'
+                  conpleted={false}
+                />
+              )}
           </div>
           <div className={styles?.inscription__form + ' form-content'}>
             <form className='form' onSubmit={handleSubmit(onSubmit)}>

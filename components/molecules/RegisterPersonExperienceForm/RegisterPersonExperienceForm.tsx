@@ -127,7 +127,7 @@ const RegisterPersonExperienceForm = ({
           clickHandler={handleSubmit(onSubmit)}
         />
       </div>
-      <h4>Experiencias Laborales Ingresadas</h4>
+      {experience.length > 0 && <h4>Experiencias Laborales Ingresadas</h4>}
       {experience.slice(0, pagination).map((exp, index) => (
         <Fragment key={index}>
           <CardExperience

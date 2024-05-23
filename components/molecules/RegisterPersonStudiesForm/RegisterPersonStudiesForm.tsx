@@ -109,7 +109,7 @@ const RegisterPersonStudiesForm = ({
           clickHandler={handleSubmit(onSubmit)}
         />
       </div>
-      <h4>Estudios Ingresados</h4>
+      {studies.length > 0 && <h4>Estudios Ingresados</h4>}
       {studies.slice(0, pagination).map((study, index) => (
         <Fragment key={index}>
           <CardStudies

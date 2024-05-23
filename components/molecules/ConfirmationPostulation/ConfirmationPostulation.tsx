@@ -38,7 +38,7 @@ const ConfirmationPostulation = () => {
         <LinkButton
           variant={'primary'}
           target='_self'
-          url='/usuario/postulacion'
+          url='/usuario'
           title='Ir al inicio'
         />
       </div>
