@@ -37,11 +37,8 @@ const ResetPassword = ({ email, handleSubmitForm }: ResetPasswordProps) => {
       })
   }
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}
-      >
+    <form onSubmit={handleSubmit(onSubmit)} className='form'>
+      <div className='form__fieldset'>
         <Input
           type='text'
           label='Contraseña temporal'
@@ -70,9 +67,11 @@ const ResetPassword = ({ email, handleSubmitForm }: ResetPasswordProps) => {
             },
           })}
         />
-        <Button title='Enviar' variant='primary' disabled={submitting} />
-      </form>
-    </div>
+        <div className='form__btn'>
+          <Button title='Enviar' variant='primary' disabled={submitting} />
+        </div>
+      </div>
+    </form>
   )
 }
 

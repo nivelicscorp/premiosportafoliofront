@@ -10,8 +10,10 @@ interface FormProps {
 
 const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
   return (
-    <div className='form'>
-      <h3>{data?.postulacion_agencia?.['#title']}</h3>
+    <div className='form step2'>
+      <div className='title-step'>
+        <h3 className='title-text'>{data?.postulacion_agencia?.['#title']}</h3>
+      </div>
       <Input
         label={data?.postulacion_agencia?.nombre_completo?.['#title'] ?? ''}
         type={data?.postulacion_agencia?.nombre_completo?.['#type'] ?? 'text'}
@@ -91,7 +93,9 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
           required: data?.postulacion_agencia?.celular?.['#required'],
         })}
       />
-      <h3>{data?.datos_empresa_persona_participate?.['#title']}</h3>
+      <div className='form-subTitle'>
+        <h3> {data?.datos_empresa_persona_participate?.['#title']} </h3>
+      </div>
       <Input
         label={
           data?.datos_empresa_persona_participate?.nombre_participante?.[

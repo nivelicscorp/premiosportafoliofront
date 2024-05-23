@@ -10,6 +10,18 @@
     position: relative;
     width: 100%;
 
+    &.small {
+        min-height: auto;
+        padding: 10rem 1.6rem 7rem;
+        button {
+            background: map-get($primary, general);
+            color: map-get($grayscale, white) !important;
+            &:hover {
+                background: map-get($primary, dark);
+            }
+        }
+    }
+
     &::before {
         background: url(../../../public/img/forms/form-top.png) no-repeat map-get($grayscale, black);
         background-size: cover;
@@ -307,6 +319,8 @@
 
             .form-subTitle {
                 margin-left: -5rem;
+                position: relative;
+                z-index: 20;
             }
         }
 
