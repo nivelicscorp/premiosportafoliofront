@@ -3,17 +3,17 @@ import ProfileData from '@molecules/ProfileData/ProfileData'
 
 const ProfilePage = () => {
   return (
-    <>
+    <div className='form-content'>
       <ProfileData />
-      <div style={{ width: '300px' }}>
+      <div>
         <LinkButton
           title='Volver'
           url='/usuario'
           target={'_self'}
-          variant={'primary'}
+          variant={'prev'}
         />
       </div>
-    </>
+    </div>
   )
 }
 

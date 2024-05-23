@@ -1,6 +1,7 @@
 import putProfile from '@actions/putProfile'
 import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
+import FormNote from '@molecules/FormNote/FormNote'
 import arrayDestructuring from '@utils/arrayDestructuring'
 import decryptCryptoData from '@utils/decryptCryptoData'
 import encryptCryptoData from '@utils/encryptCryptoData'
@@ -78,29 +79,9 @@ const ProfileData = () => {
   }
 
   return (
-    <div
-      style={{
-        width: '800px',
-        margin: '20px auto',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: '20px',
-          width: 'fit-content',
-          margin: '20px auto',
-        }}
-      >
-        <div
-          style={{
-            width: '800px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-          }}
-        >
+    <div className=''>
+      <div className='form'>
+        <div className='form'>
           <Input
             type='text'
             label='Nombre'
@@ -141,13 +122,12 @@ const ProfileData = () => {
           />
         </div>
         {!enableEdit && (
-          <button onClick={() => setEnableEdit(true)}>Editar</button>
+          <button onClick={() => setEnableEdit(true)}> Editar </button>
         )}
       </div>
-      <p>
-        Nota: Para editar da clic en el botón superior y recuerda guardar los
-        cambios dando clic en el botón inferior
-      </p>
+
+      <FormNote textNote='Para editar da clic en el botón superior y recuerda guardar los cambios dando clic en el botón inferior' />
+
       {enableEdit && (
         <Button
           disabled={sendingData}
