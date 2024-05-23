@@ -11,8 +11,8 @@ interface FormProps {
 
 const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <div style={{ position: 'relative' }}>
+    <div className='form step3'>
+      <div className='form-subTitle'>
         <h3>{data?.['#title']}</h3>
         <Tooltip
           tooltipLabel='Describa brevemente cuáles son los productos o servicios que ofrece la empresa, a qué sector económico corresponde y por cuánto tiempo ha desarrollado estas actividades.'
@@ -28,7 +28,7 @@ const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
           required: data?.descripcion?.['#required'],
         })}
       />
-      <div style={{ position: 'relative' }}>
+      <div className='form-subTitle'>
         <h3>{data?.descripcionl_proyecto_participa?.['#title']}</h3>
         <Tooltip
           tooltipLabel='Describa detalladamente la iniciativa con la que desea participar'

@@ -7,16 +7,20 @@ const ResetPage = () => {
   const router = useRouter()
   const [sent, setSent] = useState<string | undefined>()
   return (
-    <div style={{ width: '800px', margin: '20px auto' }}>
+    <div className='form-content small'>
       {!sent && (
-        <div>
-          <h1>Ingrese su correo electronico</h1>
+        <div className='form'>
+          <div className='form__top'>
+            <h1 className='form__top__title'>Ingrese su correo electronico</h1>
+          </div>
           <SendEmailReset handleSubmitForm={(event) => setSent(event)} />
         </div>
       )}
       {sent && (
-        <div>
-          <h1>Ingrese su nueva contraseña</h1>
+        <div className='form'>
+          <div className='form__top'>
+            <h1 className='form__top__title'>Ingrese su nueva contraseña</h1>
+          </div>
           <ResetPassword
             email={sent}
             handleSubmitForm={() =>
