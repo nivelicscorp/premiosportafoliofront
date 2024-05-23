@@ -48,9 +48,11 @@ const RegisterPersonStudiesForm = ({
   }
 
   return (
-    <div>
+    <div className='form step2'>
       <div className='form'>
-        <h3>{data?.['#title']}</h3>
+        <div className='title-step'>
+          <h3 className='title-text'>{data?.['#title']}</h3>
+        </div>
         <Input
           label={data?.estudio?.['#element']?.estudio?.['#title'] ?? ''}
           type={data?.estudio?.['#element']?.estudio?.['#type'] ?? ''}
@@ -102,14 +104,16 @@ const RegisterPersonStudiesForm = ({
             required: data?.estudio?.['#element']?.otros?.['#required'],
           })}
         />
-        <Button
-          title={'Agregar'}
-          variant={'tertiary'}
-          type='button'
-          clickHandler={handleSubmit(onSubmit)}
-        />
+        <div className='form-btn add'>
+          <Button
+            title={'Agregar'}
+            variant={'tertiary'}
+            type='button'
+            clickHandler={handleSubmit(onSubmit)}
+          />
+        </div>
       </div>
-      <h4>Estudios Ingresados</h4>
+      <h4 className='form-title-black'>Estudios Ingresados</h4>
       {studies.slice(0, pagination).map((study, index) => (
         <Fragment key={index}>
           <CardStudies
@@ -132,11 +136,13 @@ const RegisterPersonStudiesForm = ({
         </Fragment>
       ))}
       {studies.length > pagination && (
-        <Button
-          title={'Ver más'}
-          variant={'tertiary'}
-          clickHandler={() => setPagination(pagination + 3)}
-        />
+        <div className='form-btn'>
+          <Button
+            title={'Ver más'}
+            variant={'tertiary'}
+            clickHandler={() => setPagination(pagination + 3)}
+          />
+        </div>
       )}
     </div>
   )

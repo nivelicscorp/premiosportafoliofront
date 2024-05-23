@@ -207,8 +207,6 @@ const LoginForm = () => {
         <Link href='/restaurar-contrasena' passHref scroll={false}>
           <a>¿Olvidaste tu contraseña?</a>
         </Link>
-      </div>
-      <div className='form__links'>
         <Link href='/registro' passHref scroll={false}>
           <a>
             ¿Aún no estas registrado? <span> ¡Regístrate ahora! </span>{' '}

@@ -42,9 +42,11 @@ const RegisterPersonExperienceForm = ({
   }
 
   return (
-    <div>
+    <div className='form step2'>
       <div className='form'>
-        <h3>{data?.['#title']}</h3>
+        <div className='title-step'>
+          <h3 className='title-text'>{data?.['#title']}</h3>
+        </div>
         <Input
           label={data?.empleador?.['#element']?.empleador?.['#title'] ?? ''}
           type={data?.empleador?.['#element']?.empleador?.['#type'] ?? ''}
@@ -120,14 +122,16 @@ const RegisterPersonExperienceForm = ({
               data?.empleador?.['#element']?.otras_actividades?.['#required'],
           })}
         />
-        <Button
-          title={'Agregar'}
-          variant={'tertiary'}
-          type='button'
-          clickHandler={handleSubmit(onSubmit)}
-        />
+        <div className='form-btn add'>
+          <Button
+            title={'Agregar'}
+            variant={'tertiary'}
+            type='button'
+            clickHandler={handleSubmit(onSubmit)}
+          />
+        </div>
       </div>
-      <h4>Experiencias Laborales Ingresadas</h4>
+      <h4 className='form-title-black'>Experiencias Laborales Ingresadas</h4>
       {experience.slice(0, pagination).map((exp, index) => (
         <Fragment key={index}>
           <CardExperience
@@ -153,12 +157,15 @@ const RegisterPersonExperienceForm = ({
           />
         </Fragment>
       ))}
+
       {experience.length > pagination && (
-        <Button
-          title={'Ver más'}
-          variant={'tertiary'}
-          clickHandler={() => setPagination(pagination + 3)}
-        />
+        <div className='form-btn'>
+          <Button
+            title={'Ver más'}
+            variant={'tertiary'}
+            clickHandler={() => setPagination(pagination + 3)}
+          />
+        </div>
       )}
     </div>
   )

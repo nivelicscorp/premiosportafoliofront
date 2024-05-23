@@ -1,0 +1,50 @@
+@import '../../config/variables';
+@import '../../config/mixins';
+
+.cardExperience {
+    background: map-get($grayscale, white);
+    border: .1rem solid #B1B1B1;
+    border-radius: .4rem;
+    box-shadow: 0 .1rem .4rem #00000026;
+    margin-bottom: 2.4rem;
+    padding: 2.1rem 1.6rem 2.1rem;
+    position: relative;
+    table {
+        border-collapse: separate;
+        border-spacing: 1.7rem .5rem;
+        text-align: left;
+        width: 100%;
+        th {
+            font: 500 1.2rem / 1.7rem $font-primary;
+            color: map-get($primary, general);
+        }
+        td {
+            font: 700 1.4rem / 1.9rem $font-primary;
+            padding-bottom: 1.5rem;
+        }
+    }
+    &__btn {
+        background: transparent;
+        border: none;
+        display: block;
+        font-size: 4rem;
+        position: absolute;
+        right: -.4rem;
+        top: -1rem;
+    }
+}
+
+@include mq-min(md) {
+    .cardExperience {
+        margin: 2.4rem auto;
+        max-width: 50rem !important;
+        padding: 1.1rem 1.6rem 0;
+        width: 100%;
+        table {
+            border-spacing: 1rem .5rem;
+            td {
+                padding-bottom: 1rem;
+            }
+        }
+    }
+}

@@ -194,6 +194,12 @@
           width: 100%;
         }
       }
+      &.rounded {
+        border-radius: 50%;
+        &::after {
+          border-radius: 50%;
+        }
+      }
     }
   }
   .insideButton {

@@ -30,6 +30,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_esfuerzo_exportador'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'persona' && (
@@ -39,6 +40,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_innovacion'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'persona' && (
@@ -50,6 +52,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_transformacion_digital'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'persona' && (
@@ -62,6 +65,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_gestion_del_recurso_humano'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'persona' && (
@@ -74,6 +78,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_proteccion_al_medio_ambiente'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'persona' && (
@@ -85,6 +90,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_aporte_a_la_comunidad'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'persona' && (
@@ -97,6 +103,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_responsabilidad_social_empresarial'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'persona' && (
@@ -108,6 +115,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='empresa_servicio_al_cliente'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'empresa' && (
@@ -117,6 +125,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='persona_mejor_docente'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'empresa' && (
@@ -126,6 +135,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='persona_mejor_estudiante'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
             {role !== 'empresa' && (
@@ -137,6 +147,7 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                 value='persona_mejor_lider_empresarial'
                 tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
                 {...formDirective('category', { required: true })}
+                rounded
               />
             )}
           </fieldset>

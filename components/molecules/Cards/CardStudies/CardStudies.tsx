@@ -1,4 +1,5 @@
 import { CardStudiesProps } from '@models/studies.model'
+import styles from '@styles/scss/molecules/cards/cardExperience.module.scss'
 
 const CardStudies = ({
   estudio,
@@ -12,45 +13,36 @@ const CardStudies = ({
   handleClick,
 }: CardStudiesProps) => {
   return (
-    <div
-      style={{
-        position: 'relative',
-        boxShadow: '0px 3px 6px #00000029',
-        padding: '10px',
-        borderRadius: '5px',
-      }}
-    >
-      <div style={{ display: 'flex', gap: '5px' }}>
-        <div>
-          <p>{estudioLabel}</p>
-          <p>{estudio}</p>
-        </div>
-        <div>
-          <p>{institucionLabel}</p>
-          <p>{institucion}</p>
-        </div>
-      </div>
-      <div style={{ display: 'flex', gap: '5px' }}>
-        <div>
-          <p>{anioLabel}</p>
-          <p>{anio}</p>
-        </div>
-        <div>
-          <p>{otrosLabel}</p>
-          <p>{otros}</p>
-        </div>
-      </div>
-      <div
-        style={{
-          position: 'absolute',
-          top: '10px',
-          right: '10px',
-          cursor: 'pointer',
-        }}
-        onClick={handleClick}
-      >
-        x
-      </div>
+    <div className={styles?.cardExperience}>
+      <button className={styles?.cardExperience__btn} onClick={handleClick}>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          height='24px'
+          viewBox='0 -960 960 960'
+          width='24px'
+          fill='#31abaa'
+        >
+          <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
+        </svg>
+      </button>
+      <table>
+        <tr>
+          <th>{estudioLabel}</th>
+          <th> {institucionLabel} </th>
+        </tr>
+        <tr>
+          <td>{estudio}</td>
+          <td>{institucion}</td>
+        </tr>
+        <tr>
+          <th>{anioLabel}</th>
+          <th>{otrosLabel}</th>
+        </tr>
+        <tr>
+          <td>{anio}</td>
+          <td>{otros}</td>
+        </tr>
+      </table>
     </div>
   )
 }

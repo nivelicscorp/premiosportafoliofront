@@ -9,6 +9,7 @@
     padding: 10rem 1.6rem 3rem;
     position: relative;
     width: 100%;
+
     &::before {
         background: url(../../../public/img/forms/form-top.png) no-repeat map-get($grayscale, black);
         background-size: cover;
@@ -20,22 +21,30 @@
         top: 0;
         width: 100%;
     }
-    .form {
 
+    .form {
         &__fieldset {
             display: grid;
             gap: 2rem;
             width: 100%;
+
             &.tyc {
                 margin-bottom: 2rem;
             }
         }
+
         &__title {
             font: normal 1.8rem / 2.6rem $font-secondary;
             text-align: center;
         }
+
         &__links {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            justify-content: center;
             margin-top: 3rem;
+
             a {
                 color: map-get($grayscale, gray-40);
                 display: flex;
@@ -44,6 +53,7 @@
                 text-align: center;
             }
         }
+
         &__btn {
             button {
                 border-color: map-get($primary, general);
@@ -58,16 +68,28 @@
 }
 
 @include mq-min(md) {
-    .form-content {     
+    .form-content {
         max-width: 68.8rem;
         padding-top: 11rem;
+
         &::before {
             height: 7.1rem;
         }
+
         .form {
             &__fieldset {
                 max-width: 38rem;
                 margin: auto;
+            }
+
+            &__links {
+                flex-direction: row;
+                gap: 20rem;
+                margin-top: 6rem;
+
+                a:first-child {
+                    order: 2;
+                }
             }
         }
     }
@@ -75,13 +97,15 @@
 
 
 @include mq-min(lg) {
-    .form-content {     
+    .form-content {
         max-width: 96.8rem;
+
         .form {
             &__fieldset {
                 gap: 3rem;
                 max-width: 38rem;
                 margin: auto;
+
                 &.tyc {
                     max-width: 53rem;
                     margin-bottom: 3rem;
@@ -99,15 +123,18 @@
         display: flex;
         flex-direction: column;
         gap: 1.7rem;
+
         &__title {
             color: map-get($primary, general);
             font: 900 2.5rem / 3.4rem $font-primary;
         }
+
         &__img {
             display: grid;
             place-content: center;
             position: relative;
             width: 100%;
+
             &::before,
             &::after {
                 background: map-get($primary, general);
@@ -120,15 +147,24 @@
                 width: 35%;
 
             }
+
             &::before {
                 left: -1.6rem;
-                @include mq-min(sm) { left: 0; }
+
+                @include mq-min(sm) {
+                    left: 0;
+                }
             }
+
             &::after {
                 right: -1.6rem;
-                @include mq-min(sm) { right: 0; }
+
+                @include mq-min(sm) {
+                    right: 0;
+                }
 
             }
+
             svg {
                 background: map-get($grayscale, white);
                 border-radius: 50%;
@@ -144,36 +180,44 @@
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
+
     textarea {
         min-height: 15rem;
     }
+
     .submit {
         max-width: 15.1rem;
-        padding:  0.6rem 2rem;
+        padding: 0.6rem 2rem;
     }
+
     &__registerCompany {
         .fieldset {
             display: flex;
             gap: 2rem;
-            > div {
+
+            >div {
                 &:first-child {
                     max-width: calc(40% - 1rem);
                 }
+
                 &:nth-child(2) {
                     max-width: calc(60% - 1rem);
                 }
             }
         }
+
         label span {
             font-size: inherit !important;
         }
     }
+
     .title {
         &-step {
             display: block;
-            font: 400 2.2rem / 2.4rem $font-secondary;            
+            font: 400 2.2rem / 2.4rem $font-secondary;
             position: relative;
             width: 100%;
+
             &::before {
                 background: map-get($primary, general);
                 content: '';
@@ -186,6 +230,7 @@
                 width: calc(100% + 4rem);
             }
         }
+
         &-text {
             background: map-get($grayscale, white);
             font-weight: normal;
@@ -195,24 +240,30 @@
             width: 100%;
         }
     }
+
     &-subTitle {
-        font: normal 1.6rem / 2.2rem $font-primary;     
+        font: normal 1.6rem / 2.2rem $font-primary;
+
         h3 {
             display: inline;
             font-weight: normal;
         }
     }
+
     &-files {
         display: flex;
         flex-direction: column;
         gap: 1.2rem;
     }
+
     &.step-5 {
         padding: 2rem;
-        input  {
+
+        input {
             width: 100%;
         }
     }
+
     &-title {
         &.step-5 {
             margin: 2rem 0 0;
@@ -220,49 +271,91 @@
         }
     }
 
+    &-title-black {
+        background: map-get($grayscale, black);
+        color: map-get($grayscale, white);
+        display: block;
+        font: 400 1.6rem / 1.9rem $font-secondary;
+        margin: 2.4rem 0 2.4rem -2rem;
+        padding: .4rem 0;
+        text-align: center;
+        width: calc(100% + 4rem);
+    }
+
+    &-btn {
+        button {
+            font: bold 1.8rem / 2.4rem $font-primary;
+            padding: .7rem 4.2rem;
+            margin: auto;
+            width: fit-content;
+        }
+    }
 }
 
 @include mq-min(md) {
     .form {
         &.step2 {
-            margin: auto;
+            margin: 2.4rem auto;
             max-width: 37.9rem;
             width: 100%;
         }
+
         &.step3 {
             margin: auto;
             max-width: 47.9rem;
             width: 100%;
+
             .form-subTitle {
                 margin-left: -5rem;
             }
         }
+
         &.step4 {
             flex-direction: row;
             flex-wrap: wrap;
             max-width: 96.2rem;
             width: 100%;
-            > div {
+
+            >div {
                 width: calc(50% - 1.2rem);
             }
+
             .form-subTitle {
                 width: 100%;
             }
+
             input[type=file] {
                 margin: 0;
             }
+
             picture {
                 max-width: 57.8rem;
                 width: 100%;
             }
         }
-        &.step-5  {
+
+        &.step-5 {
             padding: 0;
+
             &-inputs {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 margin: 4rem 0;
             }
+        }
+        &-btn {
+            &.add {
+                margin: 0 0 0 auto;
+            }
+        }
+        &-title-black {
+            font-size: 1.9rem;
+            line-height: normal;
+            margin: 2.4rem auto;
+            max-width: 69.8rem;
+            padding: 1rem 0;
+            text-align: center;
+            width: 100%;
         }
     }
 }
@@ -273,28 +366,55 @@
             margin: auto;
             max-width: calc(100% - 5.6rem - 5.6rem);
             width: 100%;
+
             &-inputs {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 padding: 0;
             }
         }
+
         &-title {
             &.step-5 {
                 margin: 2rem auto 0;
                 max-width: calc(100% - 5.6rem - 5.6rem);
                 width: 100%;
             }
-        }        
+        }
+        &-title-black {
+            max-width: 73.8rem;
+        }
     }
 }
 
 @include mq-min(x) {
     .form {
-        &.step-5 { 
+        &.step-5 {
             &-inputs {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
     }
 }
+
+
+// PERSON STYLES 
+.form-content {
+  &.person {
+        background: none;
+        box-shadow: none;
+        .form.step2 {
+            background: map-get($grayscale, white);
+            border-radius: .8rem;
+            box-shadow: 0 .3rem .6rem #00000045;
+            max-width: 100%;
+            padding: 3rem 1.6rem;
+            > div {
+                margin: auto;
+                max-width: 37.9rem;
+                width: 100%;
+            }
+        }
+  }
+
+} 
