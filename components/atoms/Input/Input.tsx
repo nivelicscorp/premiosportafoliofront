@@ -18,6 +18,7 @@ interface InputProps {
   tooltipLabel?: string
   name: string
   rounded?: boolean
+  watch?: string
   onChange?: (event: any) => void
   onBlur?: (event: any) => void
   profile?: boolean
@@ -41,6 +42,7 @@ const Input = forwardRef<any, InputProps>(function Render(
     tooltip,
     tooltipLabel,
     rounded,
+    watch,
     onChange,
     onBlur,
     profile,
@@ -91,16 +93,19 @@ const Input = forwardRef<any, InputProps>(function Render(
           ))}
         </select>
       ) : type === 'textarea' ? (
-        <textarea
-          ref={ref}
-          name={name}
-          disabled={disabled}
-          className={
-            hasError ? styles.error : '' || disabled ? styles.disabled : ''
-          }
-          placeholder={placeholder}
-          onChange={onChange}
-        ></textarea>
+        <>
+          <textarea
+            ref={ref}
+            name={name}
+            disabled={disabled}
+            className={
+              hasError ? styles.error : '' || disabled ? styles.disabled : ''
+            }
+            placeholder={placeholder}
+            onChange={onChange}
+          ></textarea>
+          {watch && <p className={styles.smallFooter}>{watch?.length}/2500</p>}
+        </>
       ) : type === 'checkbox' || type === 'radio' ? (
         <div className={styles.checkbox}>
           <input

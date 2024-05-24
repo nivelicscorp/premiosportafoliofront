@@ -107,7 +107,7 @@
     color: map-get($primary, dark);
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: visible;
     span {
       font-size: 0.8rem;
     }
@@ -239,5 +239,12 @@
     path {
       fill: map-get($grayscale, 'gray-30');
     }
+  }
+  .smallFooter {
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    font-size: 1.2rem;
+    color: map-get($primary, 'general');
   }
 }

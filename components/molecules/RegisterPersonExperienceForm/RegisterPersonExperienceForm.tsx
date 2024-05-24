@@ -56,6 +56,11 @@ const RegisterPersonExperienceForm = ({
               ? '(Opcional)'
               : ''
           }
+          options={
+            Object.keys(
+              data?.empleador?.['#element']?.empleador?.['#options'] ?? {}
+            ) ?? []
+          }
           hasError={errors?.empleador ? true : false}
           {...register('empleador', {
             required: data?.empleador?.['#element']?.empleador?.['#required'],
@@ -87,6 +92,8 @@ const RegisterPersonExperienceForm = ({
           hasError={errors?.anio ? true : false}
           {...register('anio', {
             required: data?.empleador?.['#element']?.anio?.['#required'],
+            pattern: /^\d{4}$/,
+            max: new Date().getFullYear(),
           })}
         />
         <Input

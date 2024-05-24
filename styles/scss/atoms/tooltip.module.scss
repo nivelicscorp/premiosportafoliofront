@@ -21,6 +21,7 @@
 }
 .tooltipText {
   position: absolute;
+  width: 22rem;
   right: -8rem;
   top: 1.5rem;
   font-size: 1.2rem;
@@ -30,7 +31,6 @@
   z-index: 20;
   box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2705882353);
   &.labelTooltip {
-    top: 1.5rem;
-    right: 0rem;
+    top: 2.5rem;
   }
 }

@@ -6,10 +6,16 @@ import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 interface FormProps {
   data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
+  watch: any
   errors: FieldErrors<FieldValues>
 }
 
-const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
+const DescriptionCompanyForm = ({
+  data,
+  errors,
+  watch,
+  formDirective,
+}: FormProps) => {
   return (
     <div className='form step3'>
       <div className='form-subTitle'>
@@ -31,11 +37,13 @@ const DescriptionCompanyForm = ({ data, errors, formDirective }: FormProps) => {
             ?.descripcion_de_producto_servicio?.['#type'] ?? ''
         }
         placeholder='Escriba aquí...'
+        watch={watch}
         hasError={errors?.descriptionCompanyCompany ? true : false}
         {...formDirective('descriptionCompanyCompany', {
           required:
             data?.descripcion_de_producto_servicios_de_la_empresa
               ?.descripcion_de_producto_servicio?.['#required'],
+          maxLength: 2500,
         })}
       />
       <div className='form-subTitle'>

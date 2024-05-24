@@ -88,6 +88,8 @@ const RegisterPersonStudiesForm = ({
           hasError={errors?.anio ? true : false}
           {...register('anio', {
             required: data?.estudio?.['#element']?.anio?.['#required'],
+            pattern: /^\d{4}$/,
+            max: new Date().getFullYear(),
           })}
         />
         <Input

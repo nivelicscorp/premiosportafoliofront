@@ -65,6 +65,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
    * Watch the category to show the step 5 if the category is 'empresa_esfuerzo_exportador'
    */
   const category = watch('category')
+  const descriptionCompanyCompany = watch('descriptionCompanyCompany')
   /**
    * Function to send the data to the backend
    * @param data - Data to send to the backend
@@ -294,16 +295,15 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                 category === 'empresa_esfuerzo_exportador' ? true : false
               }
             />
-            {category === 'empresa_esfuerzo_exportador' &&
-              role === 'empresa' && (
-                <StepButton
-                  stepNumber={5}
-                  active={step === 5}
-                  onClick={() => changeStep(5)}
-                  nameStep='Información financiera'
-                  conpleted={false}
-                />
-              )}
+            {category === 'empresa_esfuerzo_exportador' && (
+              <StepButton
+                stepNumber={5}
+                active={step === 5}
+                onClick={() => changeStep(5)}
+                nameStep='Información financiera'
+                conpleted={false}
+              />
+            )}
           </div>
           <div
             className={
@@ -388,6 +388,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   <DescriptionCompanyForm
                     data={formsData?.descripcion_del_proyecto}
                     errors={errors}
+                    watch={descriptionCompanyCompany}
                     formDirective={register}
                   />
                 </section>
