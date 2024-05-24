@@ -20,6 +20,7 @@ interface InputProps {
   rounded?: boolean
   onChange?: (event: any) => void
   onBlur?: (event: any) => void
+  profile?: boolean
 }
 
 const Input = forwardRef<any, InputProps>(function Render(
@@ -42,6 +43,7 @@ const Input = forwardRef<any, InputProps>(function Render(
     rounded,
     onChange,
     onBlur,
+    profile,
   },
   ref
 ) {
@@ -57,13 +59,15 @@ const Input = forwardRef<any, InputProps>(function Render(
         <label
           htmlFor={`field-${name}`}
           className={
-            focus
+            (focus
               ? styles.active
               : '' || hasError
               ? styles.error
               : '' || disabled
               ? styles.disabled
-              : ''
+              : '') +
+            ' ' +
+            (profile ? styles?.profile : '')
           }
         >
           {label} <span>{smallLabel}</span>
@@ -216,7 +220,9 @@ const Input = forwardRef<any, InputProps>(function Render(
           placeholder={disabled ? '' : placeholder}
           disabled={disabled}
           className={
-            hasError ? styles.error : '' || disabled ? styles.disabled : ''
+            (hasError ? styles.error : '' || disabled ? styles.disabled : '') +
+            ' ' +
+            (profile ? styles?.profile : '')
           }
           onFocus={(e) => setFocus(true)}
           onBlur={(e) => setFocus(false)}

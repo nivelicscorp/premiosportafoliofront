@@ -428,7 +428,7 @@
             max-width: 100%;
             padding: 3rem 1.6rem;
 
-            >div {
+            > div {
                 margin: auto;
                 max-width: 37.9rem;
                 width: 100%;
@@ -439,3 +439,33 @@
 }
 
 // PROFILE STYLES 
+.form {
+    .btn-edit {
+        align-items: center;
+        background: none;
+        border: none;
+        color: map-get($grayscale, black);
+        display: flex;
+        justify-content: flex-end;
+        gap: .4rem;
+        font: normal 1.4rem / 1.2 $font-secondary;
+    }
+    .user-title {
+        align-items: center;
+        color: map-get($grayscale, white);
+        display: flex;
+        font: bold 3.1rem / 4.3rem $font-secondary;
+        gap: 1.6rem;
+        height: 5.5rem;
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        width: 100%;
+        @include mq-min(md) {
+            height: 7.1rem;
+        }
+    }
+}
