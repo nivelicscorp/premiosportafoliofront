@@ -71,6 +71,22 @@
     }
   }
 
+  input {
+    &.profile {
+      &.disabled {
+        background: #efefef;
+      }
+    }
+  }
+
+  label {
+    &.disabled {
+      &.profile {
+        color: map-get($primary, general);
+      }
+    }
+  }
+
   label.error {
     + select {
       border-color: map-get($alert, 'base');
