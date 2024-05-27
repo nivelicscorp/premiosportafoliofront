@@ -117,7 +117,7 @@ const MyPostulations = () => {
               <SimpleSkeleton /> <SimpleSkeleton /> <SimpleSkeleton />
             </>
           )}
-          {!loading && postulations.length === 0 && (
+          {!loading && (!postulations || postulations?.length === 0) && (
             <p>No tienes postulaciones</p>
           )}
           {!loading &&
