@@ -10,7 +10,10 @@ interface FormProps {
 const FinanceForm = ({ data, errors, formDirective }: FormProps) => {
   return (
     <div className='form'>
-      <h3 className='form-title step-5'>{data.markup_02?.['#title'] ?? ''}</h3>
+      <h3
+        dangerouslySetInnerHTML={{ __html: data.markup_02?.['#markup'] ?? '' }}
+        className='form-title step-5'
+      ></h3>
       <SingleYearFinancialForm
         data={data.ano_2021}
         nameFieldYear='TwentyOne'
