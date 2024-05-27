@@ -1,15 +1,17 @@
 import LinkButton from '@atoms/LinkButton/LinkButton'
 import MyPostulations from '@organisms/MyPostulations/MyPostulations'
+import styles from '@styles/scss/molecules/postulations.module.scss'
 
 const PostulationsPage = () => {
   return (
-    <div style={{ width: '500px', margin: 'auto' }}>
+    <div className={styles?.postulationsContent + ' form-content'}>
       <MyPostulations />
       <LinkButton
         url='/usuario'
         title='Volver'
         target={'_self'}
-        variant={'primary'}
+        variant={'prev'}
+        className={styles?.postulations__prev}
       />
     </div>
   )

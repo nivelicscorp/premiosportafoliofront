@@ -4,9 +4,16 @@ import Link from 'next/link'
 
 interface LinkButtonProps extends ButtonModel {
   target: string
+  className?: string
 }
 
-const LinkButton = ({ title, url, variant, target }: LinkButtonProps) => {
+const LinkButton = ({
+  title,
+  url,
+  variant,
+  target,
+  className,
+}: LinkButtonProps) => {
   return (
     <>
       {variant === 'primary' && (
@@ -23,6 +30,18 @@ const LinkButton = ({ title, url, variant, target }: LinkButtonProps) => {
         <Link href={url} passHref scroll={false}>
           <a
             className={style.linkBtn + ' ' + style.linkBtn__secondary}
+            target={target}
+          >
+            {title}
+          </a>
+        </Link>
+      )}
+      {variant === 'prev' && (
+        <Link href={url} passHref scroll={false}>
+          <a
+            className={
+              style.linkBtn + ' ' + style.linkBtn__prev + ' ' + className
+            }
             target={target}
           >
             {title}
