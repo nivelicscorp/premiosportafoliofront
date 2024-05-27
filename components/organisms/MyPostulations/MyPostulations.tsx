@@ -33,9 +33,11 @@ const MyPostulations = () => {
           <SimpleSkeleton /> <SimpleSkeleton /> <SimpleSkeleton />
         </>
       )}
-      {!loading && postulations.length === 0 && <p>No tienes postulaciones</p>}
+      {!loading && (!postulations || postulations?.length === 0) && (
+        <p>No tienes postulaciones</p>
+      )}
       {!loading &&
-        postulations.slice(0, pagination).map((postulation, index) => (
+        postulations?.slice(0, pagination).map((postulation, index) => (
           <Fragment key={index}>
             <CardPostulation
               title='Categoría'
@@ -44,7 +46,7 @@ const MyPostulations = () => {
             />
           </Fragment>
         ))}
-      {postulations.length > pagination && (
+      {postulations?.length > pagination && (
         <Button
           title='Ver más'
           clickHandler={() => setPagination(pagination + 3)}

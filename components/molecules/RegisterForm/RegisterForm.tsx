@@ -33,6 +33,7 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    setError,
     watch,
     formState: { errors },
   } = useForm()
@@ -95,7 +96,17 @@ const RegisterForm = () => {
         }
       })
       .catch((err) => {
-        console.error('Error al registrar el usuario')
+        if (err.response?.data?.message.includes('is already taken.\nmail')) {
+          setError('email', {
+            type: 'manual',
+            message: 'El correo ya se encuentra registrado',
+          })
+        } else {
+          setError('email', {
+            type: 'manual',
+            message: err.response?.data?.message,
+          })
+        }
         setSendingData(false)
       })
   }
