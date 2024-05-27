@@ -437,13 +437,19 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                 />
               </section>
               {/* STEP 05 */}
-              <section
-                className={`${styles.section} ${
-                  step === 5 ? styles.active : ''
-                }`}
-              >
-                <FinanceForm formDirective={register} />
-              </section>
+              {category === 'empresa_esfuerzo_exportador' && (
+                <section
+                  className={`${styles.section} ${
+                    step === 5 ? styles.active : ''
+                  }`}
+                >
+                  <FinanceForm
+                    data={formsData.informacion_financiera}
+                    formDirective={register}
+                    errors={errors}
+                  />
+                </section>
+              )}
               {/* BUTTONS */}
               <div className={styles?.inscription__btns}>
                 <Button

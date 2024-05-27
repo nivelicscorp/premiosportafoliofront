@@ -1,27 +1,33 @@
+import { DescripcionDelProyecto } from '@models/getForms.model'
 import SingleYearFinancialForm from '@molecules/SingleYearFinancialForm/SingleYearFinancialForm'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 
 interface FormProps {
+  data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
+  errors: FieldErrors<FieldValues>
 }
-const FinanceForm = ({ formDirective }: FormProps) => {
+const FinanceForm = ({ data, errors, formDirective }: FormProps) => {
   return (
     <div className='form'>
-      <h3 className='form-title step-5'>Información sujeta a validación:</h3>
+      <h3 className='form-title step-5'>{data.markup_02?.['#title'] ?? ''}</h3>
       <SingleYearFinancialForm
-        year='2021'
+        data={data.ano_2021}
         nameFieldYear='TwentyOne'
         formDirective={formDirective}
+        errors={errors}
       />
       <SingleYearFinancialForm
-        year='2022'
+        data={data.ano_2022}
         nameFieldYear='TwentyTwo'
         formDirective={formDirective}
+        errors={errors}
       />
       <SingleYearFinancialForm
-        year='2023'
+        data={data.ano_2023}
         nameFieldYear='TwentyThree'
         formDirective={formDirective}
+        errors={errors}
       />
     </div>
   )
