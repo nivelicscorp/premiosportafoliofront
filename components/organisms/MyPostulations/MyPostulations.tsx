@@ -6,6 +6,7 @@ import decryptCryptoData from '@utils/decryptCryptoData'
 import { getCookie } from 'cookies-next'
 import { useState, useEffect, Fragment } from 'react'
 import styles from '@styles/scss/molecules/postulations.module.scss'
+import LinkButton from '@atoms/LinkButton/LinkButton'
 
 const MyPostulations = () => {
   const [postulations, setPostulations] = useState<string[]>([])
@@ -118,10 +119,23 @@ const MyPostulations = () => {
             </>
           )}
           {!loading && (!postulations || postulations?.length === 0) && (
-            <p>No tienes postulaciones</p>
+            <>
+              <p className={styles?.postulations__texts}>
+                Esta cuenta no tiene postulaciones en curso, si conoces
+                organizaciones o personas que merezcan destacarse a través de
+                Premios Portafolio has clic en el botón y sigue los pasos
+              </p>
+              <LinkButton
+                variant='secondary'
+                target='_self'
+                url='/usuario/postulacion'
+                title='¡Postúlate aquí!'
+                className={styles?.postulations__btn}
+              />
+            </>
           )}
           {!loading &&
-            postulations.slice(0, pagination).map((postulation, index) => (
+            postulations?.slice(0, pagination).map((postulation, index) => (
               <Fragment key={index}>
                 <CardPostulation
                   title='Categoría'
@@ -130,7 +144,7 @@ const MyPostulations = () => {
                 />
               </Fragment>
             ))}
-          {postulations.length > pagination && (
+          {postulations?.length > pagination && (
             <Button
               title='Cargar más'
               clickHandler={() => setPagination(pagination + 3)}

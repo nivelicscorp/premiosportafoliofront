@@ -19,7 +19,9 @@ const LinkButton = ({
       {variant === 'primary' && (
         <Link href={url} passHref scroll={false}>
           <a
-            className={style.linkBtn + ' ' + style.linkBtn__primary}
+            className={
+              style.linkBtn + ' ' + style.linkBtn__primary + ' ' + className
+            }
             target={target}
           >
             {title}
@@ -29,7 +31,9 @@ const LinkButton = ({
       {variant === 'secondary' && (
         <Link href={url} passHref scroll={false}>
           <a
-            className={style.linkBtn + ' ' + style.linkBtn__secondary}
+            className={
+              style.linkBtn + ' ' + style.linkBtn__secondary + ' ' + className
+            }
             target={target}
           >
             {title}
