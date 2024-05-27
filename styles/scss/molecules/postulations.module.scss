@@ -54,4 +54,12 @@
             display: none !important;
         }
     }
+    &__texts {
+        font: 500 2rem / 3.4rem $font-primary;        
+        text-align: center;        
+        @include mq-min(md) {
+            margin-left: -5rem;
+            width: calc(100% + 10rem);
+        }
+    }
 }   
