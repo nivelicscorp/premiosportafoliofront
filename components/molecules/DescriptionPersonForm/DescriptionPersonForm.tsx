@@ -39,7 +39,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
       <Input
         label={data?.impacto_en_su_gestion?.['#title'] ?? ''}
         type={data?.impacto_en_su_gestion?.['#type'] ?? ''}
-        tooltipLabel='Antes y después, cumplimiento de objectivos, fomentar cambios positivos, participación en proyectos en la universidad o empresas, entre otros.'
+        tooltipLabel='Antes y después, cumplimiento de objetivos, fomentar cambios positivos, participación en proyectos en la universidad o empresas, entre otros.'
         placeholder='Escriba aquí...'
         smallLabel={
           !data?.impacto_en_su_gestion?.['#required'] ? '(Opcional)' : ''
@@ -89,7 +89,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
       <Input
         label={data?.otros_investigaciones_publicaciones?.['#title'] ?? ''}
         type={data?.otros_investigaciones_publicaciones?.['#type'] ?? ''}
-        smallLabel='(Investifaciones o publicaciones)'
+        smallLabel='(Investigaciones o publicaciones)'
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionPersonOthers ? true : false}
         {...formDirective('descriptionPersonOthers', {

@@ -46,15 +46,20 @@ const UploadFilesForm = ({
       <div className={styles?.categoryForm__note}>
         <h3 className={styles?.categoryForm__note__title}> Nota: </h3>
         <ul className={styles?.categoryForm__note__list}>
-          <li>
-            Por favor adjuntar el certificado de Cámara de comercio, RUT
-            {role === 'persona' &&
-              `. reconocimientos y certificado del semestre actual y/o acta de grado (Certificados o acta de grado, sólo aplica para categoría de Mejor Estudiante)`}
-            {(role === 'agencia' || role === 'empresa') &&
-              ` y
-            estados financieros de los últimos tres años (Estados financieros,
-            sólo aplica para categoría de Esfuerzo exportador).`}
-          </li>
+          {(role === 'agencia' || role === 'empresa') && (
+            <li>
+              Por favor adjuntar el certificado de Cámara de comercio, RUT y
+              estados financieros de los últimos tres años (Estados financieros,
+              sólo aplica para categoría de Esfuerzo exportador).
+            </li>
+          )}
+          {role === 'persona' && (
+            <li>
+              Por favor adjuntar fotocopia de la cédula, aplica para todas las
+              categorías. Para categoría de Mejor Estudiante, por favor adjuntar
+              certificado del semestre actual y/o acta de grado.
+            </li>
+          )}
         </ul>
       </div>
       {/* FORM */}

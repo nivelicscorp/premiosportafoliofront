@@ -96,11 +96,7 @@ const RegisterPersonStudiesForm = ({
           label={data?.estudio?.['#element']?.otros?.['#title'] ?? ''}
           type={data?.estudio?.['#element']?.otros?.['#type'] ?? ''}
           placeholder={`${data?.estudio?.['#element']?.otros?.['#title']}...`}
-          smallLabel={
-            !data?.estudio?.['#element']?.otros?.['#required']
-              ? '(Opcional)'
-              : ''
-          }
+          smallLabel='(Reconocimientos)'
           hasError={errors?.otros ? true : false}
           {...register('otros', {
             required: data?.estudio?.['#element']?.otros?.['#required'],

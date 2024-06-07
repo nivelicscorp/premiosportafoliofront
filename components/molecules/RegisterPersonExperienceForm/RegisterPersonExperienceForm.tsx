@@ -118,11 +118,7 @@ const RegisterPersonExperienceForm = ({
             data?.empleador?.['#element']?.otras_actividades?.['#type'] ?? ''
           }
           placeholder={`${data?.empleador?.['#element']?.otras_actividades?.['#title']}...`}
-          smallLabel={
-            !data?.empleador?.['#element']?.otras_actividades?.['#required']
-              ? '(Opcional)'
-              : ''
-          }
+          smallLabel='(Voluntariados, mentorías)'
           hasError={errors?.otras_actividades ? true : false}
           {...register('otras_actividades', {
             required:

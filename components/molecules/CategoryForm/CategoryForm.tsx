@@ -25,20 +25,16 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']?.empresa_esfuerzo_exportador
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_esfuerzo_exportador?.split('--')[0]
                 }
                 value='empresa_esfuerzo_exportador'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
-                {...formDirective('category', { required: true })}
-                rounded
-              />
-            )}
-            {role !== 'persona' && (
-              <Input
-                type='radio'
-                label={data?.categoria?.['#options']?.empresa_innovacion}
-                value='empresa_innovacion'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_esfuerzo_exportador?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
@@ -47,10 +43,34 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']?.empresa_transformacion_digital
+                  data?.categoria?.['#options']?.empresa_innovacion?.split(
+                    '--'
+                  )[0]
+                }
+                value='empresa_innovacion'
+                tooltip={
+                  data?.categoria?.['#options']?.empresa_innovacion?.split(
+                    '--'
+                  )[1]
+                }
+                {...formDirective('category', { required: true })}
+                rounded
+              />
+            )}
+            {role !== 'persona' && (
+              <Input
+                type='radio'
+                label={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_transformacion_digital?.split('--')[0]
                 }
                 value='empresa_transformacion_digital'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_transformacion_digital?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
@@ -59,11 +79,16 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']
-                    ?.empresa_gestion_del_recurso_humano
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_gestion_del_recurso_humano?.split('--')[0]
                 }
                 value='empresa_gestion_del_recurso_humano'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_gestion_del_recurso_humano?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
@@ -72,11 +97,16 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']
-                    ?.empresa_proteccion_al_medio_ambiente
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_proteccion_al_medio_ambiente?.split('--')[0]
                 }
                 value='empresa_proteccion_al_medio_ambiente'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_proteccion_al_medio_ambiente?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
@@ -85,10 +115,16 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']?.empresa_aporte_a_la_comunidad
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_aporte_a_la_comunidad?.split('--')[0]
                 }
                 value='empresa_aporte_a_la_comunidad'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_aporte_a_la_comunidad?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
@@ -97,11 +133,16 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']
-                    ?.empresa_responsabilidad_social_empresarial
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_responsabilidad_social_empresarial?.split('--')[0]
                 }
                 value='empresa_responsabilidad_social_empresarial'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_responsabilidad_social_empresarial?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
@@ -110,30 +151,16 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']?.empresa_servicio_al_cliente
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_servicio_al_cliente?.split('--')[0]
                 }
                 value='empresa_servicio_al_cliente'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
-                {...formDirective('category', { required: true })}
-                rounded
-              />
-            )}
-            {role !== 'empresa' && (
-              <Input
-                type='radio'
-                label={data?.categoria?.['#options']?.persona_mejor_docente}
-                value='persona_mejor_docente'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
-                {...formDirective('category', { required: true })}
-                rounded
-              />
-            )}
-            {role !== 'empresa' && (
-              <Input
-                type='radio'
-                label={data?.categoria?.['#options']?.persona_mejor_estudiante}
-                value='persona_mejor_estudiante'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.empresa_servicio_al_cliente?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
@@ -142,10 +169,52 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
               <Input
                 type='radio'
                 label={
-                  data?.categoria?.['#options']?.persona_mejor_lider_empresarial
+                  data?.categoria?.['#options']?.persona_mejor_docente?.split(
+                    '--'
+                  )[0]
+                }
+                value='persona_mejor_docente'
+                tooltip={
+                  data?.categoria?.['#options']?.persona_mejor_docente?.split(
+                    '--'
+                  )[1]
+                }
+                {...formDirective('category', { required: true })}
+                rounded
+              />
+            )}
+            {role !== 'empresa' && (
+              <Input
+                type='radio'
+                label={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.persona_mejor_estudiante?.split('--')[0]
+                }
+                value='persona_mejor_estudiante'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.persona_mejor_estudiante?.split('--')[1]
+                }
+                {...formDirective('category', { required: true })}
+                rounded
+              />
+            )}
+            {role !== 'empresa' && (
+              <Input
+                type='radio'
+                label={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.persona_mejor_lider_empresarial?.split('--')[0]
                 }
                 value='persona_mejor_lider_empresarial'
-                tooltip='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
+                tooltip={
+                  data?.categoria?.[
+                    '#options'
+                  ]?.persona_mejor_lider_empresarial?.split('--')[1]
+                }
                 {...formDirective('category', { required: true })}
                 rounded
               />
