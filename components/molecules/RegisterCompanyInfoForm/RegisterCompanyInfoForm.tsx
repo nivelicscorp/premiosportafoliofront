@@ -41,48 +41,20 @@ const RegisterCompanyInfoForm = ({
             data?.postulacion_empresa_directa?.nombre_completo?.['#required'],
         })}
       />
-      <div className='fieldset'>
-        <Input
-          label={data?.postulacion_empresa_directa?.nit?.['#title'] ?? ''}
-          type={data?.postulacion_empresa_directa?.nit?.['#type'] ?? ''}
-          placeholder={`${data?.postulacion_empresa_directa?.nit?.['#title']}...`}
-          smallLabel={
-            !data?.postulacion_empresa_directa?.nit?.['#required']
-              ? '(Opcional)'
-              : ''
-          }
-          hasError={errors?.NitCompany ? true : false}
-          {...formDirective('NitCompany', {
-            required: data?.postulacion_empresa_directa?.nit?.['#required'],
-          })}
-        />
-        <Input
-          label={
-            data?.postulacion_empresa_directa?.numero_de_documento?.[
-              '#title'
-            ] ?? ''
-          }
-          type={
-            data?.postulacion_empresa_directa?.numero_de_documento?.['#type'] ??
-            ''
-          }
-          smallLabel={
-            !data?.postulacion_empresa_directa?.numero_de_documento?.[
-              '#required'
-            ]
-              ? '(Opcional)'
-              : ''
-          }
-          placeholder={`${data?.postulacion_empresa_directa?.numero_de_documento?.['#title']}...`}
-          hasError={errors?.documentIdCompany ? true : false}
-          {...formDirective('documentIdCompany', {
-            required:
-              data?.postulacion_empresa_directa?.numero_de_documento?.[
-                '#required'
-              ],
-          })}
-        />
-      </div>
+      <Input
+        label={data?.postulacion_empresa_directa?.nit?.['#title'] ?? ''}
+        type={data?.postulacion_empresa_directa?.nit?.['#type'] ?? ''}
+        placeholder={`${data?.postulacion_empresa_directa?.nit?.['#title']}...`}
+        smallLabel={
+          !data?.postulacion_empresa_directa?.nit?.['#required']
+            ? '(Opcional)'
+            : ''
+        }
+        hasError={errors?.NitCompany ? true : false}
+        {...formDirective('NitCompany', {
+          required: data?.postulacion_empresa_directa?.nit?.['#required'],
+        })}
+      />
       <Input
         label={
           data?.postulacion_empresa_directa?.departamento_de_residencia?.[
