@@ -11,23 +11,23 @@ const FinanceForm = ({ data, errors, formDirective }: FormProps) => {
   return (
     <div className='form'>
       <h3
-        dangerouslySetInnerHTML={{ __html: data.markup_02?.['#markup'] ?? '' }}
+        dangerouslySetInnerHTML={{ __html: data?.markup_02?.['#markup'] ?? '' }}
         className='form-title step-5'
       ></h3>
       <SingleYearFinancialForm
-        data={data.ano_2021}
+        data={data?.ano_2021}
         nameFieldYear='TwentyOne'
         formDirective={formDirective}
         errors={errors}
       />
       <SingleYearFinancialForm
-        data={data.ano_2022}
+        data={data?.ano_2022}
         nameFieldYear='TwentyTwo'
         formDirective={formDirective}
         errors={errors}
       />
       <SingleYearFinancialForm
-        data={data.ano_2023}
+        data={data?.ano_2023}
         nameFieldYear='TwentyThree'
         formDirective={formDirective}
         errors={errors}

@@ -231,9 +231,17 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
             les recordamos volver a llenar el formulario desde el
             <span> Paso 1. </span>
           </li>
-          {role === 'empresa' && (
+          {role === 'agencia' && (
             <li>
-              Una empresa puede inscribir una categoría por cada proyecto.
+              Las agencias de comunicación/publicidad pueden inscribir a sus
+              clientes (empresas). Sin embargo, no pueden participar en hacer
+              inscripciones a nombre propio.
+            </li>
+          )}
+          {role !== 'persona' && (
+            <li>
+              Una empresa puede inscribirse a varias categorías, con diferentes
+              proyectos.
             </li>
           )}
         </ul>
