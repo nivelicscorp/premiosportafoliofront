@@ -125,6 +125,10 @@ const UploadFilesForm = ({
             srcSet='/img/reference_upload.png'
             media='(min-width: 600px)'
           />
+          <source
+            srcSet='/img/reference_upload_mobile.png'
+            media='(min-width: 320px)'
+          />
           <img src='/img/reference_upload.png' alt='MDN' />
         </picture>
       </div>
