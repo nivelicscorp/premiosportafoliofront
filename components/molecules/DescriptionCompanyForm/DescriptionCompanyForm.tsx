@@ -1,6 +1,7 @@
 import Input from '@atoms/Input/Input'
 import Tooltip from '@atoms/Tooltip/Tooltip'
 import { DescripcionDelProyecto } from '@models/getForms.model'
+import { PostFormCompany } from '@models/postFormCompany.model'
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
@@ -8,6 +9,7 @@ interface FormProps {
   formDirective: UseFormRegister<FieldValues>
   watch: any
   errors: FieldErrors<FieldValues>
+  preloaded: PostFormCompany
 }
 
 const DescriptionCompanyForm = ({
@@ -15,6 +17,7 @@ const DescriptionCompanyForm = ({
   errors,
   watch,
   formDirective,
+  preloaded,
 }: FormProps) => {
   return (
     <div className='form step3'>
@@ -40,6 +43,7 @@ const DescriptionCompanyForm = ({
         watch={watch}
         hasError={errors?.descriptionCompanyCompany ? true : false}
         {...formDirective('descriptionCompanyCompany', {
+          value: preloaded?.descripcion_de_producto_servicio,
           required:
             data?.descripcion_de_producto_servicios_de_la_empresa
               ?.descripcion_de_producto_servicio?.['#required'],
@@ -67,6 +71,7 @@ const DescriptionCompanyForm = ({
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionNameCompany ? true : false}
         {...formDirective('descriptionNameCompany', {
+          value: preloaded?.nombre_del_proyecto,
           required:
             data?.descripcionl_proyecto_participa?.nombre_del_proyecto?.[
               '#required'
@@ -87,6 +92,7 @@ const DescriptionCompanyForm = ({
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionAboutCompany ? true : false}
         {...formDirective('descriptionAboutCompany', {
+          value: preloaded?.de_que_trata_el_proyecto,
           required:
             data?.descripcionl_proyecto_participa?.de_que_trata_el_proyecto?.[
               '#required'
@@ -107,6 +113,7 @@ const DescriptionCompanyForm = ({
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionCoverageCompany ? true : false}
         {...formDirective('descriptionCoverageCompany', {
+          value: preloaded?.cobertura_alcance_proyecto,
           required:
             data?.descripcionl_proyecto_participa?.cobertura_alcance_proyecto?.[
               '#required'
@@ -127,6 +134,7 @@ const DescriptionCompanyForm = ({
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionTimeCompany ? true : false}
         {...formDirective('descriptionTimeCompany', {
+          value: preloaded?.tiempo_desarrollado_proyecto,
           required:
             data?.descripcionl_proyecto_participa
               ?.tiempo_desarrollado_proyecto?.['#required'],
@@ -147,6 +155,7 @@ const DescriptionCompanyForm = ({
         tooltipLabel='(Indicador con relación a la industria. Si el indicador es propio, explicar por favor).'
         hasError={errors?.descriptionIndicatorsCompany ? true : false}
         {...formDirective('descriptionIndicatorsCompany', {
+          value: preloaded?.indicadores_de_gestion,
           required:
             data?.descripcionl_proyecto_participa?.indicadores_de_gestion?.[
               '#required'
@@ -167,6 +176,7 @@ const DescriptionCompanyForm = ({
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionReasonCompany ? true : false}
         {...formDirective('descriptionReasonCompany', {
+          value: preloaded?.por_que_proyecto_premiado,
           required:
             data?.descripcionl_proyecto_participa?.por_que_proyecto_premiado?.[
               '#required'

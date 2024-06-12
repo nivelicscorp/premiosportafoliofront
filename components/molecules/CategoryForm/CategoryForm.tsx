@@ -7,9 +7,15 @@ interface FormProps {
   role: string
   formDirective: UseFormRegister<FieldValues>
   data: DescripcionDelProyecto
+  preloadedCategory?: string
 }
 
-const CategoryForm = ({ data, role, formDirective }: FormProps) => {
+const CategoryForm = ({
+  data,
+  role,
+  formDirective,
+  preloadedCategory,
+}: FormProps) => {
   return (
     <div className={styles?.categoryForm}>
       <h3
@@ -35,7 +41,10 @@ const CategoryForm = ({ data, role, formDirective }: FormProps) => {
                     '#options'
                   ]?.empresa_esfuerzo_exportador?.split('--')[1]
                 }
-                {...formDirective('category', { required: true })}
+                {...formDirective('category', {
+                  value: preloadedCategory,
+                  required: true,
+                })}
                 rounded
               />
             )}

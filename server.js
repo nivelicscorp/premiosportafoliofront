@@ -269,15 +269,18 @@ app
           )
           .then((data) => {
             // parse the data to get the category cleaned
-            return res.status(200).json(
-              data.map((postulation) =>
-                postulation.data?.categoria[0]
+            const parsed = data.map((postulation) => {
+              return {
+                name_category: postulation.data?.categoria[0]
                   .replace(/empresa_/g, ' ')
                   .replace(/persona_/g, ' ')
                   .replace(/_/g, ' ')
-                  .trim()
-              )
-            )
+                  .trim(),
+                uuid: postulation.entity.uuid[0].value,
+                data: postulation.data,
+              }
+            })
+            return res.status(200).json(parsed)
           })
           .catch((error) => {
             console.error('🚀 ~ error:', error)

@@ -12,7 +12,7 @@ import RegisterPersonInfoForm from '@molecules/RegisterPersonInfoForm/RegisterPe
 import RegisterPersonStudiesForm from '@molecules/RegisterPersonStudiesForm/RegisterPersonStudiesForm'
 import UploadFilesForm from '@molecules/UploadFilesForm/UploadFilesForm'
 import FinanceForm from '@molecules/FinanceForm/FinanceForm'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { PostFormPerson } from '@models/postFormPerson.model'
 import { PostFormCompany } from '@models/postFormCompany.model'
@@ -26,21 +26,20 @@ import { onFileUpload } from '@utils/uploadFiles'
 import postFormPostulation from '@actions/postFormPostulation'
 import ConfirmationPostulation from '@molecules/ConfirmationPostulation/ConfirmationPostulation'
 import patchFormPostulation from '@actions/patchFormPostulation'
+import arrayDestructuring from '@utils/arrayDestructuring'
 
 interface PostulationFormProps {
   role: string
-  preloadedData?: any
-  sid?: string
   formData: GetPersonForm | GetCompanyForm | GetAgencyForm | undefined
 }
 
-const PostulationForm = ({
-  role,
-  formData,
-  preloadedData,
-  sid,
-}: PostulationFormProps) => {
-  const [sidForm, setSidForm] = useState(sid)
+const PostulationForm = ({ role, formData }: PostulationFormProps) => {
+  const [preloadedData, setPreloadedData] = useState<
+    PostFormCompany | PostFormPerson | PostFormPerson | undefined
+  >()
+  const [sidForm, setSidForm] = useState<string | undefined>()
+  // const [tempFiles, setTempFiles] = useState<string[]>([])
+  const [alreadyLoadedFiles, setAlreadyLoadedFiles] = useState<string[]>([])
   const [step, setStep] = useState(1)
   const [formsData, setFormsData] = useState<any>(formData)
   const [submitting, setSubmitting] = useState(false)
@@ -71,6 +70,17 @@ const PostulationForm = ({
     }
     setStep(step)
   }
+  /**
+   * Function to set the sid of the form
+   */
+  useEffect(() => {
+    const data = JSON.parse(sessionStorage.getItem('postulation') ?? '{}')
+    setPreloadedData(data)
+    setValue('category', arrayDestructuring(data?.categoria, ''))
+    sessionStorage.removeItem('postulation')
+    // setTempFiles(data?.archivos ?? [])
+  }, [])
+
   /**
    * Watch the category to show the step 5 if the category is 'empresa_esfuerzo_exportador'
    */
@@ -184,12 +194,31 @@ const PostulationForm = ({
       status: finalSubmit ? 'done' : 'undone',
       complete_page: step.toString(),
     }
-    const promisesFiles: Promise<any>[] = data?.files.map((element: any) =>
-      onFileUpload(element)
-    )
+    const promisesFiles: Promise<any>[] = finalSubmit
+      ? data?.files.map((element: any) => {
+          const filePreloaded = preloadedData?.archivos?.find((file) => {
+            return file.includes(element.name)
+          })
+          const file = alreadyLoadedFiles?.find((file) => {
+            return file.includes(element.name)
+          })
+          if (!file && !filePreloaded) {
+            return onFileUpload(element)
+          }
+        })
+      : []
     Promise.all(promisesFiles).then((res) => {
       const files: string[] = res.map((element) => element)
       parseData.archivos = files.length > 0 ? files : ['-']
+
+      // const files: string[] = res.filter((file) => file !== undefined)
+      // parseData.archivos =
+      //   tempFiles.length > 0 ||
+      //   alreadyLoadedFiles.length > 0 ||
+      //   files.length > 0
+      //     ? [...tempFiles, ...alreadyLoadedFiles, ...files]
+      //     : ['-']
+      // setAlreadyLoadedFiles([...alreadyLoadedFiles, ...files])
       if (sidForm) {
         patchFormPostulation(parseData, sidForm, role)
           .then((res) => {
@@ -523,6 +552,10 @@ const PostulationForm = ({
                   data={formsData?.tipo_de_inscripcion}
                   role={role}
                   formDirective={register}
+                  preloadedCategory={arrayDestructuring(
+                    preloadedData?.categoria,
+                    ''
+                  )}
                 />
               </section>
               {/* STEP 02 */}
@@ -537,6 +570,7 @@ const PostulationForm = ({
                     data={formsData?.ingreso_de_datos}
                     errors={errors}
                     formDirective={register}
+                    preloaded={preloadedData as PostFormCompany}
                   />
                 </section>
               )}
@@ -590,6 +624,7 @@ const PostulationForm = ({
                     errors={errors}
                     watch={descriptionCompanyCompany}
                     formDirective={register}
+                    preloaded={preloadedData as PostFormCompany}
                   />
                 </section>
               )}
@@ -634,22 +669,26 @@ const PostulationForm = ({
                   formDirective={register}
                   setValue={setValue}
                   className='step4'
+                  // preloaded={tempFiles ?? []}
+                  // setTempFiles={setTempFiles}
                 />
               </section>
               {/* STEP 05 */}
-              {category === 'empresa_esfuerzo_exportador' && (
-                <section
-                  className={`${styles.section} ${
-                    step === 5 ? styles.active : ''
-                  }`}
-                >
-                  <FinanceForm
-                    data={formsData.informacion_financiera}
-                    formDirective={register}
-                    errors={errors}
-                  />
-                </section>
-              )}
+              {category === 'empresa_esfuerzo_exportador' &&
+                role === 'empresa' && (
+                  <section
+                    className={`${styles.section} ${
+                      step === 5 ? styles.active : ''
+                    }`}
+                  >
+                    <FinanceForm
+                      data={formsData.informacion_financiera}
+                      formDirective={register}
+                      errors={errors}
+                      preloaded={preloadedData as PostFormCompany}
+                    />
+                  </section>
+                )}
               {/* BUTTONS */}
               <div className={styles?.inscription__btns}>
                 <Button

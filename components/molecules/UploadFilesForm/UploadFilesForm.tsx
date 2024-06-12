@@ -18,7 +18,9 @@ interface FormProps {
   data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
   setValue: UseFormSetValue<FieldValues>
+  // setTempFiles: Dispatch<SetStateAction<string[]>>
   errors: FieldErrors<FieldValues>
+  // preloaded: string[]
 }
 
 const UploadFilesForm = ({
@@ -117,6 +119,17 @@ const UploadFilesForm = ({
                   />
                 </Fragment>
               ))}
+            {/* {preloaded.length > 0 &&
+              preloaded.map((file, index) => (
+                <Fragment key={index}>
+                  <CardFile
+                    name={file.split('/').pop() ?? ''}
+                    handleClick={() => {
+                      setTempFiles(preloaded.filter((f) => f !== file))
+                    }}
+                  />
+                </Fragment>
+              ))} */}
           </div>
         </div>
         <h3 className='form-subTitle'>Imágen de referencia</h3>

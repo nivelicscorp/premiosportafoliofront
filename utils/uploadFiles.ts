@@ -9,6 +9,7 @@ const FILE_FORMATS = ['image/jpeg', 'image/png', 'image/jpg']
 export const onFileAttachImage = async (
   file: File,
   allFilesImage: FileTypeModel[],
+  // allPreloadedImages: string[],
   fileFormats: string[] = FILE_FORMATS,
   pattern?: RegExp
 ): Promise<string | FileTypeModel> => {
@@ -24,6 +25,11 @@ export const onFileAttachImage = async (
   if (allFilesImage.some((image) => image.name === file?.name)) {
     return 'El archivo ya ha sido cargado'
   }
+  // if (
+  //   allPreloadedImages.some((image) => image.split('/').pop() === file?.name)
+  // ) {
+  //   return 'El archivo ya ha sido cargado'
+  // }
   if (pattern && !pattern.test(file?.name)) {
     return 'El archivo no cumple con el patrón de nombre requerido'
   }

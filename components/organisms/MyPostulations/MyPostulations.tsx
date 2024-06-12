@@ -9,7 +9,7 @@ import styles from '@styles/scss/molecules/postulations.module.scss'
 import LinkButton from '@atoms/LinkButton/LinkButton'
 
 const MyPostulations = () => {
-  const [postulations, setPostulations] = useState<string[]>([])
+  const [postulations, setPostulations] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [pagination, setPagination] = useState(3)
   useEffect(() => {
@@ -139,8 +139,10 @@ const MyPostulations = () => {
               <Fragment key={index}>
                 <CardPostulation
                   title='Categoría'
-                  description={postulation}
+                  description={postulation?.name_category}
                   numeration={index + 1}
+                  data={postulation.data}
+                  uuid={postulation.uuid}
                 />
               </Fragment>
             ))}

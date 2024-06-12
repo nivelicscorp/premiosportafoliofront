@@ -1,5 +1,6 @@
 import Input from '@atoms/Input/Input'
 import { DescripcionDelProyecto } from '@models/getForms.model'
+import { PostFormCompany } from '@models/postFormCompany.model'
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
@@ -7,6 +8,7 @@ interface FormProps {
   formDirective: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
   className: string
+  preloaded: PostFormCompany
 }
 
 const RegisterCompanyInfoForm = ({
@@ -14,6 +16,7 @@ const RegisterCompanyInfoForm = ({
   errors,
   className,
   formDirective,
+  preloaded,
 }: FormProps) => {
   return (
     <form className={className + ' form form__registerCompany'}>
@@ -37,6 +40,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.nameCompany ? true : false}
         {...formDirective('nameCompany', {
+          value: preloaded?.nombre_completo,
           required:
             data?.postulacion_empresa_directa?.nombre_completo?.['#required'],
         })}
@@ -52,6 +56,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.NitCompany ? true : false}
         {...formDirective('NitCompany', {
+          value: preloaded?.nit,
           required: data?.postulacion_empresa_directa?.nit?.['#required'],
         })}
       />
@@ -76,6 +81,7 @@ const RegisterCompanyInfoForm = ({
         placeholder={`${data?.postulacion_empresa_directa?.departamento_de_residencia?.['#title']}...`}
         hasError={errors?.departmentCompany ? true : false}
         {...formDirective('departmentCompany', {
+          value: preloaded?.departamento_de_residencia,
           required:
             data?.postulacion_empresa_directa?.departamento_de_residencia?.[
               '#required'
@@ -101,6 +107,7 @@ const RegisterCompanyInfoForm = ({
         placeholder={`${data?.postulacion_empresa_directa?.ciudad_de_residencia?.['#title']}...`}
         hasError={errors?.cityCompany ? true : false}
         {...formDirective('cityCompany', {
+          value: preloaded?.ciudad_de_residencia,
           required:
             data?.postulacion_empresa_directa?.ciudad_de_residencia?.[
               '#required'
@@ -118,6 +125,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.directionCompany ? true : false}
         {...formDirective('directionCompany', {
+          value: preloaded?.direccion,
           required: data?.postulacion_empresa_directa?.direccion?.['#required'],
         })}
       />
@@ -136,6 +144,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.whoContactCompany ? true : false}
         {...formDirective('whoContactCompany', {
+          value: preloaded?.quien_contactar,
           required:
             data?.postulacion_empresa_directa?.quien_contactar?.['#required'],
         })}
@@ -151,6 +160,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.laborCompany ? true : false}
         {...formDirective('laborCompany', {
+          value: preloaded?.cargo,
           required: data?.postulacion_empresa_directa?.cargo?.['#required'],
         })}
       />
@@ -165,6 +175,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.corporateEmailCompany ? true : false}
         {...formDirective('corporateEmailCompany', {
+          value: preloaded?.correo,
           required: data?.postulacion_empresa_directa?.correo?.['#required'],
           pattern: {
             value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
@@ -183,6 +194,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.celphoneCompany ? true : false}
         {...formDirective('celphoneCompany', {
+          value: preloaded?.celular,
           required: data?.postulacion_empresa_directa?.celular?.['#required'],
         })}
       />
@@ -197,6 +209,7 @@ const RegisterCompanyInfoForm = ({
         placeholder={`${data?.postulacion_empresa_directa?.telefono?.['#title']}...`}
         hasError={errors?.phoneCompany ? true : false}
         {...formDirective('phoneCompany', {
+          value: preloaded?.telefono,
           required: data?.postulacion_empresa_directa?.telefono?.['#required'],
         })}
       />
