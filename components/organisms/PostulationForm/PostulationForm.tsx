@@ -25,13 +25,22 @@ import {
 import { onFileUpload } from '@utils/uploadFiles'
 import postFormPostulation from '@actions/postFormPostulation'
 import ConfirmationPostulation from '@molecules/ConfirmationPostulation/ConfirmationPostulation'
+import patchFormPostulation from '@actions/patchFormPostulation'
 
 interface PostulationFormProps {
   role: string
+  preloadedData?: any
+  sid?: string
   formData: GetPersonForm | GetCompanyForm | GetAgencyForm | undefined
 }
 
-const PostulationForm = ({ role, formData }: PostulationFormProps) => {
+const PostulationForm = ({
+  role,
+  formData,
+  preloadedData,
+  sid,
+}: PostulationFormProps) => {
+  const [sidForm, setSidForm] = useState(sid)
   const [step, setStep] = useState(1)
   const [formsData, setFormsData] = useState<any>(formData)
   const [submitting, setSubmitting] = useState(false)
@@ -43,6 +52,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
     register,
     handleSubmit,
     setValue,
+    getValues,
     watch,
     formState: { errors },
   } = useForm()
@@ -74,167 +84,340 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
     setSubmitting(true)
     switch (role) {
       case 'empresa':
-        sendDataCompany(data)
+        sendDataCompany(data, true)
         break
       case 'persona':
-        sendDataPerson(data)
+        sendDataPerson(data, true)
         break
       case 'agencia':
-        sendDataAgency(data)
+        sendDataAgency(data, true)
         break
     }
   }
 
-  const sendDataCompany = async (data: any) => {
+  const sendPartialData = () => {
+    setSubmitting(false)
+    switch (role) {
+      case 'empresa':
+        sendDataCompany(getValues(), false)
+        break
+      case 'persona':
+        sendDataPerson(getValues(), false)
+        break
+      case 'agencia':
+        sendDataAgency(getValues(), false)
+        break
+    }
+  }
+
+  const sendDataCompany = async (data: any, finalSubmit: boolean) => {
     const parseData: PostFormCompany = {
       webform_id: 'postulaciones_empresas',
       activos: step === 5 ? data?.activesTwentyOne : '',
       activos_2022: step === 5 ? data?.activesTwentyTwo : '',
       activos_2023: step === 5 ? data?.activesTwentyThree : '',
       archivos: [],
-      cargo: data?.laborCompany ?? '',
+      cargo: data?.laborCompany.length > 0 ? data?.laborCompany : '-',
       categoria: [data?.category],
-      celular: data?.celphoneCompany ?? '',
-      ciudad_de_residencia: data?.cityCompany ?? '',
-      cobertura_alcance_proyecto: data?.descriptionCoverageCompany ?? '',
-      correo: data?.corporateEmailCompany ?? '',
-      departamento_de_residencia: data?.departmentCompany ?? '',
-      direccion: data?.directionCompany ?? '',
-      descripcion_de_producto_servicio: data?.descriptionCompanyCompany ?? '',
-      de_que_trata_el_proyecto: data?.descriptionAboutCompany ?? '',
+      celular: data?.celphoneCompany.length > 0 ? data?.celphoneCompany : '-',
+      ciudad_de_residencia:
+        data?.cityCompany.length > 0 ? data?.cityCompany : '-',
+      cobertura_alcance_proyecto:
+        data?.descriptionCoverageCompany.length > 0
+          ? data?.descriptionCoverageCompany
+          : '-',
+      correo:
+        data?.corporateEmailCompany.length > 0
+          ? data?.corporateEmailCompany
+          : 'temporal@temporal.com',
+      departamento_de_residencia:
+        data?.departmentCompany.length > 0 ? data?.departmentCompany : '-',
+      direccion:
+        data?.directionCompany.length > 0 ? data?.directionCompany : '-',
+      descripcion_de_producto_servicio:
+        data?.descriptionCompanyCompany.length > 0
+          ? data?.descriptionCompanyCompany
+          : '-',
+      de_que_trata_el_proyecto:
+        data?.descriptionAboutCompany.length > 0
+          ? data?.descriptionAboutCompany
+          : '-',
       exportaciones: step === 5 ? data?.exportsTwentyOne : '',
       exportaciones_2022: step === 5 ? data?.exportsTwentyTwo : '',
       exportaciones_2023: step === 5 ? data?.exportsTwentyThree : '',
       importaciones: step === 5 ? data?.importsTwentyOne : '',
       importaciones_2022: step === 5 ? data?.importsTwentyTwo : '',
       importaciones_2023: step === 5 ? data?.importsTwentyThree : '',
-      indicadores_de_gestion: data?.descriptionIndicatorsCompany ?? '',
-      nit: data?.NitCompany ?? '',
-      nombre_completo: data?.nameCompany ?? '',
-      nombre_del_proyecto: data?.descriptionNameCompany ?? '',
-      numero_de_documento: data?.documentIdCompany ?? '',
+      indicadores_de_gestion:
+        data?.descriptionIndicatorsCompany.length > 0
+          ? data?.descriptionIndicatorsCompany
+          : '-',
+      nit: data?.NitCompany.length > 0 ? data?.NitCompany : '-',
+      nombre_completo: data?.nameCompany.length > 0 ? data?.nameCompany : '-',
+      nombre_del_proyecto:
+        data?.descriptionNameCompany.length > 0
+          ? data?.descriptionNameCompany
+          : '-',
       pasivos: step === 5 ? data?.pasivesTwentyOne : '',
       pasivos_2022: step === 5 ? data?.pasivesTwentyTwo : '',
       pasivos_2023: step === 5 ? data?.pasivesTwentyThree : '',
       patrimonio: step === 5 ? data?.patrimonyTwentyOne : '',
       patrimonio_2022: step === 5 ? data?.patrimonyTwentyTwo : '',
       patrimonio_2023: step === 5 ? data?.patrimonyTwentyThree : '',
-      por_que_proyecto_premiado: data?.descriptionReasonCompany ?? '',
-      quien_contactar: data?.whoContactCompany ?? '',
-      telefono: data?.phoneCompany ?? '',
-      tiempo_desarrollado_proyecto: data?.descriptionTimeCompany ?? '',
+      por_que_proyecto_premiado:
+        data?.descriptionReasonCompany.length > 0
+          ? data?.descriptionReasonCompany
+          : '-',
+      quien_contactar:
+        data?.whoContactCompany.length > 0 ? data?.whoContactCompany : '-',
+      telefono: data?.phoneCompany.length > 0 ? data?.phoneCompany : '-',
+      tiempo_desarrollado_proyecto:
+        data?.descriptionTimeCompany.length > 0
+          ? data?.descriptionTimeCompany
+          : '-',
       utilidades: step === 5 ? data?.utilitiesTwentyOne : '',
       utilidades_2022: step === 5 ? data?.utilitiesTwentyTwo : '',
       utilidades_2023: step === 5 ? data?.utilitiesTwentyThree : '',
       ventas: step === 5 ? data?.sellsTwentyOne : '',
       ventas_2022: step === 5 ? data?.sellsTwentyTwo : '',
       ventas_2023: step === 5 ? data?.sellsTwentyThree : '',
+      status: finalSubmit ? 'done' : 'undone',
+      complete_page: step.toString(),
     }
     const promisesFiles: Promise<any>[] = data?.files.map((element: any) =>
       onFileUpload(element)
     )
     Promise.all(promisesFiles).then((res) => {
       const files: string[] = res.map((element) => element)
-      parseData.archivos = files
-      postFormPostulation(parseData)
-        .then((res) => {
-          if (res?.data?.sid) {
-            setSubmitted(true)
-          } else {
+      parseData.archivos = files.length > 0 ? files : ['-']
+      if (sidForm) {
+        patchFormPostulation(parseData, sidForm, role)
+          .then((res) => {
+            if (res?.data?.sid) {
+              if (finalSubmit) {
+                setSubmitted(true)
+              }
+            } else {
+              setSubmitting(false)
+            }
+          })
+          .catch(() => {
             setSubmitting(false)
-          }
-        })
-        .catch(() => {
-          setSubmitting(false)
-        })
+          })
+      } else {
+        postFormPostulation(parseData)
+          .then((res) => {
+            if (res?.data?.sid) {
+              if (finalSubmit) {
+                setSubmitted(true)
+              }
+              setSidForm(res?.data?.sid)
+            } else {
+              setSubmitting(false)
+            }
+          })
+          .catch(() => {
+            setSubmitting(false)
+          })
+      }
     })
   }
-  const sendDataPerson = async (data: any) => {
+  const sendDataPerson = async (data: any, finalSubmit: boolean) => {
     const parseData: PostFormPerson = {
       webform_id: 'postulaciones',
       archivos: [],
       categoria: [data?.category],
-      celular: data?.celphonePerson ?? '',
-      ciudad_de_residencia: data?.cityPerson ?? '',
-      correo: data?.emailPerson ?? '',
-      departamento_de_nacimiento: data?.departmentPerson ?? '',
-      departamento_de_residencia: data?.departmentResidencePerson ?? '',
-      descripcion_del_perfil: data?.descriptionPersonProfile ?? '',
-      empleador: data?.experience ?? [],
-      empresa_universidad: data?.descriptionPersonCompany ?? '',
-      estudio: data?.studies ?? [],
+      celular: data?.celphonePerson?.length > 0 ? data?.celphonePerson : '-',
+      ciudad_de_residencia:
+        data?.cityPerson?.length > 0 ? data?.cityPerson : '-',
+      correo:
+        data?.emailPerson?.length > 0
+          ? data?.emailPerson
+          : 'temporal@temporal.com',
+      departamento_de_nacimiento:
+        data?.departmentPerson?.length > 0 ? data?.departmentPerson : '-',
+      departamento_de_residencia:
+        data?.departmentResidencePerson?.length > 0
+          ? data?.departmentResidencePerson
+          : '-',
+      descripcion_del_perfil:
+        data?.descriptionPersonProfile?.length > 0
+          ? data?.descriptionPersonProfile
+          : '-',
+      empleador: data?.experience?.length > 0 ? data?.experience : [],
+      empresa_universidad:
+        data?.descriptionPersonCompany?.length > 0
+          ? data?.descriptionPersonCompany
+          : '-',
+      estudio: data?.studies?.length > 0 ? data?.studies : [],
       fecha: new Date(),
-      indicadores_de_su_gestion: data?.descriptionPersonIndicators ?? '',
-      info_empresa_universidad: data?.descriptionPersonCompany ?? '',
-      impacto_en_su_gestion: data?.descriptionPersonImpact ?? '',
-      merece_participar_premios_portafolio: data?.descriptionPersonReason ?? '',
-      nombre_completo: data?.namePerson ?? '',
-      numero_de_documento: data?.documentIdPerson ?? '',
-      otros_investigaciones_publicaciones: data?.descriptionPersonOthers ?? '',
-      pais_de_nacimiento: data?.countryPerson ?? '',
-      razon_para_ganar: data?.descriptionPersonReason ?? '',
-      telefono: data?.phonePerson ?? '',
-      tiempo_en_la_compania_universidad: data?.descriptionPersonTime ?? '',
-      tipo_de_documento: data?.documentTypePerson ?? '',
-      universidad: data?.laborCompany ?? '',
+      indicadores_de_su_gestion:
+        data?.descriptionPersonIndicators?.length > 0
+          ? data?.descriptionPersonIndicators
+          : '-',
+      info_empresa_universidad:
+        data?.descriptionPersonCompany?.length > 0
+          ? data?.descriptionPersonCompany
+          : '-',
+      impacto_en_su_gestion:
+        data?.descriptionPersonImpact?.length > 0
+          ? data?.descriptionPersonImpact
+          : '-',
+      merece_participar_premios_portafolio:
+        data?.descriptionPersonReason?.length > 0
+          ? data?.descriptionPersonReason
+          : '-',
+      nombre_completo: data?.namePerson?.length > 0 ? data?.namePerson : '-',
+      numero_de_documento:
+        data?.documentIdPerson?.length > 0 ? data?.documentIdPerson : '-',
+      otros_investigaciones_publicaciones:
+        data?.descriptionPersonOthers?.length > 0
+          ? data?.descriptionPersonOthers
+          : '-',
+      pais_de_nacimiento:
+        data?.countryPerson?.length > 0 ? data?.countryPerson : '-',
+      razon_para_ganar:
+        data?.descriptionPersonReason?.length > 0
+          ? data?.descriptionPersonReason
+          : '-',
+      telefono: data?.phonePerson?.length > 0 ? data?.phonePerson : '-',
+      tiempo_en_la_compania_universidad:
+        data?.descriptionPersonTime?.length > 0
+          ? data?.descriptionPersonTime
+          : '-',
+      tipo_de_documento:
+        data?.documentTypePerson?.length > 0 ? data?.documentTypePerson : '-',
+      universidad: data?.laborCompany?.length > 0 ? data?.laborCompany : '-',
+      status: finalSubmit ? 'done' : 'undone',
+      complete_page: step.toString(),
     }
     const promisesFiles: Promise<any>[] = data?.files.map((element: any) =>
       onFileUpload(element)
     )
     Promise.all(promisesFiles).then((res) => {
       const files: string[] = res.map((element) => element)
-      parseData.archivos = files
-      postFormPostulation(parseData)
-        .then((res) => {
-          if (res?.data?.sid) {
-            setSubmitted(true)
-          } else {
+      parseData.archivos = files.length > 0 ? files : ['-']
+      if (sidForm) {
+        patchFormPostulation(parseData, sidForm, role)
+          .then((res) => {
+            if (res?.data?.sid) {
+              if (finalSubmit) {
+                setSubmitted(true)
+              }
+            } else {
+              setSubmitting(false)
+            }
+          })
+          .catch(() => {
             setSubmitting(false)
-          }
-        })
-        .catch(() => {
-          setSubmitting(false)
-        })
+          })
+      } else {
+        postFormPostulation(parseData)
+          .then((res) => {
+            if (res?.data?.sid) {
+              if (finalSubmit) {
+                setSubmitted(true)
+              }
+              setSidForm(res?.data?.sid)
+            } else {
+              setSubmitting(false)
+            }
+          })
+          .catch(() => {
+            setSubmitting(false)
+          })
+      }
     })
   }
-  const sendDataAgency = async (data: any) => {
+  const sendDataAgency = async (data: any, finalSubmit: boolean) => {
     const parseData: PostFormAgency = {
       webform_id: 'postulaciones_agencias',
       archivos: [],
       categoria: [data?.category],
-      celular: data?.contactCelphoneAgency ?? '',
-      ciudad: data?.cityAgency ?? '',
-      cobertura_alcance_proyecto: data?.descriptionCoverageAgency ?? '',
-      correo_contacto_agencia: data?.contactEmailAgency ?? '',
-      departamento: data?.departmentAgency ?? '',
-      descripcion: data?.descriptionCompanyAgency ?? '',
-      de_que_trata_el_proyecto: data?.descriptionAboutAgency ?? '',
-      indicadores_de_gestion: data?.descriptionIndicatorsAgency ?? '',
-      nombre_completo: data?.completeNameAgency ?? '',
-      nombre_participante: data?.nameAgency ?? '',
-      nombre_representante_agencia: data?.legalRepresentativeAgency ?? '',
-      numero_: data?.documentIdAgency ?? '',
-      por_que_proyecto_premiado: data?.descriptionReasonAgency ?? '',
-      tiempo_desarrollado_proyecto: data?.descriptionTimeAgency ?? '',
-      tipo_de_documento: data?.documentTypeAgency ?? '',
+      celular:
+        data?.contactCelphoneAgency.length > 0
+          ? data?.contactCelphoneAgency
+          : '-',
+      ciudad: data?.cityAgency.length > 0 ? data?.cityAgency : '-',
+      cobertura_alcance_proyecto:
+        data?.descriptionCoverageAgency.length > 0
+          ? data?.descriptionCoverageAgency
+          : '-',
+      correo_contacto_agencia:
+        data?.contactEmailAgency.length > 0
+          ? data?.contactEmailAgency
+          : 'temporal@temporal.com',
+      departamento:
+        data?.departmentAgency.length > 0 ? data?.departmentAgency : '-',
+      descripcion:
+        data?.descriptionCompanyAgency.length > 0
+          ? data?.descriptionCompanyAgency
+          : '-',
+      de_que_trata_el_proyecto:
+        data?.descriptionAboutAgency.length > 0
+          ? data?.descriptionAboutAgency
+          : '-',
+      indicadores_de_gestion:
+        data?.descriptionIndicatorsAgency.length > 0
+          ? data?.descriptionIndicatorsAgency
+          : '-',
+      nombre_completo:
+        data?.completeNameAgency.length > 0 ? data?.completeNameAgency : '-',
+      nombre_participante: data?.nameAgency.length > 0 ? data?.nameAgency : '-',
+      nombre_representante_agencia:
+        data?.legalRepresentativeAgency.length > 0
+          ? data?.legalRepresentativeAgency
+          : '-',
+      numero_: data?.documentIdAgency.length > 0 ? data?.documentIdAgency : '-',
+      por_que_proyecto_premiado:
+        data?.descriptionReasonAgency.length > 0
+          ? data?.descriptionReasonAgency
+          : '-',
+      tiempo_desarrollado_proyecto:
+        data?.descriptionTimeAgency.length > 0
+          ? data?.descriptionTimeAgency
+          : '-',
+      tipo_de_documento:
+        data?.documentTypeAgency.length > 0 ? data?.documentTypeAgency : '-',
+      status: finalSubmit ? 'done' : 'undone',
+      complete_page: step.toString(),
     }
     const promisesFiles: Promise<any>[] = data?.files.map((element: any) =>
       onFileUpload(element)
     )
     Promise.all(promisesFiles).then((res) => {
       const files: string[] = res.map((element) => element)
-      parseData.archivos = files
-      postFormPostulation(parseData)
-        .then((res) => {
-          if (res?.data?.sid) {
-            setSubmitted(true)
-          } else {
+      parseData.archivos = files.length > 0 ? files : ['-']
+      if (sidForm) {
+        patchFormPostulation(parseData, sidForm, role)
+          .then((res) => {
+            if (res?.data?.sid) {
+              if (finalSubmit) {
+                setSubmitted(true)
+              }
+            } else {
+              setSubmitting(false)
+            }
+          })
+          .catch(() => {
             setSubmitting(false)
-          }
-        })
-        .catch(() => {
-          setSubmitting(false)
-        })
+          })
+      } else {
+        postFormPostulation(parseData)
+          .then((res) => {
+            if (res?.data?.sid) {
+              if (finalSubmit) {
+                setSubmitted(true)
+              }
+              setSidForm(res?.data?.sid)
+            } else {
+              setSubmitting(false)
+            }
+          })
+          .catch(() => {
+            setSubmitting(false)
+          })
+      }
     })
   }
 
@@ -258,7 +441,12 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
             <StepButton
               stepNumber={1}
               active={step === 1}
-              onClick={() => changeStep(1)}
+              onClick={() => {
+                {
+                  changeStep(1)
+                  sendPartialData()
+                }
+              }}
               nameStep='Tipo de inscripción'
               conpleted={step > 1}
               fiveStep={
@@ -268,7 +456,10 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
             <StepButton
               stepNumber={2}
               active={step === 2}
-              onClick={() => changeStep(2)}
+              onClick={() => {
+                changeStep(2)
+                sendPartialData()
+              }}
               nameStep='Ingreso de datos'
               conpleted={step > 2}
               fiveStep={
@@ -278,7 +469,10 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
             <StepButton
               stepNumber={3}
               active={step === 3}
-              onClick={() => changeStep(3)}
+              onClick={() => {
+                changeStep(3)
+                sendPartialData()
+              }}
               nameStep='Descripción del proyecto'
               conpleted={step > 3}
               fiveStep={
@@ -288,7 +482,10 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
             <StepButton
               stepNumber={4}
               active={step === 4}
-              onClick={() => changeStep(4)}
+              onClick={() => {
+                changeStep(4)
+                sendPartialData()
+              }}
               nameStep='Documentación Adjunta'
               conpleted={step > 4}
               fiveStep={
@@ -299,7 +496,10 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               <StepButton
                 stepNumber={5}
                 active={step === 5}
-                onClick={() => changeStep(5)}
+                onClick={() => {
+                  changeStep(5)
+                  sendPartialData()
+                }}
                 nameStep='Información financiera'
                 conpleted={false}
               />
@@ -486,7 +686,10 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                       category !== 'empresa_esfuerzo_exportador') ||
                     (step === 5 && category === 'empresa_esfuerzo_exportador')
                       ? handleSubmit(onSubmit)
-                      : () => changeStep(step + 1)
+                      : () => {
+                          sendPartialData()
+                          changeStep(step + 1)
+                        }
                   }
                   disabled={submitting}
                   type='button'

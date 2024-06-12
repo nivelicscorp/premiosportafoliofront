@@ -175,6 +175,45 @@ app
         return res.status(500).json({ error: error.message })
       }
     })
+    server.patch('/api/patch-form', async (req, res) => {
+      const { sid, token, role, formData } = req.body
+      try {
+        let formByRole = ''
+        switch (role) {
+          case 'persona':
+            formByRole = 'postulaciones'
+            break
+          case 'empresa':
+            formByRole = 'postulaciones_empresas'
+            break
+          case 'agencia':
+            formByRole = 'postulaciones_agencias'
+            break
+        }
+        const response = await fetch(
+          `${process.env.BASE_DOMAIN}/webform_rest/${formByRole}/submission/${sid}?_format=json`,
+          {
+            method: 'PATCH',
+            headers: {
+              'X-CSRF-Token': token,
+              'Content-Type': 'application/json',
+              Cookie: req.headers.cookie,
+            },
+            body: JSON.stringify(formData),
+          }
+        )
+        const data = await response.json()
+        if (!data?.sid) {
+          return res
+            .status(500)
+            .json({ error: data.message ?? 'Error al enviar el formulario' })
+        }
+        return res.status(200).json(data)
+      } catch (error) {
+        console.error('🚀 ~ error:', error)
+        return res.status(500).json({ error: error.message })
+      }
+    })
     // Intercept the post to send the HTTPS Cookie and server headers
     server.post('/api/postulations', async (req, res) => {
       const { uid, token, role } = req.body

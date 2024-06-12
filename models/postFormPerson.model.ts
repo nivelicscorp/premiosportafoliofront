@@ -25,6 +25,8 @@ export interface PostFormPerson {
   tiempo_en_la_compania_universidad: string
   tipo_de_documento: string
   universidad: string
+  status: string
+  complete_page: string
 }
 
 export interface Empleador {

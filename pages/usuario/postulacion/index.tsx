@@ -19,6 +19,7 @@ import {
 const PostulationPage: NextPage<{
   formData: GetPersonForm | GetCompanyForm | GetAgencyForm | undefined
   temporalRole: string | undefined
+  preloadedData: any
 }> = (props) => {
   const router = useRouter()
 
@@ -50,6 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const cookies = ctx.req.headers.cookie
   const parsedCookies = parse(cookies || '')
   const temporalRoleCookie = parsedCookies['temp-role']
+  const formId = ctx.query.form?.toString()
   let data
   switch (temporalRoleCookie) {
     case 'persona':
@@ -65,6 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       formData: data ?? null,
+      preloadedData: null,
       temporalRole: temporalRoleCookie ?? '',
     },
   }

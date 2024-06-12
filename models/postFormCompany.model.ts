@@ -24,7 +24,6 @@ export interface PostFormCompany {
   nit: string
   nombre_completo: string
   nombre_del_proyecto: string
-  numero_de_documento: string
   pasivos: string
   pasivos_2022: string
   pasivos_2023: string
@@ -41,4 +40,6 @@ export interface PostFormCompany {
   ventas: string
   ventas_2022: string
   ventas_2023: string
+  status: string
+  complete_page: string
 }

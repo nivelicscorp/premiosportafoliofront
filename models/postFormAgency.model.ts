@@ -17,4 +17,6 @@ export interface PostFormAgency {
   por_que_proyecto_premiado: string
   tiempo_desarrollado_proyecto: string
   tipo_de_documento: string
+  status: string
+  complete_page: string
 }
