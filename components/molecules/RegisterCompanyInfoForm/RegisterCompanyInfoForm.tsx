@@ -40,7 +40,10 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.nameCompany ? true : false}
         {...formDirective('nameCompany', {
-          value: preloaded?.nombre_completo,
+          value:
+            preloaded?.nombre_completo === '-'
+              ? ''
+              : preloaded?.nombre_completo,
           required:
             data?.postulacion_empresa_directa?.nombre_completo?.['#required'],
         })}
@@ -56,7 +59,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.NitCompany ? true : false}
         {...formDirective('NitCompany', {
-          value: preloaded?.nit,
+          value: preloaded?.nit === '-' ? '' : preloaded?.nit,
           required: data?.postulacion_empresa_directa?.nit?.['#required'],
         })}
       />
@@ -81,7 +84,10 @@ const RegisterCompanyInfoForm = ({
         placeholder={`${data?.postulacion_empresa_directa?.departamento_de_residencia?.['#title']}...`}
         hasError={errors?.departmentCompany ? true : false}
         {...formDirective('departmentCompany', {
-          value: preloaded?.departamento_de_residencia,
+          value:
+            preloaded?.departamento_de_residencia === '-'
+              ? ''
+              : preloaded?.departamento_de_residencia,
           required:
             data?.postulacion_empresa_directa?.departamento_de_residencia?.[
               '#required'
@@ -107,7 +113,10 @@ const RegisterCompanyInfoForm = ({
         placeholder={`${data?.postulacion_empresa_directa?.ciudad_de_residencia?.['#title']}...`}
         hasError={errors?.cityCompany ? true : false}
         {...formDirective('cityCompany', {
-          value: preloaded?.ciudad_de_residencia,
+          value:
+            preloaded?.ciudad_de_residencia === '-'
+              ? ''
+              : preloaded?.ciudad_de_residencia,
           required:
             data?.postulacion_empresa_directa?.ciudad_de_residencia?.[
               '#required'
@@ -125,7 +134,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.directionCompany ? true : false}
         {...formDirective('directionCompany', {
-          value: preloaded?.direccion,
+          value: preloaded?.direccion === '-' ? '' : preloaded?.direccion,
           required: data?.postulacion_empresa_directa?.direccion?.['#required'],
         })}
       />
@@ -144,7 +153,10 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.whoContactCompany ? true : false}
         {...formDirective('whoContactCompany', {
-          value: preloaded?.quien_contactar,
+          value:
+            preloaded?.quien_contactar === '-'
+              ? ''
+              : preloaded?.quien_contactar,
           required:
             data?.postulacion_empresa_directa?.quien_contactar?.['#required'],
         })}
@@ -160,7 +172,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.laborCompany ? true : false}
         {...formDirective('laborCompany', {
-          value: preloaded?.cargo,
+          value: preloaded?.cargo === '-' ? '' : preloaded?.cargo,
           required: data?.postulacion_empresa_directa?.cargo?.['#required'],
         })}
       />
@@ -175,7 +187,10 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.corporateEmailCompany ? true : false}
         {...formDirective('corporateEmailCompany', {
-          value: preloaded?.correo,
+          value:
+            preloaded?.correo === 'temporal@temporal.com'
+              ? ''
+              : preloaded?.correo,
           required: data?.postulacion_empresa_directa?.correo?.['#required'],
           pattern: {
             value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
@@ -194,7 +209,7 @@ const RegisterCompanyInfoForm = ({
         }
         hasError={errors?.celphoneCompany ? true : false}
         {...formDirective('celphoneCompany', {
-          value: preloaded?.celular,
+          value: preloaded?.celular === '-' ? '' : preloaded?.celular,
           required: data?.postulacion_empresa_directa?.celular?.['#required'],
         })}
       />
@@ -209,7 +224,7 @@ const RegisterCompanyInfoForm = ({
         placeholder={`${data?.postulacion_empresa_directa?.telefono?.['#title']}...`}
         hasError={errors?.phoneCompany ? true : false}
         {...formDirective('phoneCompany', {
-          value: preloaded?.telefono,
+          value: preloaded?.telefono === '-' ? '' : preloaded?.telefono,
           required: data?.postulacion_empresa_directa?.telefono?.['#required'],
         })}
       />

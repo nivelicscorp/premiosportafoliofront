@@ -32,7 +32,7 @@ const DescriptionAgencyForm = ({
         placeholder={`${data?.descripcion?.['#title']}...`}
         hasError={errors?.descriptionCompanyAgency ? true : false}
         {...formDirective('descriptionCompanyAgency', {
-          value: preloaded?.descripcion,
+          value: preloaded?.descripcion === '-' ? '' : preloaded?.descripcion,
           required: data?.descripcion?.['#required'],
         })}
       />
@@ -57,7 +57,10 @@ const DescriptionAgencyForm = ({
         placeholder={`${data?.descripcionl_proyecto_participa?.de_que_trata_el_proyecto?.['#title']}...`}
         hasError={errors?.descriptionAboutAgency ? true : false}
         {...formDirective('descriptionAboutAgency', {
-          value: preloaded?.de_que_trata_el_proyecto,
+          value:
+            preloaded?.de_que_trata_el_proyecto === '-'
+              ? ''
+              : preloaded?.de_que_trata_el_proyecto,
           required:
             data?.descripcionl_proyecto_participa?.de_que_trata_el_proyecto?.[
               '#required'
@@ -78,7 +81,10 @@ const DescriptionAgencyForm = ({
         placeholder={`${data?.descripcionl_proyecto_participa?.cobertura_alcance_proyecto?.['#title']}...`}
         hasError={errors?.descriptionCoverageAgency ? true : false}
         {...formDirective('descriptionCoverageAgency', {
-          value: preloaded?.cobertura_alcance_proyecto,
+          value:
+            preloaded?.cobertura_alcance_proyecto === '-'
+              ? ''
+              : preloaded?.cobertura_alcance_proyecto,
           required:
             data?.descripcionl_proyecto_participa?.cobertura_alcance_proyecto?.[
               '#required'
@@ -99,7 +105,10 @@ const DescriptionAgencyForm = ({
         placeholder={`${data?.descripcionl_proyecto_participa?.tiempo_desarrollado_proyecto?.['#title']}...`}
         hasError={errors?.descriptionTimeAgency ? true : false}
         {...formDirective('descriptionTimeAgency', {
-          value: preloaded?.tiempo_desarrollado_proyecto,
+          value:
+            preloaded?.tiempo_desarrollado_proyecto === '-'
+              ? ''
+              : preloaded?.tiempo_desarrollado_proyecto,
           required:
             data?.descripcionl_proyecto_participa
               ?.tiempo_desarrollado_proyecto?.['#required'],
@@ -120,7 +129,10 @@ const DescriptionAgencyForm = ({
         tooltipLabel='Número de personas, usuarios o comunidades impactadas, niveles de satisfacción, volument de ventas, entre otros'
         hasError={errors?.descriptionIndicatorsAgency ? true : false}
         {...formDirective('descriptionIndicatorsAgency', {
-          value: preloaded?.indicadores_de_gestion,
+          value:
+            preloaded?.indicadores_de_gestion === '-'
+              ? ''
+              : preloaded?.indicadores_de_gestion,
           required:
             data?.descripcionl_proyecto_participa?.indicadores_de_gestion?.[
               '#required'
@@ -141,7 +153,10 @@ const DescriptionAgencyForm = ({
         placeholder={`${data?.descripcionl_proyecto_participa?.por_que_proyecto_premiado?.['#title']}...`}
         hasError={errors?.descriptionReasonAgency ? true : false}
         {...formDirective('descriptionReasonAgency', {
-          value: preloaded?.por_que_proyecto_premiado,
+          value:
+            preloaded?.por_que_proyecto_premiado === '-'
+              ? ''
+              : preloaded?.por_que_proyecto_premiado,
           required:
             data?.descripcionl_proyecto_participa?.por_que_proyecto_premiado?.[
               '#required'

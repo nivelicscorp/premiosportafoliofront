@@ -32,7 +32,8 @@ const RegisterAgencyInfoForm = ({
         }
         hasError={errors?.nameAgency ? true : false}
         {...formDirective('nameAgency', {
-          value: preloaded.nombre_completo,
+          value:
+            preloaded.nombre_completo === '-' ? '' : preloaded.nombre_completo,
           required: data?.postulacion_agencia?.nombre_completo?.['#required'],
         })}
       />
@@ -55,7 +56,10 @@ const RegisterAgencyInfoForm = ({
         }
         hasError={errors?.legalRepresentativeAgency ? true : false}
         {...formDirective('legalRepresentativeAgency', {
-          value: preloaded.nombre_representante_agencia,
+          value:
+            preloaded.nombre_representante_agencia === '-'
+              ? ''
+              : preloaded.nombre_representante_agencia,
           required:
             data?.postulacion_agencia?.nombre_representante_agencia?.[
               '#required'
@@ -79,7 +83,10 @@ const RegisterAgencyInfoForm = ({
         }
         hasError={errors?.contactEmailAgency ? true : false}
         {...formDirective('contactEmailAgency', {
-          value: preloaded.correo_contacto_agencia,
+          value:
+            preloaded.correo_contacto_agencia === 'temporal@temporal.com'
+              ? ''
+              : preloaded.correo_contacto_agencia,
           required:
             data?.postulacion_agencia?.correo_contacto_agencia?.['#required'],
           pattern: {
@@ -100,7 +107,7 @@ const RegisterAgencyInfoForm = ({
         }
         hasError={errors?.contactCelphoneAgency ? true : false}
         {...formDirective('contactCelphoneAgency', {
-          value: preloaded.celular,
+          value: preloaded.celular === '-' ? '' : preloaded.celular,
           required: data?.postulacion_agencia?.celular?.['#required'],
         })}
       />
@@ -128,7 +135,8 @@ const RegisterAgencyInfoForm = ({
         }
         hasError={errors?.completeNameAgency ? true : false}
         {...formDirective('completeNameAgency', {
-          value: preloaded.nombre_completo,
+          value:
+            preloaded.nombre_completo === '-' ? '' : preloaded.nombre_completo,
           required:
             data?.datos_empresa_persona_participate?.nombre_participante?.[
               '#required'
@@ -166,7 +174,10 @@ const RegisterAgencyInfoForm = ({
             ) ?? []
           }
           {...formDirective('documentTypeAgency', {
-            value: preloaded.tipo_de_documento,
+            value:
+              preloaded.tipo_de_documento === '-'
+                ? ''
+                : preloaded.tipo_de_documento,
             required:
               data?.datos_empresa_persona_participate?.tipo_de_documento?.[
                 '#required'
@@ -188,7 +199,7 @@ const RegisterAgencyInfoForm = ({
           }
           hasError={errors?.documentIdAgency ? true : false}
           {...formDirective('documentIdAgency', {
-            value: preloaded.numero_,
+            value: preloaded.numero_ === '-' ? '' : preloaded.numero_,
             required:
               data?.datos_empresa_persona_participate?.numero_?.['#required'],
           })}
@@ -210,7 +221,7 @@ const RegisterAgencyInfoForm = ({
         }
         hasError={errors?.departmentAgency ? true : false}
         {...formDirective('departmentAgency', {
-          value: preloaded.departamento,
+          value: preloaded.departamento === '-' ? '' : preloaded.departamento,
           required:
             data?.datos_empresa_persona_participate?.departamento?.[
               '#required'
@@ -230,7 +241,7 @@ const RegisterAgencyInfoForm = ({
         }
         hasError={errors?.cityAgency ? true : false}
         {...formDirective('cityAgency', {
-          value: preloaded.ciudad,
+          value: preloaded.ciudad === '-' ? '' : preloaded.ciudad,
           required:
             data?.datos_empresa_persona_participate?.ciudad?.['#required'],
         })}

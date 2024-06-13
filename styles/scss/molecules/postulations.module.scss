@@ -2,64 +2,75 @@
 @import '../config/mixins';
 
 .postulationsContent {
-    min-height: initial;
-    @include mq-min(md) {
-        max-width: 56.4rem;
-    }
+  min-height: initial;
+  @include mq-min(md) {
+    max-width: 56.4rem;
+  }
 }
 
 .postulations {
-    &__card {
-        display: flex;
-        gap: .5rem;
-        position: relative;
-        &__number {
-            color: map-get($primary, general);
-            font: 400 2.8rem / 3.8rem $font-secondary;
-            @include mq-min(md) {
-                font-size: 4.8rem;
-            }
-        }
-        &__category {
-            color: map-get($primary, dark);
-            font: 500 1.4rem / 1.9rem $font-primary;
-        }
-        &__desc {
-            color: map-get($grayscale, gray-30);
-            font: 500 1.6rem / 2.2rem $font-primary;
-            padding-left: 1rem;
-        }
+  &__card {
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+    &__number {
+      color: map-get($primary, general);
+      font: 400 2.8rem / 3.8rem $font-secondary;
+      @include mq-min(md) {
+        font-size: 4.8rem;
+      }
+      align-self: center;
     }
-    &__btn {
-        border: none;
-        border-radius: .8rem;
-        color: map-get($grayscale, gray-90);
-        font: bold 1.8rem / 2.4rem $font-primary;
-        margin: auto;
-        padding: .8rem 4.2rem;
-        width: fit-content;
-        &:hover {
-            opacity: 0.9;
-        }
+    &__category {
+      color: map-get($primary, dark);
+      font: 500 1.4rem / 1.9rem $font-primary;
     }
-    &__prev {
-        color: map-get($grayscale, black);
-        justify-content: flex-start !important;
-        margin: 5rem auto 0;
-        &::after {
-            order: -1;
-            transform: rotate(-180deg);
-        }
-        &::before {
-            display: none !important;
-        }
+    &__desc {
+      color: map-get($grayscale, gray-30);
+      font: 500 1.6rem / 2.2rem $font-primary;
+      padding-left: 1rem;
     }
-    &__texts {
-        font: 500 2rem / 3.4rem $font-primary;        
-        text-align: center;        
-        @include mq-min(md) {
-            margin-left: -5rem;
-            width: calc(100% + 10rem);
-        }
+    &__link {
+      color: map-get($primary, dark);
+      font: 500 1.25rem $font-primary;
+      display: flex;
+      padding-left: 1rem;
+      svg {
+        margin-left: 0.5rem;
+        fill: map-get($primary, dark);
+      }
     }
-}   
+  }
+  &__btn {
+    border: none;
+    border-radius: 0.8rem;
+    color: map-get($grayscale, gray-90);
+    font: bold 1.8rem / 2.4rem $font-primary;
+    margin: auto;
+    padding: 0.8rem 4.2rem;
+    width: fit-content;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  &__prev {
+    color: map-get($grayscale, black);
+    justify-content: flex-start !important;
+    margin: 5rem auto 0;
+    &::after {
+      order: -1;
+      transform: rotate(-180deg);
+    }
+    &::before {
+      display: none !important;
+    }
+  }
+  &__texts {
+    font: 500 2rem / 3.4rem $font-primary;
+    text-align: center;
+    @include mq-min(md) {
+      margin-left: -5rem;
+      width: calc(100% + 10rem);
+    }
+  }
+}

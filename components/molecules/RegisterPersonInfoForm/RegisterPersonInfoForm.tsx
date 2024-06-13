@@ -28,7 +28,10 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.nombre_completo?.['#title']}...`}
         hasError={errors?.namePerson ? true : false}
         {...formDirective('namePerson', {
-          value: preloaded?.nombre_completo,
+          value:
+            preloaded?.nombre_completo === '-'
+              ? ''
+              : preloaded?.nombre_completo,
           required: data?.nombre_completo?.['#required'],
         })}
       />
@@ -45,7 +48,10 @@ const RegisterPersonInfoForm = ({
           }
           hasError={errors?.documentTypePerson ? true : false}
           {...formDirective('documentTypePerson', {
-            value: preloaded?.tipo_de_documento,
+            value:
+              preloaded?.tipo_de_documento === '-'
+                ? ''
+                : preloaded?.tipo_de_documento,
             required: data?.tipo_de_documento?.['#required'],
           })}
         />
@@ -58,7 +64,10 @@ const RegisterPersonInfoForm = ({
           placeholder={`${data?.numero_de_documento?.['#title']}...`}
           hasError={errors?.documentIdPerson ? true : false}
           {...formDirective('documentIdPerson', {
-            value: preloaded?.numero_de_documento,
+            value:
+              preloaded?.numero_de_documento === '-'
+                ? ''
+                : preloaded?.numero_de_documento,
             required: data?.numero_de_documento?.['#required'],
           })}
         />
@@ -72,7 +81,10 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.pais_de_nacimiento?.['#title']}...`}
         hasError={errors?.countryPerson ? true : false}
         {...formDirective('countryPerson', {
-          value: preloaded?.pais_de_nacimiento,
+          value:
+            preloaded?.pais_de_nacimiento === '-'
+              ? ''
+              : preloaded?.pais_de_nacimiento,
           required: data?.pais_de_nacimiento?.['#required'],
         })}
       />
@@ -85,7 +97,7 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.departamento_de_nacimiento?.['#title']}...`}
         hasError={errors?.departmentPerson ? true : false}
         {...formDirective('departmentPerson', {
-          value: preloaded?.correo,
+          value: preloaded?.correo === '-' ? '' : preloaded?.correo,
           required: data?.departamento_de_nacimiento?.['#required'],
         })}
       />
@@ -98,7 +110,10 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.departamento_de_residencia?.['#title']}...`}
         hasError={errors?.departmentResidencePerson ? true : false}
         {...formDirective('departmentResidencePerson', {
-          value: preloaded?.departamento_de_residencia,
+          value:
+            preloaded?.departamento_de_residencia === '-'
+              ? ''
+              : preloaded?.departamento_de_residencia,
           required: data?.departamento_de_residencia?.['#required'],
         })}
       />
@@ -111,7 +126,10 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.ciudad_de_residencia?.['#title']}...`}
         hasError={errors?.cityPerson ? true : false}
         {...formDirective('cityPerson', {
-          value: preloaded?.ciudad_de_residencia,
+          value:
+            preloaded?.ciudad_de_residencia === '-'
+              ? ''
+              : preloaded?.ciudad_de_residencia,
           required: data?.ciudad_de_residencia?.['#required'],
         })}
       />
@@ -124,7 +142,7 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.empresa_universidad?.['#title']}...`}
         hasError={errors?.laborCompany ? true : false}
         {...formDirective('laborCompany', {
-          value: preloaded?.universidad,
+          value: preloaded?.universidad === '-' ? '' : preloaded?.universidad,
           required: data?.empresa_universidad?.['#required'],
         })}
       />
@@ -135,7 +153,10 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.correo?.['#title']}...`}
         hasError={errors?.emailPerson ? true : false}
         {...formDirective('emailPerson', {
-          value: preloaded?.correo,
+          value:
+            preloaded?.correo === 'temporal@temporal.com'
+              ? ''
+              : preloaded?.correo,
           required: data?.correo?.['#required'],
           pattern: {
             value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
@@ -150,7 +171,7 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.celular?.['#title']}...`}
         hasError={errors?.celphonePerson ? true : false}
         {...formDirective('celphonePerson', {
-          value: preloaded?.celular,
+          value: preloaded?.celular === '-' ? '' : preloaded?.celular,
           required: data?.celular?.['#required'],
         })}
       />
@@ -161,7 +182,7 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.segundo_contacto?.['#title']}...`}
         hasError={errors?.phonePerson ? true : false}
         {...formDirective('phonePerson', {
-          value: preloaded?.telefono,
+          value: preloaded?.telefono === '-' ? '' : preloaded?.telefono,
           required: data?.segundo_contacto?.['#required'],
         })}
       />

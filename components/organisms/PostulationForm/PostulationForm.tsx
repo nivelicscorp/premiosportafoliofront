@@ -76,6 +76,8 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
   useEffect(() => {
     const data = JSON.parse(sessionStorage.getItem('postulation') ?? '{}')
     const uuid = sessionStorage.getItem('uuid') ?? ''
+    const actualStep = parseInt(data?.complete_page)
+    setStep(isNaN(actualStep) ? 1 : actualStep)
     setPreloadedData(data)
     setValue('category', arrayDestructuring(data?.categoria, ''))
     setSidForm(uuid)

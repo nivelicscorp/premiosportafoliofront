@@ -28,7 +28,10 @@ const DescriptionPersonForm = ({
         }
         hasError={errors?.descriptionPersonCompany ? true : false}
         {...formDirective('descriptionPersonCompany', {
-          value: preloaded?.empresa_universidad,
+          value:
+            preloaded?.empresa_universidad === '-'
+              ? ''
+              : preloaded?.empresa_universidad,
           required: data?.info_empresa_universidad?.['#required'],
         })}
       />
@@ -41,7 +44,10 @@ const DescriptionPersonForm = ({
         }
         hasError={errors?.descriptionPersonProfile ? true : false}
         {...formDirective('descriptionPersonProfile', {
-          value: preloaded?.descripcion_del_perfil,
+          value:
+            preloaded?.descripcion_del_perfil === '-'
+              ? ''
+              : preloaded?.descripcion_del_perfil,
           required: data?.descripcion_del_perfil?.['#required'],
         })}
       />
@@ -55,7 +61,10 @@ const DescriptionPersonForm = ({
         }
         hasError={errors?.descriptionPersonImpact ? true : false}
         {...formDirective('descriptionPersonImpact', {
-          value: preloaded?.impacto_en_su_gestion,
+          value:
+            preloaded?.impacto_en_su_gestion === '-'
+              ? ''
+              : preloaded?.impacto_en_su_gestion,
           required: data?.impacto_en_su_gestion?.['#required'],
         })}
       />
@@ -70,7 +79,10 @@ const DescriptionPersonForm = ({
         }
         hasError={errors?.descriptionPersonTime ? true : false}
         {...formDirective('descriptionPersonTime', {
-          value: preloaded?.tiempo_en_la_compania_universidad,
+          value:
+            preloaded?.tiempo_en_la_compania_universidad === '-'
+              ? ''
+              : preloaded?.tiempo_en_la_compania_universidad,
           required: data?.tiempo_en_la_compania_universidad?.['#required'],
         })}
       />
@@ -84,7 +96,10 @@ const DescriptionPersonForm = ({
         }
         hasError={errors?.descriptionPersonIndicators ? true : false}
         {...formDirective('descriptionPersonIndicators', {
-          value: preloaded?.indicadores_de_su_gestion,
+          value:
+            preloaded?.indicadores_de_su_gestion === '-'
+              ? ''
+              : preloaded?.indicadores_de_su_gestion,
           required: data?.indicadores_de_su_gestion?.['#required'],
         })}
       />
@@ -95,7 +110,10 @@ const DescriptionPersonForm = ({
         smallLabel={!data?.razon_para_ganar?.['#required'] ? '(Opcional)' : ''}
         hasError={errors?.descriptionPersonReason ? true : false}
         {...formDirective('descriptionPersonReason', {
-          value: preloaded?.merece_participar_premios_portafolio,
+          value:
+            preloaded?.merece_participar_premios_portafolio === '-'
+              ? ''
+              : preloaded?.merece_participar_premios_portafolio,
           required: data?.razon_para_ganar?.['#required'],
         })}
       />
@@ -106,7 +124,10 @@ const DescriptionPersonForm = ({
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionPersonOthers ? true : false}
         {...formDirective('descriptionPersonOthers', {
-          value: preloaded?.otros_investigaciones_publicaciones,
+          value:
+            preloaded?.otros_investigaciones_publicaciones === '-'
+              ? ''
+              : preloaded?.otros_investigaciones_publicaciones,
           required: data?.otros_investigaciones_publicaciones?.['#required'],
         })}
       />
