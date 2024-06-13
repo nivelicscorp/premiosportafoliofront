@@ -1,15 +1,22 @@
 import Input from '@atoms/Input/Input'
 import Tooltip from '@atoms/Tooltip/Tooltip'
 import { DescripcionDelProyecto } from '@models/getForms.model'
+import { PostFormAgency } from '@models/postFormAgency.model'
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
   data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
+  preloaded: PostFormAgency
 }
 
-const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
+const DescriptionAgencyForm = ({
+  data,
+  errors,
+  formDirective,
+  preloaded,
+}: FormProps) => {
   return (
     <div className='form step3'>
       <div className='form-subTitle'>
@@ -25,6 +32,7 @@ const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.descripcion?.['#title']}...`}
         hasError={errors?.descriptionCompanyAgency ? true : false}
         {...formDirective('descriptionCompanyAgency', {
+          value: preloaded?.descripcion,
           required: data?.descripcion?.['#required'],
         })}
       />
@@ -49,6 +57,7 @@ const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.descripcionl_proyecto_participa?.de_que_trata_el_proyecto?.['#title']}...`}
         hasError={errors?.descriptionAboutAgency ? true : false}
         {...formDirective('descriptionAboutAgency', {
+          value: preloaded?.de_que_trata_el_proyecto,
           required:
             data?.descripcionl_proyecto_participa?.de_que_trata_el_proyecto?.[
               '#required'
@@ -69,6 +78,7 @@ const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.descripcionl_proyecto_participa?.cobertura_alcance_proyecto?.['#title']}...`}
         hasError={errors?.descriptionCoverageAgency ? true : false}
         {...formDirective('descriptionCoverageAgency', {
+          value: preloaded?.cobertura_alcance_proyecto,
           required:
             data?.descripcionl_proyecto_participa?.cobertura_alcance_proyecto?.[
               '#required'
@@ -89,6 +99,7 @@ const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.descripcionl_proyecto_participa?.tiempo_desarrollado_proyecto?.['#title']}...`}
         hasError={errors?.descriptionTimeAgency ? true : false}
         {...formDirective('descriptionTimeAgency', {
+          value: preloaded?.tiempo_desarrollado_proyecto,
           required:
             data?.descripcionl_proyecto_participa
               ?.tiempo_desarrollado_proyecto?.['#required'],
@@ -109,6 +120,7 @@ const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
         tooltipLabel='Número de personas, usuarios o comunidades impactadas, niveles de satisfacción, volument de ventas, entre otros'
         hasError={errors?.descriptionIndicatorsAgency ? true : false}
         {...formDirective('descriptionIndicatorsAgency', {
+          value: preloaded?.indicadores_de_gestion,
           required:
             data?.descripcionl_proyecto_participa?.indicadores_de_gestion?.[
               '#required'
@@ -129,6 +141,7 @@ const DescriptionAgencyForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.descripcionl_proyecto_participa?.por_que_proyecto_premiado?.['#title']}...`}
         hasError={errors?.descriptionReasonAgency ? true : false}
         {...formDirective('descriptionReasonAgency', {
+          value: preloaded?.por_que_proyecto_premiado,
           required:
             data?.descripcionl_proyecto_participa?.por_que_proyecto_premiado?.[
               '#required'

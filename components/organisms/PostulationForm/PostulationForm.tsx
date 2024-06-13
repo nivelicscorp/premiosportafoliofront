@@ -35,7 +35,7 @@ interface PostulationFormProps {
 
 const PostulationForm = ({ role, formData }: PostulationFormProps) => {
   const [preloadedData, setPreloadedData] = useState<
-    PostFormCompany | PostFormPerson | PostFormPerson | undefined
+    PostFormCompany | PostFormPerson | PostFormAgency | undefined
   >()
   const [sidForm, setSidForm] = useState<string | undefined>()
   // const [tempFiles, setTempFiles] = useState<string[]>([])
@@ -77,7 +77,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
     const data = JSON.parse(sessionStorage.getItem('postulation') ?? '{}')
     setPreloadedData(data)
     setValue('category', arrayDestructuring(data?.categoria, ''))
-    sessionStorage.removeItem('postulation')
+    // sessionStorage.removeItem('postulation')
     // setTempFiles(data?.archivos ?? [])
   }, [])
 
@@ -609,6 +609,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                     data={formsData?.ingreso_de_datos}
                     formDirective={register}
                     errors={errors}
+                    preloaded={preloadedData as PostFormAgency}
                   />
                 </section>
               )}
@@ -653,6 +654,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                     data={formsData?.descripcion_del_proyecto}
                     errors={errors}
                     formDirective={register}
+                    preloaded={preloadedData as PostFormAgency}
                   />
                 </section>
               )}

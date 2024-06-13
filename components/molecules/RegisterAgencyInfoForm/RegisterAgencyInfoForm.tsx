@@ -1,14 +1,21 @@
 import Input from '@atoms/Input/Input'
 import { DescripcionDelProyecto } from '@models/getForms.model'
+import { PostFormAgency } from '@models/postFormAgency.model'
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
   data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
+  preloaded: PostFormAgency
 }
 
-const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
+const RegisterAgencyInfoForm = ({
+  data,
+  errors,
+  formDirective,
+  preloaded,
+}: FormProps) => {
   return (
     <div className='form step2'>
       <div className='title-step'>
@@ -25,6 +32,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.nameAgency ? true : false}
         {...formDirective('nameAgency', {
+          value: preloaded.nombre_completo,
           required: data?.postulacion_agencia?.nombre_completo?.['#required'],
         })}
       />
@@ -47,6 +55,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.legalRepresentativeAgency ? true : false}
         {...formDirective('legalRepresentativeAgency', {
+          value: preloaded.nombre_representante_agencia,
           required:
             data?.postulacion_agencia?.nombre_representante_agencia?.[
               '#required'
@@ -70,6 +79,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.contactEmailAgency ? true : false}
         {...formDirective('contactEmailAgency', {
+          value: preloaded.correo_contacto_agencia,
           required:
             data?.postulacion_agencia?.correo_contacto_agencia?.['#required'],
           pattern: {
@@ -90,6 +100,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.contactCelphoneAgency ? true : false}
         {...formDirective('contactCelphoneAgency', {
+          value: preloaded.celular,
           required: data?.postulacion_agencia?.celular?.['#required'],
         })}
       />
@@ -117,6 +128,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.completeNameAgency ? true : false}
         {...formDirective('completeNameAgency', {
+          value: preloaded.nombre_completo,
           required:
             data?.datos_empresa_persona_participate?.nombre_participante?.[
               '#required'
@@ -154,6 +166,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
             ) ?? []
           }
           {...formDirective('documentTypeAgency', {
+            value: preloaded.tipo_de_documento,
             required:
               data?.datos_empresa_persona_participate?.tipo_de_documento?.[
                 '#required'
@@ -175,6 +188,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
           }
           hasError={errors?.documentIdAgency ? true : false}
           {...formDirective('documentIdAgency', {
+            value: preloaded.numero_,
             required:
               data?.datos_empresa_persona_participate?.numero_?.['#required'],
           })}
@@ -196,6 +210,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.departmentAgency ? true : false}
         {...formDirective('departmentAgency', {
+          value: preloaded.departamento,
           required:
             data?.datos_empresa_persona_participate?.departamento?.[
               '#required'
@@ -215,6 +230,7 @@ const RegisterAgencyInfoForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.cityAgency ? true : false}
         {...formDirective('cityAgency', {
+          value: preloaded.ciudad,
           required:
             data?.datos_empresa_persona_participate?.ciudad?.['#required'],
         })}
