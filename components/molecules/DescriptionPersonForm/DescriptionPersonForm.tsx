@@ -1,14 +1,21 @@
 import Input from '@atoms/Input/Input'
 import { AmpliarInformacion } from '@models/getForms.model'
+import { PostFormPerson } from '@models/postFormPerson.model'
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 
 interface FormProps {
   data: AmpliarInformacion
   formDirective: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
+  preloaded: PostFormPerson
 }
 
-const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
+const DescriptionPersonForm = ({
+  data,
+  errors,
+  formDirective,
+  preloaded,
+}: FormProps) => {
   return (
     <div className='form step3'>
       <h3 className='form-subTitle'>{data?.['#title']}</h3>
@@ -21,6 +28,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.descriptionPersonCompany ? true : false}
         {...formDirective('descriptionPersonCompany', {
+          value: preloaded?.empresa_universidad,
           required: data?.info_empresa_universidad?.['#required'],
         })}
       />
@@ -33,6 +41,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.descriptionPersonProfile ? true : false}
         {...formDirective('descriptionPersonProfile', {
+          value: preloaded?.descripcion_del_perfil,
           required: data?.descripcion_del_perfil?.['#required'],
         })}
       />
@@ -46,6 +55,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.descriptionPersonImpact ? true : false}
         {...formDirective('descriptionPersonImpact', {
+          value: preloaded?.impacto_en_su_gestion,
           required: data?.impacto_en_su_gestion?.['#required'],
         })}
       />
@@ -60,6 +70,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.descriptionPersonTime ? true : false}
         {...formDirective('descriptionPersonTime', {
+          value: preloaded?.tiempo_en_la_compania_universidad,
           required: data?.tiempo_en_la_compania_universidad?.['#required'],
         })}
       />
@@ -73,6 +84,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
         }
         hasError={errors?.descriptionPersonIndicators ? true : false}
         {...formDirective('descriptionPersonIndicators', {
+          value: preloaded?.indicadores_de_su_gestion,
           required: data?.indicadores_de_su_gestion?.['#required'],
         })}
       />
@@ -83,6 +95,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
         smallLabel={!data?.razon_para_ganar?.['#required'] ? '(Opcional)' : ''}
         hasError={errors?.descriptionPersonReason ? true : false}
         {...formDirective('descriptionPersonReason', {
+          value: preloaded?.merece_participar_premios_portafolio,
           required: data?.razon_para_ganar?.['#required'],
         })}
       />
@@ -93,6 +106,7 @@ const DescriptionPersonForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder='Escriba aquí...'
         hasError={errors?.descriptionPersonOthers ? true : false}
         {...formDirective('descriptionPersonOthers', {
+          value: preloaded?.otros_investigaciones_publicaciones,
           required: data?.otros_investigaciones_publicaciones?.['#required'],
         })}
       />

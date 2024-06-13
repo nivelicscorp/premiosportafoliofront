@@ -27,7 +27,13 @@ const DashboardPage = () => {
             <p>Bienvenido a tu cuenta</p>
           </h1>
         </div>
-        <div className={styles?.welcomBlock__msg}>
+        <div
+          className={styles?.welcomBlock__msg}
+          onClick={() => {
+            sessionStorage.removeItem('postulation')
+            sessionStorage.removeItem('uuid')
+          }}
+        >
           <p>
             Para comenzar con tu postulación has clic en el botón y sigue estos
             pasos

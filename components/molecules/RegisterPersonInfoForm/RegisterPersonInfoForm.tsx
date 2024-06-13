@@ -1,14 +1,21 @@
 import Input from '@atoms/Input/Input'
 import { PostulacionPersonaDirecta } from '@models/getForms.model'
+import { PostFormPerson } from '@models/postFormPerson.model'
 import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form'
 
 interface FormProps {
   data: PostulacionPersonaDirecta
   formDirective: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
+  preloaded: PostFormPerson
 }
 
-const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
+const RegisterPersonInfoForm = ({
+  data,
+  errors,
+  formDirective,
+  preloaded,
+}: FormProps) => {
   return (
     <div className='form step2'>
       <div className='title-step'>
@@ -21,6 +28,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.nombre_completo?.['#title']}...`}
         hasError={errors?.namePerson ? true : false}
         {...formDirective('namePerson', {
+          value: preloaded?.nombre_completo,
           required: data?.nombre_completo?.['#required'],
         })}
       />
@@ -37,6 +45,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
           }
           hasError={errors?.documentTypePerson ? true : false}
           {...formDirective('documentTypePerson', {
+            value: preloaded?.tipo_de_documento,
             required: data?.tipo_de_documento?.['#required'],
           })}
         />
@@ -49,6 +58,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
           placeholder={`${data?.numero_de_documento?.['#title']}...`}
           hasError={errors?.documentIdPerson ? true : false}
           {...formDirective('documentIdPerson', {
+            value: preloaded?.numero_de_documento,
             required: data?.numero_de_documento?.['#required'],
           })}
         />
@@ -62,6 +72,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.pais_de_nacimiento?.['#title']}...`}
         hasError={errors?.countryPerson ? true : false}
         {...formDirective('countryPerson', {
+          value: preloaded?.pais_de_nacimiento,
           required: data?.pais_de_nacimiento?.['#required'],
         })}
       />
@@ -74,6 +85,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.departamento_de_nacimiento?.['#title']}...`}
         hasError={errors?.departmentPerson ? true : false}
         {...formDirective('departmentPerson', {
+          value: preloaded?.correo,
           required: data?.departamento_de_nacimiento?.['#required'],
         })}
       />
@@ -86,6 +98,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.departamento_de_residencia?.['#title']}...`}
         hasError={errors?.departmentResidencePerson ? true : false}
         {...formDirective('departmentResidencePerson', {
+          value: preloaded?.departamento_de_residencia,
           required: data?.departamento_de_residencia?.['#required'],
         })}
       />
@@ -98,6 +111,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.ciudad_de_residencia?.['#title']}...`}
         hasError={errors?.cityPerson ? true : false}
         {...formDirective('cityPerson', {
+          value: preloaded?.ciudad_de_residencia,
           required: data?.ciudad_de_residencia?.['#required'],
         })}
       />
@@ -110,6 +124,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.empresa_universidad?.['#title']}...`}
         hasError={errors?.laborCompany ? true : false}
         {...formDirective('laborCompany', {
+          value: preloaded?.universidad,
           required: data?.empresa_universidad?.['#required'],
         })}
       />
@@ -120,6 +135,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.correo?.['#title']}...`}
         hasError={errors?.emailPerson ? true : false}
         {...formDirective('emailPerson', {
+          value: preloaded?.correo,
           required: data?.correo?.['#required'],
           pattern: {
             value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
@@ -134,6 +150,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.celular?.['#title']}...`}
         hasError={errors?.celphonePerson ? true : false}
         {...formDirective('celphonePerson', {
+          value: preloaded?.celular,
           required: data?.celular?.['#required'],
         })}
       />
@@ -144,6 +161,7 @@ const RegisterPersonInfoForm = ({ data, errors, formDirective }: FormProps) => {
         placeholder={`${data?.segundo_contacto?.['#title']}...`}
         hasError={errors?.phonePerson ? true : false}
         {...formDirective('phonePerson', {
+          value: preloaded?.telefono,
           required: data?.segundo_contacto?.['#required'],
         })}
       />

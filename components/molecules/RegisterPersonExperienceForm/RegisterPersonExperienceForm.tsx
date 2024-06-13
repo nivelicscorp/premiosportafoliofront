@@ -2,8 +2,9 @@ import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
 import { CardExperienceProps } from '@models/experience.model'
 import { AdjuntarDocumentacion } from '@models/getForms.model'
+import { PostFormPerson } from '@models/postFormPerson.model'
 import CardExperience from '@molecules/Cards/CardExperience/CardExperience'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import {
   FieldValues,
   SubmitHandler,
@@ -16,14 +17,16 @@ interface FormProps {
   data: AdjuntarDocumentacion
   formDirective: UseFormRegister<FieldValues>
   setValue: UseFormSetValue<FieldValues>
+  preloaded: PostFormPerson
 }
 
 const RegisterPersonExperienceForm = ({
   data,
   formDirective,
   setValue,
+  preloaded,
 }: FormProps) => {
-  const [experience, setExperience] = useState<CardExperienceProps[]>([])
+  const [experience, setExperience] = useState<any[]>([])
   const [pagination, setPagination] = useState(3)
   formDirective('experience', { value: experience })
   /**
@@ -40,6 +43,13 @@ const RegisterPersonExperienceForm = ({
     setExperience([...experience, data])
     setValue('experience', [...experience, data])
   }
+
+  useEffect(() => {
+    if (preloaded?.estudio) {
+      setExperience(preloaded?.empleador ?? [])
+      setValue('experience', [...preloaded?.empleador])
+    }
+  }, [preloaded])
 
   return (
     <div className='form step2'>

@@ -1,9 +1,10 @@
 import Button from '@atoms/Button/Button'
 import Input from '@atoms/Input/Input'
 import { AdjuntarDocumentacion } from '@models/getForms.model'
+import { PostFormPerson } from '@models/postFormPerson.model'
 import { CardStudiesProps } from '@models/studies.model'
 import CardStudies from '@molecules/Cards/CardStudies/CardStudies'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import {
   FieldValues,
   SubmitHandler,
@@ -16,14 +17,16 @@ interface FormProps {
   data: AdjuntarDocumentacion
   formDirective: UseFormRegister<FieldValues>
   setValue: UseFormSetValue<FieldValues>
+  preloaded: PostFormPerson
 }
 
 const RegisterPersonStudiesForm = ({
   data,
   formDirective,
   setValue,
+  preloaded,
 }: FormProps) => {
-  const [studies, setStudies] = useState<CardStudiesProps[]>([])
+  const [studies, setStudies] = useState<any[]>([])
   const [pagination, setPagination] = useState(3)
   /**
    * Set the studies in the form
@@ -46,6 +49,13 @@ const RegisterPersonStudiesForm = ({
     setStudies([...studies, data])
     setValue('studies', [...studies, data])
   }
+
+  useEffect(() => {
+    if (preloaded?.estudio) {
+      setStudies(preloaded?.estudio ?? [])
+      setValue('studies', [...preloaded?.estudio])
+    }
+  }, [preloaded])
 
   return (
     <div className='form step2'>

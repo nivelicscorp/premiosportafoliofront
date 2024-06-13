@@ -75,9 +75,10 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
    */
   useEffect(() => {
     const data = JSON.parse(sessionStorage.getItem('postulation') ?? '{}')
+    const uuid = sessionStorage.getItem('uuid') ?? ''
     setPreloadedData(data)
     setValue('category', arrayDestructuring(data?.categoria, ''))
-    // sessionStorage.removeItem('postulation')
+    setSidForm(uuid)
     // setTempFiles(data?.archivos ?? [])
   }, [])
 
@@ -586,16 +587,19 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                     }
                     errors={errors}
                     formDirective={register}
+                    preloaded={preloadedData as PostFormPerson}
                   />
                   <RegisterPersonStudiesForm
                     data={formsData?.ingreso_de_datos?.formacion_academica}
                     formDirective={register}
                     setValue={setValue}
+                    preloaded={preloadedData as PostFormPerson}
                   />
                   <RegisterPersonExperienceForm
                     data={formsData?.ingreso_de_datos?.experiencia_laboral}
                     formDirective={register}
                     setValue={setValue}
+                    preloaded={preloadedData as PostFormPerson}
                   />
                 </section>
               )}
@@ -641,6 +645,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                     }
                     errors={errors}
                     formDirective={register}
+                    preloaded={preloadedData as PostFormPerson}
                   />
                 </section>
               )}
