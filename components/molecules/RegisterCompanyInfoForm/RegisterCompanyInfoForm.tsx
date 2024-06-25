@@ -193,7 +193,7 @@ const RegisterCompanyInfoForm = ({
               : preloaded?.correo,
           required: data?.postulacion_empresa_directa?.correo?.['#required'],
           pattern: {
-            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+            value: /^[^\s@]+@[a-zA-Z]+(\.[a-zA-Z]+)+$/,
             message: 'Correo inválido',
           },
         })}

@@ -90,7 +90,7 @@ const RegisterAgencyInfoForm = ({
           required:
             data?.postulacion_agencia?.correo_contacto_agencia?.['#required'],
           pattern: {
-            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+            value: /^[^\s@]+@[a-zA-Z]+(\.[a-zA-Z]+)+$/,
             message: 'Correo inválido',
           },
         })}

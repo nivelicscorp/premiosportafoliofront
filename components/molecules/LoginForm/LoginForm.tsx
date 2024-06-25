@@ -178,7 +178,7 @@ const LoginForm = () => {
             {...register('email', {
               required: 'El correo es requerido.',
               pattern: {
-                value: /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/,
+                value: /^[^\s@]+@[a-zA-Z]+(\.[a-zA-Z]+)+$/,
                 message:
                   '<p>El correo diligenciado <span>no tiene el formato</span> correcto</p>',
               },

@@ -134,7 +134,7 @@ const RegisterForm = () => {
               required:
                 '<p>Este campo no puede estar vacio</p><p>*Por favor <span>diligenciarlo</span> antes de enviar</p>',
               pattern: {
-                value: /^[^\s@]+@[a-zA-Z]+\.[a-zA-Z]+$/,
+                value: /^[^\s@]+@[a-zA-Z]+(\.[a-zA-Z]+)+$/,
                 message:
                   '<p>El correo diligenciado <span>no tiene el formato</span> correcto</p>',
               },

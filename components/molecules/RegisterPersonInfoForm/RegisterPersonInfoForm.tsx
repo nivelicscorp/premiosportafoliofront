@@ -159,7 +159,7 @@ const RegisterPersonInfoForm = ({
               : preloaded?.correo,
           required: data?.correo?.['#required'],
           pattern: {
-            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+            value: /^[^\s@]+@[a-zA-Z]+(\.[a-zA-Z]+)+$/,
             message: 'Correo inválido',
           },
         })}
