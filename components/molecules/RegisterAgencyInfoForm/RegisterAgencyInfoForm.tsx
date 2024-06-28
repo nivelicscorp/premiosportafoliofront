@@ -7,6 +7,7 @@ interface FormProps {
   data: DescripcionDelProyecto
   formDirective: UseFormRegister<FieldValues>
   errors: FieldErrors<FieldValues>
+  category: any
   preloaded: PostFormAgency
 }
 
@@ -14,6 +15,7 @@ const RegisterAgencyInfoForm = ({
   data,
   errors,
   formDirective,
+  category,
   preloaded,
 }: FormProps) => {
   return (
@@ -112,13 +114,21 @@ const RegisterAgencyInfoForm = ({
         })}
       />
       <div className='form-subTitle'>
-        <h3> {data?.datos_empresa_persona_participate?.['#title']} </h3>
+        <h3>
+          {category.includes('persona_mejor_lider_empresarial')
+            ? 'Postulación Mejor Líder empresarial'
+            : category.includes('empresa_')
+            ? 'Postulación empresa'
+            : data?.datos_empresa_persona_participate?.['#title']}{' '}
+        </h3>
       </div>
       <Input
         label={
-          data?.datos_empresa_persona_participate?.nombre_participante?.[
-            '#title'
-          ] ?? ''
+          category.includes('empresa_')
+            ? 'Nombre de la empresa'
+            : data?.datos_empresa_persona_participate?.nombre_participante?.[
+                '#title'
+              ] ?? ''
         }
         type={
           data?.datos_empresa_persona_participate?.nombre_participante?.[
@@ -150,48 +160,50 @@ const RegisterAgencyInfoForm = ({
           justifyContent: 'space-between',
         }}
       >
-        <Input
-          type='select'
-          label={
-            data?.datos_empresa_persona_participate?.tipo_de_documento?.[
-              '#title'
-            ] ?? ''
-          }
-          placeholder={`${data?.datos_empresa_persona_participate?.tipo_de_documento?.['#title']}...`}
-          smallLabel={
-            !data?.datos_empresa_persona_participate?.tipo_de_documento?.[
-              '#required'
-            ]
-              ? '(Opcional)'
-              : ''
-          }
-          hasError={errors?.documentTypeAgency ? true : false}
-          options={
-            Object.keys(
+        {!category.includes('empresa_') && (
+          <Input
+            type='select'
+            smallLabel={
               data?.datos_empresa_persona_participate?.tipo_de_documento?.[
-                '#options'
-              ] ?? {}
-            ) ?? []
-          }
-          {...formDirective('documentTypeAgency', {
-            value:
-              preloaded.tipo_de_documento === '-'
-                ? ''
-                : preloaded.tipo_de_documento,
-            required:
-              data?.datos_empresa_persona_participate?.tipo_de_documento?.[
-                '#required'
-              ],
-          })}
-        />
+                '#title'
+              ] ?? ''
+            }
+            placeholder={`${data?.datos_empresa_persona_participate?.tipo_de_documento?.['#title']}...`}
+            hasError={errors?.documentTypeAgency ? true : false}
+            options={
+              Object.keys(
+                data?.datos_empresa_persona_participate?.tipo_de_documento?.[
+                  '#options'
+                ] ?? {}
+              ) ?? []
+            }
+            {...formDirective('documentTypeAgency', {
+              value:
+                preloaded.tipo_de_documento === '-'
+                  ? ''
+                  : preloaded.tipo_de_documento,
+              required:
+                data?.datos_empresa_persona_participate?.tipo_de_documento?.[
+                  '#required'
+                ],
+            })}
+          />
+        )}
         <Input
           label={
-            data?.datos_empresa_persona_participate?.numero_?.['#title'] ?? ''
+            category.includes('empresa_')
+              ? 'NIT'
+              : data?.datos_empresa_persona_participate?.numero_?.['#title'] ??
+                ''
           }
           type={
             data?.datos_empresa_persona_participate?.numero_?.['#type'] ?? ''
           }
-          placeholder={`${data?.datos_empresa_persona_participate?.numero_?.['#title']}...`}
+          placeholder={`${
+            category.includes('empresa_')
+              ? 'NIT'
+              : data?.datos_empresa_persona_participate?.numero_?.['#title']
+          }...`}
           smallLabel={
             !data?.datos_empresa_persona_participate?.numero_?.['#required']
               ? '(Opcional)'

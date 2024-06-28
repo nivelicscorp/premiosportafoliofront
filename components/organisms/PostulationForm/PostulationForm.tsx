@@ -412,6 +412,10 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
       tipo_de_documento:
         data?.documentTypeAgency.length > 0 ? data?.documentTypeAgency : '-',
       status: finalSubmit ? 'done' : 'undone',
+      cual_es_el_nombre_del_proyecto:
+        data?.descriptionNameProjectAgency.length > 0
+          ? data?.descriptionNameProjectAgency
+          : '-',
       complete_page: step.toString(),
     }
     const promisesFiles: Promise<any>[] = data?.files.map((element: any) =>
@@ -615,6 +619,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                     data={formsData?.ingreso_de_datos}
                     formDirective={register}
                     errors={errors}
+                    category={category}
                     preloaded={preloadedData as PostFormAgency}
                   />
                 </section>

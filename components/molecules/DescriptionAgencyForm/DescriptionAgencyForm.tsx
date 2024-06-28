@@ -45,6 +45,27 @@ const DescriptionAgencyForm = ({
       </div>
       <Input
         label={
+          data?.descripcionl_proyecto_participa
+            ?.cual_es_el_nombre_del_proyecto?.['#title'] ?? ''
+        }
+        type={
+          data?.descripcionl_proyecto_participa
+            ?.cual_es_el_nombre_del_proyecto?.['#type'] ?? 'text'
+        }
+        placeholder={`${data?.descripcionl_proyecto_participa?.cual_es_el_nombre_del_proyecto?.['#title']}...`}
+        hasError={errors?.descriptionAboutAgency ? true : false}
+        {...formDirective('descriptionNameProjectAgency', {
+          value:
+            preloaded?.cual_es_el_nombre_del_proyecto === '-'
+              ? ''
+              : preloaded?.cual_es_el_nombre_del_proyecto,
+          required:
+            data?.descripcionl_proyecto_participa
+              ?.cual_es_el_nombre_del_proyecto?.['#required'],
+        })}
+      />
+      <Input
+        label={
           data?.descripcionl_proyecto_participa?.de_que_trata_el_proyecto?.[
             '#title'
           ] ?? ''

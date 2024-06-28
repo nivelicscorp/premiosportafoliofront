@@ -5,6 +5,7 @@ export interface PostFormAgency {
   celular: string
   ciudad: string
   cobertura_alcance_proyecto: string
+  cual_es_el_nombre_del_proyecto: string
   correo_contacto_agencia: string
   departamento: string
   descripcion: string

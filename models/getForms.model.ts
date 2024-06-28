@@ -37,6 +37,7 @@ export interface PostulacionEmpresaDirecta {
 export interface DescripcionlProyectoParticipa {
   '#type': Type
   '#title': string
+  cual_es_el_nombre_del_proyecto: DescripcionDelProyecto
   nombre_del_proyecto: DescripcionDelProyecto
   de_que_trata_el_proyecto: DescripcionDelProyecto
   cobertura_alcance_proyecto: DescripcionDelProyecto
