@@ -142,7 +142,10 @@ const RegisterPersonInfoForm = ({
         placeholder={`${data?.empresa_universidad?.['#title']}...`}
         hasError={errors?.laborCompany ? true : false}
         {...formDirective('laborCompany', {
-          value: preloaded?.universidad === '-' ? '' : preloaded?.universidad,
+          value:
+            preloaded?.empresa_universidad === '-'
+              ? ''
+              : preloaded?.empresa_universidad,
           required: data?.empresa_universidad?.['#required'],
         })}
       />

@@ -246,7 +246,7 @@ const RegisterForm = () => {
         <fieldset className={'form__fieldset tyc'}>
           <Input
             type='checkbox'
-            label='Autorizo el tratamiento de mis datos personales conforme con la <strong>Política de Tratamiento de Datos</strong> de CASA EDITORIAL EL TIMPO S.A. y su Política de datos de Navegación/cookies, las cuales declaro que he leído y entiendo.'
+            label='Autorizo el tratamiento de mis datos personales conforme con la <strong>Política de Tratamiento de Datos</strong> de CASA EDITORIAL EL TIEMPO S.A. y su Política de datos de Navegación/cookies, las cuales declaro que he leído y entiendo.'
             errorMessage={errors.termsAndConditions?.message?.toString()}
             {...register('termsAndConditions', {
               required:

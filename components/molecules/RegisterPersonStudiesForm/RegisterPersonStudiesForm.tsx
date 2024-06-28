@@ -67,6 +67,7 @@ const RegisterPersonStudiesForm = ({
           label={data?.estudio?.['#element']?.estudio?.['#title'] ?? ''}
           type={data?.estudio?.['#element']?.estudio?.['#type'] ?? ''}
           placeholder={`${data?.estudio?.['#element']?.estudio?.['#title']}...`}
+          smallLabel=' (Univesitario, especialización, maestria, doctorado)'
           options={
             Object.values(
               data?.estudio?.['#element']?.estudio?.['#options'] ?? {}
@@ -100,6 +101,16 @@ const RegisterPersonStudiesForm = ({
             required: data?.estudio?.['#element']?.anio?.['#required'],
             pattern: /^\d{4}$/,
             max: new Date().getFullYear(),
+          })}
+        />
+        <Input
+          label={data?.estudio?.['#element']?.promedio?.['#title'] ?? ''}
+          type={data?.estudio?.['#element']?.promedio?.['#type'] ?? ''}
+          placeholder={`${data?.estudio?.['#element']?.promedio?.['#title']}...`}
+          smallLabel={'(Aplica para categoría a Mejor Estudiante)'}
+          hasError={errors?.promedio ? true : false}
+          {...register('promedio', {
+            required: data?.estudio?.['#element']?.promedio?.['#required'],
           })}
         />
         <Input

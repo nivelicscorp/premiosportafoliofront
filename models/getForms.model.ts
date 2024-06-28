@@ -423,6 +423,7 @@ export interface Element {
   otras_actividades?: Otr
   estudio?: ElementAnio
   institucion?: ElementAnio
+  promedio?: ElementAnio
   otros?: Otr
 }
 

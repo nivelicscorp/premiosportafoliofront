@@ -126,7 +126,7 @@ const DescriptionAgencyForm = ({
           ] ?? 'text'
         }
         placeholder={`${data?.descripcionl_proyecto_participa?.indicadores_de_gestion?.['#title']}...`}
-        tooltipLabel='Número de personas, usuarios o comunidades impactadas, niveles de satisfacción, volument de ventas, entre otros'
+        tooltipLabel='Número de personas, usuarios o comunidades impactadas, niveles de satisfacción, volumen de ventas, entre otros'
         hasError={errors?.descriptionIndicatorsAgency ? true : false}
         {...formDirective('descriptionIndicatorsAgency', {
           value:

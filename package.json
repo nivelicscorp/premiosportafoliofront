@@ -4,6 +4,7 @@
   "scripts": {
     "build": "next build",
     "start": "node server.js",
+    "start:dev": "node server.js --watch",
     "start:next": "next start -p 3050",
     "start:express": "npm run build && node server.js",
     "dev": "next dev -p 3050",

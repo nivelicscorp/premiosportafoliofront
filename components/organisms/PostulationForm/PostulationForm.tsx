@@ -53,7 +53,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
     setValue,
     getValues,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitted },
   } = useForm()
   /**
    * Function to change the step of the form
@@ -743,6 +743,11 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   type='button'
                 />
               </div>
+              {!submitting && isSubmitted && (
+                <p className={styles.error}>
+                  Completa toda la información del formulario antes de continuar
+                </p>
+              )}
             </form>
           </div>
         </section>

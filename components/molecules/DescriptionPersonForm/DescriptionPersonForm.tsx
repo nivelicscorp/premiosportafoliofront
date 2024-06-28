@@ -111,9 +111,9 @@ const DescriptionPersonForm = ({
         hasError={errors?.descriptionPersonReason ? true : false}
         {...formDirective('descriptionPersonReason', {
           value:
-            preloaded?.merece_participar_premios_portafolio === '-'
+            preloaded?.razon_para_ganar === '-'
               ? ''
-              : preloaded?.merece_participar_premios_portafolio,
+              : preloaded?.razon_para_ganar,
           required: data?.razon_para_ganar?.['#required'],
         })}
       />

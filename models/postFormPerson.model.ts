@@ -41,5 +41,6 @@ export interface Estudio {
   anio: string
   estudio: string
   institucion: string
+  promedio: string
   otros: string
 }
