@@ -9,7 +9,7 @@ const ConfirmationPostulation = () => {
       <div className={styles?.welcomBlock__title}>
         <h1>
           <span> Inscripción finalizada </span>
-          <span> con exíto </span>
+          <span> con éxito </span>
         </h1>
       </div>
       <div className={styles?.welcomBlock__msg}>

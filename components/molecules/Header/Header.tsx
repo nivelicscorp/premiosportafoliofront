@@ -76,7 +76,7 @@ const Header = () => {
                 id='Enmascarar_grupo_62127'
                 data-name='Enmascarar grupo 62127'
                 transform='translate(4.141 4.141)'
-                clip-path='url(#clip-path)'
+                clipPath='url(#clip-path)'
               >
                 <path
                   id='Icon_awesome-user-alt'
@@ -119,7 +119,7 @@ const Header = () => {
                     id='Enmascarar_grupo_859'
                     data-name='Enmascarar grupo 859'
                     transform='translate(13.826 13.826) rotate(180)'
-                    clip-path='url(#clip-path)'
+                    clipPath='url(#clip-path)'
                   >
                     <g
                       id='angle-right'
@@ -187,7 +187,7 @@ const Header = () => {
                         <g
                           id='Enmascarar_grupo_62128'
                           data-name='Enmascarar grupo 62128'
-                          clip-path='url(#clip-path)'
+                          clipPath='url(#clip-path)'
                         >
                           <path
                             id='gear'

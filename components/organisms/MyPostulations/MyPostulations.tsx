@@ -86,7 +86,7 @@ const MyPostulations = () => {
                         id='Enmascarar_grupo_62127'
                         data-name='Enmascarar grupo 62127'
                         transform='translate(4.264 4.609)'
-                        clip-path='url(#clip-path)'
+                        clipPath='url(#clip-path)'
                       >
                         <path
                           id='Icon_awesome-user-alt'

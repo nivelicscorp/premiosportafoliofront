@@ -416,6 +416,29 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
         data?.descriptionNameProjectAgency.length > 0
           ? data?.descriptionNameProjectAgency
           : '-',
+      empleador: data?.experience?.length > 0 ? data?.experience : [],
+      estudio: data?.studies?.length > 0 ? data?.studies : [],
+      activos: step === 5 ? data?.activesTwentyOne : '',
+      activos_2022: step === 5 ? data?.activesTwentyTwo : '',
+      activos_2023: step === 5 ? data?.activesTwentyThree : '',
+      exportaciones: step === 5 ? data?.exportsTwentyOne : '',
+      exportaciones_2022: step === 5 ? data?.exportsTwentyTwo : '',
+      exportaciones_2023: step === 5 ? data?.exportsTwentyThree : '',
+      importaciones: step === 5 ? data?.importsTwentyOne : '',
+      importaciones_2022: step === 5 ? data?.importsTwentyTwo : '',
+      importaciones_2023: step === 5 ? data?.importsTwentyThree : '',
+      pasivos: step === 5 ? data?.pasivesTwentyOne : '',
+      pasivos_2022: step === 5 ? data?.pasivesTwentyTwo : '',
+      pasivos_2023: step === 5 ? data?.pasivesTwentyThree : '',
+      patrimonio: step === 5 ? data?.patrimonyTwentyOne : '',
+      patrimonio_2022: step === 5 ? data?.patrimonyTwentyTwo : '',
+      patrimonio_2023: step === 5 ? data?.patrimonyTwentyThree : '',
+      utilidades: step === 5 ? data?.utilitiesTwentyOne : '',
+      utilidades_2022: step === 5 ? data?.utilitiesTwentyTwo : '',
+      utilidades_2023: step === 5 ? data?.utilitiesTwentyThree : '',
+      ventas: step === 5 ? data?.sellsTwentyOne : '',
+      ventas_2022: step === 5 ? data?.sellsTwentyTwo : '',
+      ventas_2023: step === 5 ? data?.sellsTwentyThree : '',
       complete_page: step.toString(),
     }
     const promisesFiles: Promise<any>[] = data?.files.map((element: any) =>
@@ -622,6 +645,22 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                     category={category}
                     preloaded={preloadedData as PostFormAgency}
                   />
+                  {category.includes('persona_') && (
+                    <RegisterPersonStudiesForm
+                      data={formsData?.ingreso_de_datos?.formacion_academica}
+                      formDirective={register}
+                      setValue={setValue}
+                      preloaded={preloadedData as PostFormPerson}
+                    />
+                  )}
+                  {category.includes('persona_') && (
+                    <RegisterPersonExperienceForm
+                      data={formsData?.ingreso_de_datos?.experiencia_laboral}
+                      formDirective={register}
+                      setValue={setValue}
+                      preloaded={preloadedData as PostFormPerson}
+                    />
+                  )}
                 </section>
               )}
               {/* STEP 03 */}
@@ -665,6 +704,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
                   <DescriptionAgencyForm
                     data={formsData?.descripcion_del_proyecto}
                     errors={errors}
+                    category={category}
                     formDirective={register}
                     preloaded={preloadedData as PostFormAgency}
                   />
@@ -689,7 +729,7 @@ const PostulationForm = ({ role, formData }: PostulationFormProps) => {
               </section>
               {/* STEP 05 */}
               {category === 'empresa_esfuerzo_exportador' &&
-                role === 'empresa' && (
+                role !== 'persona' && (
                   <section
                     className={`${styles.section} ${
                       step === 5 ? styles.active : ''

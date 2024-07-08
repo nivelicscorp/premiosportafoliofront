@@ -246,9 +246,18 @@ const RegisterForm = () => {
         <fieldset className={'form__fieldset tyc'}>
           <Input
             type='checkbox'
-            label='Autorizo el tratamiento de mis datos personales conforme con la <strong>Política de Tratamiento de Datos</strong> de CASA EDITORIAL EL TIEMPO S.A. y su Política de datos de Navegación/cookies, las cuales declaro que he leído y entiendo.'
+            label='He leído y autorizo <a>Términos y Condiciones</a> de Premios Portafolio.'
             errorMessage={errors.termsAndConditions?.message?.toString()}
             {...register('termsAndConditions', {
+              required:
+                '<p>Este campo no puede estar vacio</p><p>*Debe <span>aceptar los términos y condiciones</span> para poder continuar</p>',
+            })}
+          />
+          <Input
+            type='checkbox'
+            label='Autorizo el tratamiento de mis datos personales conforme con la <strong>Política de Tratamiento de Datos</strong> de CASA EDITORIAL EL TIEMPO S.A. y su Política de datos de Navegación/cookies, las cuales declaro que he leído y entiendo.'
+            errorMessage={errors.tratementConditions?.message?.toString()}
+            {...register('tratementConditions', {
               required:
                 '<p>Este campo no puede estar vacio</p><p>*Debe <span>aceptar las políticas</span> de tratamiento de datos para poder continuar</p>',
             })}

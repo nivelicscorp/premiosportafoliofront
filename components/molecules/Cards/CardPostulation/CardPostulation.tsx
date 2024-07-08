@@ -48,10 +48,10 @@ const CardPostulation = ({
           </Link>
         )}
       </div>
-      <Tooltip
+      {/* <Tooltip
         tooltipLabel='Resalta el empeño de las compañías que participan dedicadamente en la búsqueda de mercados externos.'
         closePosition
-      />
+      /> */}
     </div>
   )
 }

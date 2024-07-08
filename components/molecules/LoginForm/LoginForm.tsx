@@ -143,7 +143,7 @@ const LoginForm = () => {
                         id='Enmascarar_grupo_62127'
                         data-name='Enmascarar grupo 62127'
                         transform='translate(6.852 7)'
-                        clip-path='url(#clip-path)'
+                        clipPath='url(#clip-path)'
                       >
                         <path
                           id='Icon_awesome-user-alt'

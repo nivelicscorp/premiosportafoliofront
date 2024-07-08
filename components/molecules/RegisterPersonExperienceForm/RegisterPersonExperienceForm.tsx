@@ -73,7 +73,7 @@ const RegisterPersonExperienceForm = ({
           }
           hasError={errors?.empleador ? true : false}
           {...register('empleador', {
-            required: data?.empleador?.['#element']?.empleador?.['#required'],
+            required: true,
           })}
         />
         <Input
@@ -87,7 +87,7 @@ const RegisterPersonExperienceForm = ({
           }
           hasError={errors?.cargo ? true : false}
           {...register('cargo', {
-            required: data?.empleador?.['#element']?.cargo?.['#required'],
+            required: true,
           })}
         />
         <Input
@@ -101,7 +101,7 @@ const RegisterPersonExperienceForm = ({
           }
           hasError={errors?.anio ? true : false}
           {...register('anio', {
-            required: data?.empleador?.['#element']?.anio?.['#required'],
+            required: true,
             pattern: /^\d{4}$/,
             max: new Date().getFullYear(),
           })}
@@ -117,7 +117,7 @@ const RegisterPersonExperienceForm = ({
           }
           hasError={errors?.telefono ? true : false}
           {...register('telefono', {
-            required: data?.empleador?.['#element']?.telefono?.['#required'],
+            required: true,
           })}
         />
         <Input

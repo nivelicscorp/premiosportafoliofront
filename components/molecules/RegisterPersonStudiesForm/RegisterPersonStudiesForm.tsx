@@ -67,7 +67,7 @@ const RegisterPersonStudiesForm = ({
           label={data?.estudio?.['#element']?.estudio?.['#title'] ?? ''}
           type={data?.estudio?.['#element']?.estudio?.['#type'] ?? ''}
           placeholder={`${data?.estudio?.['#element']?.estudio?.['#title']}...`}
-          smallLabel=' (Univesitario, especialización, maestria, doctorado)'
+          smallLabel=' (Univesitario, especialización, maestría, doctorado)'
           options={
             Object.values(
               data?.estudio?.['#element']?.estudio?.['#options'] ?? {}
@@ -75,7 +75,7 @@ const RegisterPersonStudiesForm = ({
           }
           hasError={errors?.estudio ? true : false}
           {...register('estudio', {
-            required: data?.estudio?.['#element']?.estudio?.['#required'],
+            required: true,
           })}
         />
         <Input
@@ -84,7 +84,7 @@ const RegisterPersonStudiesForm = ({
           placeholder={`${data?.estudio?.['#element']?.institucion?.['#title']}...`}
           hasError={errors?.institucion ? true : false}
           {...register('institucion', {
-            required: data?.estudio?.['#element']?.institucion?.['#required'],
+            required: true,
           })}
         />
         <Input
@@ -98,7 +98,7 @@ const RegisterPersonStudiesForm = ({
           }
           hasError={errors?.anio ? true : false}
           {...register('anio', {
-            required: data?.estudio?.['#element']?.anio?.['#required'],
+            required: true,
             pattern: /^\d{4}$/,
             max: new Date().getFullYear(),
           })}
@@ -110,7 +110,7 @@ const RegisterPersonStudiesForm = ({
           smallLabel={'(Aplica para categoría a Mejor Estudiante)'}
           hasError={errors?.promedio ? true : false}
           {...register('promedio', {
-            required: data?.estudio?.['#element']?.promedio?.['#required'],
+            required: true,
           })}
         />
         <Input
@@ -120,7 +120,7 @@ const RegisterPersonStudiesForm = ({
           smallLabel='(Reconocimientos)'
           hasError={errors?.otros ? true : false}
           {...register('otros', {
-            required: data?.estudio?.['#element']?.otros?.['#required'],
+            required: false,
           })}
         />
         <div className='form-btn add'>
